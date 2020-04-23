@@ -1,0 +1,3 @@
+= EMF Reference Project
+
+NOTE: TODO
