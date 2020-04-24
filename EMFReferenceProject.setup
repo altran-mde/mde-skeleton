@@ -86,6 +86,21 @@
               label="Clone with HTTPS"/>
           <description>Choose from the available Git URIs</description>
         </setupTask>
+        <setupTask
+            xsi:type="setup:VariableTask"
+            name="gitlab.acidspace.nl.wiki.remoteURIs"
+            label="ACIDSpace GitLab Repository Wiki">
+          <choice
+              value="git@gitlab.acidspace.nl:@{remoteURI}.wiki.git"
+              label="Clone with SSH">
+            <annotation
+                source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
+          </choice>
+          <choice
+              value="https://${gitlab.acidspace.nl.user.name|username}@gitlab.acidspace.nl/@{remoteURI}.wiki.git"
+              label="Clone with HTTPS"/>
+          <description>Choose from the available Git URIs</description>
+        </setupTask>
       </setupTask>
       <setupTask
           xsi:type="setup:CompoundTask"
@@ -100,6 +115,21 @@
               label="Clone with HTTPS"/>
           <choice
               value="git@gitlab.acidspace.nl:@{remoteURI}.git"
+              label="Clone with SSH">
+            <annotation
+                source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
+          </choice>
+          <description>Choose from the available Git URIs</description>
+        </setupTask>
+        <setupTask
+            xsi:type="setup:VariableTask"
+            name="gitlab.acidspace.nl.wiki.remoteURIs"
+            label="ACIDSpace GitLab Repository Wiki">
+          <choice
+              value="https://${gitlab.acidspace.nl.user.name|username}@gitlab.acidspace.nl/@{remoteURI}.wiki.git"
+              label="Clone with HTTPS"/>
+          <choice
+              value="git@gitlab.acidspace.nl:@{remoteURI}.wiki.git"
               label="Clone with SSH">
             <annotation
                 source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
@@ -265,6 +295,46 @@
     <sourceLocator
         rootFolder="${git.clone.location}"
         locateNestedProjects="true"/>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:CompoundTask"
+      name="Wiki">
+    <setupTask
+        xsi:type="git:GitCloneTask"
+        id="wiki.git.clone"
+        remoteURI="${gitlab.acidspace.nl.project}"
+        checkoutBranch="master">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/InducedChoices">
+        <detail
+            key="inherit">
+          <value>gitlab.acidspace.nl.wiki.remoteURIs</value>
+        </detail>
+        <detail
+            key="label">
+          <value>${scope.project.label} Wiki Git repository</value>
+        </detail>
+        <detail
+            key="target">
+          <value>remoteURI</value>
+        </detail>
+      </annotation>
+      <configSections
+          name="user">
+        <properties
+            key="name"
+            value="${gitlab.acidspace.nl.user.name}"/>
+        <properties
+            key="email"
+            value="${gitlab.acidspace.nl.user.email}"/>
+      </configSections>
+      <description>${scope.project.label}</description>
+    </setupTask>
+    <setupTask
+        xsi:type="projects:ProjectsImportTask">
+      <sourceLocator
+          rootFolder="${wiki.git.clone.location}"/>
+    </setupTask>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
