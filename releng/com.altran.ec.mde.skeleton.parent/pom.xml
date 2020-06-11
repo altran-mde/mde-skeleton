@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.altran.ec.mde.skeleton</groupId>
+  <artifactId>com.altran.ec.mde.skeleton.parent</artifactId>
+  <name>EMF Reference Project - Tycho Configuration</name>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <parent>
+    <groupId>nl.acidspace.ec.mde</groupId>
+    <artifactId>nl.acidspace.ec.mde.tycho.configuration</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../nl.acidspace.ec.mde.tycho.configuration</relativePath>
+  </parent>
+  
+  <properties>
+    <java.version>1.8</java.version>
+    <xtext.version>2.21.0</xtext.version> <!-- Eclipse 2020-03 -->
+  </properties>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>target-platform-configuration</artifactId>
+        <configuration>
+          <target>
+            <artifact>
+              <groupId>com.altran.ec.mde.skeleton</groupId>
+              <artifactId>com.altran.ec.mde.skeleton.target</artifactId>
+              <version>0.0.1-SNAPSHOT</version>
+            </artifact>
+          </target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
