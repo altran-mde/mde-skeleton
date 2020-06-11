@@ -5,10 +5,12 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:git="http://www.eclipse.org/oomph/setup/git/1.0"
     xmlns:maven="http://www.eclipse.org/oomph/setup/maven/1.0"
+    xmlns:pde="http://www.eclipse.org/oomph/setup/pde/1.0"
     xmlns:projects="http://www.eclipse.org/oomph/setup/projects/1.0"
     xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
     xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
-    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/maven/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Maven.ecore http://www.eclipse.org/oomph/setup/projects/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Projects.ecore"
+    xmlns:setup.targlets="http://www.eclipse.org/oomph/setup/targlets/1.0"
+    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/maven/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Maven.ecore http://www.eclipse.org/oomph/setup/pde/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/PDE.ecore http://www.eclipse.org/oomph/setup/projects/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Projects.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore"
     name="mde.assets.emf_reference_project"
     label="EMF Reference Project">
   <setupTask
@@ -29,6 +31,8 @@
         xsi:type="setup.p2:P2Task">
       <requirement
           name="de.jcup.asciidoctoreditor.feature.group"/>
+      <requirement
+          name="de.jcup.basheditor.feature.group"/>
       <requirement
           name="de.jcup.yamleditor.feature.group"/>
       <repository
@@ -189,6 +193,18 @@
       </setupTask>
       <setupTask
           xsi:type="setup:CompoundTask"
+          name="org.eclipse.debug.ui">
+        <setupTask
+            xsi:type="setup:PreferenceTask"
+            key="/instance/org.eclipse.debug.ui/Console.highWaterMark"
+            value="808000"/>
+        <setupTask
+            xsi:type="setup:PreferenceTask"
+            key="/instance/org.eclipse.debug.ui/Console.lowWaterMark"
+            value="800000"/>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:CompoundTask"
           name="org.eclipse.oomph.setup.ui">
         <setupTask
             xsi:type="setup:PreferenceTask"
@@ -259,6 +275,8 @@
         name="org.eclipse.pde.feature.group"/>
     <requirement
         name="org.eclipse.emf.sdk.feature.group"/>
+    <requirement
+        name="org.eclipse.xtext.sdk.feature.group"/>
   </setupTask>
   <setupTask
       xsi:type="git:GitCloneTask"
@@ -338,8 +356,7 @@
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
-      disabled="true"
-      name="Maven">
+      name="Maven and Tycho">
     <setupTask
         xsi:type="setup:EclipseIniTask"
         option="-Xmx"
@@ -370,6 +387,10 @@
             xsi:type="setup:PreferenceTask"
             key="/instance/org.eclipse.wst.xml.core/indentationSize"
             value="2"/>
+        <setupTask
+            xsi:type="setup:PreferenceTask"
+            key="/instance/org.eclipse.wst.xml.core/lineWidth"
+            value="120"/>
       </setupTask>
     </setupTask>
     <setupTask
@@ -379,6 +400,106 @@
           locateNestedProjects="true"/>
     </setupTask>
     <description>Common configuration for projects using Maven (disable if not required)</description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:CompoundTask"
+      name="CBI Target Platform">
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="eclipse.target.platform"
+        value="None"/>
+    <setupTask
+        xsi:type="setup.p2:P2Task">
+      <requirement
+          name="org.eclipse.cbi.targetplatform-feature.feature.group"/>
+      <repository
+          url="https://download.eclipse.org/cbi/tpd/3.0.0-SNAPSHOT/"/>
+    </setupTask>
+    <setupTask
+        xsi:type="pde:TargetPlatformTask"
+        name="CBI Target Platform"/>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:CompoundTask"
+      disabled="true"
+      name="Modular Target Platform">
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="eclipse.target.platform"
+        value="None"/>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="project.target.platform"
+        defaultValue="2020-03"
+        label="${scope.project.label} Target Platform">
+      <choice
+          value="2020-03"
+          label="Eclipse 2020-03"/>
+    </setupTask>
+    <setupTask
+        xsi:type="setup.targlets:TargletTask">
+      <targlet
+          name="Modular Target Platform"
+          activeRepositoryList="${project.target.platform}">
+        <annotation
+            source="http:/www.eclipse.org/oomph/targlets/TargetDefinitionGenerator">
+          <detail
+              key="location">
+            <value>${git.clone.location}/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.target</value>
+          </detail>
+          <detail
+              key="generateImplicitUnits">
+            <value>false</value>
+          </detail>
+          <detail
+              key="minimizeImplicitUnits">
+            <value>false</value>
+          </detail>
+          <detail
+              key="includeMode">
+            <value>planner</value>
+          </detail>
+          <detail
+              key="generateVersions">
+            <value>false</value>
+          </detail>
+          <detail
+              key="includeAllPlatforms">
+            <value>false</value>
+          </detail>
+          <detail
+              key="includeSource">
+            <value>true</value>
+          </detail>
+        </annotation>
+        <requirement
+            name="org.eclipse.equinox.executable.feature.group"/>
+        <requirement
+            name="org.eclipse.sdk.feature.group"/>
+        <requirement
+            name="org.eclipse.emf.sdk.feature.group"/>
+        <requirement
+            name="org.eclipse.xtext.sdk.feature.group"/>
+        <requirement
+            name="de.itemis.xtext.antlr.feature.feature.group"/>
+        <requirement
+            name="org.eclipse.e4.tools.spies.feature.feature.group"/>
+        <requirement
+            name="*"/>
+        <sourceLocator
+            rootFolder="${git.clone.location}"
+            locateNestedProjects="true"/>
+        <repositoryList
+            name="2020-03">
+          <repository
+              url="https://download.eclipse.org/releases/2020-03/202003181000/"/>
+          <repository
+              url="http://download.itemis.com/updates/releases/2.1.1/"/>
+          <repository
+              url="https://download.eclipse.org/e4/snapshots/org.eclipse.e4.tools/latest/"/>
+        </repositoryList>
+      </targlet>
+    </setupTask>
   </setupTask>
   <stream name="master"
       label="Master"/>

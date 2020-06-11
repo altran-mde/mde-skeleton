@@ -1,0 +1,268 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>nl.acidspace.ec.mde</groupId>
+  <artifactId>nl.acidspace.ec.mde.tycho.configuration</artifactId>
+  <name>ACIDSpace - EC MDE - Tycho Configuration</name>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <properties>
+    <!-- A project should provide the right versions -->
+    <java.version>1.8</java.version>
+    <xtext.version>2.21.0</xtext.version> <!-- Eclipse 2020-03 -->
+
+    <!-- Test modules that require to run their tests WITHOUT an Eclipse UI can either: -->
+    <!-- a) Set this property to false in their pom.xml (if it exists) -->
+    <!-- b) Create a file called '.tycho-surefire-headless-test' in the root of the module. -->
+    <!-- Also see profile 'tycho-surefire-headless-test' -->
+    <tycho.surefire.useUIHarness>true</tycho.surefire.useUIHarness>
+
+    <!-- Skip the install, since we do not need the artifacts in our local mvn repo -->
+    <maven.install.skip>true</maven.install.skip>
+    <!-- Don not deploy Eclipse artifacts unless specifically requested -->
+    <maven.deploy.skip>true</maven.deploy.skip>
+
+    <tycho.version>1.7.0</tycho.version>
+    <tycho.disableP2Mirrors>true</tycho.disableP2Mirrors>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+  </properties>
+
+  <prerequisites>
+    <maven>3.3</maven>
+  </prerequisites>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+          <configuration>
+            <skip>${maven.install.skip}</skip>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
+          <configuration>
+            <skip>${maven.deploy.skip}</skip>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.eclipse.tycho</groupId>
+          <artifactId>tycho-maven-plugin</artifactId>
+          <version>${tycho.version}</version>
+          <extensions>true</extensions>
+        </plugin>
+
+        <plugin>
+          <groupId>org.eclipse.tycho</groupId>
+          <artifactId>tycho-compiler-plugin</artifactId>
+          <version>${tycho.version}</version>
+          <configuration>
+            <compilerArgs>
+              <arg>-err:-nullAnnot,includeAssertNull,inheritNullAnnot,nonnullNotRepeated,null,nullAnnotConflict,nullAnnotRedundant,nullDereference,nullUncheckedConversion,syntacticAnalysis</arg>
+              <arg>-inlineJSR</arg>
+              <arg>-enableJavadoc</arg>
+              <arg>-nowarn</arg>
+              <arg>-proceedOnError</arg>
+            </compilerArgs>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.eclipse.tycho</groupId>
+          <artifactId>tycho-p2-director-plugin</artifactId>
+          <version>${tycho.version}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.eclipse.tycho</groupId>
+          <artifactId>tycho-p2-plugin</artifactId>
+          <version>${tycho.version}</version>
+          <executions>
+            <execution>
+              <id>attach-p2-metadata</id>
+              <phase>package</phase>
+              <goals>
+                <goal>p2-metadata</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>org.eclipse.tycho</groupId>
+          <artifactId>tycho-p2-repository-plugin</artifactId>
+          <version>${tycho.version}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.eclipse.tycho</groupId>
+          <artifactId>target-platform-configuration</artifactId>
+          <version>${tycho.version}</version>
+          <configuration>
+            <environments>
+              <environment>
+                <os>win32</os>
+                <ws>win32</ws>
+                <arch>x86_64</arch>
+              </environment>
+              <environment>
+                <os>linux</os>
+                <ws>gtk</ws>
+                <arch>x86_64</arch>
+              </environment>
+            </environments>
+          </configuration>
+        </plugin>
+
+        <!--Enable the replacement of the SNAPSHOT version based on the last commit -->
+        <plugin>
+          <groupId>org.eclipse.tycho</groupId>
+          <artifactId>tycho-packaging-plugin</artifactId>
+          <version>${tycho.version}</version>
+          <dependencies>
+            <dependency>
+              <groupId>org.eclipse.tycho.extras</groupId>
+              <artifactId>tycho-buildtimestamp-jgit</artifactId>
+              <version>${tycho.version}</version>
+            </dependency>
+          </dependencies>
+          <configuration>
+            <format>yyyyMMdd-HHmm</format>
+            <timestampProvider>jgit</timestampProvider>
+            <jgit.dirtyWorkingTree>warning</jgit.dirtyWorkingTree>
+            <jgit.ignore>
+              pom.xml
+              <!-- Bug 526753 - tycho-buildtimestamp-jgit should ignore .polyglot.build.properties -->
+              <!-- https://bugs.eclipse.org/bugs/show_bug.cgi?id=526753 -->
+              .polyglot.*
+              .META-INF_MANIFEST.MF
+              feature.xml.takari_issue_192
+            </jgit.ignore>
+            <archive>
+              <addMavenDescriptor>false</addMavenDescriptor>
+            </archive>
+          </configuration>
+        </plugin>
+
+        <!-- To skip running (and compiling) tests use commandline flag: -Dmaven.test.skip -->
+        <!-- To skip tests, but still compile them, use: -DskipTests -->
+        <!-- To allow all tests in a pom to pass/fail, use command-line flag: -fae (fail at end) -->
+        <plugin>
+          <groupId>org.eclipse.tycho</groupId>
+          <artifactId>tycho-surefire-plugin</artifactId>
+          <version>${tycho.version}</version>
+          <configuration>
+            <failIfNoTests>false</failIfNoTests>
+            <useUIHarness>${tycho.surefire.useUIHarness}</useUIHarness>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <!-- See https://www.eclipse.org/Xtext/documentation/350_continuous_integration.html#tycho-build -->
+          <groupId>org.eclipse.xtend</groupId>
+          <artifactId>xtend-maven-plugin</artifactId>
+          <version>${xtext.version}</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>compile</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <outputDirectory>${project.basedir}/xtend-gen</outputDirectory>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.1.0</version>
+          <executions>
+            <execution>
+              <id>xtend-gen-clean</id>
+              <phase>clean</phase>
+              <goals>
+                <goal>clean</goal>
+              </goals>
+              <configuration>
+                <filesets>
+                  <fileset>
+                    <directory>${project.basedir}</directory>
+                    <includes>
+                      <include>xtend-gen/**/*.xtendbin</include>
+                      <include>xtend-gen/**/*._trace</include>
+                      <include>xtend-gen/**/*.java</include>
+                    </includes>
+                  </fileset>
+                </filesets>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-maven-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-compiler-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-packaging-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-surefire-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-p2-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-p2-repository-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.eclipse.xtend</groupId>
+        <artifactId>xtend-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>tycho-surefire-headless-test</id>
+      <activation>
+        <file>
+          <exists>${basedir}/.tycho-surefire-headless-test</exists>
+        </file>
+      </activation>
+      <properties>
+        <tycho.surefire.useUIHarness>false</tycho.surefire.useUIHarness>
+      </properties>
+    </profile>
+  </profiles>
+</project>

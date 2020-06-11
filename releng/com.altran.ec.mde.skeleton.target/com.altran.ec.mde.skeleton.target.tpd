@@ -1,0 +1,23 @@
+target "CBI Target Platform"
+
+with configurePhase source requirements
+
+location "https://download.eclipse.org/releases/2020-03/202003181000/" {
+    // Eclipse - EMF
+    org.eclipse.sdk.feature.group lazy
+    org.eclipse.emf.sdk.feature.group lazy
+    // Eclipse - Product
+    org.eclipse.equinox.executable.feature.group lazy
+    // Xtext/Xtend
+    org.eclipse.xtext.sdk.feature.group lazy
+}
+
+location "http://download.itemis.com/updates/releases/2.1.1/" {
+    // Preferred for Xtext MWE2 workflows
+    de.itemis.xtext.antlr.feature.feature.group lazy
+}
+
+location "https://download.eclipse.org/e4/snapshots/org.eclipse.e4.tools/latest/" {
+    // Preferred for debugging the developer runtime instance 
+	org.eclipse.e4.tools.spies.feature.feature.group lazy
+}

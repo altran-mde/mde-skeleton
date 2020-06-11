@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde?>
+<!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
+<target name="CBI Target Platform" sequenceNumber="1588852609">
+  <locations>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="org.eclipse.sdk.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.sdk.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/releases/2020-03/202003181000/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="de.itemis.xtext.antlr.feature.feature.group" version="0.0.0"/>
+      <repository location="http://download.itemis.com/updates/releases/2.1.1/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="org.eclipse.e4.tools.spies.feature.feature.group" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/e4/snapshots/org.eclipse.e4.tools/latest/"/>
+    </location>
+  </locations>
+</target>
