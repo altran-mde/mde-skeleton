@@ -1,0 +1,2 @@
+# Plugins and features for which features do not need to be generated can
+# create a file called '.tycho.source.skip' in their basedir.
