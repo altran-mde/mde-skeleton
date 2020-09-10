@@ -9,21 +9,29 @@
   <packaging>pom</packaging>
 
   <properties>
-    <!-- A project should provide the right versions -->
+    <!-- A project should validate these versions and optionally adapt them -->
     <java.version>1.8</java.version>
     <xtext.version>2.21.0</xtext.version> <!-- Eclipse 2020-03 -->
 
     <!-- Test modules that require to run their tests WITHOUT an Eclipse UI can either: -->
-    <!-- a) Set this property to false in their pom.xml (if it exists) -->
-    <!-- b) Create a file called '.tycho-surefire-headless-test' in the root of the module. -->
-    <!-- Also see profile 'tycho-surefire-headless-test' -->
+    <!-- a) Set the property below to false in their pom.xml (if it exists) -->
+    <!-- b) Create a file called '.tycho.surefire.headless.test' in their basedir. -->
+    <!--    For more info see profile 'tycho-surefire-headless-test' -->
     <tycho.surefire.useUIHarness>true</tycho.surefire.useUIHarness>
 
+    <!-- Plugins and features for which features do not need to be generated can either: -->
+    <!-- a) Set the property below to true in their pom.xml (if it exists) -->
+    <!-- b) Create a file called '.tycho.source.skip' in their basedir. -->
+    <!--    For more info see profile 'tycho-source-skip' -->
+    <tycho.source.skip>false</tycho.source.skip>
+    
     <!-- Skip the install, since we do not need the artifacts in our local mvn repo -->
     <maven.install.skip>true</maven.install.skip>
     <!-- Don not deploy Eclipse artifacts unless specifically requested -->
     <maven.deploy.skip>true</maven.deploy.skip>
-
+    
+    <!-- Typically the next properties should not be changed -->
+    <local.p2-repository.path>${project.build.directory}/repository</local.p2-repository.path>
     <tycho.version>1.7.0</tycho.version>
     <tycho.disableP2Mirrors>true</tycho.disableP2Mirrors>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -57,6 +65,12 @@
         </plugin>
 
         <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>wagon-maven-plugin</artifactId>
+          <version>2.0.0</version>
+        </plugin>
+
+        <plugin>
           <groupId>org.eclipse.tycho</groupId>
           <artifactId>tycho-maven-plugin</artifactId>
           <version>${tycho.version}</version>
@@ -80,6 +94,18 @@
 
         <plugin>
           <groupId>org.eclipse.tycho</groupId>
+          <artifactId>tycho-source-plugin</artifactId>
+          <version>${tycho.version}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.eclipse.tycho.extras</groupId>
+          <artifactId>tycho-source-feature-plugin</artifactId>
+          <version>${tycho.version}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.eclipse.tycho</groupId>
           <artifactId>tycho-p2-director-plugin</artifactId>
           <version>${tycho.version}</version>
         </plugin>
@@ -88,20 +114,23 @@
           <groupId>org.eclipse.tycho</groupId>
           <artifactId>tycho-p2-plugin</artifactId>
           <version>${tycho.version}</version>
-          <executions>
-            <execution>
-              <id>attach-p2-metadata</id>
-              <phase>package</phase>
-              <goals>
-                <goal>p2-metadata</goal>
-              </goals>
-            </execution>
-          </executions>
         </plugin>
 
         <plugin>
           <groupId>org.eclipse.tycho</groupId>
           <artifactId>tycho-p2-repository-plugin</artifactId>
+          <version>${tycho.version}</version>
+          <configuration>
+            <repositoryName>${repository.manager.p2-repository}</repositoryName>
+            <!-- XZ compression is not supported by tycho-p2-extras-plugin:mirror -->
+            <!-- TODO: write bug on tycho-p2-extras-plugin about this as xzCompress is option for mirror task -->
+            <xzCompress>false</xzCompress>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.eclipse.tycho.extras</groupId>
+          <artifactId>tycho-p2-extras-plugin</artifactId>
           <version>${tycho.version}</version>
         </plugin>
 
@@ -182,6 +211,7 @@
           </executions>
           <configuration>
             <outputDirectory>${project.basedir}/xtend-gen</outputDirectory>
+            <writeTraceFiles>false</writeTraceFiles>
           </configuration>
         </plugin>
 
@@ -253,16 +283,277 @@
   </build>
 
   <profiles>
+    <!-- Test modules that require to run their tests WITHOUT an Eclipse UI can -->
+    <!-- create a file called '.tycho-surefire-headless-test' in their basedir. -->
+    <!-- NOTE: This option is added to support Maven Tycho pomless builds -->
     <profile>
       <id>tycho-surefire-headless-test</id>
       <activation>
         <file>
-          <exists>${basedir}/.tycho-surefire-headless-test</exists>
+          <exists>${basedir}/.tycho.surefire.headless.test</exists>
         </file>
       </activation>
       <properties>
-        <tycho.surefire.useUIHarness>false</tycho.surefire.useUIHarness>
+          <tycho.surefire.useUIHarness>false</tycho.surefire.useUIHarness>
       </properties>
+    </profile>
+
+    <!-- Plugins and features for which features do not need to be generated can -->
+    <!-- create a file called '.tycho.source.skip' in their basedir. -->
+    <!-- NOTE: This option is added to support Maven Tycho pomless builds -->
+    <profile>
+      <id>tycho-source-skip</id>
+      <activation>
+        <file>
+          <exists>${basedir}/.tycho.source.skip</exists>
+        </file>
+      </activation>
+      <properties>
+          <tycho.source.skip>true</tycho.source.skip>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>create-plugin-source</id>
+      <activation>
+        <file>
+          <exists>${basedir}/META-INF/MANIFEST.MF</exists>
+        </file>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.eclipse.tycho</groupId>
+            <artifactId>tycho-source-plugin</artifactId>
+            <configuration>
+              <skip>${tycho.source.skip}</skip>
+            </configuration>
+            <executions>
+              <execution>
+                <id>plugin-source</id>
+                <goals>
+                  <goal>plugin-source</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>create-feature-source</id>
+      <activation>
+        <file>
+          <exists>${basedir}/feature.xml</exists>
+        </file>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.eclipse.tycho.extras</groupId>
+            <artifactId>tycho-source-feature-plugin</artifactId>
+            <configuration>
+              <skip>${tycho.source.skip}</skip>
+            </configuration>
+            <executions>
+              <execution>
+                <id>source-feature</id>
+                <goals>
+                  <goal>source-feature</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.eclipse.tycho</groupId>
+            <artifactId>tycho-p2-plugin</artifactId>
+            <executions>
+              <execution>
+                <!-- Don't attach P2 meta-data before 'generate-source-feature' execution -->
+                <id>default-p2-metadata-default</id>
+                <configuration>
+                  <attachP2Metadata>false</attachP2Metadata>
+                </configuration>
+              </execution>
+              <execution>
+                <!-- Attach P2 meta-data after 'generate-source-feature' execution -->
+                <id>attach-p2-metadata</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>p2-metadata</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>validate-p2-repository</id>
+      <activation>
+        <property>
+          <name>env.P2_REPOSITORY_URL</name>
+        </property>
+      </activation>
+      <build>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <groupId>org.eclipse.tycho</groupId>
+              <artifactId>tycho-packaging-plugin</artifactId>
+              <configuration>
+                <jgit.dirtyWorkingTree>error</jgit.dirtyWorkingTree>
+              </configuration>
+            </plugin>
+          </plugins>
+        </pluginManagement>
+        <plugins>
+          <plugin>
+            <groupId>org.eclipse.tycho</groupId>
+            <artifactId>tycho-p2-plugin</artifactId>
+            <configuration>
+              <baselineMode>failCommon</baselineMode>
+              <baselineReplace>none</baselineReplace>
+              <baselineRepositories>
+                <baselineRepository>
+                  <id>acidspace-repository-manager</id>
+                  <url>${env.P2_REPOSITORY_URL}/repository</url>
+                </baselineRepository>
+              </baselineRepositories>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>merge-p2-repository</id>
+      <activation>
+        <file>
+          <exists>${basedir}/category.xml</exists>
+        </file>
+        <property>
+          <name>env.MERGE_P2_REPOSITORY_URL</name>
+        </property>
+      </activation>
+      <properties>
+        <local.p2-repository.path>${project.build.directory}/merged-repository</local.p2-repository.path>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.eclipse.tycho.extras</groupId>
+            <artifactId>tycho-p2-extras-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>merge-p2-repository</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>mirror</goal>
+                </goals>
+                <configuration>
+                  <source>
+                    <repository>
+                      <!-- Problem 1: Our repository requires authentication which is not supported by tycho-p2-extras-plugin -->
+                      <!-- Problem 2: Nexus 3 does not support directory listing, causing Wagon download to fail -->
+                      <!-- Only downloading single files is supported, but there is a REST API to list repository content: -->
+                      <!-- https://help.sonatype.com/repomanager3/rest-and-integration-api/assets-api -->
+                      <!-- Example: https://nexus.acidspace.nl/service/rest/v1/assets?repository=MDEAssets -->
+                      <!-- We could create a plug-in which lists content using REST API and downloads single files using HTTP -->
+                      
+                      <!-- This id should be used by tycho-p2-extras-plugin for authentication, but this is not supported -->
+                      <id>acidspace-repository-manager</id>
+                      <url>${env.MERGE_P2_REPOSITORY_URL}</url>
+                      <layout>p2</layout>
+                    </repository>
+                    <repository>
+                      <url>${project.baseUri}/target/repository</url>
+                      <layout>p2</layout>
+                    </repository>
+                  </source>
+                  <destination>${local.p2-repository.path}</destination>
+                  <followStrictOnly>true</followStrictOnly>
+                  <append>false</append>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>deploy-p2-repository</id>
+      <activation>
+        <file>
+          <exists>${basedir}/category.xml</exists>
+        </file>
+        <property>
+          <name>env.P2_REPOSITORY_URL</name>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>wagon-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>upload-repository</id>
+                <phase>deploy</phase>
+                <goals>
+                  <goal>upload</goal>
+                </goals>
+                <configuration>
+                  <serverId>acidspace-repository-manager</serverId>
+                  <url>${env.P2_REPOSITORY_URL}</url>
+                  <fromDir>${local.p2-repository.path}</fromDir>
+                  <includes>*/**</includes>
+                  <toDir>repository</toDir>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    
+    <profile>
+      <id>deploy-eclipse-product</id>
+      <activation>
+        <file>
+          <exists>${basedir}/eclipse.product</exists>
+        </file>
+        <property>
+          <name>env.P2_REPOSITORY_URL</name>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>wagon-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>upload-products</id>
+                <phase>deploy</phase>
+                <goals>
+                  <goal>upload</goal>
+                </goals>
+                <configuration>
+                  <serverId>acidspace-repository-manager</serverId>
+                  <url>${env.P2_REPOSITORY_URL}</url>
+                  <fromDir>${project.build.directory}/products</fromDir>
+                  <includes>*.*</includes>
+                  <toDir>products</toDir>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
     </profile>
   </profiles>
 </project>
