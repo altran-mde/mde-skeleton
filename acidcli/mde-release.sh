@@ -4,7 +4,6 @@
 SCRIPT_DIR=$(dirname $0)
 
 # ACIDCLI variables should be configurable via .acidcli.yml
-ACIDCLI_MAVEN_SETTINGS="${SCRIPT_DIR}/../settings.xml"
 ACIDCLI_MDE_REPOSITORY_REMOTE_NAME="MDEAssets/mde-skeleton"
 ACIDCLI_MDE_REPOSITORY_PROJECT="${SCRIPT_DIR}/../products/com.altran.ec.mde.skeleton.package.product"
 
@@ -38,4 +37,4 @@ MAVEN_ARGS="-Dacidcli.repository.remoteUri=${REMOTE_REPOSITORY_URL} -Dacidcli.re
 # MAVEN_ARGS="${MAVEN_ARGS} -Dacidcli.repository.localUri=<<LOCAL_REPOSITORY_DIR as URI>> -Dacidcli.p2.mergeDir=<<temp dir>>"
 
 # Start the build.
-mvn deploy -s ${ACIDCLI_MAVEN_SETTINGS} -f ${SCRIPT_DIR}/mde-release-pom.xml ${MAVEN_ARGS} -e -U -B
+mvn deploy -s ${SCRIPT_DIR}/mde-release-settings.xml -f ${SCRIPT_DIR}/mde-release-pom.xml ${MAVEN_ARGS} -e -U -B
