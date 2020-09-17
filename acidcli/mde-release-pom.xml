@@ -2,24 +2,62 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <groupId>com.altran.acidcli.mde</groupId>
   <artifactId>com.altran.acidcli.mde.release</artifactId>
   <name>ACIDCLI - Release MDE Repository</name>
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <parent>
-    <groupId>com.altran.ec.mde.skeleton</groupId>
-    <artifactId>com.altran.ec.mde.skeleton.parent</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <relativePath>../releng/com.altran.ec.mde.skeleton.parent</relativePath>
-  </parent>
-
   <properties>
+    <tycho.version>1.7.0</tycho.version>
+
+    <!-- This property will be overwritten by the merge-p2-repository profile if active -->
     <acidcli.p2.deployDir>${acidcli.repository.localDir}/repository</acidcli.p2.deployDir>
   </properties>
 
   <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+          <configuration>
+            <!-- We do not want to install this pom into the local repository -->
+            <skip>true</skip>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
+          <configuration>
+            <!-- We do not want to deploy this pom to the remote repository -->
+            <skip>true</skip>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>wagon-maven-plugin</artifactId>
+          <version>2.0.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.eclipse.tycho</groupId>
+          <artifactId>tycho-maven-plugin</artifactId>
+          <version>${tycho.version}</version>
+          <extensions>true</extensions>
+        </plugin>
+        <plugin>
+          <groupId>org.eclipse.tycho.extras</groupId>
+          <artifactId>tycho-source-feature-plugin</artifactId>
+          <version>${tycho.version}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
     <plugins>
       <plugin>
+        <!-- This plugin is only used for debugging purposes and may be removed from the official acidcli release -->
         <groupId>com.soebes.maven.plugins</groupId>
         <artifactId>echo-maven-plugin</artifactId>
         <version>0.4.0</version>
@@ -31,6 +69,7 @@
               <goal>echo</goal>
             </goals>
             <configuration>
+              <logLevel>DEBUG</logLevel>
               <echos>
                 <echo>Local repository directory: ${acidcli.repository.localDir}</echo>
                 <echo>Remote repository URI: ${acidcli.repository.remoteUri}</echo>
@@ -39,7 +78,7 @@
           </execution>
         </executions>
       </plugin>
-      
+
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>wagon-maven-plugin</artifactId>
@@ -64,8 +103,14 @@
 
   <profiles>
     <profile>
+      <!-- Merges the built P2 repository at acidcli.repository.localDir --> 
+      <!-- into the downloaded P2 repository at acidcli.p2.mergeDir and -->
+      <!-- set acidcli.p2.mergeDir as the directory to be uploaded to Nexus -->
       <id>merge-p2-repository</id>
       <activation>
+        <property>
+          <name>acidcli.p2.mergeDir</name>
+        </property>
         <file>
           <exists>${acidcli.p2.mergeDir}</exists>
         </file>
@@ -105,6 +150,7 @@
     </profile>
 
     <profile>
+      <!-- If Eclipse RCPs (products) are found, also upload them to Nexus -->
       <id>release-products</id>
       <activation>
         <file>
