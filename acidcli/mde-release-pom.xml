@@ -9,6 +9,8 @@
   <packaging>pom</packaging>
 
   <properties>
+    <!-- This is the latest Tycho version that supports Java8 -->
+    <!-- See https://wiki.eclipse.org/Tycho/Release_Notes -->
     <tycho.version>1.7.0</tycho.version>
 
     <!-- This property will be overwritten by the merge-p2-repository profile if active -->
@@ -49,29 +51,33 @@
         </plugin>
         <plugin>
           <groupId>org.eclipse.tycho.extras</groupId>
-          <artifactId>tycho-source-feature-plugin</artifactId>
+          <artifactId>tycho-p2-extras-plugin</artifactId>
           <version>${tycho.version}</version>
+        </plugin>
+        <plugin>
+          <!-- This plugin is only used for debugging purposes -->
+          <groupId>com.soebes.maven.plugins</groupId>
+          <artifactId>echo-maven-plugin</artifactId>
+          <version>0.4.0</version>
         </plugin>
       </plugins>
     </pluginManagement>
 
     <plugins>
       <plugin>
-        <!-- This plugin is only used for debugging purposes and may be removed from the official acidcli release -->
         <groupId>com.soebes.maven.plugins</groupId>
         <artifactId>echo-maven-plugin</artifactId>
-        <version>0.4.0</version>
         <executions>
           <execution>
-            <id>echo-maven-properties</id>
+            <id>echo-release-properties</id>
             <phase>validate</phase>
             <goals>
               <goal>echo</goal>
             </goals>
             <configuration>
-              <logLevel>DEBUG</logLevel>
               <echos>
                 <echo>Local repository directory: ${acidcli.repository.localDir}</echo>
+                <echo>Deploy P2-repository directory: ${acidcli.p2.deployDir}</echo>
                 <echo>Remote repository URI: ${acidcli.repository.remoteUri}</echo>
               </echos>
             </configuration>
@@ -103,7 +109,7 @@
 
   <profiles>
     <profile>
-      <!-- Merges the built P2 repository at acidcli.repository.localDir --> 
+      <!-- Merges the built P2 repository at acidcli.repository.localDir -->
       <!-- into the downloaded P2 repository at acidcli.p2.mergeDir and -->
       <!-- set acidcli.p2.mergeDir as the directory to be uploaded to Nexus -->
       <id>merge-p2-repository</id>
@@ -120,6 +126,25 @@
       </properties>
       <build>
         <plugins>
+          <plugin>
+            <groupId>com.soebes.maven.plugins</groupId>
+            <artifactId>echo-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>echo-merge-properties</id>
+                <phase>validate</phase>
+                <goals>
+                  <goal>echo</goal>
+                </goals>
+                <configuration>
+                  <echos>
+                    <echo>Merge repository directory: ${acidcli.p2.mergeDir}</echo>
+                  </echos>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
           <plugin>
             <groupId>org.eclipse.tycho.extras</groupId>
             <artifactId>tycho-p2-extras-plugin</artifactId>
