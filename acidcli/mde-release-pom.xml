@@ -86,6 +86,42 @@
       </plugin>
 
       <plugin>
+        <!-- Bug 512198 - tycho-p2-extras-plugin:publish-features-and-bundles does not update xz meta-data -->
+        <!-- https://bugs.eclipse.org/bugs/show_bug.cgi?id=512198 -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>3.0.0-M3</version>
+        <executions>
+          <execution>
+            <id>enforce-no-xz-compression</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireFilesDontExist>
+                  <files>
+                    <file>${acidcli.repository.localDir}/repository/artifacts.xml.xz</file>
+                    <file>${acidcli.repository.localDir}/repository/content.xml.xz</file>
+                  </files>
+                  <message>Found XZ compressed repository index files in the local P2 repository, this is not supported. Please disable XZ compression for repository index files in the Maven pom, also see https://www.eclipse.org/tycho/sitedocs/tycho-p2/tycho-p2-repository-plugin/assemble-repository-mojo.html#xzCompress</message>
+                </requireFilesDontExist>
+                <requireFilesDontExist>
+                  <files>
+                    <file>${acidcli.p2.mergeDir}/artifacts.xml.xz</file>
+                    <file>${acidcli.p2.mergeDir}/content.xml.xz</file>
+                  </files>
+                  <message>Found XZ compressed repository index files in the remote P2 repository, this is not supported. Please remove artifacts.xml.xz, content.xml.xz and p2.index from the remote repository, also see https://www.eclipse.org/tycho/sitedocs/tycho-p2/tycho-p2-repository-plugin/assemble-repository-mojo.html#xzCompress</message>
+                </requireFilesDontExist>
+              </rules>
+              <fail>true</fail>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>wagon-maven-plugin</artifactId>
         <executions>
