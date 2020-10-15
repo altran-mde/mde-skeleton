@@ -26,7 +26,7 @@ fi
 # -U Forces a check for missing releases and updated snapshots on remote repositories
 # -B Run in non-interactive (batch) mode (disables output color; supresses download progress)
 # -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer=warn Supresses download INFO messages
-mvn verify -s ${ACIDCLI_MAVEN_SETTINGS} -f ${ACIDCLI_MAVEN_POM} -e -U -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer=warn
+mvn verify -s ${ACIDCLI_MAVEN_SETTINGS} -f ${ACIDCLI_MAVEN_POM} -e -U -fae -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer=warn
 
 # Get build status, can be removed if XVfb is service
 BUILD_SUCCESS=$?
