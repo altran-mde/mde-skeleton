@@ -290,6 +290,14 @@
       </setupTask>
       <setupTask
           xsi:type="setup:CompoundTask"
+          name="org.eclipse.egit.core">
+        <setupTask
+            xsi:type="setup:PreferenceTask"
+            key="/instance/org.eclipse.egit.core/core_autoIgnoreDerivedResources"
+            value="false"/>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:CompoundTask"
           name="org.eclipse.oomph.setup.ui">
         <setupTask
             xsi:type="setup:PreferenceTask"
