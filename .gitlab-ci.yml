@@ -11,7 +11,7 @@ stages:
 
 variables:
   REGISTRY_URL: registry.acidspace.nl
-  MAVEN_CONTAINER: acid/container/maven:0.24.5
+  MAVEN_CONTAINER: acid/container/maven:0.25.0
   
   # Cache downloaded dependencies and plugins between builds
   MAVEN_REPO: '.m2/repository'
@@ -27,15 +27,12 @@ mde-build:
   stage: build
   tags:
     - linux_docker
-  before_script:
-    - 'echo "${MAVEN_REPO}: found $(find $MAVEN_REPO -type f 2>/dev/null | wc -l) matching files"'
-    - 'chmod +x acidcli/mde-build.sh'
   script:
-    - './acidcli/mde-build.sh'
+    - acidcli build binaries
   artifacts:
     when: on_success
     paths:
-      # MDE projects should register these locations as output in the acidcli
+      - reports/build/binaries
       # These outputs should be used as input in other build stages
       # P2 repository
       - 'products/*/target/repository/*'
