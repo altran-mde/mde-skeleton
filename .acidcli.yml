@@ -12,6 +12,19 @@ code_location:
     - ./tests/
 artifact_repository_url: "https://nexus.acidspace.nl/repository/{}/{}{}"
 
+build:
+  binaries:
+    platform: Maven
+    precondition:
+      - OutputDirectoryExists
+      - OutputDirectoryIsEmpty
+    postcondition:
+      - OutputDirectoryIsNotEmpty
+    parameters:
+      output: ./reports/build/binaries
+      build_settings_path: ./settings.xml
+      build_pom_path: ./pom.xml
+
 release:
   binaries:
     platform: P2
