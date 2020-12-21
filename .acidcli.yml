@@ -2,6 +2,7 @@
 
 project: mde-skeleton
 language: Java
+default_branch: "develop"
 code_location:
   source:
     - ./features/
@@ -11,6 +12,7 @@ code_location:
   test:
     - ./tests/
 artifact_repository_url: "https://nexus.acidspace.nl/repository/{}/{}{}"
+elasticsearch_url: "https://elasticsearch.acidspace.nl/altran-ec_mde-{}/_doc"
 
 build:
   binaries:
@@ -25,11 +27,28 @@ build:
       build_settings_path: ./settings.xml
       build_pom_path: ./pom.xml
 
+test:
+  units:
+    platform: Maven
+    precondition:
+      - OutputDirectoryExists
+      - OutputDirectoryIsEmpty
+    postcondition:
+      - OutputDirectoryIsNotEmpty
+    parameters:
+      output: ./reports/test/units
+      test_settings_path: ./settings.xml
+      test_pom_path: ./pom.xml
+      index: test-units
+    gate:
+      - metric: NumberOfTests
+        threshold: 46
+        operator: "="
+
 release:
   binaries:
     platform: P2
     precondition:
-      - VersionDetermined
       - OutputDirectoryExists
       - OutputDirectoryIsEmpty
     postcondition:
