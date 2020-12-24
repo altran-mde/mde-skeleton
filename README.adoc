@@ -1,3 +1,10 @@
+// enable kbd: / menu: / btn: UI macros
+:experimental: true
+// show icons as awesome-font characters
+:icons: font
+// enable attributes in link:
+:linkattrs: true
+
 :project-name: EMF Reference Project
 :eclipse-version: 2020-03
 :gitlab-acidspace-nl-project: mde-assets/mde-skeleton

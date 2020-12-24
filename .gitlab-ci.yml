@@ -30,7 +30,7 @@ mde-build:
   script:
     - acidcli build binaries
   artifacts:
-    when: on_success
+    when: always
     paths:
       - reports/build/binaries
       # These outputs should be used as input in other build stages
