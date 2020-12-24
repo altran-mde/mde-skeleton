@@ -17,9 +17,6 @@ variables:
   MAVEN_REPO: '.m2/repository'
   MAVEN_OPTS: '-Dmaven.repo.local=$MAVEN_REPO -Xmx2048m'
 
-  # XVFB frame buffer
-  DISPLAY: ':99'
-
 cache:
   key: '$CI_JOB_NAME'
   paths:
@@ -52,7 +49,10 @@ mde-unit-test:
   needs: []
   tags:
     - linux_docker
+  variables:
+    DISPLAY: ':99'
   before_script:
+    # You can start a virtual display (XVFB frame buffer) if required
     - Xvfb ${DISPLAY} -screen 0 1280x1024x16 -nolisten tcp &
   script:
     - acidcli test units
