@@ -14,8 +14,8 @@
     xmlns:setup.workingsets="http://www.eclipse.org/oomph/setup/workingsets/1.0"
     xmlns:workingsets="http://www.eclipse.org/oomph/workingsets/1.0"
     xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/maven/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Maven.ecore http://www.eclipse.org/oomph/setup/pde/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/PDE.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/projects/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Projects.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupWorkingSets.ecore http://www.eclipse.org/oomph/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/WorkingSets.ecore"
-    name="mde.assets.emf_reference_project"
-    label="EMF Reference Project">
+    name="acidspace.mde.assets.mde-skeleton"
+    label="MDE Assets - MDE Skeleton">
   <setupTask
       xsi:type="setup:VariableTask"
       name="gitlab.acidspace.nl.project"
@@ -23,7 +23,7 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="oomph.setup.file.path"
-      value="EMFReferenceProject.setup"/>
+      value="releng/eclipse/MDESkeletonACIDSpace.setup"/>
   <setupTask
       xsi:type="setup.p2:P2Task">
     <requirement
@@ -240,6 +240,10 @@
         <setupTask
             xsi:type="setup:PreferenceTask"
             key="/instance/de.jcup.asciidoctoreditor/validateImagesEnabled"
+            value="false"/>
+        <setupTask
+            xsi:type="setup:PreferenceTask"
+            key="/instance/de.jcup.asciidoctoreditor/usePreviewImageDirectory"
             value="false"/>
       </setupTask>
       <setupTask
@@ -469,6 +473,14 @@
               key="/instance/org.eclipse.wst.xml.core/lineWidth"
               value="120"/>
         </setupTask>
+        <setupTask
+            xsi:type="setup:CompoundTask"
+            name="org.eclipse.m2e.core">
+          <setupTask
+              xsi:type="setup:PreferenceTask"
+              key="/instance/org.eclipse.m2e.core/eclipse.m2.userSettingsFile"
+              value="${git.clone.location}/settings.xml"/>
+        </setupTask>
       </setupTask>
       <setupTask
           xsi:type="maven:MavenImportTask">
@@ -629,5 +641,5 @@
       label="Develop"/>
   <stream name="master"
       label="Master"/>
-  <description>EMF Reference Project provides a baseline for EMF based projects.</description>
+  <description>MDE Skeleton provides a baseline for EMF based projects.</description>
 </setup:Project>

@@ -10,10 +10,10 @@
   <packaging>pom</packaging>
 
   <parent>
-    <groupId>nl.acidspace.ec.mde</groupId>
-    <artifactId>nl.acidspace.ec.mde.tycho.configuration</artifactId>
+    <groupId>com.altran.ec.mde</groupId>
+    <artifactId>com.altran.ec.mde.tycho.configuration</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <relativePath>../nl.acidspace.ec.mde.tycho.configuration</relativePath>
+    <relativePath/>
   </parent>
   
   <properties>
