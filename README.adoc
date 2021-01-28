@@ -5,11 +5,11 @@
 // enable attributes in link:
 :linkattrs: true
 
-:project-name: EMF Reference Project
+:project-name: MDE Assets - MDE Skeleton
 :eclipse-version: 2020-03
 :gitlab-acidspace-nl-project: mde-assets/mde-skeleton
-:oomph-setup: EMFReferenceProject
-:setup-stream: Develop
+:oomph-setup-file-path: releng/eclipse/MDESkeletonACIDSpace.setup
+:oomph-setup-stream: develop
 
 = pass:normal[{project-name}]
 
@@ -32,14 +32,14 @@ image::https://help.eclipse.org/{eclipse-version}/topic/org.eclipse.egit.doc/hel
 . On the https://help.eclipse.org/{eclipse-version}/topic/org.eclipse.oomph.setup.doc/html/user/wizard/DocProjectPage.html[Projects Page]
 .. (_One time only_) Click the image:https://help.eclipse.org/{eclipse-version}/topic/org.eclipse.oomph.setup.doc/images/trees/DULKrP4IGs7HGSVqoXcwRFgPxZQ=.png[] icon to add the {project-name} project.
 ... Catalog: `Eclipse Projects`
-... Resource URIs: `link:https://gitlab.acidspace.nl/{gitlab-acidspace-nl-project}/-/raw/master/{oomph-setup}.setup?oomph_form=b%27users/sign_in%27#/[]`
+... Resource URIs: `link:https://gitlab.acidspace.nl/{gitlab-acidspace-nl-project}/-/raw/{oomph-setup-stream}/{oomph-setup-file-path}?oomph_form=b%27users/sign_in%27#/[]`
 ... Click btn:[OK] +
 +
 NOTE: Though using the Resource URI above is preferred, it is known that for some users the URI didn't work and they got an error: _The URI ... does not contain a valid product_.
-In this case the setup file can also be link:https://gitlab.acidspace.nl/{gitlab-acidspace-nl-project}/-/raw/master/{oomph-setup}.setup?inline=false[downloaded] and added by clicking btn:[Browse File System...].
+In this case the setup file can also be link:https://gitlab.acidspace.nl/{gitlab-acidspace-nl-project}/-/raw/{oomph-setup-stream}/{oomph-setup-file-path}?inline=false[downloaded] and added by clicking btn:[Browse File System...].
 ... Enter your GitLab credentials when asked for
 .. Select `{project-name}` in the tree
-.. Select stream `{setup-stream}` in the table
+.. Select stream `{oomph-setup-stream}` in the table
 .. Click btn:[Next >]
 . On the https://help.eclipse.org/{eclipse-version}/topic/org.eclipse.oomph.setup.doc/html/user/wizard/DocVariablePage.html[Variables Page]
 .. Review all variables values, especially the `Installation folder name` and `Root install folder`
