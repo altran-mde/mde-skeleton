@@ -117,11 +117,14 @@
     <setupTask
         xsi:type="setup.p2:P2Task">
       <requirement
-          name="de.jcup.asciidoctoreditor.feature.group"/>
+          name="de.jcup.asciidoctoreditor.feature.group"
+          optional="true"/>
       <requirement
-          name="de.jcup.basheditor.feature.group"/>
+          name="de.jcup.basheditor.feature.group"
+          optional="true"/>
       <requirement
-          name="de.jcup.yamleditor.feature.group"/>
+          name="de.jcup.yamleditor.feature.group"
+          optional="true"/>
       <repository
           url="https://dl.bintray.com/de-jcup/eclipse-plugins-collection-composite/update-site/current/"/>
     </setupTask>
@@ -502,9 +505,20 @@
           name="eclipse.target.platform"
           value="None"/>
       <setupTask
+          xsi:type="setup.p2:P2Task"
+          disabled="true">
+        <requirement
+            name="fr.obeo.releng.targetplatform-feature.feature.group"
+            optional="true"/>
+        <repository
+            url="https://dl.bintray.com/mbarbero/fr.obeo.releng.targetplatform/"/>
+        <description>Enable for older Eclipse versions (i.e. Oxygen)</description>
+      </setupTask>
+      <setupTask
           xsi:type="setup.p2:P2Task">
         <requirement
-            name="org.eclipse.cbi.targetplatform-feature.feature.group"/>
+            name="org.eclipse.cbi.targetplatform-feature.feature.group"
+            optional="true"/>
         <repository
             url="https://download.eclipse.org/cbi/tpd/3.0.0-SNAPSHOT/"/>
       </setupTask>
