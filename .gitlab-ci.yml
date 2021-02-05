@@ -72,6 +72,8 @@ mde-release:
   only:
     - develop
     - tags
+  except:
+    - schedules
   tags:
     - linux_docker
   script:
