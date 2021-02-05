@@ -6,6 +6,8 @@
   <groupId>com.altran.ec.mde.skeleton</groupId>
   <artifactId>com.altran.ec.mde.skeleton.parent</artifactId>
   <name>EMF Reference Project - Tycho Configuration</name>
+  <!-- Ignore warning about duplicate version -->
+  <!-- Coincidentally this is the same version as the ACIDSpace Tycho configuration  -->
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
@@ -19,6 +21,7 @@
   <properties>
     <java.version>1.8</java.version>
     <xtext.version>2.21.0</xtext.version> <!-- Eclipse 2020-03 -->
+    <tycho.p2-repository.name>MDE Skeleton - Repository</tycho.p2-repository.name>
   </properties>
   
   <build>

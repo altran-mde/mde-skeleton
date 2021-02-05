@@ -13,10 +13,6 @@
     <relativePath>releng/com.altran.ec.mde.skeleton.parent</relativePath>
   </parent>
 
-  <properties>
-    <tycho.p2-repository.name>MDE Skeleton - Repository</tycho.p2-repository.name>
-  </properties>
-
   <modules>
     <module>releng</module>
     <module>plugins</module>
