@@ -12,7 +12,6 @@ code_location:
   test:
     - ./tests/
 artifact_repository_url: "https://nexus.acidspace.nl/repository/{}/{}{}"
-elasticsearch_url: "https://elasticsearch.acidspace.nl/altran-ec_mde-{}/_doc"
 
 build:
   binaries:
