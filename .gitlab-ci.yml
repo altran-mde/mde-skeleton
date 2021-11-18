@@ -39,6 +39,8 @@ mde-build:
       # Eclipse RCPs (binaries)
       - 'products/*/target/products/*.zip'
       - 'products/*/target/products/*.tar.gz'
+      # Documentation
+      - 'documentation/*/target/pages'
     expire_in: 1 week
 
 mde-unit-test:
@@ -83,3 +85,18 @@ mde-release:
     paths:
       - reports/release/binaries
     expire_in: 4 weeks
+
+pages:
+  stage: publish
+  # Pages needs the artifacts from mvn-build
+  dependencies: [mde-build]
+  tags:
+    - linux_docker
+  only:
+    - develop
+  script:
+    - cp -R documentation/*/target/pages/ public/
+  artifacts:
+    paths:
+      - public
+    expire_in: 1 week

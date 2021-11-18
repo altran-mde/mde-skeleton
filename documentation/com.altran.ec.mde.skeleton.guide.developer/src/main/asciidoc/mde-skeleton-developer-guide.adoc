@@ -1,0 +1,25 @@
+= EMF Reference Project: Developer Guide 
+EC Modeling & Simulation
+:description: This page contains information about Altran's EMF Reference Project (a.k.a. MDE Skeleton) MDE Asset.
+:keywords: EMF, Documentation, MDE, Asset, Altran, EC, Modeling, Simulation
+:classification: Company Internal.
+:docinfo2:
+
+include::_attributes.adoc[]
+
+This document contains information about Altran's EMF Reference Project (a.k.a. MDE Skeleton) MDE Asset.
+The purpose of this project is to represent a typical MDE Eclipse IDE solution and acts as a showcase on how to use MDE Assets.
+
+ifdef::webpage[]
+TIP: This developer guide can be downloaded as link:{source-document-name}.pdf[PDF]
+endif::[] 
+
+== Overview
+
+This document is under construction and its current state merely acts as a placeholder for future content.
+
+image::{imgdir}/under_construction.png[] 
+
+== Development Environment
+
+include::development-environment.adoc[]
