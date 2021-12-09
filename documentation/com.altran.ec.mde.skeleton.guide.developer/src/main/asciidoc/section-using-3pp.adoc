@@ -1,0 +1,87 @@
+include::_attributes.adoc[]
+
+== Using third-party products (3PP) 
+
+Developing an Eclipse (e.g. EMF) based solution typically requires third-party products (3PP) that need to be downloaded from remote repositories.
+The stability and availability of these remote repositories is often not guaranteed.
+For this reason it is https://maven.apache.org/repository-management.html[recommended to use a proxy server], i.e a Nexus OSS3 hosted by ACIDSpace.
+
+Please note that our ACIDSpace Nexus OSS3 proxy server requires a VPN connection to ACIDSpace, and therefore might not be accessible by our clients nor by the users of our clients' solutions.
+Therefore we should be aware that though these proxies should be configured in our development environments (i.e. Eclipse and CI/CD), our built solutions should depend on publicly available repositories.
+The sources of some of our solutions (i.e. MDE Assets) are hosted both in ACIDSpace as in a public GitHub.
+For these solutions, it is important that they can benefit from the proxy within ACIDSpace without modifying the sources, meaning that the proxies should be an additional configuration.
+
+This section describes the best practices on how to configure the usage of proxy servers in the development environment our Eclipse solutions.
+The following assumptions are considered when using proxies:
+
+. The built Eclipse solution should be configured to use the publicly available repositories, and should have no dependencies on ACIDSpace (unless decided differently). +
+  The Target Platform defines what your project will be built and launched against.
+  See the best practices for <<eclipse-target-platform>> for ACIDSpace.
+. Eclipse Oomph is used for <<setup-development-environment, setting up a development environment>>. +
+  As development is done in ACIDSpace, it is recommended that the Oomph setup files refer to the proxies.
+. When building the solution in ACIDSpace CI/CD it is recommended to use the proxies. +
+  Our solutions are typically build using Maven, which can be configured with mirrors that reroute the public repository urls to their proxy equivalents.
+  Section <<maven-repository-mirrors>> explains how to configure Maven.
+
+[[eclipse-target-platform]]
+=== Specifying an Eclipse target platform
+
+TIP: For more detailed information on Eclipse target platforms, see https://wiki.eclipse.org/PDE/Target_Definitions
+
+The Target Platform defines what your project will be built and launched against.
+Within ACIDSpace we <<create-oomph-setup-file, use Eclipse Oomph>> to setup an development environment.
+Within an ACIDSpace Oomph setup file two ways of specifying a target platform are supported, either by use of https://wiki.eclipse.org/Oomph_Targlets[Oomph Targlets] or by using the https://www.eclipse.org/cbi/index.html[Eclipse CBI] target platform definition DSL.
+
+IMPORTANT: If your target platform contains repositories that require authentication, the Eclipse CBI target platform definition DSL should be used.
+
+Using the Eclipse CBI target platform definition DSL is preferred in ACIDSpace.
+The DSL comes with an integrated Eclipse editor to author target platform files with a `tpd` file extension.
+<<source-target-platform-tpd>> shows how configure the target platform for both an public repository and a repository that is hosted by ACIDSpace.
+
+TIP: For more information on authoring Eclipse CBI `tpd` files, see https://github.com/eclipse-cbi/targetplatform-dsl#readme
+
+[[source-target-platform-tpd]]
+.Specifying the Eclipse CBI link:{gitlab-url}/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd[target-platform.tpd^]
+[source,tpd]
+----
+include::{gitdir}/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd[tags=doc]
+----
+
+<1> *Public repository* - Preferably, the built Eclipse solution should be configured to use publicly available repositories.
+<2> *ACIDSpace repository* - If and only if an artifact is available within ACIDSpace only, we need to specify the ACIDSpace repository url. 
+    Repositories that are hosted by ACIDSpace typically require authentication.
+    Specifying a repository id (i.e. `espilce-periksa-p2`) allows you to configure the credentials in the Maven settings file as described in <<maven-repository-mirrors>>.
+
+[[maven-repository-mirrors]]
+=== Using repository mirrors in Maven
+
+You may want to use an alternative mirror for a particular repository without changing the project files.
+Some reasons to use a mirror are:
+
+- There is a synchronized mirror on the internet that is geographically closer and faster
+- You want to replace a particular repository with your own internal repository which you have greater control over
+- *You want to run a repository manager to provide a local cache to a mirror and need to use its URL instead*
+
+TIP: For more detailed information on using mirrors for repositories in Maven, see https://maven.apache.org/guides/mini/guide-mirror-settings.html
+
+<<source-settings-xml-mirrors>> shows how to configure Maven to use ACIDSpace repository proxies instead of the public repositories.
+In this example both the https://repo1.maven.org/maven2/[Maven central] as the https://download.eclipse.org/releases/2020-03/202003181000[Eclipse 2020-03 P2] repositories are rerouted to the ACIDSpace repository proxies.
+
+[[source-settings-xml-mirrors]]
+.Defining mirrors in link:{gitlab-url}/settings.xml[settings.xml^]
+[source,xml]
+----
+include::{gitdir}/settings.xml[tags=doc-mirrors]
+----
+
+<1> *Maven repository mirror* - For Maven repository mirrors, the `<mirrorOf>` specifies the ID of the repository you are using a mirror of and the `<url>` specifies the location of the mirror, i.e. the ACIDSpace proxy. +
+    If a mirror requires authentication, a `<server>` section also needs to be configured.
+<2> *Eclipse P2 repository mirror* - The `<layout>` specifies a mirror of an Eclipse P2 repository.
+    In this layout, the `<mirrorOf>` specifies the url prefix of the repository to mirror.
+<3> *Additional configuration for mirrors* _(Optional)_ - If a mirror requires authentication, a `<server>` section also needs to be configured.
+    The `<id>` specifies the id of the server (i.e. mirror) for which these settings are applicable.
+<4> *ACIDSpace credentials* - In ACIDSpace's CI/CD the credentials of a project are stored in the `TECHNICAL_USER` and `TECHNICAL_PASSWORD` environment variables.
+    If a server requires authentication, the credentials can be specified using these environment variables.
+    Please read section <<setup-maven>> on how to setup a local machine for using Maven.
+<5> *ACIDSpace repositories* - When using proprietary artifacts that are developed and published in ACIDSpace only, authentication is required to download the artifacts.
+    The `<id>` of the server should match the id as specified in the target platform, for more information see <<eclipse-target-platform>>.

@@ -40,7 +40,7 @@ mde-build:
       - 'products/*/target/products/*.zip'
       - 'products/*/target/products/*.tar.gz'
       # Documentation
-      - 'documentation/*/target/pages'
+      - 'documentation/*/target/site'
     expire_in: 1 week
 
 mde-unit-test:
@@ -95,7 +95,7 @@ pages:
   only:
     - develop
   script:
-    - cp -R documentation/*/target/pages/ public/
+    - cp -R documentation/*/target/site/ public/
   artifacts:
     paths:
       - public
