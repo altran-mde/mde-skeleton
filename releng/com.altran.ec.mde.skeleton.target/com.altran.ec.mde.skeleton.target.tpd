@@ -1,13 +1,19 @@
+// This file is also used in the developer guide
+// Do not remove the tag::, end:: and <[0..9]> comments as they are required by asciidoc
+// tag::doc[]
 target "CBI Target Platform"
 
 with configurePhase source requirements
 
-location "https://download.eclipse.org/releases/2020-03/202003181000" {
+location "https://download.eclipse.org/releases/2020-03/202003181000" { //<1>
     // Eclipse - EMF
     org.eclipse.sdk.feature.group lazy
     org.eclipse.emf.sdk.feature.group lazy
+// end::doc[]
     // Eclipse - Product
     org.eclipse.equinox.executable.feature.group lazy
+    // Eclipse EGit
+    org.eclipse.egit.feature.group lazy
     // Xtext/Xtend
     org.eclipse.xtext.sdk.feature.group lazy
 }
@@ -21,3 +27,14 @@ location "https://download.eclipse.org/e4/snapshots/org.eclipse.e4.tools/latest"
     // Preferred for debugging the developer runtime instance 
 	org.eclipse.e4.tools.spies.feature.feature.group lazy
 }
+
+location "https://nexus.acidspace.nl/repository/espilce-commons/develop/repository" espilce-commons-p2 {
+    org.espilce.commons.emf.feature.feature.group lazy
+    org.espilce.commons.emf.registry.feature.feature.group lazy
+// tag::doc[]
+}
+
+location "https://nexus.acidspace.nl/repository/espilce-periksa/develop/repository" espilce-periksa-p2 { //<2>
+	org.espilce.periksa.feature.feature.group lazy
+}
+// end::doc[]

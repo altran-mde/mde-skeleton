@@ -1,10 +1,3 @@
-// Resource locations when editing documents
-:basedir: ../../..
-:rootdir: {basedir}/../..
-ifndef::resdir[:resdir: ../resources]
-ifndef::imgdir[:imgdir: {resdir}/images]
-ifndef::imgdir-gen[:imgdir-gen: {basedir}/target/generated-docs/images]
-
 // Enable Science, Technology, Engineering and Math (STEM) expressions in the browser
 :stem:
 
@@ -18,6 +11,8 @@ ifndef::imgdir-gen[:imgdir-gen: {basedir}/target/generated-docs/images]
 
 :miscellaneous.tabsize: 2
 :tabsize: 2
+
+:listing-caption: Listing
 
 // Special characters
 
@@ -42,4 +37,18 @@ ifndef::imgdir-gen[:imgdir-gen: {basedir}/target/generated-docs/images]
 // check
 :x: icon:check-square[set=far]
 
-:project-name: MDE Assets - MDE Skeleton
+// Default resource locations
+ifndef::basedir[:basedir: ../../..]
+ifndef::gitdir[:gitdir: {basedir}/../..]
+ifndef::resdir[:resdir: ../resources]
+ifndef::imgdir[:imgdir: {resdir}/images]
+ifndef::imgdir-gen[:imgdir-gen: ./]
+
+ifndef::gitlab-project[:gitlab-project: mde-assets/mde-skeleton]
+ifndef::gitlab-branch[:gitlab-branch: develop]
+ifndef::gitlab-url[:gitlab-url: https://gitlab.acidspace.nl/{gitlab-project}/-/blob/{gitlab-branch}]
+
+// Default properties
+ifndef::project-name[:project-name: MDE Assets - MDE Skeleton]
+ifndef::eclipse-version[:eclipse-version: 2020-03]
+ifndef::eclipse-help-location[:eclipse-help-location: https://help.eclipse.org/{eclipse-version}/topic]

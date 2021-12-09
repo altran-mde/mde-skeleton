@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="CBI Target Platform" sequenceNumber="1595495706">
+<target name="CBI Target Platform" sequenceNumber="1639064455">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="org.eclipse.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.egit.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
       <repository location="https://download.eclipse.org/releases/2020-03/202003181000"/>
     </location>
@@ -17,6 +18,15 @@
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="org.eclipse.e4.tools.spies.feature.feature.group" version="0.0.0"/>
       <repository location="https://download.eclipse.org/e4/snapshots/org.eclipse.e4.tools/latest"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="org.espilce.commons.emf.feature.feature.group" version="0.0.0"/>
+      <unit id="org.espilce.commons.emf.registry.feature.feature.group" version="0.0.0"/>
+      <repository id="espilce-commons-p2" location="https://nexus.acidspace.nl/repository/espilce-commons/develop/repository"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="org.espilce.periksa.feature.feature.group" version="0.0.0"/>
+      <repository id="espilce-periksa-p2" location="https://nexus.acidspace.nl/repository/espilce-periksa/develop/repository"/>
     </location>
   </locations>
 </target>

@@ -4,6 +4,6 @@ include::documentation/com.altran.ec.mde.skeleton.guide.developer/src/main/ascii
 
 WARNING: Work in progress
 
-== Development Environment
+<<<
 
-include::documentation/com.altran.ec.mde.skeleton.guide.developer/src/main/asciidoc/development-environment.adoc[]
+include::documentation/com.altran.ec.mde.skeleton.guide.developer/src/main/asciidoc/section-development-environment.adoc[tags=setup-development-environment, leveloffset=-1]

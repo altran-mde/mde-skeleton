@@ -19,8 +19,8 @@
     <maven.build.timestamp.format>yyyy-MM-dd HH:mm z</maven.build.timestamp.format>
     <source-document-name>mde-skeleton-developer-guide</source-document-name>
     <!-- Use paths that are relative to the project.basedir -->
-    <eclipse-help-dir>target/help</eclipse-help-dir>
-    <gitlab-pages-dir>target/pages</gitlab-pages-dir>
+    <help-dir>target/help</help-dir>
+    <site-dir>target/site</site-dir>
   </properties>
 
   <build>
@@ -53,7 +53,7 @@
             </goals>
             <configuration>
               <backend>html5</backend>
-              <outputDirectory>${eclipse-help-dir}</outputDirectory>
+              <outputDirectory>${help-dir}</outputDirectory>
               <resources>
                 <resource>
                   <directory>${project.basedir}/src/main/resources</directory>
@@ -65,11 +65,15 @@
                 <!-- Attributes for HTML in this project -->
                 <resdir>.</resdir>
                 <imgdir-gen>./images</imgdir-gen>
+                <eclipse-help-location>/help/topic</eclipse-help-location>
                 <!-- Using a cleaner skin, see https://github.com/darshandsoni/asciidoctor-skins#usage -->
                 <!-- TODO1: Create/find a nice style-sheet that matches the default Eclipse help style -->
                 <!-- TODO2: Prevent that the style-sheet needs to be copied into every documentation project -->
                 <stylesdir>${project.basedir}/src/main/stylesheet</stylesdir>
                 <stylesheet>adoc-foundation.css</stylesheet>
+                <!-- These output properties may help you to make parts of the documentation conditional -->
+                <output-html/>
+                <output-help/>
               </attributes>
             </configuration>
           </execution>
@@ -82,9 +86,9 @@
             </goals>
             <configuration>
               <backend>html5</backend>
-              <outputDirectory>${gitlab-pages-dir}</outputDirectory>
-              <!-- As this is the only document in this project, we rename it to index.html -->
-              <!-- such that it will become the index page of the GitLab pages -->
+              <outputDirectory>${site-dir}</outputDirectory>
+              <!-- As we only build one document in this project, we rename it to index.html -->
+              <!-- such that it will become the index page of the site -->
               <outputFile>index.html</outputFile>
               <resources>
                 <resource>
@@ -104,7 +108,9 @@
                 <stylesheet>adoc-foundation.css</stylesheet>
                 <!-- Execution specific attributes -->
                 <toc>left</toc>
-                <webpage />
+                <!-- These output properties may help you to make parts of the documentation conditional -->
+                <output-html/>
+                <output-site/>
               </attributes>
             </configuration>
           </execution>
@@ -117,7 +123,7 @@
             </goals>
             <configuration>
               <backend>pdf</backend>
-              <outputDirectory>${gitlab-pages-dir}</outputDirectory>
+              <outputDirectory>${site-dir}</outputDirectory>
               <attributes>
                 <!-- Typical attributes for PDFs -->
                 <doctype>book</doctype>
@@ -126,7 +132,10 @@
                 <toc />
                 <!-- Attributes for all PDFs in this project -->
                 <resdir>${project.basedir}/src/main/resources</resdir>
-                <imgdir-gen>${project.build.directory}/images-gen</imgdir-gen>
+                <imgdir-gen>${project.build.directory}/generated-images</imgdir-gen>
+                <!-- These output properties may help you to make parts of the documentation conditional -->
+                <output-pdf/>
+                <output-site/>
               </attributes>
             </configuration>
           </execution>
@@ -143,10 +152,10 @@
               <goal>geneclipsetoc</goal>
             </goals>
             <configuration>
-              <sourceFolder>${eclipse-help-dir}</sourceFolder>
+              <sourceFolder>${help-dir}</sourceFolder>
               <!-- Putting it in the same dir within the jar ensures us that doc will work in runtime instance and RCP -->
-              <helpPrefix>${eclipse-help-dir}</helpPrefix>
-              <outputTocFile>${eclipse-help-dir}/toc.xml</outputTocFile>
+              <helpPrefix>${help-dir}</helpPrefix>
+              <outputTocFile>${help-dir}/toc.xml</outputTocFile>
               <pages>
                 <page>${source-document-name}.html</page>
               </pages>
@@ -161,9 +170,9 @@
         <configuration>
           <additionalFileSets>
             <fileSet>
-              <directory>${eclipse-help-dir}</directory>
+              <directory>${help-dir}</directory>
               <!-- Putting it in the same dir within the jar ensures us that doc will work in runtime instance and RCP -->
-              <prefix>${eclipse-help-dir}/</prefix>
+              <prefix>${help-dir}/</prefix>
             </fileSet>
           </additionalFileSets>
         </configuration>

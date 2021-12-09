@@ -1,0 +1,140 @@
+//tag::setup-development-environment[]
+include::_attributes.adoc[]
+
+ifndef::oomph-setup-file-path[:oomph-setup-file-path: releng/eclipse/MDESkeletonACIDSpace.setup]
+//end::setup-development-environment[]
+
+== Development Environment
+
+[[git-workflow]]
+=== Git workflow
+
+NOTE: TODO explain https://nvie.com/posts/a-successful-git-branching-model/[Gitflow Workflow]
+
+[[git-directory-structure]]
+=== Initial Git directory structure
+
+NOTE: TODO
+
+[[create-oomph-setup-file]]
+=== How to create an Oomph setup file
+
+This section describes the typical steps to take for creating an Oomph setup file for a project in the ACIDSpace environment.
+An Oomph setup file enables the https://wiki.eclipse.org/Eclipse_Installer[Eclipse Installer] to automate the installation of Eclipse development environments.
+For more generic information on (authoring) Oomph, please read the https://wiki.eclipse.org/Eclipse_Oomph_Authoring[Eclipse Oomph Authoring Wiki]
+
+The easiest way to create an Oomph setup file is to download the link:{gitlab-url}/{oomph-setup-file-path}[setup file of this {project-name}^] and use it as a base.
+The downloaded setup file should be renamed to `__<project_name>__ACIDSpace.setup` and it is recommended to save it in the `releng/eclipse` directory in your git repository, also see <<git-directory-structure>>.
+After opening the setup file in Eclipse, the model tree looks like:
+
+image::{imgdir}/oomph-setup-tree-overview.png[]
+
+Please perform the following steps to tailor the setup file for your project:
+
+TIP: If the Properties view is not yet visible, open it using the context menu on one of the tree nodes menu:Show Properties View[]
+
+. Select the `MDE Assets - MDE Skeleton` node and modify its properties in the Properties View
+.. `Name`: `acidspace.__<gitlab_project_name>__`
+.. `Label`: `__<project_name>__`
+.. `Description`: `__<project_description>__`
+
+. Modify the `Value` property of `gitlab.acidspace.nl.project` to the relative path of your project in ACIDSpace GitLab.
+
+. Modify the `Value` property of `oomph.setup.file.path` to `releng/eclipse/__<project_name>__ACIDSpace.setup`.
+
+. The last two tree nodes specify the streams (i.e. branches) for which a development environment can be set up.
+  All nodes in the tree can also be moved within a stream node allowing different configurations per stream.
+  Typically the `master` and `develop` streams are defined, allowing customizations in the development environment on the develop branch without impacting the master release branch. +
+  Please note that developing on another branch (e.g. a feature branch) is supported, just <<setup-checkout-branch>>.
+
+. Expand the `P2 Director (EMF Development)` node +
++
+image::{imgdir}/oomph-setup-tree-p2-general.png[]
+.. The common requirements for EMF development are contained in this subtree.
+   The last node specifies the ACIDSpace proxy location for the required Eclipse version.
+   Please review the Eclipse version and adapt the url if applicable.
+
+. Expand the `P2 Director (Project Specific Development)` node +
++
+image::{imgdir}/oomph-setup-tree-p2-project.png[]
+.. Currently the {project-name} only adds Xtext as an additional requirement.
+   Please add all requirements for the development environment for your project to this section.
+   Optionally you can also add additional repositories that provide your required artifacts. +
++
+TIP: Opening the `Repository Explorer` view by means of the context menu menu:Explore[] on a repository node, allows you to easily drag and drop your requirements in the tree.
+
+. Expand the `Source Code` node +
++
+image::{imgdir}/oomph-setup-tree-source-code.png[]
+.. Most items are preconfigured and do not need attention bu if your project does not support Maven and Tycho, please disable the `Maven and Tycho` node by means of its context menu menu:Disabled[]
+
+. Expand the `Target Platform` node +
++
+image::{imgdir}/oomph-setup-tree-target-platform.png[]
+.. We support two ways for <<eclipse-target-platform>>.
+   Please read the section and enable the node for the chosen solution.
+.. If you choose to use a `Modular Target Platform`, please update the `location` of the `TargetDefinitionGenerator` to the correct location in your git repository.
+   The content of the target platform can be authored within the sub tree of the `Modular Target Platform` node.
+
+//tag::setup-development-environment[]
+[[setup-development-environment]]
+=== How to setup a development environment
+
+To start developing for {project-name}, please perform the following steps:
+
+. Start with downloading the `Eclipse Installer` from: +
+  https://www.eclipse.org/downloads/packages/installer
+. Start the `Eclipse Installer`
+. Select the `advanced mode` +
++
+image::http://help.eclipse.org/{eclipse-version}/topic/org.eclipse.egit.doc/help/EGit/Contributor_Guide/images/Oomph-01-advanced-mode.png[]
+. On the https://help.eclipse.org/{eclipse-version}/topic/org.eclipse.oomph.setup.doc/html/user/wizard/DocProductPage.html[Product Page] 
+.. Select `Eclipse Platform`
+.. Product Version: `{eclipse-version}`
+.. Click btn:[Next >]
+. On the https://help.eclipse.org/{eclipse-version}/topic/org.eclipse.oomph.setup.doc/html/user/wizard/DocProjectPage.html[Projects Page]
+.. (_One time only_) Click the image:http://help.eclipse.org/{eclipse-version}/topic/org.eclipse.oomph.setup.doc/images/trees/DULKrP4IGs7HGSVqoXcwRFgPxZQ=.png[] icon to add the {project-name} project.
+... Catalog: `Eclipse Projects`
+... Resource URIs: `link:https://gitlab.acidspace.nl/{gitlab-project}/-/raw/{gitlab-branch}/{oomph-setup-file-path}?oomph_form=b%27users/sign_in%27#/[]`
+... Click btn:[OK] +
++
+NOTE: Though using the Resource URI above is preferred, it is known that for some users the URI didn't work and they got an error: _The URI ... does not contain a valid product_.
+In this case the setup file can also be link:https://gitlab.acidspace.nl/{gitlab-project}/-/raw/{gitlab-branch}/{oomph-setup-file-path}?inline=false[downloaded] and added by clicking btn:[Browse File System...].
+... Enter your GitLab credentials when asked for
+.. Select `{project-name}` in the tree
+.. Select stream `{gitlab-branch}` in the table
+.. Click btn:[Next >]
+. On the https://help.eclipse.org/{eclipse-version}/topic/org.eclipse.oomph.setup.doc/html/user/wizard/DocVariablePage.html[Variables Page]
+.. Review all variables values, especially the `Installation folder name` and `Root install folder`
+.. Click btn:[Next >]
+. On the https://help.eclipse.org/{eclipse-version}/topic/org.eclipse.oomph.setup.doc/html/user/wizard/DocConfirmationPage.html[Confirmation Page]
+.. Click btn:[Finish]
+
+Your development environment will now be prepared.
+Please accept all licenses and certificates and provide your GitLab credentials when asked for.
+
+[[setup-maven]]
+==== Build code with Maven
+
+Please perform the steps in this section if you want to build your code using Maven on your local system.
+In ACIDSpace CI/CD an MDE project is typically built using Maven, but this can also be done locally.
+In ACIDSpace's CI/CD the credentials of a project are stored in the `TECHNICAL_USER` and `TECHNICAL_PASSWORD` environment variables.
+In order to be able to use the Maven `settings.xml` both in CI/CD and on your local system, you should also set these environment variables on your local system.
+
+CAUTION: It is strongly advised to store an encrypted password in the `TECHNICAL_PASSWORD` environment variable for security reasons.
+Maven supports server password encryption, see https://maven.apache.org/guides/mini/guide-encryption.html[].
+
+The `releng/eclipse` directory contains pre-configured Eclipse launch targets to build your code using Maven from within Eclipse.
+
+[[setup-checkout-branch]]
+==== Checkout another branch
+
+Typically you will develop your feature in a feature branch.
+To start working on a feature, start by creating an issue in GitLab.
+From the issue, a feature branch can be created using the GitLab web UI.
+Make sure to prefix you branch name with `feature/`.
+
+When the feature branch is created, you can continue with fetching the new branch in your Eclipse development environment, see link:{eclipse-help-location}/org.eclipse.egit.doc/help/EGit/User_Guide/Tasks.html#Fetching_from_upstream[Fetching from upstream].
+Then continue by switching to the new branch, see link:{eclipse-help-location}/org.eclipse.egit.doc/help/EGit/User_Guide/Tasks.html#Checking_out_an_existing_Branch[Checking out an existing Branch]
+
+//end::setup-development-environment[]
