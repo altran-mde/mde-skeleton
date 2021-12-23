@@ -18,9 +18,13 @@ endif::output-html[]
 
 == Overview
 
-This document is under construction and its current state merely acts as a placeholder for future content.
+This document is under construction.
 
 image::{imgdir}/under_construction.png[]
+
+<<<
+
+include::section-mde-assets.adoc[]
 
 <<<
 

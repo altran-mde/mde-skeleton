@@ -44,9 +44,9 @@ ifndef::resdir[:resdir: ../resources]
 ifndef::imgdir[:imgdir: {resdir}/images]
 ifndef::imgdir-gen[:imgdir-gen: ./]
 
-ifndef::gitlab-project[:gitlab-project: mde-assets/mde-skeleton]
-ifndef::gitlab-branch[:gitlab-branch: develop]
-ifndef::gitlab-url[:gitlab-url: https://gitlab.acidspace.nl/{gitlab-project}/-/blob/{gitlab-branch}]
+ifndef::gitproject[:gitproject: mde-assets/mde-skeleton]
+ifndef::gitbranch[:gitbranch: develop]
+ifndef::giturl[:giturl: https://gitlab.acidspace.nl/{gitproject}/-/blob/{gitbranch}]
 
 // Default properties
 ifndef::project-name[:project-name: MDE Assets - MDE Skeleton]

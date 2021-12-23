@@ -26,7 +26,7 @@ mde-build:
   image: ${REGISTRY_URL}/${MAVEN_CONTAINER}
   stage: build
   tags:
-    - linux_docker
+    - linux_docker_medium
   script:
     - acidcli build binaries
   artifacts:
@@ -50,7 +50,7 @@ mde-unit-test:
   # so start asap, hence empty needs
   needs: []
   tags:
-    - linux_docker
+    - linux_docker_medium
   variables:
     DISPLAY: ':99'
   before_script:
