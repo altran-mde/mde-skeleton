@@ -1,5 +1,6 @@
 include::_attributes.adoc[]
 
+[[using-3pp]]
 == Using third-party products (3PP) 
 
 Developing an Eclipse (e.g. EMF) based solution typically requires third-party products (3PP) that need to be downloaded from remote repositories.
@@ -41,10 +42,10 @@ The DSL comes with an integrated Eclipse editor to author target platform files 
 TIP: For more information on authoring Eclipse CBI `tpd` files, see https://github.com/eclipse-cbi/targetplatform-dsl#readme
 
 [[source-target-platform-tpd]]
-.Specifying the Eclipse CBI link:{gitlab-url}/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd[target-platform.tpd^]
+.Specifying the Eclipse CBI link:{giturl}/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd[target-platform.tpd^]
 [source,tpd]
 ----
-include::{gitdir}/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd[tags=doc]
+include::{gitdir}/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd[tags=doc-target-platform]
 ----
 
 <1> *Public repository* - Preferably, the built Eclipse solution should be configured to use publicly available repositories.
@@ -68,7 +69,7 @@ TIP: For more detailed information on using mirrors for repositories in Maven, s
 In this example both the https://repo1.maven.org/maven2/[Maven central] as the https://download.eclipse.org/releases/2020-03/202003181000[Eclipse 2020-03 P2] repositories are rerouted to the ACIDSpace repository proxies.
 
 [[source-settings-xml-mirrors]]
-.Defining mirrors in link:{gitlab-url}/settings.xml[settings.xml^]
+.Defining mirrors in link:{giturl}/settings.xml[settings.xml^]
 [source,xml]
 ----
 include::{gitdir}/settings.xml[tags=doc-mirrors]

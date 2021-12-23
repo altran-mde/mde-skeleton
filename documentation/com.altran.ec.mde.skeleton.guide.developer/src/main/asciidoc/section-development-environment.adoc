@@ -9,12 +9,12 @@ ifndef::oomph-setup-file-path[:oomph-setup-file-path: releng/eclipse/MDESkeleton
 [[git-workflow]]
 === Git workflow
 
-NOTE: TODO explain https://nvie.com/posts/a-successful-git-branching-model/[Gitflow Workflow]
+WARNING: TODO explain https://nvie.com/posts/a-successful-git-branching-model/[Gitflow Workflow]
 
 [[git-directory-structure]]
 === Initial Git directory structure
 
-NOTE: TODO
+WARNING: TODO
 
 [[create-oomph-setup-file]]
 === How to create an Oomph setup file
@@ -23,7 +23,7 @@ This section describes the typical steps to take for creating an Oomph setup fil
 An Oomph setup file enables the https://wiki.eclipse.org/Eclipse_Installer[Eclipse Installer] to automate the installation of Eclipse development environments.
 For more generic information on (authoring) Oomph, please read the https://wiki.eclipse.org/Eclipse_Oomph_Authoring[Eclipse Oomph Authoring Wiki]
 
-The easiest way to create an Oomph setup file is to download the link:{gitlab-url}/{oomph-setup-file-path}[setup file of this {project-name}^] and use it as a base.
+The easiest way to create an Oomph setup file is to download the link:{giturl}/{oomph-setup-file-path}[setup file of this {project-name}^] and use it as a base.
 The downloaded setup file should be renamed to `__<project_name>__ACIDSpace.setup` and it is recommended to save it in the `releng/eclipse` directory in your git repository, also see <<git-directory-structure>>.
 After opening the setup file in Eclipse, the model tree looks like:
 
@@ -95,14 +95,14 @@ image::http://help.eclipse.org/{eclipse-version}/topic/org.eclipse.egit.doc/help
 . On the https://help.eclipse.org/{eclipse-version}/topic/org.eclipse.oomph.setup.doc/html/user/wizard/DocProjectPage.html[Projects Page]
 .. (_One time only_) Click the image:http://help.eclipse.org/{eclipse-version}/topic/org.eclipse.oomph.setup.doc/images/trees/DULKrP4IGs7HGSVqoXcwRFgPxZQ=.png[] icon to add the {project-name} project.
 ... Catalog: `Eclipse Projects`
-... Resource URIs: `link:https://gitlab.acidspace.nl/{gitlab-project}/-/raw/{gitlab-branch}/{oomph-setup-file-path}?oomph_form=b%27users/sign_in%27#/[]`
+... Resource URIs: `link:https://gitlab.acidspace.nl/{gitproject}/-/raw/{gitbranch}/{oomph-setup-file-path}?oomph_form=b%27users/sign_in%27#/[]`
 ... Click btn:[OK] +
 +
 NOTE: Though using the Resource URI above is preferred, it is known that for some users the URI didn't work and they got an error: _The URI ... does not contain a valid product_.
-In this case the setup file can also be link:https://gitlab.acidspace.nl/{gitlab-project}/-/raw/{gitlab-branch}/{oomph-setup-file-path}?inline=false[downloaded] and added by clicking btn:[Browse File System...].
+In this case the setup file can also be link:https://gitlab.acidspace.nl/{gitproject}/-/raw/{gitbranch}/{oomph-setup-file-path}?inline=false[downloaded] and added by clicking btn:[Browse File System...].
 ... Enter your GitLab credentials when asked for
 .. Select `{project-name}` in the tree
-.. Select stream `{gitlab-branch}` in the table
+.. Select stream `{gitbranch}` in the table
 .. Click btn:[Next >]
 . On the https://help.eclipse.org/{eclipse-version}/topic/org.eclipse.oomph.setup.doc/html/user/wizard/DocVariablePage.html[Variables Page]
 .. Review all variables values, especially the `Installation folder name` and `Root install folder`
