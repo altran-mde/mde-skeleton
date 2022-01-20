@@ -27,9 +27,10 @@ include::{gitdir}/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.ske
 ----
 
 Then you can start writing the required validations.
-The simplest way is to create a class containing static methods that are annotated with the `@Check` annotation.
+The quickest way to create validations using Espilce Periksa is to create a class containing static methods that are annotated with the `@Check` annotation.
 The first argument of the method is the model element to validate and the second argument injects the validation context as provided by Espilce Periksa.
-The example below adds some duplicate value validations to the Fowler state-machine DSL for e.g. event and command names.
+For more information, please read the https://ec-mde.pages.acidspace.nl/espilce-periksa/#programmers-guide[Espilce Periksa programmer guide]. +
+The example below adds a duplicate value error-validation for command names to the Fowler state-machine DSL Xtext example, and an info-validation for state names to start with a capital.
 
 NOTE: Using the `@Check` annotation requires a bundle dependency of `org.espilce.periksa.validation`.
 
@@ -39,8 +40,9 @@ NOTE: Using the `@Check` annotation requires a bundle dependency of `org.espilce
 include::{gitdir}/plugins/com.altran.ec.mde.skeleton.espilce.periksa/src/com/altran/ec/mde/skeleton/espilce/periksa/StatemachineValidations.java[tag=doc-espilce-periksa]
 ----
 
-<1> The `@Check` annotation registers the method to validate all instances of `Statemachine` as per the first argument of the method.
+<1> The `@Check` annotation registers the method to validate all instances of `Statemachine` as per the first argument of the method. The method is invoked for each `statemachine` instance in the model.
 <2> Espilce Periksa provides a `ValidationLibrary` containing reusable validations, e.g. validating duplicates in feature values.
+<3> The API of Espilce Periksa allows to easily report an `info`, `warning` or `error`.
 
 Finally you need to register your model validations, such that they will be automatically invoked as part of validating each applicable model instance.
 The easiest way to do this is by means of an extension point that is provided by Espilce Periksa, as per the example below.
