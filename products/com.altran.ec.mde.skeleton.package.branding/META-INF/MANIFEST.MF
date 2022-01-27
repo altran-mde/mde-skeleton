@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: EMF Reference Project - Branding Plugin
 Bundle-SymbolicName: com.altran.ec.mde.skeleton.package.branding;singleton:=true
 Bundle-Version: 0.0.1.qualifier
-Bundle-Vendor: Altran
+Bundle-Vendor: Capgemini Engineering
 Automatic-Module-Name: com.altran.ec.mde.skeleton.package.branding
 Require-Bundle: org.eclipse.platform,
  org.eclipse.equinox.app,

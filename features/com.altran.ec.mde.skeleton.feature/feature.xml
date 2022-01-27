@@ -3,7 +3,7 @@
       id="com.altran.ec.mde.skeleton.feature"
       label="EMF Reference Project - Feature"
       version="0.0.1.qualifier"
-      provider-name="Altran">
+      provider-name="Capgemini Engineering">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -18,8 +18,14 @@
    </license>
 
    <requires>
-      <import feature="org.eclipse.xtext.runtime" version="2.21.0.v20200302-1509"/>
-      <import feature="org.eclipse.jdt" version="3.18.300.v20200305-0155"/>
+      <import feature="org.eclipse.jdt" version="3.18.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.xtext.runtime" version="2.10.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.runtime.aql" version="6.3.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.runtime.ide.eef" version="6.3.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.runtime.ide.xtext" version="6.3.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.runtime.ide.ui" version="6.3.0" match="greaterOrEqual"/>
+      <import feature="com.altran.general.integration.xtextsirius.runtime.feature" version="1.1.0" match="greaterOrEqual"/>
+      <import feature="org.espilce.periksa.feature" version="2.0.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
@@ -48,5 +54,19 @@
          download-size="0"
          install-size="0"
          version="0.0.0"/>
+
+   <plugin
+         id="com.altran.ec.mde.skeleton.xtext.sirius.integration"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.altran.ec.mde.skeleton.espilce.periksa"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>

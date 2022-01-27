@@ -3,7 +3,7 @@
       id="com.altran.ec.mde.skeleton.package.feature"
       label="EMF Reference Project - Packaging Feature"
       version="0.0.1.qualifier"
-      provider-name="Altran"
+      provider-name="Capgemini Engineering"
       plugin="com.altran.ec.mde.skeleton.package.branding">
 
    <description url="http://www.example.com/description">
@@ -19,7 +19,7 @@
    </license>
 
    <requires>
-      <import feature="org.eclipse.platform" version="4.15.0.v20200305-0155"/>
+      <import feature="org.eclipse.platform"/>
    </requires>
 
    <plugin
