@@ -20,6 +20,8 @@ WARNING: TODO
 
 To start using Espilce Periksa, first it should be added to the the target platform, see the code snippet below.
 
+NOTE: When using Maven, don't forget to configure credentials for this repository as described in <<maven-repository-mirrors>>, also see link:{giturl}/settings.xml[settings.xml^]
+
 .Adding Espilce Periksa to the link:{giturl}/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd[target-platform.tpd^]
 [source,tpd]
 ----
@@ -29,7 +31,6 @@ include::{gitdir}/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.ske
 Then you can start writing the required validations.
 The quickest way to create validations using Espilce Periksa is to create a class containing static methods that are annotated with the `@Check` annotation.
 The first argument of the method is the model element to validate and the second argument injects the validation context as provided by Espilce Periksa.
-For more information, please read the https://ec-mde.pages.acidspace.nl/espilce-periksa/#programmers-guide[Espilce Periksa programmer guide]. +
 The example below adds a duplicate value error-validation for command names to the Fowler state-machine DSL Xtext example, and an info-validation for state names to start with a capital.
 
 NOTE: Using the `@Check` annotation requires a bundle dependency of `org.espilce.periksa.validation`.
@@ -53,17 +54,73 @@ The easiest way to do this is by means of an extension point that is provided by
 include::{gitdir}/plugins/com.altran.ec.mde.skeleton.espilce.periksa/plugin.xml[]
 ----
 
+For more information on using Espilce Periksa, please read the https://ec-mde.pages.acidspace.nl/espilce-periksa/#programmers-guide[Espilce Periksa programmer guide].
+
 === Espilce Polvi
 
 WARNING: TODO
 
 === Xtext/Sirius Integration
 
-WARNING: TODO
+This asset enables Xtext editors to be used as direct editor for Sirius diagram elements or Sirius property widgets.
+
+To start using Xtext/Sirius Integration, first it should be added to the the target platform, see the code snippet below.
+
+NOTE: When using Maven, don't forget to configure credentials and mirrors for these repositories as described in <<maven-repository-mirrors>>, also see link:{giturl}/settings.xml[settings.xml^]
+
+.Adding Xtext/Sirius Integration to the link:{giturl}/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd[target-platform.tpd^]
+[source,tpd]
+----
+include::{gitdir}/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd[tags=doc-xtext-sirius-integration]
+----
+
+Xtext/Sirius Integration also needs a feature from Yakindu Statecharts to be added to the target platform, see the code snippet below.
+
+.Adding Xtext/Sirius Integration dependencies to the link:{giturl}/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd[target-platform.tpd^]
+[source,tpd]
+----
+include::{gitdir}/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd[tags=doc-xtext-sirius-integration-dependencies]
+----
+
+Because Xtext/Sirius Integration also provides development tools that need to be installed in Eclipse, the Oomph setup file needs to be updated.
+Open the setup file in Eclipse and perform the following steps:
+ 
+. Expand the `P2 Director (Project Specific Development)` node +
++
+image::{imgdir}/oomph-setup-tree-p2-project.png[]
+
+. Add a new `Requirement` for the Xtext/Sirius Integration design feature. Also add a `Repository` that contains the feature. +
+  Because the feature depends on a feature from Yakindu Statecharts, the `Repository` that contains it must be added too:
++
+image::{imgdir}/oomph-setup-tree-p2-project-xtext-sirius-integration.png[]
+
+Now you can start using Xtext/Sirius Integration. 
+The MDE skeleton already provides an example Xtext/Sirius direct edit descriptor in link:{giturl}/plugins/com.altran.ec.mde.skeleton.xtext.sirius.integration/description/statemachine.odesign[statemachine.odesign^]:
+
+.Authoring Sirius specification in link:{giturl}/plugins/com.altran.ec.mde.skeleton.xtext.sirius.integration/description/statemachine.odesign[statemachine.odesign^]
+image::{imgdir}/xtext-sirius-widget.png[]
+
+This descriptor makes it possible to use Xtext editing of `Transition` labels.
+In the properties of the descriptor the `Mapping` must to be set to the feature that the editor will be applied to.
+The `Injector Id` refers to the Xtext language injector that is specified in `plugin.xml` to access the Xtext language, see the code snippet below.
+
+.Specifying Xtext language injector in link:{giturl}/plugins/com.altran.ec.mde.skeleton.xtext.sirius.integration/plugin.xml[plugin.xml^]
+[source,xml]
+----
+include::{gitdir}/plugins/com.altran.ec.mde.skeleton.xtext.sirius.integration/plugin.xml[tags=doc-xtext-sirius-integration]
+----
+
+<1> The `class` attribute of the `injector` refers to the implementation of the `IXtextLanguageInjector` interface that must 
+be added to access the Xtext language, see the code snippet below.
+
+.Implementing IXtextLanguageInjector in link:{giturl}/plugins/com.altran.ec.mde.skeleton.xtext.sirius.integration/src/com/altran/ec/mde/skeleton/xtext/sirius/integration/FowlerdslLanguageInjector.java[FowlerdslLanguageInjector.java^]
+[source,java]
+----
+include::{gitdir}/plugins/com.altran.ec.mde.skeleton.xtext.sirius.integration/src/com/altran/ec/mde/skeleton/xtext/sirius/integration/FowlerdslLanguageInjector.java[]
+----
+
+For more information on using Xtext/Sirius Integration, please read the https://gitlab.acidspace.nl/ec-mde/xtext-sirius-integration/-/blob/develop/doc/userguide/xtext-sirius-userguide.adoc[Xtext/Sirius Integration User Guide].
 
 === Xtext Move Refactoring
 
 WARNING: TODO
-
-
-

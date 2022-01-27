@@ -16,11 +16,16 @@ location "https://download.eclipse.org/releases/2020-03/202003181000" { //<1>
     org.eclipse.egit.feature.group lazy
     // Xtext/Xtend
     org.eclipse.xtext.sdk.feature.group lazy
+    // Sirius
+    org.eclipse.sirius.runtime.aql.feature.group lazy
+    org.eclipse.sirius.runtime.ide.eef.feature.group lazy
+    org.eclipse.sirius.runtime.ide.xtext.feature.group lazy
+    org.eclipse.sirius.runtime.ide.ui.feature.group lazy
 }
 
 location "http://download.itemis.com/updates/releases/2.1.1" {
     // Preferred for Xtext MWE2 workflows
-    de.itemis.xtext.antlr.feature.feature.group lazy
+    de.itemis.xtext.antlr.feature.feature.group lazy    
 }
 
 location "https://download.eclipse.org/e4/snapshots/org.eclipse.e4.tools/latest" {
@@ -39,3 +44,14 @@ location "https://nexus.acidspace.nl/repository/espilce-periksa/develop/reposito
 	org.espilce.periksa.feature.feature.group lazy
 }
 // end::doc-espilce-periksa[]
+
+// tag::doc-xtext-sirius-integration[]
+location "https://nexus.acidspace.nl/repository/xtext-sirius-integration/develop/repository" xtext-sirius-integration-p2 {
+    com.altran.general.integration.xtextsirius.runtime.feature.feature.group lazy
+}
+// end::doc-xtext-sirius-integration[]
+// tag::doc-xtext-sirius-integration-dependencies[]
+location "https://updates.yakindu.org/statecharts/releases/3.5.13" {
+    org.yakindu.base.xtext.utils.jface.feature.group lazy
+}
+// end::doc-xtext-sirius-integration-dependencies[]

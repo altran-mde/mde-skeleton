@@ -45,6 +45,14 @@
       label="Project Specific Development">
     <requirement
         name="org.eclipse.xtext.sdk.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.specifier.feature.group"/>
+    <requirement
+        name="com.altran.general.integration.xtextsirius.design.feature.feature.group"/>
+    <repository
+        url="https://nexus.acidspace.nl/repository/xtext-sirius-integration/develop/repository"/>
+    <repository
+        url="https://nexus.acidspace.nl/repository/yakindu.com-statecharts-releases-3.5.13/"/>
   </setupTask>
   <setupTask
       xsi:type="setup.workingsets:WorkingSetTask">

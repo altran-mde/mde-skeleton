@@ -57,7 +57,7 @@ image::{imgdir}/oomph-setup-tree-p2-general.png[]
 . Expand the `P2 Director (Project Specific Development)` node +
 +
 image::{imgdir}/oomph-setup-tree-p2-project.png[]
-.. Currently the {project-name} only adds Xtext as an additional requirement.
+.. The {project-name} adds e.g. Xtext and Sirius as additional requirements.
    Please add all requirements for the development environment for your project to this section.
    Optionally you can also add additional repositories that provide your required artifacts. +
 +

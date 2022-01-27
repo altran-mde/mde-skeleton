@@ -450,6 +450,12 @@
 		<perspectiveExtension targetID="org.eclipse.jdt.ui.JavaPerspective">
 			<newWizardShortcut id="org.eclipse.xtext.example.fowlerdsl.ui.wizard.StatemachineNewProjectWizard"/>
 		</perspectiveExtension>
+  <perspectiveExtension
+        targetID="org.eclipse.sirius.ui.tools.perspective.modeling">
+     <newWizardShortcut
+           id="org.eclipse.xtext.example.fowlerdsl.ui.wizard.StatemachineNewProjectWizard">
+     </newWizardShortcut>
+  </perspectiveExtension>
 	</extension>
 	<extension
 		point="org.eclipse.ui.menus">
