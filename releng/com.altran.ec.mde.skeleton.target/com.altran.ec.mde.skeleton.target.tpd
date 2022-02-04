@@ -45,6 +45,12 @@ location "https://nexus.acidspace.nl/repository/espilce-periksa/develop/reposito
 }
 // end::doc-espilce-periksa[]
 
+// tag::doc-espilce-polvi[]
+location "https://nexus.acidspace.nl/repository/espilce-polvi/develop/repository" espilce-polvi-p2 {
+    org.espilce.polvi.feature.feature.group lazy
+}
+// end::doc-espilce-polvi[]
+
 // tag::doc-xtext-sirius-integration[]
 location "https://nexus.acidspace.nl/repository/xtext-sirius-integration/develop/repository" xtext-sirius-integration-p2 {
     com.altran.general.integration.xtextsirius.runtime.feature.feature.group lazy
