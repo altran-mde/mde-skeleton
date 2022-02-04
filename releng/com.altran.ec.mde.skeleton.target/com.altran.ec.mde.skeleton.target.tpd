@@ -36,6 +36,7 @@ location "https://download.eclipse.org/e4/snapshots/org.eclipse.e4.tools/latest"
 
 location "https://nexus.acidspace.nl/repository/espilce-commons/develop/repository" espilce-commons-p2 { //<2>
     org.espilce.commons.emf.registry.feature.feature.group lazy
+    org.espilce.commons.resource.feature.feature.group lazy
 }
 // end::doc-target-platform[]
 
@@ -47,7 +48,7 @@ location "https://nexus.acidspace.nl/repository/espilce-periksa/develop/reposito
 
 // tag::doc-espilce-polvi[]
 location "https://nexus.acidspace.nl/repository/espilce-polvi/develop/repository" espilce-polvi-p2 {
-    org.espilce.polvi.feature.feature.group lazy
+    org.espilce.polvi.emf.generator.feature.feature.group lazy
 }
 // end::doc-espilce-polvi[]
 
