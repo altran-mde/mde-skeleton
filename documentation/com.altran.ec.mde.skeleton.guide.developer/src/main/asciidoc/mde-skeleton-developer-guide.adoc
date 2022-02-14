@@ -24,7 +24,7 @@ image::{imgdir}/under_construction.png[]
 
 <<<
 
-include::section-mde-assets.adoc[]
+include::section-development-environment.adoc[]
 
 <<<
 
@@ -32,4 +32,4 @@ include::section-using-3pp.adoc[]
 
 <<<
 
-include::section-development-environment.adoc[]
+include::section-mde-assets.adoc[]
