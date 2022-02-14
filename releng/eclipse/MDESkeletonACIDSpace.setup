@@ -51,6 +51,8 @@
         name="org.eclipse.sirius.specifier.feature.group"/>
     <requirement
         name="com.altran.general.integration.xtextsirius.design.feature.feature.group"/>
+    <requirement
+        name="com.altran.general.emf.ecoredoc.ui.feature.feature.group"/>
     <repository
         url="https://nexus.acidspace.nl/repository/espilce-commons/develop/repository"/>
     <repository
@@ -59,6 +61,8 @@
         url="https://nexus.acidspace.nl/repository/xtext-sirius-integration/develop/repository"/>
     <repository
         url="https://nexus.acidspace.nl/repository/yakindu.com-statecharts-releases-3.5.13/"/>
+    <repository
+        url="https://nexus.acidspace.nl/repository/mde_assets-ecore_doc-raw/develop/repository"/>
   </setupTask>
   <setupTask
       xsi:type="setup.workingsets:WorkingSetTask">
@@ -480,7 +484,7 @@
         <requirement
             name="org.sonatype.m2e.buildhelper.feature.feature.group"/>
         <repository
-            url="https://nexus.acidspace.nl/repository/eclipse.org-technology-m2e-releases-latest/"/>
+            url="https://nexus.acidspace.nl/repository/eclipse.org-technology-m2e-releases-1.19.0/"/>
         <repository
             url="https://nexus.acidspace.nl/repository/maven.org-maven2-.m2e-connectors-m2eclipse-tycho-0.9.0-N-LATEST/"/>
         <repository
