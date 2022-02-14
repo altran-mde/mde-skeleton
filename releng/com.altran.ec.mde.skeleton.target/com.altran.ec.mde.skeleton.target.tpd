@@ -30,7 +30,7 @@ location "http://download.itemis.com/updates/releases/2.1.1" {
 
 location "https://download.eclipse.org/e4/snapshots/org.eclipse.e4.tools/latest" {
     // Preferred for debugging the developer runtime instance 
-	org.eclipse.e4.tools.spies.feature.feature.group lazy
+    org.eclipse.e4.tools.spies.feature.feature.group lazy
 // tag::doc-target-platform[]
 }
 
@@ -41,7 +41,7 @@ location "https://nexus.acidspace.nl/repository/espilce-commons/develop/reposito
 
 // tag::doc-espilce-periksa[]
 location "https://nexus.acidspace.nl/repository/espilce-periksa/develop/repository" espilce-periksa-p2 {
-	org.espilce.periksa.sdk.feature.group lazy
+    org.espilce.periksa.sdk.feature.group lazy
 }
 // end::doc-espilce-periksa[]
 
@@ -55,3 +55,7 @@ location "https://updates.yakindu.org/statecharts/releases/3.5.13" {
     org.yakindu.base.xtext.utils.jface.feature.group lazy
 }
 // end::doc-xtext-sirius-integration-dependencies[]
+
+location "https://nexus.acidspace.nl/repository/mde_assets-ecore_doc-raw/develop/repository" ecoredoc-p2 {
+    com.altran.general.emf.ecoredoc.ui.feature.feature.group lazy
+}

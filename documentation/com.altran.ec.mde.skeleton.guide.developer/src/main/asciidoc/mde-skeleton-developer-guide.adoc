@@ -33,3 +33,11 @@ include::section-using-3pp.adoc[]
 <<<
 
 include::section-mde-assets.adoc[]
+
+<<<
+
+[[fowlerdsl-ecoredoc]]
+[appendix]
+== Fowler Statemachine EcoreDoc
+
+include::{gendocdir}/Statemachine.adoc[lines=36..]

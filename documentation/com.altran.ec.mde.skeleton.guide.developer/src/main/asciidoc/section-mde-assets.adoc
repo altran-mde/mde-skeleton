@@ -10,7 +10,42 @@ NOTE: For an MDE solution, an MDE Asset is a third-party-product and as such the
 
 === EcoreDoc
 
-WARNING: TODO
+EcoreDoc generates https://asciidoctor.org/[AsciiDoctor] files to document Ecore metamodels, similar to https://docs.oracle.com/javase/9/javadoc/javadoc.htm[JavaDoc].
+AsciiDoctor can be rendered as HTML, PDF, or Eclipse Help.
+EcoreDoc can be used as https://maven.apache.org/[Maven] Plugin, standalone command-line tool, Java API, or Eclipse Plug-in.
+
+In this quick reference guide EcoreDoc is used by means of its Maven plugin to generate <<fowlerdsl-ecoredoc>> from the link:{giturl}/plugins/org.eclipse.xtext.example.fowlerdsl/model/generated/Statemachine.ecore[Statemachine.ecore^] file.
+
+The EcoreDoc maven plugin is deployed on the `mde-assets` Maven repository in ACIDSpace.
+Please read section <<maven-repository-mirrors>> to learn how to configure this repository in your Maven build.
+
+The EcoreDoc Maven plugin can be used by adding the code snippet below to your Maven pom file.
+
+.Configuring EcoreDoc in link:{giturl}/documentation/com.altran.ec.mde.skeleton.guide.developer/pom.xml[pom.xml^]
+[source,xml]
+----
+include::{gitdir}/documentation/com.altran.ec.mde.skeleton.guide.developer/pom.xml[tags=doc-ecoredoc]
+----
+
+<1> Binds the `ecoredoc` goal to the `generate-sources` https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html[Maven build lifecycle phase^].
+<2> The EcoreDoc Maven plugin can be configured by means of annotations in the ecore model or, as illustrated here,directly in the Maven pom file.
+ 
+The example below adds the generated EcoreDoc to this developer guide as an appendix.
+
+.Include the generated EcoreDoc in link:{giturl}/documentation//com.altran.ec.mde.skeleton.guide.developer/src/main/asciidoc/mde-skeleton-developer-guide.adoc[mde-skeleton-developer-guide.adoc^]
+[source,asciidoc]
+----
+\ifndef::gendocdir[:gendocdir: {basedir}/target/adoc-gen]
+
+[appendix]
+== Fowler Statemachine EcoreDoc
+
+\include::{gendocdir}/Statemachine.adoc[lines=36..]
+----
+
+For more information on using EcoreDoc, please read the 
+ifdef::output-help[link:{eclipse-help-location}/com.altran.general.emf.ecoredoc.guide.user/target/help/ecoredoc-userguide.html[EcoreDoc user guide].]
+ifndef::output-help[https://ec-mde.pages.acidspace.nl/ecore-doc/[EcoreDoc user guide].]
 
 === Espilce Commons
 
@@ -18,6 +53,7 @@ WARNING: TODO
 
 === Espilce Periksa
 
+Espilce Periksa is an EMF Validator framework.
 To start using Espilce Periksa, first it should be added to the the target platform, see the code snippet below.
 
 NOTE: When using Maven, don't forget to configure credentials for this repository as described in <<maven-repository-mirrors>>, also see link:{giturl}/settings.xml[settings.xml^]
@@ -54,7 +90,10 @@ The easiest way to do this is by means of an extension point that is provided by
 include::{gitdir}/plugins/com.altran.ec.mde.skeleton.espilce.periksa/plugin.xml[]
 ----
 
-For more information on using Espilce Periksa, please read the https://ec-mde.pages.acidspace.nl/espilce-periksa/#programmers-guide[Espilce Periksa programmer guide].
+For more information on using Espilce Periksa, please read the
+ifdef::output-help[link:{eclipse-help-location}/org.espilce.periksa.guide.developer/target/help/periksa-developer-guide.html#programmers-guide[Espilce Periksa programmer guide].]
+ifndef::output-help[https://ec-mde.pages.acidspace.nl/espilce-periksa/#programmers-guide[Espilce Periksa programmer guide].]
+
 
 === Espilce Polvi
 

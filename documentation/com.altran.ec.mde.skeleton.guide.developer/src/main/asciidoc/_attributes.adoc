@@ -37,12 +37,29 @@
 // check
 :x: icon:check-square[set=far]
 
+// Attributes as copied from EcoreDoc
+// White Up-Pointing Triangle
+:wupt: &#9651;
+:inherited: {wupt}{nbsp}
+// Black Up-Pointing Triangle
+:bupt: &#9650;
+:override: {bupt}{nbsp}
+// White Down-Pointing Triangle
+:wdpt: &#9661;
+:inheritedBy: {wdpt}{nbsp}
+// Black Down-Pointing Triangle
+:bdpt: &#9660;
+:overriddenBy: {bdpt}{nbsp}
+:prewrap!:
+:table-caption!:
+
 // Default resource locations
 ifndef::basedir[:basedir: ../../..]
 ifndef::gitdir[:gitdir: {basedir}/../..]
 ifndef::resdir[:resdir: ../resources]
 ifndef::imgdir[:imgdir: {resdir}/images]
 ifndef::imgdir-gen[:imgdir-gen: ./]
+ifndef::gendocdir[:gendocdir: {basedir}/target/adoc-gen]
 
 ifndef::gitproject[:gitproject: mde-assets/mde-skeleton]
 ifndef::gitbranch[:gitbranch: develop]
