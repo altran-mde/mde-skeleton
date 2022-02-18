@@ -24,7 +24,7 @@ import org.eclipse.xtext.generator.IGeneratorContext
 class StatemachineGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		fsa.generateFile(resource.className+".java", toJavaCode(resource.contents.head as Statemachine))
+		//fsa.generateFile(resource.className+".java", toJavaCode(resource.contents.head as Statemachine))
 	}
 
 	protected def className(Resource res) {
