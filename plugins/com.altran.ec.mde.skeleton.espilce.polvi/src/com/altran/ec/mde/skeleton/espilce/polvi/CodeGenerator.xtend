@@ -1,53 +1,33 @@
 package com.altran.ec.mde.skeleton.espilce.polvi
 
-import java.io.File
-import java.io.FileOutputStream
-import java.io.BufferedOutputStream
-import org.apache.commons.io.IOUtils
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
-import org.espilce.polvi.generator.api.fsa.IFileSystemAccess
 import org.eclipse.xtext.example.fowlerdsl.statemachine.Statemachine
-import java.nio.charset.Charset
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.example.fowlerdsl.statemachine.Command
 import org.eclipse.xtext.example.fowlerdsl.statemachine.State
+import org.espilce.polvi.emf.generator.fsa.URIBasedFileSystemAccess
 
 class CodeGenerator {
 
-    def void generate(URI modelURI, String outputPath) {
-        val IFileSystemAccess fsa = new IFileSystemAccess() {
-            override deleteFile(String fileName) {
-                throw new UnsupportedOperationException("Not implemented")
-            }
-
-            override generateFile(String fileName, CharSequence contents) {
-                val out = new File(fileName)
-                out.parentFile.mkdirs
-                out.createNewFile
-                
-                val stream = new BufferedOutputStream(new FileOutputStream(out))
-                try {
-                    IOUtils.write(contents, stream, Charset.defaultCharset())
-                } finally {
-                    stream.close()
-                }
-            }
-            
-            override generateFile(String fileName, String outputConfigurationName, CharSequence contents) {
-                throw new UnsupportedOperationException("Not implemented")
-            }
-        }
-        
+    def void generate(URI modelURI) {
+        val fsa = new URIBasedFileSystemAccess();
         val model = modelURI.loadModelInstance
         val contents = model.toJavaCode
-        fsa.generateFile(outputPath, contents)
+        val uri = model.eResource.URI
+        fsa.outputPath = uri.trimSegments(1).toPlatformString(true)
+        fsa.generateFile(model.eResource.className+".java", contents)
     }
     
     def Statemachine loadModelInstance(URI modelUri) {
         val resourceSet = new ResourceSetImpl()
         val resource = resourceSet.getResource(modelUri, true)
         resource.getContents().head as Statemachine
+    }
+
+    def className(Resource res) {
+        var name = res.URI.lastSegment
+        return name.substring(0, name.indexOf('.')).toFirstUpper
     }
 
     def toJavaCode(Statemachine sm) '''
@@ -122,10 +102,5 @@ class CodeGenerator {
             «ENDFOR»
         }
     '''
-
-    def className(Resource res) {
-        var name = res.URI.lastSegment
-        return name.substring(0, name.indexOf('.')).toFirstUpper
-    }
 
 }

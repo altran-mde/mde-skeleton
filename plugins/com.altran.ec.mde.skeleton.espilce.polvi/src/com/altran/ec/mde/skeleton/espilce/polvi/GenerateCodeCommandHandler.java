@@ -109,10 +109,8 @@ public class GenerateCodeCommandHandler extends AbstractHandler {
 
 	private void generateCode(final IFile model, final IProgressMonitor monitor) throws CoreException {
 		URI modelURI = URI.createPlatformResourceURI(model.getFullPath().toString(), true);
-		String outputPath = model.getRawLocation().toOSString().replace(".statemachine", ".java");
-
 		CodeGenerator codeGenerator = new CodeGenerator();
-		codeGenerator.generate(modelURI, outputPath);
+		codeGenerator.generate(modelURI);
 		model.getProject().refreshLocal(IResource.DEPTH_INFINITE, monitor);
 	}
 

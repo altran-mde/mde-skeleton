@@ -1,10 +1,5 @@
 package com.altran.ec.mde.skeleton.espilce.polvi;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.nio.charset.Charset;
-import org.apache.commons.io.IOUtils;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -16,48 +11,23 @@ import org.eclipse.xtext.example.fowlerdsl.statemachine.Event;
 import org.eclipse.xtext.example.fowlerdsl.statemachine.State;
 import org.eclipse.xtext.example.fowlerdsl.statemachine.Statemachine;
 import org.eclipse.xtext.example.fowlerdsl.statemachine.Transition;
-import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
-import org.espilce.polvi.generator.api.fsa.IFileSystemAccess;
+import org.espilce.polvi.emf.generator.fsa.URIBasedFileSystemAccess;
 
 @SuppressWarnings("all")
 public class CodeGenerator {
-  public void generate(final URI modelURI, final String outputPath) {
-    final IFileSystemAccess fsa = new IFileSystemAccess() {
-      @Override
-      public void deleteFile(final String fileName) {
-        throw new UnsupportedOperationException("Not implemented");
-      }
-      
-      @Override
-      public void generateFile(final String fileName, final CharSequence contents) {
-        try {
-          final File out = new File(fileName);
-          out.getParentFile().mkdirs();
-          out.createNewFile();
-          FileOutputStream _fileOutputStream = new FileOutputStream(out);
-          final BufferedOutputStream stream = new BufferedOutputStream(_fileOutputStream);
-          try {
-            IOUtils.write(contents, stream, Charset.defaultCharset());
-          } finally {
-            stream.close();
-          }
-        } catch (Throwable _e) {
-          throw Exceptions.sneakyThrow(_e);
-        }
-      }
-      
-      @Override
-      public void generateFile(final String fileName, final String outputConfigurationName, final CharSequence contents) {
-        throw new UnsupportedOperationException("Not implemented");
-      }
-    };
+  public void generate(final URI modelURI) {
+    final URIBasedFileSystemAccess fsa = new URIBasedFileSystemAccess();
     final Statemachine model = this.loadModelInstance(modelURI);
     final CharSequence contents = this.toJavaCode(model);
-    fsa.generateFile(outputPath, contents);
+    final URI uri = model.eResource().getURI();
+    fsa.setOutputPath(uri.trimSegments(1).toPlatformString(true));
+    String _className = this.className(model.eResource());
+    String _plus = (_className + ".java");
+    fsa.generateFile(_plus, contents);
   }
   
   public Statemachine loadModelInstance(final URI modelUri) {
@@ -69,6 +39,11 @@ public class CodeGenerator {
       _xblockexpression = ((Statemachine) _head);
     }
     return _xblockexpression;
+  }
+  
+  public String className(final Resource res) {
+    String name = res.getURI().lastSegment();
+    return StringExtensions.toFirstUpper(name.substring(0, name.indexOf(".")));
   }
   
   public CharSequence toJavaCode(final Statemachine sm) {
@@ -312,10 +287,5 @@ public class CodeGenerator {
     _builder.append("}");
     _builder.newLine();
     return _builder;
-  }
-  
-  public String className(final Resource res) {
-    String name = res.getURI().lastSegment();
-    return StringExtensions.toFirstUpper(name.substring(0, name.indexOf(".")));
   }
 }
