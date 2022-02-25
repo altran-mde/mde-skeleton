@@ -51,7 +51,7 @@ include::{gitdir}/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.ske
 <1> *Public repository* - Preferably, the built Eclipse solution should be configured to use publicly available repositories.
 <2> *ACIDSpace repository* - If and only if an artifact is available within ACIDSpace only, we need to specify the ACIDSpace repository url. 
     Repositories that are hosted by ACIDSpace typically require authentication.
-    Specifying a repository id (i.e. `espilce-periksa-p2`) allows you to configure the credentials in the Maven settings file as described in <<maven-repository-mirrors>>.
+    Specifying a repository id (i.e. `espilce-commons-p2`) allows you to configure the credentials in the Maven settings file as described in <<maven-repository-mirrors>>.
 
 [[maven-repository-mirrors]]
 === Using repository mirrors in Maven

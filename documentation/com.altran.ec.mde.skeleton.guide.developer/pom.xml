@@ -24,7 +24,34 @@
   </properties>
 
   <build>
+    <!-- tag::doc-ecoredoc[] -->
     <plugins>
+      <plugin>
+        <groupId>com.altran.general.emf.ecoredoc</groupId>
+        <artifactId>ecoredoc-maven-plugin</artifactId>
+        <version>0.10.0-SNAPSHOT</version>
+        <executions>
+          <execution>
+            <phase>generate-sources</phase> <!--1-->
+            <goals>
+              <goal>ecoredoc</goal>
+            </goals>
+            <configuration>
+              <resolve>true</resolve>
+              <config> <!--2-->
+                <renderDefaults>false</renderDefaults>
+                <repeatInherited>false</repeatInherited>
+              </config>
+              <inputFiles>
+                <inputFile>../../plugins/org.eclipse.xtext.example.fowlerdsl/model/generated/Statemachine.ecore</inputFile>
+              </inputFiles>
+              <outputFile>${project.build.directory}/adoc-gen/Statemachine.adoc</outputFile>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- end::doc-ecoredoc[] -->
+      
       <plugin>
         <groupId>org.asciidoctor</groupId>
         <artifactId>asciidoctor-maven-plugin</artifactId>

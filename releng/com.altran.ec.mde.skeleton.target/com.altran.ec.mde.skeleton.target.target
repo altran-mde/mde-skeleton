@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="CBI Target Platform" sequenceNumber="1644565840">
+<target name="CBI Target Platform" sequenceNumber="1644846919">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="org.eclipse.sdk.feature.group" version="0.0.0"/>
@@ -29,7 +29,7 @@
       <repository id="espilce-commons-p2" location="https://nexus.acidspace.nl/repository/espilce-commons/develop/repository"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
-      <unit id="org.espilce.periksa.feature.feature.group" version="0.0.0"/>
+      <unit id="org.espilce.periksa.sdk.feature.group" version="0.0.0"/>
       <repository id="espilce-periksa-p2" location="https://nexus.acidspace.nl/repository/espilce-periksa/develop/repository"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
@@ -43,6 +43,10 @@
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="org.yakindu.base.xtext.utils.jface.feature.group" version="0.0.0"/>
       <repository location="https://updates.yakindu.org/statecharts/releases/3.5.13"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="com.altran.general.emf.ecoredoc.ui.feature.feature.group" version="0.0.0"/>
+      <repository id="ecoredoc-p2" location="https://nexus.acidspace.nl/repository/mde_assets-ecore_doc-raw/develop/repository"/>
     </location>
   </locations>
 </target>
