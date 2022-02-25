@@ -20,11 +20,11 @@ import org.espilce.polvi.emf.generator.fsa.URIBasedFileSystemAccess;
 @SuppressWarnings("all")
 public class CodeGenerator {
   public void generate(final URI modelURI) {
-    final URIBasedFileSystemAccess fsa = new URIBasedFileSystemAccess();
     final Statemachine model = this.loadModelInstance(modelURI);
-    final CharSequence contents = this.toJavaCode(model);
     final URI uri = model.eResource().getURI();
+    final URIBasedFileSystemAccess fsa = new URIBasedFileSystemAccess();
     fsa.setOutputPath(uri.trimSegments(1).toPlatformString(true));
+    final CharSequence contents = this.toJavaCode(model);
     String _className = this.className(model.eResource());
     String _plus = (_className + ".java");
     fsa.generateFile(_plus, contents);

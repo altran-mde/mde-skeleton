@@ -58,7 +58,26 @@ For more information on using Espilce Periksa, please read the https://ec-mde.pa
 
 === Espilce Polvi
 
-WARNING: TODO
+To start using Espilce Polvi, first it should be added to the the target platform, see the code snippet below.
+
+NOTE: When using Maven, don't forget to configure credentials for this repository as described in <<maven-repository-mirrors>>, also see link:{giturl}/settings.xml[settings.xml^]
+
+.Adding Espilce Polvi to the link:{giturl}/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd[target-platform.tpd^]
+[source,tpd]
+----
+include::{gitdir}/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd[tags=doc-espilce-polvi]
+----
+
+.Writing a code generator in link:{giturl}/plugins/com.altran.ec.mde.skeleton.espilce.polvi/src/com/altran/ec/mde/skeleton/espilce/polvi/CodeGenerator.xtend[CodeGenerator.xtend^] using Espilce Polvi
+[source,java]
+----
+include::{gitdir}/plugins/com.altran.ec.mde.skeleton.espilce.polvi/src/com/altran/ec/mde/skeleton/espilce/polvi/CodeGenerator.xtend[tag=doc-espilce-polvi]
+----
+
+<1> `URIBasedFileSystemAccess` is used because an EMF URI is used as input in this case. 
+Esplice Polvi also provides `JavaIoFileSystemAccess` for Java files and `InMemoryFileSystemAccess` for  in-memory files.
+<2> The contents of the file are generated in the `toJavaCode` method.
+<3> The file is generated here using `URIBasedFileSystemAccess` from Espilce Polvi.
 
 === Xtext/Sirius Integration
 

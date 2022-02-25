@@ -10,14 +10,17 @@ import org.espilce.polvi.emf.generator.fsa.URIBasedFileSystemAccess
 
 class CodeGenerator {
 
+    // tag::doc-espilce-polvi[]
     def void generate(URI modelURI) {
-        val fsa = new URIBasedFileSystemAccess();
         val model = modelURI.loadModelInstance
-        val contents = model.toJavaCode
         val uri = model.eResource.URI
+        val fsa = new URIBasedFileSystemAccess() // <1>
         fsa.outputPath = uri.trimSegments(1).toPlatformString(true)
-        fsa.generateFile(model.eResource.className+".java", contents)
+
+        val contents = model.toJavaCode // <2>
+        fsa.generateFile(model.eResource.className+".java", contents) // <3>
     }
+    //end::doc-espilce-polvi[]
     
     def Statemachine loadModelInstance(URI modelUri) {
         val resourceSet = new ResourceSetImpl()
