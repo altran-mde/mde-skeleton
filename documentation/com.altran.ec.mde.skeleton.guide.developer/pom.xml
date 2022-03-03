@@ -40,7 +40,9 @@
               <resolve>true</resolve>
               <config> <!--2-->
                 <renderDefaults>false</renderDefaults>
-                <repeatInherited>false</repeatInherited>
+                <renderDiagrams>true</renderDiagrams>
+                <diagramsOutputPath>images</diagramsOutputPath>
+                <diagramsOutputFormat>png</diagramsOutputFormat>
               </config>
               <inputFiles>
                 <inputFile>../../plugins/org.eclipse.xtext.example.fowlerdsl/model/generated/Statemachine.ecore</inputFile>
