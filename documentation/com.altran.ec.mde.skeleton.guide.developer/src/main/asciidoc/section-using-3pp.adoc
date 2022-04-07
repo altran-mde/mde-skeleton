@@ -66,7 +66,7 @@ Some reasons to use a mirror are:
 TIP: For more detailed information on using mirrors for repositories in Maven, see https://maven.apache.org/guides/mini/guide-mirror-settings.html
 
 <<source-settings-xml-mirrors>> shows how to configure Maven to use ACIDSpace repository proxies instead of the public repositories.
-In this example both the https://repo1.maven.org/maven2/[Maven central] as the https://download.eclipse.org/releases/2020-03/202003181000[Eclipse 2020-03 P2] repositories are rerouted to the ACIDSpace repository proxies.
+In this example both the https://repo1.maven.org/maven2/[Maven central] as the https://download.eclipse.org/releases/2020-06/202006171000[Eclipse 2020-06 P2] repositories are rerouted to the ACIDSpace repository proxies.
 
 [[source-settings-xml-mirrors]]
 .Defining mirrors in link:{giturl}/settings.xml[settings.xml^]
