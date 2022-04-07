@@ -38,7 +38,7 @@
     <requirement
         name="org.eclipse.oomph.setup.workingsets.feature.group"/>
     <repository
-        url="https://nexus.acidspace.nl/repository/eclipse.org-releases-2020-03-202003181000/"/>
+        url="https://nexus.acidspace.nl/repository/eclipse.org-releases-2020-06-202006171000"/>
   </setupTask>
   <setupTask
       xsi:type="setup.p2:P2Task"
@@ -562,11 +562,11 @@
       <setupTask
           xsi:type="setup:VariableTask"
           name="project.target.platform"
-          defaultValue="2020-03"
+          defaultValue="2020-06"
           label="${scope.project.label} Target Platform">
         <choice
-            value="2020-03"
-            label="Eclipse 2020-03"/>
+            value="2020-06"
+            label="Eclipse 2020-06"/>
       </setupTask>
       <setupTask
           xsi:type="setup.targlets:TargletTask">
@@ -622,9 +622,9 @@
               rootFolder="${git.clone.location}"
               locateNestedProjects="true"/>
           <repositoryList
-              name="2020-03">
+              name="2020-06">
             <repository
-                url="https://download.eclipse.org/releases/2020-03/202003181000/"/>
+                url="https://download.eclipse.org/releases/2020-06/202006171000"/>
             <repository
                 url="http://download.itemis.com/updates/releases/2.1.1/"/>
             <repository

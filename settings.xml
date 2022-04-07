@@ -15,8 +15,8 @@
 
     <!-- P2 target platform mirrors -->
     <mirror>
-      <url>https://nexus.acidspace.nl/repository/eclipse.org-releases-2020-03-202003181000</url>
-      <mirrorOf>https://download.eclipse.org/releases/2020-03/202003181000</mirrorOf> <!--2-->
+      <url>https://nexus.acidspace.nl/repository/eclipse.org-releases-2020-06-202006171000</url>
+      <mirrorOf>https://download.eclipse.org/releases/2020-06/202006171000</mirrorOf> <!--2-->
       <mirrorOfLayouts>p2</mirrorOfLayouts>
       <layout>p2</layout>
     </mirror>
