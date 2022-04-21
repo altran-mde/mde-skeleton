@@ -1,15 +1,22 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: MDE Skeleton - Espilce Polvi Example
+Bundle-Name: Polvi
 Bundle-SymbolicName: com.altran.ec.mde.skeleton.espilce.polvi;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: Capgemini Engineering
-Automatic-Module-Name: com.altran.ec.mde.skeleton.espilce.polvi
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: org.eclipse.xtext.xbase.lib,
- org.eclipse.xtext.example.fowlerdsl,
+Require-Bundle: javax.inject,
+ org.eclipse.osgi,
+ org.eclipse.jface,
+ org.eclipse.e4.ui.services,
+ org.eclipse.e4.core.di.annotations,
+ org.eclipse.e4.core.di,
  org.eclipse.core.runtime,
- org.apache.commons.io,
  org.eclipse.core.resources,
- org.eclipse.ui,
- org.espilce.polvi.emf.generator
+ org.eclipse.xtext.example.fowlerdsl,
+ org.espilce.commons.emf,
+ org.espilce.polvi.emf.generator,
+ org.eclipse.ui.workbench
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Import-Package: javax.annotation;version="1.2.0",
+ javax.inject;version="1.0.0"
+Automatic-Module-Name: com.altran.ec.mde.skeleton.espilce.polvi

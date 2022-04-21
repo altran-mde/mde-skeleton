@@ -49,6 +49,8 @@ location "https://nexus.acidspace.nl/repository/espilce-periksa/develop/reposito
 // tag::doc-espilce-polvi[]
 location "https://nexus.acidspace.nl/repository/espilce-polvi/develop/repository" espilce-polvi-p2 {
     org.espilce.polvi.emf.generator.feature.feature.group lazy
+    org.espilce.polvi.emf.generator.xtext.feature.feature.group lazy
+    org.espilce.polvi.xtext.generator lazy
 }
 // end::doc-espilce-polvi[]
 
