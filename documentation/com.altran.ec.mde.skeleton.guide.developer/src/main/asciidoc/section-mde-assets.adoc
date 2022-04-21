@@ -108,21 +108,22 @@ NOTE: When using Maven, don't forget to configure credentials for this repositor
 include::{gitdir}/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd[tags=doc-espilce-polvi]
 ----
 
-The example below shows how to use Espilce Polvi to implement a Java code generator.
+The example below shows how to use Espilce Polvi to invoke a Java code generator.
 
-.Writing a code generator in link:{giturl}/plugins/com.altran.ec.mde.skeleton.espilce.polvi/src/com/altran/ec/mde/skeleton/espilce/polvi/CodeGenerator.xtend[CodeGenerator.xtend^] using Espilce Polvi
+.Invoking an Espilce Polvi based code generator in link:{giturl}/plugins/com.altran.ec.mde.skeleton.espilce.polvi/src/com/altran/ec/mde/skeleton/espilce/polvi/handlers/GenerateCodeHandler.java[GenerateCodeHandler.java^]
 [source,java]
 ----
-include::{gitdir}/plugins/com.altran.ec.mde.skeleton.espilce.polvi/src/com/altran/ec/mde/skeleton/espilce/polvi/CodeGenerator.xtend[tag=doc-espilce-polvi]
+include::{gitdir}/plugins/com.altran.ec.mde.skeleton.espilce.polvi/src/com/altran/ec/mde/skeleton/espilce/polvi/handlers/GenerateCodeHandler.java[tag=doc-espilce-polvi]
 ----
 
 <1> `URIBasedFileSystemAccess` is used because an EMF URI is used as input in this case. 
-Esplice Polvi also provides `JavaIoFileSystemAccess` for Java files and `InMemoryFileSystemAccess` for  in-memory files.
-<2> The contents of the file are generated in the `toJavaCode` method.
-<3> The file is generated using the `URIBasedFileSystemAccess` instance that is created in step 1.
+Esplice Polvi also provides `JavaIoFileSystemAccess` for `java.io.File` input and `InMemoryFileSystemAccess` for in-memory output.
+<2> Specifies the output location were generated files are saved.
+<3> The contents of the file are generated in the {giturl}/plugins//org.eclipse.xtext.example.fowlerdsl/src/org/eclipse/xtext/example/fowlerdsl/generator/StatemachinePolviGenerator.xtend#L30[StatemachinePolviGenerator#toJavaCode(Statemachine)] method. +
++
+TIP: For more information on how to implement model-to-text generators with Xtend, please read the https://gitlab.acidspace.nl/ec-mde/xtend-based-generators/-/blob/master/xtend-based-generators/doc/xtend-based-generators.adoc[Xtend-based Model-to-Text Generators Guide].
+<4> The file is generated using the `URIBasedFileSystemAccess` instance that is created in step 1.
 
-For more information on how to implement model-to-text generators with Xtend, please read the 
-https://gitlab.acidspace.nl/ec-mde/xtend-based-generators/-/blob/master/xtend-based-generators/doc/xtend-based-generators.adoc[Xtend-based Model-to-Text Generators Guide].
 
 === Xtext/Sirius Integration
 

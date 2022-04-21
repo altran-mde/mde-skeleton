@@ -1,4 +1,3 @@
-
 package com.altran.ec.mde.skeleton.espilce.polvi.handlers;
 
 import javax.inject.Named;
@@ -45,13 +44,12 @@ public class GenerateCodeHandler {
 	@Execute
 	public void execute(@Named(IServiceConstants.ACTIVE_SELECTION) IStructuredSelection selection) {
 		final IFile inputIFile = (IFile) selection.getFirstElement();
-		final IFolder outputFolder = inputIFile.getProject().getFolder("src-gen");
 
 		final WorkspaceJob codeGenerationJob = new WorkspaceJob("Statemachine Code Generator") {
 			@Override
 			public IStatus runInWorkspace(IProgressMonitor monitor) throws CoreException {
 				try {
-					generateCode(inputIFile, outputFolder, monitor);
+					generateCode(inputIFile, monitor);
 				} catch (CoreException e) {
 					PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
 						public void run() {
@@ -68,44 +66,47 @@ public class GenerateCodeHandler {
 		codeGenerationJob.schedule();
 	}
 
-	private static void generateCode(IFile inputIFile, IFolder outputFolder, IProgressMonitor monitor) throws CoreException {
+//tag::doc-espilce-polvi[]
+	private static void generateCode(IFile inputIFile, IProgressMonitor monitor) throws CoreException {
 		SubMonitor subMonitor = SubMonitor.convert(monitor, "Starting code generation...", 101);
 		
-		// We'll do this URI based for now
-		URI modelURI = URI.createPlatformResourceURI(inputIFile.getFullPath().toString(), true);
-		
-		URIBasedFileSystemAccess fsa = new URIBasedFileSystemAccess();
-		fsa.setOutputPath(outputFolder.getFullPath().toString());
-		
+		// Load input
 		ResourceSet resourceSet = new ResourceSetImpl();
-		Resource modelResource = resourceSet.getResource(modelURI, true);
-	
-		StatemachinePolviGenerator generator = new StatemachinePolviGenerator();
-		generator.doGenerate(modelResource, fsa, new ProgressGeneratorContext(subMonitor.split(100)));
+		URI inputlURI = URI.createPlatformResourceURI(inputIFile.getFullPath().toString(), true);
+		Resource inputResource = resourceSet.getResource(inputlURI, true);
 
+		// Configure Polvi
+		URIBasedFileSystemAccess fsa = new URIBasedFileSystemAccess(); //<1>
+		IFolder outputFolder = inputIFile.getProject().getFolder("src-gen");
+		fsa.setOutputPath(outputFolder.getFullPath().toString()); //<2>
+
+		// Generate output
+		StatemachinePolviGenerator generator = new StatemachinePolviGenerator(); //<3>
+		generator.doGenerate(inputResource, fsa, new ProgressGeneratorContext(subMonitor.split(100))); // <4>
 		outputFolder.refreshLocal(IResource.DEPTH_INFINITE, subMonitor.split(1));
 	}
-	
+//end::doc-espilce-polvi[]
+
 	/**
-	 * TODO: Should this class be part of Espilce Polvi?
-	 * NOTE: Investigate if this needs to be spilt up in multiple classes.
+	 * TODO: Should this class be part of Espilce Polvi? NOTE: Investigate if this
+	 * needs to be spilt up in multiple classes.
 	 */
 	public static final class ProgressGeneratorContext implements IGeneratorContext, CancelIndicator {
 		private final IProgressMonitor monitor;
-		
+
 		public ProgressGeneratorContext(IProgressMonitor monitor) {
 			this.monitor = monitor;
 		}
-		
+
 		@Override
 		public @NonNull CancelIndicator getCancelIndicator() {
 			return this;
 		}
-		
+
 		public IProgressMonitor getMonitor() {
 			return monitor;
 		}
-		
+
 		@Override
 		public boolean isCanceled() {
 			return monitor.isCanceled();
