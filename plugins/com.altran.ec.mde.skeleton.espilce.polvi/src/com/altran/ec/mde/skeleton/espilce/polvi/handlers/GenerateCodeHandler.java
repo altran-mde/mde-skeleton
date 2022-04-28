@@ -20,15 +20,14 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.xtext.example.fowlerdsl.generator.StatemachinePolviGenerator;
+import org.espilce.polvi.emf.generator.context.ProgressMonitorAdapter;
 import org.espilce.polvi.emf.generator.fsa.URIBasedFileSystemAccess;
-import org.espilce.polvi.generator.api.context.CancelIndicator;
-import org.espilce.polvi.generator.api.context.IGeneratorContext;
+import org.espilce.polvi.generator.context.GeneratorContext;
 
 public class GenerateCodeHandler {
 	@Evaluate
@@ -79,37 +78,14 @@ public class GenerateCodeHandler {
 		URIBasedFileSystemAccess fsa = new URIBasedFileSystemAccess(); //<1>
 		IFolder outputFolder = inputIFile.getProject().getFolder("src-gen");
 		fsa.setOutputPath(outputFolder.getFullPath().toString()); //<2>
-
+		GeneratorContext ctx = new GeneratorContext(new ProgressMonitorAdapter(subMonitor.split(100)));
+				
 		// Generate output
 		StatemachinePolviGenerator generator = new StatemachinePolviGenerator(); //<3>
-		generator.doGenerate(inputResource, fsa, new ProgressGeneratorContext(subMonitor.split(100))); // <4>
+		generator.doGenerate(inputResource, fsa, ctx); //<4>
+		
+		// Refresh the output folder to detect the generated files
 		outputFolder.refreshLocal(IResource.DEPTH_INFINITE, subMonitor.split(1));
 	}
 //end::doc-espilce-polvi[]
-
-	/**
-	 * TODO: Should this class be part of Espilce Polvi? NOTE: Investigate if this
-	 * needs to be spilt up in multiple classes.
-	 */
-	public static final class ProgressGeneratorContext implements IGeneratorContext, CancelIndicator {
-		private final IProgressMonitor monitor;
-
-		public ProgressGeneratorContext(IProgressMonitor monitor) {
-			this.monitor = monitor;
-		}
-
-		@Override
-		public @NonNull CancelIndicator getCancelIndicator() {
-			return this;
-		}
-
-		public IProgressMonitor getMonitor() {
-			return monitor;
-		}
-
-		@Override
-		public boolean isCanceled() {
-			return monitor.isCanceled();
-		}
-	}
 }

@@ -108,6 +108,32 @@ NOTE: When using Maven, don't forget to configure credentials for this repositor
 include::{gitdir}/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd[tags=doc-espilce-polvi]
 ----
 
+==== Creating an Espilce Polvi based model-to-text generator
+
+In our MDE skeleton, the Xtext state-machine example already includes a Java code generator that is implemented using the API of Xtext.
+We want to use Espilce Polvi though, as it will support integrations with other frameworks and include additional features in the future.
+The API of Espilce Polvi is based on the Xtext API and as such migrating an Xtext based generator to a Polvi based generator is trivial:
+
+. Espilce Polvi comes with an Xtext generator fragment that eases the integration.
+  To use this generator fragment, first a dependency on `org.espilce.polvi.xtext.generator` needs to be added to the `additional.bundles` in `build.properties` +
++
+.Adding an Xtext generator fragment dependency in link:{giturl}/plugins/org.eclipse.xtext.example.fowlerdsl/build.properties[build.properties^]
+[source,properties]
+----
+include::{gitdir}/plugins/org.eclipse.xtext.example.fowlerdsl/build.properties[tag=doc-espilce-polvi]
+----
+. Now the mwe2 workflow can be modified to generate a Polvi based generator skeleton, just change the type of the `generator` to `org.espilce.polvi.xtext.generator.PolviGeneratorFragment` +
++
+.Generating an Espilce Polvi generator skeleton in link:{giturl}/plugins/org.eclipse.xtext.example.fowlerdsl/src/org/eclipse/xtext/example/fowlerdsl/GenerateStatemachine.mwe2[GenerateStatemachine.mwe2^]
+[source,mwe2]
+----
+include::{gitdir}/plugins/org.eclipse.xtext.example.fowlerdsl/src/org/eclipse/xtext/example/fowlerdsl/GenerateStatemachine.mwe2[tag=doc-espilce-polvi]
+----
+. After running the mwe2 workflow a new code generator skeleton is generated, see link:{giturl}/plugins/org.eclipse.xtext.example.fowlerdsl/src/org/eclipse/xtext/example/fowlerdsl/generator/StatemachinePolviGenerator.xtend[StatemachinePolviGenerator.xtend^].
+  By default some commented code is generated, but in our class we only needed to copy the contents of the original Xtext example based code generator and added some imports to the meta-model classes.
+
+==== Invoking an Espilce Polvi based model-to-text generator
+
 The example below shows how to use Espilce Polvi to invoke a Java code generator.
 
 .Invoking an Espilce Polvi based code generator in link:{giturl}/plugins/com.altran.ec.mde.skeleton.espilce.polvi/src/com/altran/ec/mde/skeleton/espilce/polvi/handlers/GenerateCodeHandler.java[GenerateCodeHandler.java^]
@@ -119,11 +145,10 @@ include::{gitdir}/plugins/com.altran.ec.mde.skeleton.espilce.polvi/src/com/altra
 <1> `URIBasedFileSystemAccess` is used because an EMF URI is used as input in this case. 
 Esplice Polvi also provides `JavaIoFileSystemAccess` for `java.io.File` input and `InMemoryFileSystemAccess` for in-memory output.
 <2> Specifies the output location were generated files are saved.
-<3> The contents of the file are generated in the {giturl}/plugins//org.eclipse.xtext.example.fowlerdsl/src/org/eclipse/xtext/example/fowlerdsl/generator/StatemachinePolviGenerator.xtend#L30[StatemachinePolviGenerator#toJavaCode(Statemachine)] method. +
+<3> The contents of the file are generated in the link:{giturl}/plugins//org.eclipse.xtext.example.fowlerdsl/src/org/eclipse/xtext/example/fowlerdsl/generator/StatemachinePolviGenerator.xtend#L30[StatemachinePolviGenerator#toJavaCode(Statemachine)] method. +
 +
 TIP: For more information on how to implement model-to-text generators with Xtend, please read the https://gitlab.acidspace.nl/ec-mde/xtend-based-generators/-/blob/master/xtend-based-generators/doc/xtend-based-generators.adoc[Xtend-based Model-to-Text Generators Guide].
 <4> The file is generated using the `URIBasedFileSystemAccess` instance that is created in step 1.
-
 
 === Xtext/Sirius Integration
 

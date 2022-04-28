@@ -41,3 +41,6 @@ pom.tycho
 
 # Git merge files
 *.orig
+
+# Xtext temporary files
+*.xml_gen
