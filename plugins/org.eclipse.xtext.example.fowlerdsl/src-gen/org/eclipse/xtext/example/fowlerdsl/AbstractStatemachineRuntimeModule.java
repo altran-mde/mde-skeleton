@@ -10,7 +10,7 @@ import java.util.Properties;
 import org.eclipse.xtext.Constants;
 import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.example.fowlerdsl.formatting2.StatemachineFormatter;
-import org.eclipse.xtext.example.fowlerdsl.generator.StatemachineGenerator;
+import org.eclipse.xtext.example.fowlerdsl.generator.StatemachinePolviDelegateGenerator;
 import org.eclipse.xtext.example.fowlerdsl.parser.antlr.StatemachineAntlrTokenFileProvider;
 import org.eclipse.xtext.example.fowlerdsl.parser.antlr.StatemachineParser;
 import org.eclipse.xtext.example.fowlerdsl.parser.antlr.internal.InternalStatemachineLexer;
@@ -193,7 +193,7 @@ public abstract class AbstractStatemachineRuntimeModule extends DefaultRuntimeMo
 	
 	// contributed by org.eclipse.xtext.xtext.generator.generator.GeneratorFragment2
 	public Class<? extends IGenerator2> bindIGenerator2() {
-		return StatemachineGenerator.class;
+		return StatemachinePolviDelegateGenerator.class;
 	}
 	
 	// contributed by org.eclipse.xtext.xtext.generator.formatting.Formatter2Fragment2

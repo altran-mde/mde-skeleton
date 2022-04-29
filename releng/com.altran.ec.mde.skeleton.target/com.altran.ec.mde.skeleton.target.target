@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="CBI Target Platform" sequenceNumber="1649330410">
+<target name="CBI Target Platform" sequenceNumber="1649935519">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="org.eclipse.sdk.feature.group" version="0.0.0"/>
@@ -25,11 +25,18 @@
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="org.espilce.commons.emf.registry.feature.feature.group" version="0.0.0"/>
+      <unit id="org.espilce.commons.resource.feature.feature.group" version="0.0.0"/>
       <repository id="espilce-commons-p2" location="https://nexus.acidspace.nl/repository/espilce-commons/develop/repository"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="org.espilce.periksa.sdk.feature.group" version="0.0.0"/>
       <repository id="espilce-periksa-p2" location="https://nexus.acidspace.nl/repository/espilce-periksa/develop/repository"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="org.espilce.polvi.emf.generator.feature.feature.group" version="0.0.0"/>
+      <unit id="org.espilce.polvi.emf.generator.xtext.feature.feature.group" version="0.0.0"/>
+      <unit id="org.espilce.polvi.xtext.generator" version="0.0.0"/>
+      <repository id="espilce-polvi-p2" location="https://nexus.acidspace.nl/repository/espilce-polvi/develop/repository"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="com.altran.general.integration.xtextsirius.runtime.feature.feature.group" version="0.0.0"/>

@@ -36,6 +36,7 @@ location "https://download.eclipse.org/e4/snapshots/org.eclipse.e4.tools/latest"
 
 location "https://nexus.acidspace.nl/repository/espilce-commons/develop/repository" espilce-commons-p2 { //<2>
     org.espilce.commons.emf.registry.feature.feature.group lazy
+    org.espilce.commons.resource.feature.feature.group lazy
 }
 // end::doc-target-platform[]
 
@@ -44,6 +45,17 @@ location "https://nexus.acidspace.nl/repository/espilce-periksa/develop/reposito
     org.espilce.periksa.sdk.feature.group lazy
 }
 // end::doc-espilce-periksa[]
+
+// tag::doc-espilce-polvi[]
+location "https://nexus.acidspace.nl/repository/espilce-polvi/develop/repository" espilce-polvi-p2 {
+    // Runtime EMF integration
+    org.espilce.polvi.emf.generator.feature.feature.group lazy
+    // Runtime Xtext integration
+    org.espilce.polvi.emf.generator.xtext.feature.feature.group lazy
+    // MWE2 workflow generator fragment
+    org.espilce.polvi.xtext.generator lazy
+}
+// end::doc-espilce-polvi[]
 
 // tag::doc-xtext-sirius-integration[]
 location "https://nexus.acidspace.nl/repository/xtext-sirius-integration/develop/repository" xtext-sirius-integration-p2 {
