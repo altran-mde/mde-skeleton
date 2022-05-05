@@ -19,7 +19,7 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="gitlab.acidspace.nl.project"
-      value="mde-assets/mde-skeleton"/>
+      value="ec-mde/mde-skeleton"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="oomph.setup.file.path"
@@ -411,14 +411,14 @@
     </setupTask>
     <setupTask
         xsi:type="setup:EclipseIniTask"
-        option="-Doomph.redirection.gitlab.acidspace.nl.master"
+        option="-Doomph.redirection.gitlab.acidspace.nl.branch.master"
         value="=https://gitlab.acidspace.nl/${gitlab.acidspace.nl.project}/-/raw/master/${oomph.setup.file.path}->${git.clone.location|uri}/${oomph.setup.file.path}"
         vm="true">
       <description>Set an Oomph redirection system property to redirect the logical location of this setup to its physical location in the Git clone.</description>
     </setupTask>
     <setupTask
         xsi:type="setup:EclipseIniTask"
-        option="-Doomph.redirection.gitlab.acidspace.nl.develop"
+        option="-Doomph.redirection.gitlab.acidspace.nl.branch.develop"
         value="=https://gitlab.acidspace.nl/${gitlab.acidspace.nl.project}/-/raw/develop/${oomph.setup.file.path}->${git.clone.location|uri}/${oomph.setup.file.path}"
         vm="true">
       <description>Set an Oomph redirection system property to redirect the logical location of this setup to its physical location in the Git clone.</description>
