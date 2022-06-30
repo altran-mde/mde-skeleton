@@ -29,17 +29,15 @@ class StatemachineContentAssistTest extends AbstractContentAssistTest {
 		'''
 			«c»
 		'''.testContentAssistant(#[
-			'commands',
-			'events',
-			'resetEvents',
-			'state'
-		], 'resetEvents', '''
-			resetEvents
+            'statemachine'
+		], 'statemachine', '''
+			statemachine
 		''')
 	}
 
 	@Test def statemachine_resetEvents() {
 		'''
+			statemachine sm1
 			events
 				doorClosed   D1CL
 				drawerOpened D2OP
@@ -58,6 +56,7 @@ class StatemachineContentAssistTest extends AbstractContentAssistTest {
 			'doorOpened',
 			'panelClosed'
 		], 'doorOpened', '''
+			statemachine sm1
 			events
 				doorClosed   D1CL
 				drawerOpened D2OP
@@ -74,6 +73,7 @@ class StatemachineContentAssistTest extends AbstractContentAssistTest {
 
 	@Test def state_actions() {
 		'''
+			statemachine sm1
 			commands
 				unlockPanel PNUL
 				lockPanel   NLK
@@ -91,6 +91,7 @@ class StatemachineContentAssistTest extends AbstractContentAssistTest {
 			'unlockDoor',
 			'{'
 		], 'unlockDoor', '''
+			statemachine sm1
 			commands
 				unlockPanel PNUL
 				lockPanel   NLK
@@ -106,6 +107,7 @@ class StatemachineContentAssistTest extends AbstractContentAssistTest {
 
 	@Test def transition_event() {
 		'''
+			statemachine sm1
 			events
 				doorClosed   D1CL
 				drawerOpened D2OP
@@ -138,6 +140,7 @@ class StatemachineContentAssistTest extends AbstractContentAssistTest {
 			'panelClosed',
 			'end'
 		], 'doorClosed', '''
+			statemachine sm1
 			events
 				doorClosed   D1CL
 				drawerOpened D2OP
@@ -166,6 +169,7 @@ class StatemachineContentAssistTest extends AbstractContentAssistTest {
 
 	@Test def transition_state() {
 		'''
+			statemachine sm1
 			events
 				doorClosed   D1CL
 				drawerOpened D2OP
@@ -214,6 +218,7 @@ class StatemachineContentAssistTest extends AbstractContentAssistTest {
 			'waitingForDrawer',
 			'unlockedPanel'
 		], 'idle', '''
+			statemachine sm1
 			events
 				doorClosed   D1CL
 				drawerOpened D2OP
@@ -260,6 +265,7 @@ class StatemachineContentAssistTest extends AbstractContentAssistTest {
 
 	@Test def transition_template() {
 		'''
+			statemachine sm1
 			events
 				doorClosed   D1CL
 				drawerOpened D2OP
@@ -284,6 +290,7 @@ class StatemachineContentAssistTest extends AbstractContentAssistTest {
 			'end',
 			'Transition - Template for a Transition'
 		], 'Transition - Template for a Transition', '''
+			statemachine sm1
 			events
 				doorClosed   D1CL
 				drawerOpened D2OP

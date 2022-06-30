@@ -55,6 +55,8 @@
         name="com.altran.general.integration.xtextsirius.design.feature.feature.group"/>
     <requirement
         name="com.altran.general.emf.ecoredoc.ui.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.rcptt.platform.feature.group"/>
     <repository
         url="https://nexus.acidspace.nl/repository/espilce-commons/develop/repository"/>
     <repository
@@ -103,17 +105,8 @@
             xsi:type="predicates:RepositoryPredicate"
             project="com.altran.ec.mde.skeleton.root"/>
         <operand
-            xsi:type="predicates:NaturePredicate"
-            nature="org.eclipse.pde.PluginNature"/>
-        <operand
-            xsi:type="predicates:OrPredicate">
-          <operand
-              xsi:type="predicates:NamePredicate"
-              pattern=".*\.test[s]?$"/>
-          <operand
-              xsi:type="predicates:NamePredicate"
-              pattern=".*\.test[s]?\..*"/>
-        </operand>
+            xsi:type="predicates:NamePredicate"
+            pattern="^(.+\.)?test[s]?(\..+)?$"/>
       </predicate>
     </workingSet>
     <workingSet

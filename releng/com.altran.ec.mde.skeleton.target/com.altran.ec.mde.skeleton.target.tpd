@@ -71,3 +71,9 @@ location "https://updates.yakindu.org/statecharts/releases/3.5.13" {
 location "https://nexus.acidspace.nl/repository/mde_assets-ecore_doc-raw/develop/repository" ecoredoc-p2 {
     com.altran.general.emf.ecoredoc.ui.feature.feature.group lazy
 }
+
+// tag::doc-xtext-move-refactoring[]
+location "https://nexus.acidspace.nl/repository/mde_assets-xtext_move_refactoring-raw/develop/repository" xtext-move-refactoring-p2 {
+    com.altran.general.xtext.refactoring.move.feature.feature.group lazy
+}
+// end::doc-xtext-move-refactoring[]

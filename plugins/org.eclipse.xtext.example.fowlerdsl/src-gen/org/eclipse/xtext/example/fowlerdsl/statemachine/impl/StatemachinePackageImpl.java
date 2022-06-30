@@ -141,9 +141,9 @@ public class StatemachinePackageImpl extends EPackageImpl implements Statemachin
    * @generated
    */
   @Override
-  public EReference getStatemachine_Events()
+  public EAttribute getStatemachine_Name()
   {
-    return (EReference)statemachineEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)statemachineEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -152,7 +152,7 @@ public class StatemachinePackageImpl extends EPackageImpl implements Statemachin
    * @generated
    */
   @Override
-  public EReference getStatemachine_ResetEvents()
+  public EReference getStatemachine_Events()
   {
     return (EReference)statemachineEClass.getEStructuralFeatures().get(1);
   }
@@ -163,7 +163,7 @@ public class StatemachinePackageImpl extends EPackageImpl implements Statemachin
    * @generated
    */
   @Override
-  public EReference getStatemachine_Commands()
+  public EReference getStatemachine_ResetEvents()
   {
     return (EReference)statemachineEClass.getEStructuralFeatures().get(2);
   }
@@ -174,9 +174,20 @@ public class StatemachinePackageImpl extends EPackageImpl implements Statemachin
    * @generated
    */
   @Override
-  public EReference getStatemachine_States()
+  public EReference getStatemachine_Commands()
   {
     return (EReference)statemachineEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getStatemachine_States()
+  {
+    return (EReference)statemachineEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -354,6 +365,7 @@ public class StatemachinePackageImpl extends EPackageImpl implements Statemachin
 
     // Create classes and their features
     statemachineEClass = createEClass(STATEMACHINE);
+    createEAttribute(statemachineEClass, STATEMACHINE__NAME);
     createEReference(statemachineEClass, STATEMACHINE__EVENTS);
     createEReference(statemachineEClass, STATEMACHINE__RESET_EVENTS);
     createEReference(statemachineEClass, STATEMACHINE__COMMANDS);
@@ -409,6 +421,7 @@ public class StatemachinePackageImpl extends EPackageImpl implements Statemachin
 
     // Initialize classes and features; add operations and parameters
     initEClass(statemachineEClass, Statemachine.class, "Statemachine", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getStatemachine_Name(), ecorePackage.getEString(), "name", null, 0, 1, Statemachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getStatemachine_Events(), this.getEvent(), null, "events", null, 0, -1, Statemachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getStatemachine_ResetEvents(), this.getEvent(), null, "resetEvents", null, 0, -1, Statemachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getStatemachine_Commands(), this.getCommand(), null, "commands", null, 0, -1, Statemachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

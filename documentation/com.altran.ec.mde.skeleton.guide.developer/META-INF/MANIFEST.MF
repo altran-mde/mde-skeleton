@@ -5,4 +5,5 @@ Bundle-SymbolicName: com.altran.ec.mde.skeleton.guide.developer;singleton:=true
 Bundle-Version: 0.0.1.qualifier
 Bundle-Vendor: Capgemini Engineering
 Automatic-Module-Name: com.altran.ec.mde.skeleton.guide.developer
-Require-Bundle: org.eclipse.help
+Require-Bundle: org.eclipse.help,
+ org.eclipse.ui.intro.quicklinks

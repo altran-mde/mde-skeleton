@@ -3,6 +3,7 @@
 <settings xmlns="http://maven.apache.org/SETTINGS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0
                       http://maven.apache.org/xsd/settings-1.1.0.xsd">
+                      
   <!-- tag::doc-mirrors[] -->
   <mirrors>
     <!-- Maven mirrors -->
@@ -12,6 +13,16 @@
       <url>https://nexus.acidspace.nl/repository/mde-assets/</url>
       <mirrorOf>central</mirrorOf> <!--1-->
     </mirror>
+    <!-- end::doc-mirrors[] -->
+
+    <mirror>
+      <id>acidspace-rcptt-releases</id>
+      <name>ACIDSpace RCPTT Maven Repository</name>
+      <!-- TODO: Change url when available in ACIDSpace Nexus -->
+      <url>https://repo.eclipse.org/content/repositories/rcptt-releases/</url>
+      <mirrorOf>rcptt-releases</mirrorOf>
+    </mirror>
+    <!-- tag::doc-mirrors[] -->
 
     <!-- P2 target platform mirrors -->
     <mirror>
@@ -96,6 +107,15 @@
 
     <server>
       <id>ecoredoc-p2</id>
+      <configuration>
+        <timeout>10000</timeout>
+      </configuration>
+      <username>${env.TECHNICAL_USER}</username>
+      <password>${env.TECHNICAL_PASSWORD}</password>
+    </server>
+
+    <server>
+      <id>xtext-move-refactoring-p2</id>
       <configuration>
         <timeout>10000</timeout>
       </configuration>

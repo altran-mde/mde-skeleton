@@ -23,6 +23,7 @@ class StatemachineFoldingTest extends AbstractFoldingTest {
 
 	@Test def events() {
 		'''
+			statemachine sm1
 			[>events
 				doorClosed   D1CL
 				drawerOpened D2OP
@@ -35,6 +36,7 @@ class StatemachineFoldingTest extends AbstractFoldingTest {
 
 	@Test def resetEvents() {
 		'''
+			statemachine sm1
 			[>resetEvents
 				doorOpened
 				doorClosed
@@ -44,6 +46,7 @@ class StatemachineFoldingTest extends AbstractFoldingTest {
 
 	@Test def commands() {
 		'''
+			statemachine sm1
 			[>commands
 				unlockPanel PNUL
 				lockPanel   NLK
@@ -55,6 +58,7 @@ class StatemachineFoldingTest extends AbstractFoldingTest {
 
 	@Test def state001() {
 		'''
+			statemachine sm1
 			[>state idle
 			end<]
 		'''.testFoldingRegions
@@ -62,6 +66,7 @@ class StatemachineFoldingTest extends AbstractFoldingTest {
 
 	@Test def state002() {
 		'''
+			statemachine sm1
 			[>state idle
 				
 				
@@ -72,6 +77,7 @@ class StatemachineFoldingTest extends AbstractFoldingTest {
 
 	@Test def complex() {
 		'''
+			statemachine sm1
 			[>events
 				doorClosed   D1CL
 				drawerOpened D2OP

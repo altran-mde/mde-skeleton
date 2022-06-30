@@ -36,6 +36,10 @@ include::section-mde-assets.adoc[]
 
 <<<
 
+include::section-testing-rcp.adoc[]
+
+<<<
+
 [[fowlerdsl-ecoredoc]]
 [appendix]
 == Fowler Statemachine EcoreDoc

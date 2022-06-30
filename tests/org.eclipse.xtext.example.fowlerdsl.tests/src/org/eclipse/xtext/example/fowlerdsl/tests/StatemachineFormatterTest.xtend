@@ -27,9 +27,10 @@ class StatemachineFormatterTest {
 	@Test def events() {
 		assertFormatted[
 			toBeFormatted = '''
-				events doorClosed D1CL drawerOpened D2OP lightOn L1ON doorOpened D1OP panelClosed PNCL end
+				statemachine sm1 events doorClosed D1CL drawerOpened D2OP lightOn L1ON doorOpened D1OP panelClosed PNCL end
 			'''
 			expectation = '''
+				statemachine sm1
 				events
 					doorClosed   D1CL
 					drawerOpened D2OP
@@ -45,9 +46,10 @@ class StatemachineFormatterTest {
 		assertFormatted[
 			
 			toBeFormatted = '''
-				commands unlockPanel PNUL lockPanel NLK lockDoor D1LK unlockDoor D1UL end
+				statemachine sm1 commands unlockPanel PNUL lockPanel NLK lockDoor D1LK unlockDoor D1UL end
 			'''			
 			expectation = '''
+				statemachine sm1
 				commands
 					unlockPanel PNUL
 					lockPanel   NLK
@@ -61,10 +63,12 @@ class StatemachineFormatterTest {
 	@Test def states() {
 		assertFormatted[
 			toBeFormatted = '''
+				statemachine sm1
 				state idle end state active end state waitingForLight end
 				state waitingForDrawer end state unlockedPanel end
 			'''
 			expectation = '''
+				statemachine sm1
 				state idle
 				end
 				
@@ -86,10 +90,12 @@ class StatemachineFormatterTest {
 	@Test def resetEvent() {
 		assertFormatted[
 			toBeFormatted = '''
+				statemachine sm1
 				events doorClosed D1CL drawerOpened D2OP lightOn L1ON doorOpened D1OP panelClosed PNCL end
 				resetEvents doorOpened end
 			'''
 			expectation = '''
+				statemachine sm1
 				events
 					doorClosed   D1CL
 					drawerOpened D2OP
@@ -108,10 +114,12 @@ class StatemachineFormatterTest {
 	@Test def resetEvents() {
 		assertFormatted[
 			toBeFormatted = '''
+				statemachine sm1
 				events doorClosed D1CL drawerOpened D2OP lightOn L1ON doorOpened D1OP panelClosed PNCL end
 				resetEvents doorClosed doorOpened end
 			'''
 			expectation = '''
+				statemachine sm1
 				events
 					doorClosed   D1CL
 					drawerOpened D2OP
@@ -131,10 +139,12 @@ class StatemachineFormatterTest {
 	@Test def events_commands() {
 		assertFormatted[
 			toBeFormatted = '''
+				statemachine sm1
 				events doorClosed D1CL drawerOpened D2OP lightOn L1ON doorOpened D1OP panelClosed PNCL end
 				commands unlockPanel PNUL lockPanel NLK lockDoor D1LK unlockDoor D1UL end
 			'''
 			expectation = '''
+				statemachine sm1
 				events
 					doorClosed   D1CL
 					drawerOpened D2OP
@@ -156,10 +166,12 @@ class StatemachineFormatterTest {
 	@Test def events_state() {
 		assertFormatted[
 			toBeFormatted = '''
+				statemachine sm1
 				events doorClosed D1CL drawerOpened D2OP lightOn L1ON doorOpened D1OP panelClosed PNCL end
 				state idle end
 			'''
 			expectation = '''
+				statemachine sm1
 				events
 					doorClosed   D1CL
 					drawerOpened D2OP
@@ -177,11 +189,13 @@ class StatemachineFormatterTest {
 	@Test def events_resetEvents_commands() {
 		assertFormatted[
 			toBeFormatted = '''
+				statemachine sm1
 				events doorClosed D1CL drawerOpened D2OP lightOn L1ON doorOpened D1OP panelClosed PNCL end
 				resetEvents doorOpened end
 				commands unlockPanel PNUL lockPanel NLK lockDoor D1LK unlockDoor D1UL end
 			'''
 			expectation = '''
+				statemachine sm1
 				events
 					doorClosed   D1CL
 					drawerOpened D2OP
@@ -207,10 +221,12 @@ class StatemachineFormatterTest {
 	@Test def events_resetEvents_state() {
 		assertFormatted[
 			toBeFormatted = '''
+				statemachine sm1
 				events doorClosed D1CL drawerOpened D2OP lightOn L1ON doorOpened D1OP panelClosed PNCL end
 				resetEvents doorOpened end state idle doorClosed => active end
 			'''
 			expectation = '''
+				statemachine sm1
 				events
 					doorClosed   D1CL
 					drawerOpened D2OP
@@ -233,12 +249,14 @@ class StatemachineFormatterTest {
 	@Test def events_resetEvents_commands_state() {
 		assertFormatted[
 			toBeFormatted = '''
+				statemachine sm1
 				events doorClosed D1CL drawerOpened D2OP lightOn L1ON doorOpened D1OP panelClosed PNCL end
 				resetEvents doorOpened end
 				commands unlockPanel PNUL lockPanel NLK lockDoor D1LK unlockDoor D1UL end
 				state idle actions {unlockDoor lockPanel} doorClosed => active end
 			'''
 			expectation = '''
+				statemachine sm1
 				events
 					doorClosed   D1CL
 					drawerOpened D2OP
@@ -269,6 +287,7 @@ class StatemachineFormatterTest {
 	@Test def events_resetEvents_commands_states() {
 		assertFormatted[
 			toBeFormatted = '''
+				statemachine sm1
 				events doorClosed D1CL drawerOpened D2OP lightOn L1ON doorOpened D1OP panelClosed PNCL end
 				resetEvents doorOpened end
 				commands unlockPanel PNUL lockPanel NLK lockDoor D1LK unlockDoor D1UL end
@@ -279,6 +298,7 @@ class StatemachineFormatterTest {
 				state unlockedPanel actions {unlockPanel lockDoor} panelClosed => idle end
 			'''
 			expectation = '''
+				statemachine sm1
 				events
 					doorClosed   D1CL
 					drawerOpened D2OP

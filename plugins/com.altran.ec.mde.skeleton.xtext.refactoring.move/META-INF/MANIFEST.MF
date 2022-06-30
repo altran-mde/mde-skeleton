@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EMF Reference Project - Xtext Move Refactoring Example
+Bundle-SymbolicName: com.altran.ec.mde.skeleton.xtext.refactoring.move;singleton:=true
+Bundle-Version: 0.0.1.qualifier
+Bundle-Activator: com.altran.ec.mde.skeleton.xtext.refactoring.move.Activator
+Bundle-Vendor: Capgemini Engineering
+Require-Bundle: org.eclipse.ui,
+ com.altran.general.xtext.refactoring.move,
+ org.eclipse.emf.common,
+ org.eclipse.core.runtime,
+ org.eclipse.ltk.core.refactoring,
+ org.eclipse.ui.navigator,
+ com.google.inject,
+ org.eclipse.xtext.example.fowlerdsl.ui,
+ org.eclipse.emf.ecore,
+ org.eclipse.ui.ide
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: com.altran.ec.mde.skeleton.xtext.refactoring.move
+Bundle-ActivationPolicy: lazy

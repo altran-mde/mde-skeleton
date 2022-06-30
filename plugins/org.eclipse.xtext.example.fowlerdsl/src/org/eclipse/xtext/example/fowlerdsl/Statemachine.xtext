@@ -4,11 +4,12 @@ generate statemachine "http://www.eclipse.org/xtext/example/fowlerdsl/Statemachi
 
 Statemachine :
 	{Statemachine}
+	'statemachine' name=ID
 	('events'
 		events+=Event+
 	'end')?
 	('resetEvents'
-		resetEvents+=[Event]+
+		resetEvents+=[Event|FQN]+
 	'end')?
 	('commands'
 		commands+=Command+
@@ -26,11 +27,13 @@ Command:
 
 State:
 	'state' name=ID
-		('actions' '{' actions+=[Command]+ '}')?
+		('actions' '{' actions+=[Command|FQN]+ '}')?
 		transitions+=Transition*
 	'end'
 ;
 
 Transition:
-	event=[Event] '=>' state=[State]
+	event=[Event|FQN] '=>' state=[State|FQN]
 ;
+
+FQN: ID('.' ID)*;

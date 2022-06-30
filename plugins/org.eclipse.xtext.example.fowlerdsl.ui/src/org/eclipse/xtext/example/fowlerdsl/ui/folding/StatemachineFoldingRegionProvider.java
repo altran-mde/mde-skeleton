@@ -47,22 +47,22 @@ public class StatemachineFoldingRegionProvider extends DefaultFoldingRegionProvi
 
 	private void computeEventsFolding(XtextResource res, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor) {
 		computeFoldingRegionBetweenKeywords(res,
-				statemachineGrammarAccess.getStatemachineAccess().getEventsKeyword_1_0(),
-				statemachineGrammarAccess.getStatemachineAccess().getEndKeyword_1_2(), foldingRegionAcceptor);
+				statemachineGrammarAccess.getStatemachineAccess().getEventsKeyword_3_0(),
+				statemachineGrammarAccess.getStatemachineAccess().getEndKeyword_3_2(), foldingRegionAcceptor);
 	}
 
 	private void computeResetEventsFolding(XtextResource res,
 			IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor) {
 		computeFoldingRegionBetweenKeywords(res,
-				statemachineGrammarAccess.getStatemachineAccess().getResetEventsKeyword_2_0(),
-				statemachineGrammarAccess.getStatemachineAccess().getEndKeyword_2_2(), foldingRegionAcceptor);
+				statemachineGrammarAccess.getStatemachineAccess().getResetEventsKeyword_4_0(),
+				statemachineGrammarAccess.getStatemachineAccess().getEndKeyword_4_2(), foldingRegionAcceptor);
 	}
 
 	private void computeCommandsFolding(XtextResource res,
 			IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor) {
 		computeFoldingRegionBetweenKeywords(res,
-				statemachineGrammarAccess.getStatemachineAccess().getCommandsKeyword_3_0(),
-				statemachineGrammarAccess.getStatemachineAccess().getEndKeyword_3_2(), foldingRegionAcceptor);
+				statemachineGrammarAccess.getStatemachineAccess().getCommandsKeyword_5_0(),
+				statemachineGrammarAccess.getStatemachineAccess().getEndKeyword_5_2(), foldingRegionAcceptor);
 	}
 
 	private void computeFoldingRegionBetweenKeywords(XtextResource it, Keyword startKeyword, Keyword endKeyword,

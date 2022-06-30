@@ -83,17 +83,39 @@ ruleStatemachine returns [EObject current=null]
 					$current);
 			}
 		)
+		otherlv_1='statemachine'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getStatemachineAccess().getStatemachineKeyword_1());
+		}
 		(
-			otherlv_1='events'
+			(
+				lv_name_2_0=RULE_ID
+				{
+					newLeafNode(lv_name_2_0, grammarAccess.getStatemachineAccess().getNameIDTerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getStatemachineRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_2_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		(
+			otherlv_3='events'
 			{
-				newLeafNode(otherlv_1, grammarAccess.getStatemachineAccess().getEventsKeyword_1_0());
+				newLeafNode(otherlv_3, grammarAccess.getStatemachineAccess().getEventsKeyword_3_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getStatemachineAccess().getEventsEventParserRuleCall_1_1_0());
+						newCompositeNode(grammarAccess.getStatemachineAccess().getEventsEventParserRuleCall_3_1_0());
 					}
-					lv_events_2_0=ruleEvent
+					lv_events_4_0=ruleEvent
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getStatemachineRule());
@@ -101,21 +123,21 @@ ruleStatemachine returns [EObject current=null]
 						add(
 							$current,
 							"events",
-							lv_events_2_0,
+							lv_events_4_0,
 							"org.eclipse.xtext.example.fowlerdsl.Statemachine.Event");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)+
-			otherlv_3='end'
+			otherlv_5='end'
 			{
-				newLeafNode(otherlv_3, grammarAccess.getStatemachineAccess().getEndKeyword_1_2());
+				newLeafNode(otherlv_5, grammarAccess.getStatemachineAccess().getEndKeyword_3_2());
 			}
 		)?
 		(
-			otherlv_4='resetEvents'
+			otherlv_6='resetEvents'
 			{
-				newLeafNode(otherlv_4, grammarAccess.getStatemachineAccess().getResetEventsKeyword_2_0());
+				newLeafNode(otherlv_6, grammarAccess.getStatemachineAccess().getResetEventsKeyword_4_0());
 			}
 			(
 				(
@@ -124,28 +146,31 @@ ruleStatemachine returns [EObject current=null]
 							$current = createModelElement(grammarAccess.getStatemachineRule());
 						}
 					}
-					otherlv_5=RULE_ID
 					{
-						newLeafNode(otherlv_5, grammarAccess.getStatemachineAccess().getResetEventsEventCrossReference_2_1_0());
+						newCompositeNode(grammarAccess.getStatemachineAccess().getResetEventsEventCrossReference_4_1_0());
+					}
+					ruleFQN
+					{
+						afterParserOrEnumRuleCall();
 					}
 				)
 			)+
-			otherlv_6='end'
+			otherlv_8='end'
 			{
-				newLeafNode(otherlv_6, grammarAccess.getStatemachineAccess().getEndKeyword_2_2());
+				newLeafNode(otherlv_8, grammarAccess.getStatemachineAccess().getEndKeyword_4_2());
 			}
 		)?
 		(
-			otherlv_7='commands'
+			otherlv_9='commands'
 			{
-				newLeafNode(otherlv_7, grammarAccess.getStatemachineAccess().getCommandsKeyword_3_0());
+				newLeafNode(otherlv_9, grammarAccess.getStatemachineAccess().getCommandsKeyword_5_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getStatemachineAccess().getCommandsCommandParserRuleCall_3_1_0());
+						newCompositeNode(grammarAccess.getStatemachineAccess().getCommandsCommandParserRuleCall_5_1_0());
 					}
-					lv_commands_8_0=ruleCommand
+					lv_commands_10_0=ruleCommand
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getStatemachineRule());
@@ -153,23 +178,23 @@ ruleStatemachine returns [EObject current=null]
 						add(
 							$current,
 							"commands",
-							lv_commands_8_0,
+							lv_commands_10_0,
 							"org.eclipse.xtext.example.fowlerdsl.Statemachine.Command");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)+
-			otherlv_9='end'
+			otherlv_11='end'
 			{
-				newLeafNode(otherlv_9, grammarAccess.getStatemachineAccess().getEndKeyword_3_2());
+				newLeafNode(otherlv_11, grammarAccess.getStatemachineAccess().getEndKeyword_5_2());
 			}
 		)?
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getStatemachineAccess().getStatesStateParserRuleCall_4_0());
+					newCompositeNode(grammarAccess.getStatemachineAccess().getStatesStateParserRuleCall_6_0());
 				}
-				lv_states_10_0=ruleState
+				lv_states_12_0=ruleState
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getStatemachineRule());
@@ -177,7 +202,7 @@ ruleStatemachine returns [EObject current=null]
 					add(
 						$current,
 						"states",
-						lv_states_10_0,
+						lv_states_12_0,
 						"org.eclipse.xtext.example.fowlerdsl.Statemachine.State");
 					afterParserOrEnumRuleCall();
 				}
@@ -350,9 +375,12 @@ ruleState returns [EObject current=null]
 							$current = createModelElement(grammarAccess.getStateRule());
 						}
 					}
-					otherlv_4=RULE_ID
 					{
-						newLeafNode(otherlv_4, grammarAccess.getStateAccess().getActionsCommandCrossReference_2_2_0());
+						newCompositeNode(grammarAccess.getStateAccess().getActionsCommandCrossReference_2_2_0());
+					}
+					ruleFQN
+					{
+						afterParserOrEnumRuleCall();
 					}
 				)
 			)+
@@ -410,9 +438,12 @@ ruleTransition returns [EObject current=null]
 						$current = createModelElement(grammarAccess.getTransitionRule());
 					}
 				}
-				otherlv_0=RULE_ID
 				{
-					newLeafNode(otherlv_0, grammarAccess.getTransitionAccess().getEventEventCrossReference_0_0());
+					newCompositeNode(grammarAccess.getTransitionAccess().getEventEventCrossReference_0_0());
+				}
+				ruleFQN
+				{
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -427,12 +458,55 @@ ruleTransition returns [EObject current=null]
 						$current = createModelElement(grammarAccess.getTransitionRule());
 					}
 				}
-				otherlv_2=RULE_ID
 				{
-					newLeafNode(otherlv_2, grammarAccess.getTransitionAccess().getStateStateCrossReference_2_0());
+					newCompositeNode(grammarAccess.getTransitionAccess().getStateStateCrossReference_2_0());
+				}
+				ruleFQN
+				{
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
+	)
+;
+
+// Entry rule entryRuleFQN
+entryRuleFQN returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getFQNRule()); }
+	iv_ruleFQN=ruleFQN
+	{ $current=$iv_ruleFQN.current.getText(); }
+	EOF;
+
+// Rule FQN
+ruleFQN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		this_ID_0=RULE_ID
+		{
+			$current.merge(this_ID_0);
+		}
+		{
+			newLeafNode(this_ID_0, grammarAccess.getFQNAccess().getIDTerminalRuleCall_0());
+		}
+		(
+			kw='.'
+			{
+				$current.merge(kw);
+				newLeafNode(kw, grammarAccess.getFQNAccess().getFullStopKeyword_1_0());
+			}
+			this_ID_2=RULE_ID
+			{
+				$current.merge(this_ID_2);
+			}
+			{
+				newLeafNode(this_ID_2, grammarAccess.getFQNAccess().getIDTerminalRuleCall_1_1());
+			}
+		)*
 	)
 ;
 

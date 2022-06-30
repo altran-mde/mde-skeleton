@@ -8,5 +8,14 @@
             primary="true">
       </toc>
    </extension>
+   <extension
+         point="org.eclipse.ui.intro.quicklinks">
+      <url
+            description="This document contains information about Altran’s EMF Reference Project (a.k.a. MDE Skeleton) MDE Asset. The purpose of this project is to represent a typical MDE Eclipse IDE solution and to act as a showcase on how to use MDE Assets."
+            icon="platform:/plugin/org.eclipse.ui.intro.universal/themes/solstice/graphics/icons/ctool/start-cheatsheet.png"
+            label="Read the EMF Reference Project Developer Guide "
+            location="http://org.eclipse.ui.intro/showHelpTopic?id=/com.altran.ec.mde.skeleton.guide.developer/target/help/mde-skeleton-developer-guide.html">
+      </url>
+   </extension>
 
 </plugin>
