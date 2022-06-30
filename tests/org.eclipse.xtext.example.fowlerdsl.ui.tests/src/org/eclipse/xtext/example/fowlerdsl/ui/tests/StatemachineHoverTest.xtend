@@ -23,6 +23,7 @@ class StatemachineHoverTest extends AbstractHoverTest {
 
 	@Test def hover_over_event() {
 		'''
+			statemachine sm1
 			events
 				doorClosed   D1CL
 				drawerOpened D2OP
@@ -35,6 +36,7 @@ class StatemachineHoverTest extends AbstractHoverTest {
 
 	@Test def hover_over_command() {
 		'''
+			statemachine sm1
 			commands
 				unlockPanel PNUL
 				lockPanel   NLK
@@ -46,6 +48,7 @@ class StatemachineHoverTest extends AbstractHoverTest {
 
 	@Test def hover_over_state() {
 		'''
+			statemachine sm1
 			state idle {}
 		'''.hasHoverOver("idle", '''State <b>state idle</b>''')
 	}

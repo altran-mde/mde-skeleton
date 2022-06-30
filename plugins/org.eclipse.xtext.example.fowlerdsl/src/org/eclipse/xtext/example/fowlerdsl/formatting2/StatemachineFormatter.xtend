@@ -29,6 +29,8 @@ class StatemachineFormatter extends AbstractFormatter2 {
 
 	def dispatch void format(Statemachine it, extension IFormattableDocument document) {
 
+		regionFor.feature(STATEMACHINE__NAME).append[newLine]
+
 		formatEvents(document)
 
 		formatResetEvents(document)
@@ -41,7 +43,7 @@ class StatemachineFormatter extends AbstractFormatter2 {
 	def void formatEvents(Statemachine it, extension IFormattableDocument document) {
 		// indent the event definitions between the 'events' keyword and the 'end' keyword
 		val begin = regionFor.keyword("events")
-		val end = regionFor.keyword(statemachineAccess.getEndKeyword_1_2)
+		val end = regionFor.keyword(statemachineAccess.getEndKeyword_3_2)
 
 		begin.append[newLine]
 		interior(begin, end)[indent]
@@ -56,13 +58,13 @@ class StatemachineFormatter extends AbstractFormatter2 {
 	def void formatResetEvents(Statemachine it, extension IFormattableDocument document) {
 		// indent the event references between the 'resetEvents' keyword and the 'end' keyword
 		val begin = regionFor.keyword("resetEvents")
-		val end = regionFor.keyword(statemachineAccess.endKeyword_2_2)
+		val end = regionFor.keyword(statemachineAccess.endKeyword_4_2)
 
 		begin.append[newLine]
 		interior(begin, end)[indent]
 
 		// format each event reference
-		regionFor.assignment(statemachineAccess.resetEventsAssignment_2_1).append[newLine]
+		regionFor.assignment(statemachineAccess.resetEventsAssignment_4_1).append[newLine]
 
 		end.prepend[newLine]
 
@@ -74,7 +76,7 @@ class StatemachineFormatter extends AbstractFormatter2 {
 	def void formatCommands(Statemachine it, extension IFormattableDocument document) {
 		// indent the command definitions between the 'commands' keyword and the 'end' keyword
 		val begin = regionFor.keyword("commands")
-		var end = regionFor.keyword(statemachineAccess.endKeyword_3_2)
+		var end = regionFor.keyword(statemachineAccess.endKeyword_5_2)
 
 		begin.append[newLine]
 		interior(begin, end)[indent]

@@ -50,5 +50,9 @@
       <unit id="com.altran.general.emf.ecoredoc.ui.feature.feature.group" version="0.0.0"/>
       <repository id="ecoredoc-p2" location="https://nexus.acidspace.nl/repository/mde_assets-ecore_doc-raw/develop/repository"/>
     </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="com.altran.general.xtext.refactoring.move.feature.feature.group" version="0.0.0"/>
+      <repository id="xtext-move-refactoring-p2" location="https://nexus.acidspace.nl/repository/mde_assets-xtext_move_refactoring-raw/develop/repository"/>
+    </location>
   </locations>
 </target>

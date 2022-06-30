@@ -1,0 +1,37 @@
+include::_attributes.adoc[]
+
+[[testing-rcp]]
+== Testing RCP
+
+RCP Testing Tool (RCPTT) is a project for GUI testing automation of Eclipse-based applications. 
+RCPTT is fully aware about Eclipse Platform's internals, hiding this complexity from end users and allowing QA engineers to create highly reliable UI tests at great pace.
+
+TIP: For detailed information on using RCPTT, see https://www.eclipse.org/rcptt/
+
+Because RCPTT provides development tools that need to be installed in Eclipse, the Oomph setup file needs to be updated.
+
+NOTE: This step can be skipped when the MDE skeleton Oomph setup file is used as a base, as described in section <<create-oomph-setup-file>>, because RCPTT is already included.
+
+To add the RCPTT development tools, open the Oomph setup file in Eclipse and perform the following steps:
+ 
+. Expand the `P2 Director (Project Specific Development)` node +
++
+image::{imgdir}/oomph-setup-tree-p2-project.png[]
+
+. Add a new `Requirement` for the RCPTT platform feature.
++
+image::{imgdir}/oomph-setup-tree-p2-project-rcptt.png[]
+
+Now RCPTT can be used. 
+First create a new test project using the `RCP Testing Tool Project` wizard. 
+After that the `Test Case` wizard can be used to add test cases.
+Now the test case can be recorded using the `Record` button.
+A popup will be shown to select the Application Under Test (AUT).
+Here your Eclipse product must be selected.
+
+TIP: Create a link:{eclipse-help-location}/org.eclipse.platform.doc.user/tasks/tasks-97.htm[resource filter] for the `target` folder on your test project to avoid duplication errors when building with Maven.
+
+The MDE skeleton already provides a RCPTT project that can be used for reference: link:{giturl}/tests/com.altran.ec.mde.skeleton.xtext.refactoring.move.tests[com.altran.ec.mde.skeleton.xtext.refactoring.move.tests^].
+Simply run its test cases by right-clicking the project and select menu:Run As[Test Cases] from the context menu.
+Then select `Eclipse RCPTT AUT` as Application Under Test and click btn:[OK].
+The link:{giturl}/tests/com.altran.ec.mde.skeleton.xtext.refactoring.move.tests/pom.xml[Maven pom ^] in the project shows how to configure RCPTT in Maven, for more information please read the https://www.eclipse.org/rcptt/documentation/userguide/maven/[RCPTT user guide^].

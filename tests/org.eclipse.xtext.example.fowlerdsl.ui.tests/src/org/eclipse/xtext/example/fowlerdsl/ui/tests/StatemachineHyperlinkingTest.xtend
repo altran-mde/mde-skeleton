@@ -23,6 +23,7 @@ class StatemachineHyperlinkingTest extends AbstractHyperlinkingTest {
 
 	@Test def hyperlink_on_event() {
 		'''
+			statemachine sm1
 			events
 				doorClosed D1CL
 			end
@@ -33,11 +34,12 @@ class StatemachineHyperlinkingTest extends AbstractHyperlinkingTest {
 			
 			state active
 			end
-		'''.hasHyperlinkTo("doorClosed")
+		'''.hasHyperlinkTo("sm1.doorClosed")
 	}
 
 	@Test def hyperlink_on_command() {
 		'''
+			statemachine sm1
 			commands
 				unlockDoor D1UL
 			end
@@ -45,11 +47,12 @@ class StatemachineHyperlinkingTest extends AbstractHyperlinkingTest {
 			state idle
 				actions {«c»unlockDoor«c»}
 			end
-		'''.hasHyperlinkTo("unlockDoor")
+		'''.hasHyperlinkTo("sm1.unlockDoor")
 	}
 
 	@Test def hyperlink_on_state() {
 		'''
+			statemachine sm1
 			events
 				doorClosed D1CL
 			end
@@ -60,6 +63,6 @@ class StatemachineHyperlinkingTest extends AbstractHyperlinkingTest {
 			
 			state active
 			end
-		'''.hasHyperlinkTo("active")
+		'''.hasHyperlinkTo("sm1.active")
 	}
 }

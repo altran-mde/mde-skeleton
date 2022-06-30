@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+    <!-- drag'n'drop support in explorer views. -->
+    <extension point="org.eclipse.ui.navigator.navigatorContent">
+       <navigatorContent
+             activeByDefault="true"
+             contentProvider="org.eclipse.ui.model.WorkbenchContentProvider"
+             id="com.altran.ec.mde.skeleton.xtext.refactoring.move.navigatorContent"
+             labelProvider="org.eclipse.ui.model.WorkbenchLabelProvider"
+             name="Move">
+         <triggerPoints>
+             <instanceof value="org.eclipse.xtext.example.fowlerdsl.statemachine.State"/>
+         </triggerPoints>     
+         <dropAssistant
+                id="com.altran.ec.mde.skeleton.xtext.refactoring.move.dropAssistant"
+                class="com.altran.ec.mde.skeleton.xtext.refactoring.move.MoveDropAdapterAssistant">
+           <possibleDropTargets>
+               <instanceof value="org.eclipse.xtext.example.fowlerdsl.statemachine.Statemachine"/>
+           </possibleDropTargets>
+       </dropAssistant>
+      </navigatorContent>    
+    </extension>
+
+    <extension
+          point="org.eclipse.ui.navigator.viewer">
+       <viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer" >
+           <includes>
+           <contentExtension
+                 pattern="com.altran.ec.mde.skeleton.xtext.refactoring.move.navigatorContent">
+           </contentExtension>
+           </includes>
+       </viewerContentBinding>
+       <viewerContentBinding viewerId="org.eclipse.sirius.ui.tools.views.model.explorer" >
+           <includes>
+           <contentExtension
+                 pattern="com.altran.ec.mde.skeleton.xtext.refactoring.move.navigatorContent">
+           </contentExtension>
+           </includes>
+       </viewerContentBinding>
+    </extension>
+            
+</plugin>

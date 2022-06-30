@@ -29,6 +29,7 @@ class StatemachineParsingTest {
 
 	@Test def loadModel() {
 		'''
+		statemachine sm1
 		events
 			doorClosed		D1CL
 			drawerOpened	D2OP

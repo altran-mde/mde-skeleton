@@ -14,6 +14,7 @@ package org.eclipse.xtext.example.fowlerdsl.ui.wizard
 class TemplateContent {
 	
 	public static val MrsGrantsSecretCompartments = '''
+		statemachine mgsc
 		events
 			doorClosed  D1CL
 			drawOpened  D2OP

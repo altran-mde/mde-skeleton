@@ -212,5 +212,31 @@ include::{gitdir}/plugins/com.altran.ec.mde.skeleton.xtext.sirius.integration/sr
 For more information on using Xtext/Sirius Integration, please read the https://gitlab.acidspace.nl/ec-mde/xtext-sirius-integration/-/blob/develop/doc/userguide/xtext-sirius-userguide.adoc[Xtext/Sirius Integration User Guide].
 
 === Xtext Move Refactoring
+This asset enables generic move refactoring for Xtext, updating all references in the workspace.
 
-WARNING: TODO
+To start using Xtext Move Refactoring, first it should be added to the the target platform, see the code snippet below.
+
+NOTE: When using Maven, don't forget to configure credentials and mirrors for these repositories as described in <<maven-repository-mirrors>>, also see link:{giturl}/settings.xml[settings.xml^]
+
+.Adding Xtext Move Refactoring to the link:{giturl}/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd[target-platform.tpd^]
+[source,tpd]
+----
+include::{gitdir}/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd[tags=doc-xtext-move-refactoring]
+----
+
+To implement a move operation the `XtextMoveProcessor` class from the Xtext Move Refactoring asset must be used.
+This class is responsible for actually moving the elements. Additionally it may update other resources of the same domain which are affected by the move operation.
+For example, it also updates all references in the workspace to the element to be moved.
+
+See the following example that implements move operations for the Fowler Statemachine. 
+This example is implemented as a `dropAssistant` extension to the Model Explorer. States can be moved from one Statemachine to another using drag-and-drop.
+
+.Implementing move operations for States from the Fowler Statemachine in link:{giturl}/plugins/com.altran.ec.mde.skeleton.xtext.refactoring.move/src/com/altran/ec/mde/skeleton/xtext/refactoring/move/MoveDropAdapterAssistant.java[MoveDropAdapterAssistant.java^] using Xtext Move Refactoring
+[source,java]
+----
+include::{gitdir}/plugins/com.altran.ec.mde.skeleton.xtext.refactoring.move/src/com/altran/ec/mde/skeleton/xtext/refactoring/move/MoveDropAdapterAssistant.java[tag=doc-xtext-move-refactoring]
+----
+<1> `checkInitialConditions` checks some initial conditions based on the element to be moved. For example, it is checked if all involved `EObjects` and their containers can be resolved.
+<2> `checkFinalConditions` checks the final conditions based on the element to be moved. This is implemented by actually performing the move refactoring and reverting it afterwards.
+<3> `createChange` creates a `Change` object describing the workspace modifications the processor contributes to the overall move refactoring.
+<4> `change.perform` performs the change created in the previous step.

@@ -26,6 +26,7 @@ class StatemachineQuickfixTest extends AbstractQuickfixTest {
 
 	@Test def fix_invalid_reset_event() {
 		'''
+			statemachine sm1
 			events
 				doorClosed   D1CL
 				drawerOpened D2OP
@@ -39,6 +40,7 @@ class StatemachineQuickfixTest extends AbstractQuickfixTest {
 			end
 		'''.testQuickfixesOn(LINKING_DIAGNOSTIC,
 			new Quickfix("Change to 'doorClosed'", "Change to 'doorClosed'", '''
+				statemachine sm1
 				events
 					doorClosed   D1CL
 					drawerOpened D2OP
@@ -52,6 +54,7 @@ class StatemachineQuickfixTest extends AbstractQuickfixTest {
 				end
 			'''),
 			new Quickfix("Change to 'drawerOpened'", "Change to 'drawerOpened'", '''
+				statemachine sm1
 				events
 					doorClosed   D1CL
 					drawerOpened D2OP
@@ -65,6 +68,7 @@ class StatemachineQuickfixTest extends AbstractQuickfixTest {
 				end
 			'''),
 			new Quickfix("Change to 'lightOn'", "Change to 'lightOn'", '''
+				statemachine sm1
 				events
 					doorClosed   D1CL
 					drawerOpened D2OP
@@ -78,6 +82,7 @@ class StatemachineQuickfixTest extends AbstractQuickfixTest {
 				end
 			'''),
 			new Quickfix("Change to 'doorOpened'", "Change to 'doorOpened'", '''
+				statemachine sm1
 				events
 					doorClosed   D1CL
 					drawerOpened D2OP
@@ -91,6 +96,7 @@ class StatemachineQuickfixTest extends AbstractQuickfixTest {
 				end
 			'''),
 			new Quickfix("Change to 'panelClosed'", "Change to 'panelClosed'", '''
+				statemachine sm1
 				events
 					doorClosed   D1CL
 					drawerOpened D2OP
@@ -108,6 +114,7 @@ class StatemachineQuickfixTest extends AbstractQuickfixTest {
 
 	@Test def fix_invalid_state_action() {
 		'''
+			statemachine sm1
 			commands
 				unlockPanel PNUL
 				lockPanel   NLK
@@ -120,6 +127,7 @@ class StatemachineQuickfixTest extends AbstractQuickfixTest {
 			end
 		'''.testQuickfixesOn(LINKING_DIAGNOSTIC,
 			new Quickfix("Change to 'unlockPanel'", "Change to 'unlockPanel'", '''
+				statemachine sm1
 				commands
 					unlockPanel PNUL
 					lockPanel   NLK
@@ -132,6 +140,7 @@ class StatemachineQuickfixTest extends AbstractQuickfixTest {
 				end
 			'''),
 			new Quickfix("Change to 'lockPanel'", "Change to 'lockPanel'", '''
+				statemachine sm1
 				commands
 					unlockPanel PNUL
 					lockPanel   NLK
@@ -144,6 +153,7 @@ class StatemachineQuickfixTest extends AbstractQuickfixTest {
 				end
 			'''),
 			new Quickfix("Change to 'lockDoor'", "Change to 'lockDoor'", '''
+				statemachine sm1
 				commands
 					unlockPanel PNUL
 					lockPanel   NLK
@@ -156,6 +166,7 @@ class StatemachineQuickfixTest extends AbstractQuickfixTest {
 				end
 			'''),
 			new Quickfix("Change to 'unlockDoor'", "Change to 'unlockDoor'", '''
+				statemachine sm1
 				commands
 					unlockPanel PNUL
 					lockPanel   NLK
@@ -172,6 +183,7 @@ class StatemachineQuickfixTest extends AbstractQuickfixTest {
 
 	@Test def fix_invalid_state_name() {
 		'''
+			statemachine sm1
 			commands
 				lockPanel	NLK
 				unlockDoor	D1UL
@@ -181,6 +193,7 @@ class StatemachineQuickfixTest extends AbstractQuickfixTest {
 				actions {unlockDoor lockPanel}
 			end
 		'''.testQuickfixesOn(INVALID_NAME, new Quickfix("Change to 'idle'.", "Change to 'idle'.", '''
+			statemachine sm1
 			commands
 				lockPanel	NLK
 				unlockDoor	D1UL
@@ -194,6 +207,7 @@ class StatemachineQuickfixTest extends AbstractQuickfixTest {
 
 	@Test def fix_invalid_transition_event() {
 		'''
+			statemachine sm1
 			events
 				doorClosed   D1CL
 				drawerOpened D2OP
@@ -210,6 +224,7 @@ class StatemachineQuickfixTest extends AbstractQuickfixTest {
 			end
 		'''.testQuickfixesOn(LINKING_DIAGNOSTIC,
 			new Quickfix("Change to 'doorClosed'", "Change to 'doorClosed'", '''
+				statemachine sm1
 				events
 					doorClosed   D1CL
 					drawerOpened D2OP
@@ -226,6 +241,7 @@ class StatemachineQuickfixTest extends AbstractQuickfixTest {
 				end
 			'''),
 			new Quickfix("Change to 'drawerOpened'", "Change to 'drawerOpened'", '''
+				statemachine sm1
 				events
 					doorClosed   D1CL
 					drawerOpened D2OP
@@ -242,6 +258,7 @@ class StatemachineQuickfixTest extends AbstractQuickfixTest {
 				end
 			'''),
 			new Quickfix("Change to 'lightOn'", "Change to 'lightOn'", '''
+				statemachine sm1
 				events
 					doorClosed   D1CL
 					drawerOpened D2OP
@@ -258,6 +275,7 @@ class StatemachineQuickfixTest extends AbstractQuickfixTest {
 				end
 			'''),
 			new Quickfix("Change to 'doorOpened'", "Change to 'doorOpened'", '''
+				statemachine sm1
 				events
 					doorClosed   D1CL
 					drawerOpened D2OP
@@ -274,6 +292,7 @@ class StatemachineQuickfixTest extends AbstractQuickfixTest {
 				end
 			'''),
 			new Quickfix("Change to 'panelClosed'", "Change to 'panelClosed'", '''
+				statemachine sm1
 				events
 					doorClosed   D1CL
 					drawerOpened D2OP
@@ -294,6 +313,7 @@ class StatemachineQuickfixTest extends AbstractQuickfixTest {
 
 	@Test def fix_invalid_transition_state() {
 		'''
+			statemachine sm1
 			events
 				doorClosed   D1CL
 			end
@@ -306,6 +326,7 @@ class StatemachineQuickfixTest extends AbstractQuickfixTest {
 			end
 		'''.testQuickfixesOn(LINKING_DIAGNOSTIC,
 			new Quickfix("Change to 'idle'", "Change to 'idle'", '''
+				statemachine sm1
 				events
 					doorClosed   D1CL
 				end
@@ -318,6 +339,7 @@ class StatemachineQuickfixTest extends AbstractQuickfixTest {
 				end
 			'''),
 			new Quickfix("Change to 'active'", "Change to 'active'", '''
+				statemachine sm1
 				events
 					doorClosed   D1CL
 				end
