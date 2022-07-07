@@ -18,8 +18,7 @@
     <mirror>
       <id>acidspace-rcptt-releases</id>
       <name>ACIDSpace RCPTT Maven Repository</name>
-      <!-- TODO: Change url when available in ACIDSpace Nexus -->
-      <url>https://repo.eclipse.org/content/repositories/rcptt-releases/</url>
+      <url>https://nexus.acidspace.nl/repository/eclipse-org-rcptt/</url>
       <mirrorOf>rcptt-releases</mirrorOf>
     </mirror>
     <!-- tag::doc-mirrors[] -->
