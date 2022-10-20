@@ -1,79 +1,16 @@
-// This file is also used in the developer guide
-// Do not remove the tag::, end:: and <[0..9]> comments as they are required by asciidoc
-// tag::doc-target-platform[]
 target "CBI Target Platform"
 
 with configurePhase source requirements
 
-location "https://download.eclipse.org/releases/2020-06/202006171000" { //<1>
+location "https://download.eclipse.org/releases/2020-06/202006171000" {
     // Eclipse - EMF
     org.eclipse.sdk.feature.group lazy
     org.eclipse.emf.sdk.feature.group lazy
-// end::doc-target-platform[]
     // Eclipse - Product
     org.eclipse.equinox.executable.feature.group lazy
-    // Eclipse EGit
-    org.eclipse.egit.feature.group lazy
-    // Xtext/Xtend
-    org.eclipse.xtext.sdk.feature.group lazy
-    // Sirius
-    org.eclipse.sirius.runtime.aql.feature.group lazy
-    org.eclipse.sirius.runtime.ide.eef.feature.group lazy
-    org.eclipse.sirius.runtime.ide.xtext.feature.group lazy
-    org.eclipse.sirius.runtime.ide.ui.feature.group lazy
-}
-
-location "http://download.itemis.com/updates/releases/2.1.1" {
-    // Preferred for Xtext MWE2 workflows
-    de.itemis.xtext.antlr.feature.feature.group lazy    
 }
 
 location "https://download.eclipse.org/e4/snapshots/org.eclipse.e4.tools/latest" {
     // Preferred for debugging the developer runtime instance 
     org.eclipse.e4.tools.spies.feature.feature.group lazy
-// tag::doc-target-platform[]
 }
-
-location "https://nexus.acidspace.nl/repository/espilce-commons/develop/repository" espilce-commons-p2 { //<2>
-    org.espilce.commons.emf.registry.feature.feature.group lazy
-    org.espilce.commons.resource.feature.feature.group lazy
-}
-// end::doc-target-platform[]
-
-// tag::doc-espilce-periksa[]
-location "https://nexus.acidspace.nl/repository/espilce-periksa/develop/repository" espilce-periksa-p2 {
-    org.espilce.periksa.sdk.feature.group lazy
-}
-// end::doc-espilce-periksa[]
-
-// tag::doc-espilce-polvi[]
-location "https://nexus.acidspace.nl/repository/espilce-polvi/develop/repository" espilce-polvi-p2 {
-    // Runtime EMF integration
-    org.espilce.polvi.emf.generator.feature.feature.group lazy
-    // Runtime Xtext integration
-    org.espilce.polvi.emf.generator.xtext.feature.feature.group lazy
-    // MWE2 workflow generator fragment
-    org.espilce.polvi.xtext.generator lazy
-}
-// end::doc-espilce-polvi[]
-
-// tag::doc-xtext-sirius-integration[]
-location "https://nexus.acidspace.nl/repository/xtext-sirius-integration/develop/repository" xtext-sirius-integration-p2 {
-    com.altran.general.integration.xtextsirius.runtime.feature.feature.group lazy
-}
-// end::doc-xtext-sirius-integration[]
-// tag::doc-xtext-sirius-integration-dependencies[]
-location "https://updates.yakindu.org/statecharts/releases/3.5.13" {
-    org.yakindu.base.xtext.utils.jface.feature.group lazy
-}
-// end::doc-xtext-sirius-integration-dependencies[]
-
-location "https://nexus.acidspace.nl/repository/mde_assets-ecore_doc-raw/develop/repository" ecoredoc-p2 {
-    com.altran.general.emf.ecoredoc.ui.feature.feature.group lazy
-}
-
-// tag::doc-xtext-move-refactoring[]
-location "https://nexus.acidspace.nl/repository/mde_assets-xtext_move_refactoring-raw/develop/repository" xtext-move-refactoring-p2 {
-    com.altran.general.xtext.refactoring.move.feature.feature.group lazy
-}
-// end::doc-xtext-move-refactoring[]

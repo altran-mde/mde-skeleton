@@ -39,21 +39,3 @@ test:
       test_settings_path: ./settings.xml
       test_pom_path: ./pom.xml
       index: test-units
-    gate:
-      - metric: NumberOfTests
-        threshold: 46
-        operator: "="
-
-release:
-  binaries:
-    platform: P2
-    precondition:
-      - OutputDirectoryExists
-      - OutputDirectoryIsEmpty
-    postcondition:
-      - OutputDirectoryIsNotEmpty
-    parameters:
-      repository: MDEAssets
-      repository_path: mde-skeleton
-      repository_project: ./products/com.altran.ec.mde.skeleton.package.product
-      output: ./reports/release/binaries

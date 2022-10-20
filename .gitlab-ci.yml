@@ -71,26 +71,6 @@ mde-unit-test:
       junit: 'tests/*/target/surefire-reports/*.xml'
     expire_in: 4 weeks
 
-mde-release:
-  image: ${REGISTRY_URL}/${MAVEN_CONTAINER}
-  stage: release
-  # MDE release needs the artifacts from mde-build to be deployed
-  dependencies: [mde-build]
-  only:
-    - develop
-    - tags
-  except:
-    - schedules
-  tags:
-    - linux_docker
-  script:
-    - acidcli release binaries
-  artifacts:
-    when: always
-    paths:
-      - reports/release/binaries
-    expire_in: 4 weeks
-
 pages:
   stage: publish
   # Pages needs the artifacts from mvn-build

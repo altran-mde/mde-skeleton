@@ -44,30 +44,7 @@
   </setupTask>
   <setupTask
       xsi:type="setup.p2:P2Task"
-      label="Project Specific Development">
-    <requirement
-        name="org.eclipse.xtext.sdk.feature.group"/>
-    <requirement
-        name="org.espilce.periksa.sdk.feature.group"/>
-    <requirement
-        name="org.eclipse.sirius.specifier.feature.group"/>
-    <requirement
-        name="com.altran.general.integration.xtextsirius.design.feature.feature.group"/>
-    <requirement
-        name="com.altran.general.emf.ecoredoc.ui.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.rcptt.platform.feature.group"/>
-    <repository
-        url="https://nexus.acidspace.nl/repository/espilce-commons/develop/repository"/>
-    <repository
-        url="https://nexus.acidspace.nl/repository/espilce-periksa/develop/repository"/>
-    <repository
-        url="https://nexus.acidspace.nl/repository/xtext-sirius-integration/develop/repository"/>
-    <repository
-        url="https://nexus.acidspace.nl/repository/yakindu.com-statecharts-releases-3.5.13/"/>
-    <repository
-        url="https://nexus.acidspace.nl/repository/mde_assets-ecore_doc-raw/develop/repository"/>
-  </setupTask>
+      label="Project Specific Development"/>
   <setupTask
       xsi:type="setup.workingsets:WorkingSetTask">
     <workingSet

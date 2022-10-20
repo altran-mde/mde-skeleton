@@ -15,10 +15,14 @@
 
   <modules>
     <module>releng</module>
+    <!-- Remove this comment if your product contains plugins
     <module>plugins</module>
+     -->
     <module>features</module>
     <module>products</module>
+    <!-- Remove this comment if your product supports tests
     <module>tests</module>
+    -->
     <!-- TODO: Documentation folder is not supported by pomless build, either declare sub-modules explicit (preferred) or use system property XXX (see XXX) -->
     <module>documentation/com.altran.ec.mde.skeleton.guide.developer</module>
   </modules>
