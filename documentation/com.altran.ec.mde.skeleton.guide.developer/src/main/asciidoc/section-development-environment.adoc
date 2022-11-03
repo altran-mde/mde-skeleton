@@ -39,7 +39,7 @@ Your development environment will now be prepared.
 Please accept all licenses and certificates and provide your GitLab credentials when asked for.
 
 [[setup-maven]]
-==== Build code with Maven
+=== Build code with Maven
 
 Please perform the steps in this section if you want to build your code using Maven on your local system.
 In ACIDSpace CI/CD an MDE project is typically built using Maven, but this can also be done locally.
@@ -52,7 +52,7 @@ Maven supports server password encryption, see https://maven.apache.org/guides/m
 The `releng/eclipse` directory contains pre-configured Eclipse launch targets to build your code using Maven from within Eclipse.
 
 [[setup-checkout-branch]]
-==== Checkout another branch
+=== Checkout another branch
 
 Typically you will develop your feature in a feature branch.
 To start working on a feature, start by creating an issue in GitLab.
