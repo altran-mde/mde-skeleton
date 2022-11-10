@@ -118,8 +118,11 @@ git add .
 git commit -m "Bootstrapped the $PROJECT_NAME project, using the skeleton as provided by Capgemini Engineering."
 
 echo
-echo "Done, use the next commands to build your application:"
+echo "Done, use the next commands to build the $PROJECT_NAME product:"
 echo "> cd $OUTPUT_DIR"
 echo "> mvn clean verify -s settings.xml"
 echo
-echo "Also review the last commit and if all is ok, push it to ACIDSpace."
+echo "After a BUILD SUCCESS, the built products can be found at:"
+echo "${OUTPUT_DIR}/products/${BUNDLE_SYMBOLICNAME_PREFIX}.package.product/target/products"
+echo
+echo "Finally review the last commit and if all is ok, push it to ACIDSpace."
