@@ -39,6 +39,10 @@
         name="org.eclipse.xsd.sdk.feature.group"/>
     <requirement
         name="org.eclipse.oomph.setup.workingsets.feature.group"/>
+    <requirement
+        name="org.eclipse.nebula.widgets.tablecombo"
+        versionRange="[1.0.0,1.2.0.202208171809]"
+        description="Binds transitive Oomph dependeny to latest Java8 supported version"/>
     <repository
         url="https://nexus.acidspace.nl/repository/eclipse.org-releases-2020-06-202006171000"/>
   </setupTask>
