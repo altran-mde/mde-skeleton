@@ -1,3 +1,4 @@
+# Copyright Altran Netherlands B.V
 stages:
   - build
   - check

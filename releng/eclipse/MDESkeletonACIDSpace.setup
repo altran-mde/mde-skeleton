@@ -61,6 +61,8 @@
         name="com.altran.general.emf.ecoredoc.ui.feature.feature.group"/>
     <requirement
         name="org.eclipse.rcptt.platform.feature.group"/>
+    <requirement
+        name="com.altran.general.emf.ecoredoc.plantuml.ecore"/>
     <repository
         url="https://nexus.acidspace.nl/repository/espilce-commons/develop/repository"/>
     <repository
@@ -71,6 +73,8 @@
         url="https://nexus.acidspace.nl/repository/yakindu.com-statecharts-releases-3.5.13/"/>
     <repository
         url="https://nexus.acidspace.nl/repository/mde_assets-ecore_doc-raw/develop/repository"/>
+    <repository
+        url="https://nexus.acidspace.nl/repository/github.io_plantuml/"/>
   </setupTask>
   <setupTask
       xsi:type="setup.workingsets:WorkingSetTask">
@@ -462,7 +466,10 @@
         xsi:type="projects:ProjectsImportTask">
       <sourceLocator
           rootFolder="${git.clone.location}"
-          locateNestedProjects="true"/>
+          locateNestedProjects="true">
+        <excludedPath>tests/com.altran.ec.mde.skeleton.xtext.refactoring.move.tests/target/aut-ws-0/Source</excludedPath>
+        <excludedPath>tests/com.altran.ec.mde.skeleton.xtext.refactoring.move.tests/target/aut-ws-0/Target</excludedPath>
+      </sourceLocator>
     </setupTask>
     <setupTask
         xsi:type="setup:CompoundTask"
