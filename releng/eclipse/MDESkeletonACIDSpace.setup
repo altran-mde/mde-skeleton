@@ -62,7 +62,7 @@
     <requirement
         name="org.eclipse.rcptt.platform.feature.group"/>
     <requirement
-        name="com.altran.general.emf.ecoredoc.plantuml.eclipse"/>
+        name="com.altran.general.emf.ecoredoc.plantuml.ecore"/>
     <repository
         url="https://nexus.acidspace.nl/repository/espilce-commons/develop/repository"/>
     <repository
