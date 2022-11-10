@@ -14,7 +14,149 @@ WARNING: TODO explain https://nvie.com/posts/a-successful-git-branching-model/[G
 [[git-directory-structure]]
 === Initial Git directory structure
 
-WARNING: TODO
+[[git-prerequisites]]
+==== Prerequisites
+
+As described in the previous section we tend to use the <<git-workflow>> branching model.
+In this model the central repo holds https://nvie.com/posts/a-successful-git-branching-model/#the-main-branches[two main branches] with an infinite lifetime: 
+
+- `master`
+- `develop`
+
+IMPORTANT:  +
+Before creating an initial directory structure, please make sure that these branches are available in the repository and configured correctly, i.e., both protected and `develop` marked as the default branch.
+
+[[git-bootstrap]]
+==== Bootstrapping the repository
+
+When the <<git-prerequisites, prerequisites>> are met, you can start with bootstrapping the repository with its initial content.
+The EMF Reference Project provides a script that provisions the repository with the correct directory structure and content to build an empty Eclipse RCP application that can be used for further development.
+The bootstrapped application will only contain a developer documentation plugin that provides the instructions on <<setup-development-environment, setting up a development environment>>.
+
+The listing below shows how to use the EMF Reference Project bootstrap script.
+In this example, the https://gitlab.acidspace.nl/ec-mde/larch[LArch] repository is used and the callouts below the listing explain the steps in more detail.
+
+.Bootstrapping an ACIDSpace git repository to build an Eclipse RCP
+[source,shell]
+----
+user@machine MINGW64 ~/git
+$ git clone git@gitlab.acidspace.nl:ec-mde/larch.git <1>
+Cloning into 'larch'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.
+
+user@machine MINGW64 ~/git
+$ git clone git@gitlab.acidspace.nl:ec-mde/mde-skeleton.git -b BOOTSTRAP-2020-06 <2>
+Cloning into 'mde-skeleton'...
+remote: Enumerating objects: 1361, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 1361 (delta 0), reused 0 (delta 0), pack-reused 1357
+Receiving objects: 100% (1361/1361), 882.60 KiB | 1.19 MiB/s, done.
+Resolving deltas: 100% (615/615), done.
+Note: switching to '50712f4f2c1c68873ceba1c014d2032608b90fbb'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+
+user@machine MINGW64 ~/git
+$ ./mde-skeleton/bootstrap.sh LArch nl.cge.mde.larch larch/ <3>
+Bootstrapping the LArch project with prefix nl.cge.mde.larch in: /c/Users/user/git/larch
+
+Processing file /c/Users/user/git/larch/.acidcli.yml
+...
+
+Committing changes
+warning: LF will be replaced by CRLF in README.adoc.
+The file will have its original line endings in your working directory
+...
+[develop eeff333] Bootstrapped the LArch project, using the skeleton as provided by Capgemini Engineering.
+ 61 files changed, 2717 insertions(+), 92 deletions(-)
+ create mode 100644 .acidcli.yml
+...
+
+Done, use the next commands to build the LArch product:  <4>
+> cd /c/Users/user/git/larch
+> mvn clean verify -s settings.xml
+
+After a BUILD SUCCESS, the built products can be found at:
+/c/Users/user/git/larch/products/nl.cge.mde.larch.package.product/target/products
+
+Finally review the last commit and if all is ok, push it to ACIDSpace.
+----
+<1> Clone the empty ACIDSpace git repository that will be bootstrapped.
+    It is assumed that the `develop` branch is set as default branch of the repository.
+    In this example, the repository is cloned into a sub-directory called `larch`.
+<2> Clone the MDE skeleton repository to download the bootstrap script.
+    The tag, i.e., `-b BOOTSTRAP-2020-06`, specifies the version of Eclipse that is used for the RCP.
+    For a list of available versions, please see the https://gitlab.acidspace.nl/ec-mde/mde-skeleton/-/tags?sort=updated_desc&search=BOOTSTRAP[available tags].
+    The repository is cloned into a sub-directory called `mde-skeleton`.
+<3> Running the `bootstrap.sh` copies all required data to the target repository and adapts it for your project.
+    The script takes 3 parameters: +
++
+. The name of the product
+. The prefix that will be used. 
+  This should be unique for your product.
+. The directory where the target repository is cloned, see step 1.
+<4> When the script is done, a commit has been created such that it can be pushed.
+    The output provides information on how to build your product from the command line in order to verify it before pushing.
+    Please read section <<setup-maven>> before running a command line build.
+    When the commit is pushed, both the README of the repository and its Gitlab pages will contain information on how to setup an Eclipse development environment.
+
+The directory structure of the target repository will look like:
+
+[[git-directories]]
+.Initial Git directory structure
+[options="header"]
+|===
+| Directory   | Description   
+| .mvn
+| Contains Maven configuration
+| .settings
+| Contains Eclipse configuration
+| documentation
+| This directory contains all bundles with documentation about the product and/or project.
+| documentation/_<prefix>_.guide.developer
+| The generated developer guide is available as PDF, Eclipse Help and via the GitLab pages of your project.
+| features
+| This directory contains all features that are provided by the project.
+| plugins
+| This directory contains all plugins that are provided by the project, initially empty.
+| products
+| This directory contains the configuration of the built Eclipse RCP.
+| products/_<prefix>_.package.branding
+| Defines the look-and-feel of the product, like splash screen and about content.
+| products/_<prefix>_.package.feature
+| Defines the content of the RCP, typically all features in the `features` directory.
+| products/_<prefix>_.package.product
+| Defines the product and the layour of the P2 repository.
+| releng
+| This directory contains artifacts that are related to release-engineering.
+| releng/eclipse
+| Contains pre-configured Eclipse launch targets and <<create-oomph-setup-file, Oomph setup file>>
+| releng/_<prefix>_.parent
+| The Maven parent pom defines the configuration for this project.
+| releng/_<prefix>_.target
+| The target platform manages the used 3^rd^ party dependecies of the project.
+| tests
+| This directory contains all tests that are provided by the project, initially empty.
+|===
 
 [[create-oomph-setup-file]]
 === How to create an Oomph setup file
@@ -23,8 +165,11 @@ This section describes the typical steps to take for creating an Oomph setup fil
 An Oomph setup file enables the https://wiki.eclipse.org/Eclipse_Installer[Eclipse Installer] to automate the installation of Eclipse development environments.
 For more generic information on (authoring) Oomph, please read the https://wiki.eclipse.org/Eclipse_Oomph_Authoring[Eclipse Oomph Authoring Wiki]
 
-The easiest way to create an Oomph setup file is to download the link:{giturl}/{oomph-setup-file-path}[setup file of this {project-name}^] and use it as a base.
-The downloaded setup file should be renamed to `__<project_name>__ACIDSpace.setup` and it is recommended to save it in the `releng/eclipse` directory in your git repository, also see <<git-directory-structure>>.
+IMPORTANT: If you have used the <<git-bootstrap, bootstrap.sh>> script when creating your repository, the `releng/eclipse` directory will already contain a setup file and a lot of the steps below will already have been performed.
+It is still wise to review the generated setup file using the steps below.
+
+The easiest way to create an Oomph setup file is to either use the <<git-bootstrap, bootstrap.sh>> script (for a new git repository) or download the link:{giturl}/{oomph-setup-file-path}[setup file of this {project-name}^] and use it as a base.
+The downloaded setup file should be renamed to `__<project_name>__ACIDSpace.setup` and it is recommended to save it in the `releng/eclipse` directory in your git repository, also see the <<git-directories>>.
 After opening the setup file in Eclipse, the model tree looks like:
 
 image::{imgdir}/oomph-setup-tree-overview.png[]
