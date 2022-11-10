@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature id="com.altran.ec.mde.skeleton.feature">
-      <category name="com.altran.ec.mde"/>
-   </feature>
-   <feature id="com.altran.ec.mde.skeleton.feature.source">
-      <category name="com.altran.ec.mde"/>
-   </feature>
-   <category-def name="com.altran.ec.mde" label="EC MDE"/>
+   <feature id="com.altran.ec.mde.skeleton.feature"/>
+   <feature id="com.altran.ec.mde.skeleton.feature.source"/>
 </site>
