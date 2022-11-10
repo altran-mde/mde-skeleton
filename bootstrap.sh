@@ -1,12 +1,12 @@
 #!/bin/bash
 
-BASE_DIR=$(pwd $0)
-PROJECT_NAME=$1
-BUNDLE_SYMBOLICNAME_PREFIX=$2
-OUTPUT_DIR=$3
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_NAME="$1"
+BUNDLE_SYMBOLICNAME_PREFIX="$2"
+OUTPUT_DIR="$3"
 
 usage() {
-	echo "Usage $0 <project-name> <bundle-prefix> <path>"
+	echo "Usage ${BASH_SOURCE[0]} <project-name> <bundle-prefix> <path>"
 	echo
 	echo "This script will bootstrap a git repository with an"
 	echo "EMF based Eclipse RCP application."
@@ -33,22 +33,15 @@ elif [[ ! -d "$OUTPUT_DIR/.git" ]]; then
 	usage
 fi
 
-cd $OUTPUT_DIR
+cd "$OUTPUT_DIR"
 OUTPUT_DIR=$(pwd)
 
 echo "Bootstrapping the $PROJECT_NAME project with prefix $BUNDLE_SYMBOLICNAME_PREFIX in: $OUTPUT_DIR"
 echo
 
-cd $BASE_DIR
-if ! git diff-index --quiet HEAD --; then
-  git status --porcelain
-  echo
-  echo "Your bootstrap repository contains local changes, please commit these before running this script!"
-  exit -1
-fi
-
-cd $OUTPUT_DIR
-OUTPUT_DIR=$(pwd)
+############################################
+# Checking perequisites in both repositories
+############################################
 
 GIT_URL=$(git remote get-url origin)
 GIT_URL_REGEX="^([^@]+)@([^:]+):(.+)/([^/]+)\.git$"
@@ -63,11 +56,33 @@ if [[ "$GIT_HOST" != "gitlab.acidspace.nl" ]]; then
 	exit -1
 fi
 
+if ! git diff-index --quiet HEAD --; then
+  git status --porcelain
+  echo
+  echo "The target repository contains local changes, please commit these before running this script!"
+  exit -1
+fi
+
+cd "$BASE_DIR"
+if ! git diff-index --quiet HEAD --; then
+  git status --porcelain
+  echo
+  echo "This bootstrap repository contains local changes, please commit these before running this script!"
+  exit -1
+fi
+
+#################################
+# Bootstrapping target repository
+#################################
+
+cd "$OUTPUT_DIR"
+OUTPUT_DIR=$(pwd)
+
 if [[ -f "README.md" ]]; then
 	git mv README.md README.adoc
 fi
 
-cd $BASE_DIR
+cd "$BASE_DIR"
 IFS=$'\n'
 for INPUT_FILE in $(git ls-tree --full-tree --name-only -r HEAD | grep -v '^bootstrap' ); do
 	OUTPUT_FILE="${INPUT_FILE//com.altran.ec.mde.skeleton/$BUNDLE_SYMBOLICNAME_PREFIX}"
@@ -82,6 +97,7 @@ for INPUT_FILE in $(git ls-tree --full-tree --name-only -r HEAD | grep -v '^boot
 		# The copied file is a text file, applying substitutions
 		sed -i \
 			-e "s#com.altran.ec.mde.skeleton#$BUNDLE_SYMBOLICNAME_PREFIX#g" \
+			-e "s#mde.assets.mde-skeleton#$BUNDLE_SYMBOLICNAME_PREFIX#g" \
 			-e "s#EMF Reference Project#$PROJECT_NAME#g" \
 			-e "s#MDE Assets - MDE Skeleton#$PROJECT_NAME#g" \
 			-e "s#MDESkeleton#$PROJECT_NAME#g" \
@@ -91,10 +107,15 @@ for INPUT_FILE in $(git ls-tree --full-tree --name-only -r HEAD | grep -v '^boot
 	fi
 done
 
+###################
+# Committing result
+###################
+
 echo
 echo "Committing changes"
-cd $OUTPUT_DIR
-git commit -a -m "Bootstrapped the $PROJECT_NAME project, using the skeleton as provided by Capgemini Engineering."
+cd "$OUTPUT_DIR"
+git add .
+git commit -m "Bootstrapped the $PROJECT_NAME project, using the skeleton as provided by Capgemini Engineering."
 
 echo
 echo "Done, use the next commands to build your application:"
