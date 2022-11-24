@@ -42,7 +42,8 @@ Please accept all licenses and certificates and provide your GitLab credentials 
 === Build code with Maven
 
 Please perform the steps in this section if you want to build your code using Maven on your local system.
-In ACIDSpace CI/CD an MDE project is typically built using Maven, but this can also be done locally.
+The code can built using Maven from either the command line or from within Eclipse, please read the "**Use**" items of https://maven.apache.org/index.html[the Maven documentation^] before running Maven the first time.
+
 In ACIDSpace's CI/CD the credentials of a project are stored in the `TECHNICAL_USER` and `TECHNICAL_PASSWORD` environment variables.
 In order to be able to use the Maven `settings.xml` both in CI/CD and on your local system, you should also set these environment variables on your local system.
 
@@ -50,6 +51,14 @@ CAUTION: It is strongly advised to store an encrypted password in the `TECHNICAL
 Maven supports server password encryption, see https://maven.apache.org/guides/mini/guide-encryption.html[].
 
 The `releng/eclipse` directory contains pre-configured Eclipse launch targets to build your code using Maven from within Eclipse.
+
+The root Maven `pom.xml` for the {project-name} project is located in the root of the local git repository.
+Just open a command line at that location and type the following command to build the code:
+
+[source,shell]
+----
+$ mvn clean verify -s settings.xml
+----
 
 [[setup-checkout-branch]]
 === Checkout another branch

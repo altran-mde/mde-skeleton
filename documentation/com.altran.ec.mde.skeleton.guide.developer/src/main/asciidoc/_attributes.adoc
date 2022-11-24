@@ -61,7 +61,7 @@ ifndef::imgdir[:imgdir: {resdir}/images]
 ifndef::imgdir-gen[:imgdir-gen: ./]
 ifndef::gendocdir[:gendocdir: {basedir}/target/adoc-gen]
 
-ifndef::gitproject[:gitproject: ec-mde/mde-skeleton]
+ifndef::gitproject[:gitproject: cge-coe-mde/mde-skeleton]
 ifndef::gitbranch[:gitbranch: develop]
 ifndef::giturl[:giturl: https://gitlab.acidspace.nl/{gitproject}/-/blob/{gitbranch}]
 
