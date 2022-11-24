@@ -27,20 +27,20 @@ IMPORTANT:  +
 Before creating an initial directory structure, please make sure that these branches are available in the remote repository and configured correctly, i.e., both protected and `develop` marked as the default branch.
 
 [[git-bootstrap]]
-==== Bootstrapping the repository
+==== Bootstrapping a git repository
 
 When the <<git-prerequisites, prerequisites>> are met, you can start with bootstrapping the repository with its initial content.
 The EMF Reference Project provides a script that provisions the repository with the correct directory structure and content to build an empty Eclipse RCP application that can be used for further development.
 The bootstrapped application will contain a developer documentation plugin that provides the instructions on <<setup-development-environment, setting up a development environment>>.
 
 The listing below shows how to use the EMF Reference Project bootstrap script.
-In this example, the https://gitlab.acidspace.nl/ec-mde/larch[LArch] repository is used as an example and the callouts below the listing explain the steps in more detail.
+In this example, the https://gitlab.acidspace.nl/cge-coe-mde/larch[LArch] repository is used as an example and the callouts below the listing explain the steps in more detail.
 
 .Bootstrapping an ACIDSpace git repository to build an Eclipse RCP
 [source,shell]
 ----
 user@machine MINGW64 ~/git
-$ git clone git@gitlab.acidspace.nl:ec-mde/larch.git <1>
+$ git clone git@gitlab.acidspace.nl:cge-coe-mde/larch.git <1>
 Cloning into 'larch'...
 remote: Enumerating objects: 3, done.
 remote: Counting objects: 100% (3/3), done.
@@ -49,7 +49,7 @@ remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 Receiving objects: 100% (3/3), done.
 
 user@machine MINGW64 ~/git
-$ git clone git@gitlab.acidspace.nl:ec-mde/mde-skeleton.git -b BOOTSTRAP-2020-06 <2>
+$ git clone git@gitlab.acidspace.nl:cge-coe-mde/mde-skeleton.git -b BOOTSTRAP-2020-06 <2>
 Cloning into 'mde-skeleton'...
 remote: Enumerating objects: 1361, done.
 remote: Counting objects: 100% (4/4), done.
@@ -91,21 +91,22 @@ The file will have its original line endings in your working directory
  create mode 100644 .acidcli.yml
 ...
 
-Done, use the next commands to build the LArch product:  <4>
+Done, please review the last commit and push it to ACIDSpace using the following commands:
 > cd /c/Users/user/git/larch
-> mvn clean verify -s settings.xml
+> git status
+> git push
 
-After a BUILD SUCCESS, the built products can be found at:
+Then read the README.adoc to learn how to setup a development environment or how to build the code locally, see
+https://gitlab.acidspace.nl/cge-coe-mde/larch/-/blob/develop/README.adoc
+After a successful local build, the built products can be found at:
 /c/Users/user/git/larch/products/nl.cge.mde.larch.package.product/target/products
-
-Finally review the last commit and if all is ok, push it to ACIDSpace.
 ----
 <1> Clone the empty ACIDSpace git repository that will be bootstrapped.
     It is assumed that the `develop` branch is set as default branch of the repository.
     In this example, the repository is cloned into a sub-directory called `larch`.
 <2> Clone the MDE skeleton repository to download the bootstrap script.
     The tag, i.e., `-b BOOTSTRAP-2020-06`, specifies the version of Eclipse that is used for the RCP.
-    For a list of available versions, please see the https://gitlab.acidspace.nl/ec-mde/mde-skeleton/-/tags?sort=updated_desc&search=BOOTSTRAP[available tags].
+    For a list of available versions, please see the https://gitlab.acidspace.nl/cge-coe-mde/mde-skeleton/-/tags?sort=updated_desc&search=BOOTSTRAP[available tags].
     The repository is cloned into a sub-directory called `mde-skeleton`.
 <3> Running the `bootstrap.sh` copies all required data to the target repository and adapts it for your project.
     The script takes 3 parameters: +
@@ -115,9 +116,8 @@ Finally review the last commit and if all is ok, push it to ACIDSpace.
   This should be unique for your product.
 . The directory where the target repository is cloned, see step 1.
 <4> When the script is done, a commit has been created such that it can be pushed.
-    The output provides information on how to build your product from the command line in order to verify it before pushing.
-    Please read section <<setup-maven>> before running a command line build.
-    When the commit is pushed, both the README of the repository and its Gitlab pages will contain information on how to setup an Eclipse development environment.
+    When the commit is pushed, the product is built automatically in ACIDSpace and both the README of the repository and its Gitlab pages will contain information on how to setup an Eclipse development environment.
+    The output of the script provides pointers on how to manually build your product on your local system from the command line, please read section <<setup-maven>> before running a command line build.
 
 The directory structure of the target repository will look like:
 
@@ -262,7 +262,8 @@ Please accept all licenses and certificates and provide your GitLab credentials 
 ==== Build code with Maven
 
 Please perform the steps in this section if you want to build your code using Maven on your local system.
-In ACIDSpace CI/CD an MDE project is typically built using Maven, but this can also be done locally.
+The code can built using Maven from either the command line or from within Eclipse, please read the "**Use**" items of https://maven.apache.org/index.html[the Maven documentation^] before running Maven the first time.
+
 In ACIDSpace's CI/CD the credentials of a project are stored in the `TECHNICAL_USER` and `TECHNICAL_PASSWORD` environment variables.
 In order to be able to use the Maven `settings.xml` both in CI/CD and on your local system, you should also set these environment variables on your local system.
 
@@ -270,6 +271,14 @@ CAUTION: It is strongly advised to store an encrypted password in the `TECHNICAL
 Maven supports server password encryption, see https://maven.apache.org/guides/mini/guide-encryption.html[].
 
 The `releng/eclipse` directory contains pre-configured Eclipse launch targets to build your code using Maven from within Eclipse.
+
+The root Maven `pom.xml` for the {project-name} project is located in the root of the local git repository.
+Just open a command line at that location and type the following command to build the code:
+
+[source,shell]
+----
+$ mvn clean verify -s settings.xml
+----
 
 [[setup-checkout-branch]]
 ==== Checkout another branch

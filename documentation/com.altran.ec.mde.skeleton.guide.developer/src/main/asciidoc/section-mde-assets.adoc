@@ -1,5 +1,7 @@
 include::_attributes.adoc[]
 
+ifndef::gitpages[:gitpages: https://cge-coe-mde.pages.acidspace.nl]
+
 [[using-mde-assets]]
 == Using MDE Assets
 
@@ -45,7 +47,7 @@ The example below adds the generated EcoreDoc to this developer guide as an appe
 
 For more information on using EcoreDoc, please read the 
 ifdef::output-help[link:{eclipse-help-location}/com.altran.general.emf.ecoredoc.guide.user/target/help/ecoredoc-userguide.html[EcoreDoc user guide].]
-ifndef::output-help[https://ec-mde.pages.acidspace.nl/ecore-doc/[EcoreDoc user guide].]
+ifndef::output-help[link:{gitpages}/ecore-doc/[EcoreDoc user guide].]
 
 === Espilce Commons
 
@@ -92,7 +94,7 @@ include::{gitdir}/plugins/com.altran.ec.mde.skeleton.espilce.periksa/plugin.xml[
 
 For more information on using Espilce Periksa, please read the
 ifdef::output-help[link:{eclipse-help-location}/org.espilce.periksa.guide.developer/target/help/periksa-developer-guide.html#programmers-guide[Espilce Periksa programmer guide].]
-ifndef::output-help[https://ec-mde.pages.acidspace.nl/espilce-periksa/#programmers-guide[Espilce Periksa programmer guide].]
+ifndef::output-help[link:{gitpages}/espilce-periksa/#programmers-guide[Espilce Periksa programmer guide].]
 
 
 === Espilce Polvi
@@ -147,7 +149,7 @@ Esplice Polvi also provides `JavaIoFileSystemAccess` for `java.io.File` input an
 <2> Specifies the output location were generated files are saved.
 <3> The contents of the file are generated in the link:{giturl}/plugins//org.eclipse.xtext.example.fowlerdsl/src/org/eclipse/xtext/example/fowlerdsl/generator/StatemachinePolviGenerator.xtend#L30[StatemachinePolviGenerator#toJavaCode(Statemachine)] method. +
 +
-TIP: For more information on how to implement model-to-text generators with Xtend, please read the https://gitlab.acidspace.nl/ec-mde/xtend-based-generators/-/blob/master/xtend-based-generators/doc/xtend-based-generators.adoc[Xtend-based Model-to-Text Generators Guide].
+TIP: For more information on how to implement model-to-text generators with Xtend, please read the https://gitlab.acidspace.nl/cge-coe-mde/xtend-based-generators/-/blob/master/xtend-based-generators/doc/xtend-based-generators.adoc[Xtend-based Model-to-Text Generators Guide].
 <4> The file is generated using the `URIBasedFileSystemAccess` instance that is created in step 1.
 
 === Xtext/Sirius Integration
@@ -209,7 +211,7 @@ be added to access the Xtext language, see the code snippet below.
 include::{gitdir}/plugins/com.altran.ec.mde.skeleton.xtext.sirius.integration/src/com/altran/ec/mde/skeleton/xtext/sirius/integration/FowlerdslLanguageInjector.java[]
 ----
 
-For more information on using Xtext/Sirius Integration, please read the https://gitlab.acidspace.nl/ec-mde/xtext-sirius-integration/-/blob/develop/doc/userguide/xtext-sirius-userguide.adoc[Xtext/Sirius Integration User Guide].
+For more information on using Xtext/Sirius Integration, please read the https://gitlab.acidspace.nl/cge-coe-mde/xtext-sirius-integration/-/blob/develop/doc/userguide/xtext-sirius-userguide.adoc[Xtext/Sirius Integration User Guide].
 
 === Xtext Move Refactoring
 This asset enables generic move refactoring for Xtext, updating all references in the workspace.
