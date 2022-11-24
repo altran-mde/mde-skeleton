@@ -101,7 +101,7 @@ for INPUT_FILE in $(git ls-tree --full-tree --name-only -r HEAD | grep -v '^boot
 			-e "s#EMF Reference Project#$PROJECT_NAME#g" \
 			-e "s#MDE Assets - MDE Skeleton#$PROJECT_NAME#g" \
 			-e "s#MDESkeleton#$PROJECT_NAME#g" \
-			-e "s#ec-mde/mde-skeleton#$GIT_GROUP/$GIT_PROJECT#g" \
+			-e "s#cge-coe-mde/mde-skeleton#$GIT_GROUP/$GIT_PROJECT#g" \
 			-e "s#mde-skeleton#$GIT_PROJECT#g" \
 			"$OUTPUT_FILE"
 	fi
@@ -118,11 +118,12 @@ git add .
 git commit -m "Bootstrapped the $PROJECT_NAME project, using the skeleton as provided by Capgemini Engineering."
 
 echo
-echo "Done, use the next commands to build the $PROJECT_NAME product:"
+echo "Done, please review the last commit and push it to ACIDSpace using the following commands:"
 echo "> cd $OUTPUT_DIR"
-echo "> mvn clean verify -s settings.xml"
+echo "> git status"
+echo "> git push"
 echo
-echo "After a BUILD SUCCESS, the built products can be found at:"
+echo "Then read the README.adoc to learn how to setup a development environment or how to build the code locally, see"
+echo "https://${GIT_HOST}/${GIT_GROUP}/${GIT_PROJECT}/-/blob/develop/README.adoc"
+echo "After a successful local build, the built products can be found at:"
 echo "${OUTPUT_DIR}/products/${BUNDLE_SYMBOLICNAME_PREFIX}.package.product/target/products"
-echo
-echo "Finally review the last commit and if all is ok, push it to ACIDSpace."
