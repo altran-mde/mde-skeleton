@@ -13,14 +13,14 @@
 
     <!-- P2 target platform mirrors -->
     <mirror>
-      <url>https://nexus.acidspace.nl/repository/eclipse.org-releases-2020-06-202006171000</url>
-      <mirrorOf>https://download.eclipse.org/releases/2020-06/202006171000</mirrorOf>
+      <url>https://nexus.acidspace.nl/repository/eclipse.org-releases-2022-12-202212071000</url>
+      <mirrorOf>https://download.eclipse.org/releases/2022-12/202212071000</mirrorOf>
       <mirrorOfLayouts>p2</mirrorOfLayouts>
       <layout>p2</layout>
     </mirror>
     <mirror>
-      <url>https://nexus.acidspace.nl/repository/eclipse.org-justj-jres-11-updates-release</url>
-      <mirrorOf>https://download.eclipse.org/justj/jres/11/updates/release</mirrorOf>
+      <url>https://nexus.acidspace.nl/repository/eclipse.org-justj-jres-17-updates-release</url>
+      <mirrorOf>https://download.eclipse.org/justj/jres/17/updates/release</mirrorOf>
       <mirrorOfLayouts>p2</mirrorOfLayouts>
       <layout>p2</layout>
     </mirror>

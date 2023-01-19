@@ -67,5 +67,5 @@ ifndef::giturl[:giturl: https://gitlab.acidspace.nl/{gitproject}/-/blob/{gitbran
 
 // Default properties
 ifndef::project-name[:project-name: MDE Assets - MDE Skeleton]
-ifndef::eclipse-version[:eclipse-version: 2020-06]
+ifndef::eclipse-version[:eclipse-version: 2022-12]
 ifndef::eclipse-help-location[:eclipse-help-location: https://help.eclipse.org/{eclipse-version}/topic]
