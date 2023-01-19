@@ -38,6 +38,12 @@
       <layout>p2</layout>
     </mirror>
     <mirror>
+      <url>https://nexus.acidspace.nl/repository/eclipse.org-justj-jres-11-updates-release</url>
+      <mirrorOf>https://download.eclipse.org/justj/jres/11/updates/release</mirrorOf>
+      <mirrorOfLayouts>p2</mirrorOfLayouts>
+      <layout>p2</layout>
+    </mirror>
+    <mirror>
       <url>https://nexus.acidspace.nl/repository/eclipse.org-org.eclipse.e4.tools-latest</url>
       <mirrorOf>https://download.eclipse.org/e4/snapshots/org.eclipse.e4.tools/latest</mirrorOf>
       <mirrorOfLayouts>p2</mirrorOfLayouts>

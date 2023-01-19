@@ -38,6 +38,10 @@ location "https://nexus.acidspace.nl/repository/espilce-commons/develop/reposito
     org.espilce.commons.emf.registry.feature.feature.group lazy
     org.espilce.commons.resource.feature.feature.group lazy
 }
+
+location "https://download.eclipse.org/justj/jres/11/updates/release" { //<3>
+    org.eclipse.justj.openjdk.hotspot.jre.full.feature.group lazy
+}
 // end::doc-target-platform[]
 
 // tag::doc-espilce-periksa[]
