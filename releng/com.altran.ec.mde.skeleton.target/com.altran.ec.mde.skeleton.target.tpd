@@ -10,6 +10,11 @@ location "https://download.eclipse.org/releases/2020-06/202006171000" {
     org.eclipse.equinox.executable.feature.group lazy
 }
 
+location "https://download.eclipse.org/justj/jres/11/updates/release" {
+    // Including a JRE11 in the RCP 
+    org.eclipse.justj.openjdk.hotspot.jre.full.feature.group lazy
+}
+
 location "https://download.eclipse.org/e4/snapshots/org.eclipse.e4.tools/latest" {
     // Preferred for debugging the developer runtime instance 
     org.eclipse.e4.tools.spies.feature.feature.group lazy
