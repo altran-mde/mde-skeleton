@@ -63,7 +63,8 @@ ifndef::gendocdir[:gendocdir: {basedir}/target/adoc-gen]
 
 ifndef::gitproject[:gitproject: cge-coe-mde/mde-skeleton]
 ifndef::gitbranch[:gitbranch: develop]
-ifndef::giturl[:giturl: https://gitlab.acidspace.nl/{gitproject}/-/blob/{gitbranch}]
+ifndef::gitblob[:gitblob: https://gitlab.acidspace.nl/{gitproject}/-/blob]
+ifndef::giturl[:giturl: {gitblob}/{gitbranch}]
 
 // Default properties
 ifndef::project-name[:project-name: MDE Assets - MDE Skeleton]

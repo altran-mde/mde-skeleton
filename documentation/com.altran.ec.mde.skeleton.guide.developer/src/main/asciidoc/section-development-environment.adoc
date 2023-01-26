@@ -220,6 +220,8 @@ image::{imgdir}/oomph-setup-tree-target-platform.png[]
 .. If you choose to use a `Modular Target Platform`, please update the `location` of the `TargetDefinitionGenerator` to the correct location in your git repository.
    The content of the target platform can be authored within the sub tree of the `Modular Target Platform` node.
 
+TIP: Whenever the Oomph setup file is modified, an Eclipse Oomph refresh is required to apply the changes to the current workspace, use the menu menu:Help[Perform Setup Tasks...] image:{imgdir}/update_gear.png[].
+
 //tag::setup-development-environment[]
 [[setup-development-environment]]
 === How to setup a development environment
@@ -289,5 +291,8 @@ Make sure to prefix you branch name with `feature/`.
 
 When the feature branch is created, you can continue with fetching the new branch in your Eclipse development environment, see link:{eclipse-help-location}/org.eclipse.egit.doc/help/EGit/User_Guide/Tasks.html#Fetching_from_upstream[Fetching from upstream].
 Then continue by switching to the new branch, see link:{eclipse-help-location}/org.eclipse.egit.doc/help/EGit/User_Guide/Tasks.html#Checking_out_an_existing_Branch[Checking out an existing Branch]
+
+TIP: Whenever you switch to an existing branch, it is strongly advised to  perform an Eclipse Oomph refresh by using the menu menu:Help[Perform Setup Tasks...] image:{imgdir}/update_gear.png[].
+This ensures that your development environment is reconfigured to match the requirements for that branch.
 
 //end::setup-development-environment[]
