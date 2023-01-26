@@ -32,14 +32,14 @@
     </mirror>
     <!-- end::doc-mirrors[] -->
     <mirror>
-      <url>https://nexus.acidspace.nl/repository/itemis.com-releases-2.1.1</url>
-      <mirrorOf>http://download.itemis.com/updates/releases/2.1.1</mirrorOf>
+      <url>https://nexus.acidspace.nl/repository/eclipse.org-justj-jres-11-updates-release</url>
+      <mirrorOf>https://download.eclipse.org/justj/jres/11/updates/release</mirrorOf>
       <mirrorOfLayouts>p2</mirrorOfLayouts>
       <layout>p2</layout>
     </mirror>
     <mirror>
-      <url>https://nexus.acidspace.nl/repository/eclipse.org-justj-jres-11-updates-release</url>
-      <mirrorOf>https://download.eclipse.org/justj/jres/11/updates/release</mirrorOf>
+      <url>https://nexus.acidspace.nl/repository/itemis.com-releases-2.1.1</url>
+      <mirrorOf>http://download.itemis.com/updates/releases/2.1.1</mirrorOf>
       <mirrorOfLayouts>p2</mirrorOfLayouts>
       <layout>p2</layout>
     </mirror>
