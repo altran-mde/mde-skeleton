@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="CBI Target Platform" sequenceNumber="1674133322">
+<target name="CBI Target Platform" sequenceNumber="1675331177">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="org.eclipse.sdk.feature.group" version="0.0.0"/>
@@ -29,7 +29,7 @@
       <repository id="espilce-commons-p2" location="https://nexus.acidspace.nl/repository/espilce-commons/develop/repository"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
-      <unit id="org.eclipse.justj.openjdk.hotspot.jre.full.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.justj.openjdk.hotspot.jre.full.feature.group" version="11.0.17.v20221102-0901"/>
       <repository location="https://download.eclipse.org/justj/jres/11/updates/release"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">

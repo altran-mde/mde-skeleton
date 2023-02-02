@@ -42,7 +42,7 @@ location "https://nexus.acidspace.nl/repository/espilce-commons/develop/reposito
 
 // tag::doc-eclipse-justj[]
 location "https://download.eclipse.org/justj/jres/11/updates/release" {
-    org.eclipse.justj.openjdk.hotspot.jre.full.feature.group lazy
+    org.eclipse.justj.openjdk.hotspot.jre.full.feature.group [11.0.0,11.0.18)
 }
 // end::doc-eclipse-justj[]
 
