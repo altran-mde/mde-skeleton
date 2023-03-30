@@ -15,7 +15,7 @@ variables:
   MAVEN_CONTAINER: acid/containers/ubuntu-java-maven:4.7.0
   
   # Cache downloaded dependencies and plugins between builds
-  MAVEN_REPO: '.m2/repository'
+  MAVEN_REPO: '.m2/repo275'
   MAVEN_OPTS: '-Dmaven.repo.local=$MAVEN_REPO -Xmx2048m'
 
 cache:
