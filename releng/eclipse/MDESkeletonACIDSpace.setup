@@ -148,6 +148,7 @@
         xsi:type="setup.p2:P2Task">
       <requirement
           name="de.jcup.basheditor.feature.group"
+          versionRange="[0.0.0,2.9.0)"
           optional="true"/>
       <requirement
           name="de.jcup.yamleditor.feature.group"
@@ -684,8 +685,31 @@
     </setupTask>
   </setupTask>
   <stream name="develop"
-      label="Develop"/>
+      label="Develop">
+    <setupTask
+        xsi:type="setup.p2:P2Task"
+        label="EMF Development">
+      <repository
+          url="https://nexus.acidspace.nl/repository/eclipse.org-releases-2020-06-202006171000"/>
+    </setupTask>
+  </stream>
   <stream name="master"
-      label="Master"/>
+      label="Master">
+    <setupTask
+        xsi:type="setup.p2:P2Task"
+        label="EMF Development">
+      <repository
+          url="https://nexus.acidspace.nl/repository/eclipse.org-releases-2020-06-202006171000"/>
+    </setupTask>
+  </stream>
+  <stream name="release/2022-12"
+      label="Release 2022-12">
+    <setupTask
+        xsi:type="setup.p2:P2Task"
+        label="EMF Development">
+      <repository
+          url="https://nexus.acidspace.nl/repository/eclipse.org-releases-2022-12-202212071000"/>
+    </setupTask>
+  </stream>
   <description>MDE Skeleton provides a baseline for EMF based projects.</description>
 </setup:Project>

@@ -48,7 +48,7 @@ location "https://download.eclipse.org/justj/jres/11/updates/release" {
 
 // tag::doc-espilce-periksa[]
 location "https://nexus.acidspace.nl/repository/espilce-periksa/develop/repository" espilce-periksa-p2 {
-    org.espilce.periksa.sdk.feature.group lazy
+    org.espilce.periksa.feature.feature.group lazy
 }
 // end::doc-espilce-periksa[]
 
