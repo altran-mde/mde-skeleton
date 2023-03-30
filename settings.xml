@@ -3,7 +3,7 @@
 <settings xmlns="http://maven.apache.org/SETTINGS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0
                       http://maven.apache.org/xsd/settings-1.1.0.xsd">
-                      
+
   <!-- tag::doc-mirrors[] -->
   <mirrors>
     <!-- Maven mirrors -->
@@ -25,15 +25,15 @@
 
     <!-- P2 target platform mirrors -->
     <mirror>
-      <url>https://nexus.acidspace.nl/repository/eclipse.org-releases-2020-06-202006171000</url>
-      <mirrorOf>https://download.eclipse.org/releases/2020-06/202006171000</mirrorOf> <!--2-->
+      <url>https://nexus.acidspace.nl/repository/eclipse.org-releases-2022-12-202212071000</url>
+      <mirrorOf>https://download.eclipse.org/releases/2022-12/202212071000</mirrorOf> <!--2-->
       <mirrorOfLayouts>p2</mirrorOfLayouts>
       <layout>p2</layout>
     </mirror>
     <!-- end::doc-mirrors[] -->
     <mirror>
-      <url>https://nexus.acidspace.nl/repository/eclipse.org-justj-jres-11-updates-release</url>
-      <mirrorOf>https://download.eclipse.org/justj/jres/11/updates/release</mirrorOf>
+      <url>https://nexus.acidspace.nl/repository/eclipse.org-justj-jres-17-updates-release</url>
+      <mirrorOf>https://download.eclipse.org/justj/jres/17/updates/release</mirrorOf>
       <mirrorOfLayouts>p2</mirrorOfLayouts>
       <layout>p2</layout>
     </mirror>
@@ -73,11 +73,11 @@
     <!-- tag::doc-mirrors[] -->
     <!-- Maven mirrors -->
     <server>
-      <id>mde-assets-maven-central</id>  <!--3-->
+      <id>mde-assets-maven-central</id>  <!--3 -->
       <configuration>
         <timeout>10000</timeout>
       </configuration>
-      <username>${env.TECHNICAL_USER}</username>  <!--4-->
+      <username>${env.TECHNICAL_USER}</username>  <!--4 -->
       <password>${env.TECHNICAL_PASSWORD}</password>
     </server>
 

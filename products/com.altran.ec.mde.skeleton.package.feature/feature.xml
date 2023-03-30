@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- tag::doc-eclipse-justj[] -->
 <feature
       id="com.altran.ec.mde.skeleton.package.feature"
       label="EMF Reference Project - Packaging Feature"
@@ -7,7 +6,6 @@
       provider-name="Capgemini Engineering"
       plugin="com.altran.ec.mde.skeleton.package.branding">
 
-<!-- end::doc-eclipse-justj[] -->
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
    </description>
@@ -20,14 +18,13 @@
       [Enter License Description here.]
    </license>
 
-<!-- tag::doc-eclipse-justj[] -->
    <includes
          id="com.altran.ec.mde.skeleton.feature"
          version="0.0.0"/>
 
    <requires>
-      <import feature="org.eclipse.platform" version="4.16" match="greaterOrEqual"/>
-      <import feature="org.eclipse.justj.openjdk.hotspot.jre.full" version="11" match="greaterOrEqual"/> <!--1-->
+      <import feature="org.eclipse.platform" version="4.26" match="greaterOrEqual"/>
+      <import feature="org.eclipse.justj.openjdk.hotspot.jre.full" version="11" match="greaterOrEqual"/>
    </requires>
 
    <plugin
@@ -37,4 +34,3 @@
          version="0.0.0"/>
 
 </feature>
-<!-- end::doc-eclipse-justj[] -->

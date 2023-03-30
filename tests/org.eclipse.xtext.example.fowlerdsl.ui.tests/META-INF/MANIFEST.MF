@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Xtext Fowler DSL Example - Eclipse UI Tests
 Bundle-Vendor: Eclipse Xtext
-Bundle-Version: 2.22.0.qualifier
+Bundle-Version: 2.29.0.qualifier
 Bundle-SymbolicName: org.eclipse.xtext.example.fowlerdsl.ui.tests;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.core.runtime,
@@ -15,13 +15,13 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.xtext.ui.testing,
  org.eclipse.xtext.xbase.junit,
  org.eclipse.xtext.xbase.testing
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.eclipse.xtext.example.fowlerdsl.ui.tests;x-internal=true
 Import-Package: org.hamcrest.core,
- org.junit;version="4.5.0",
- org.junit.runner;version="4.5.0",
- org.junit.runner.manipulation;version="4.5.0",
- org.junit.runner.notification;version="4.5.0",
- org.junit.runners;version="4.5.0",
- org.junit.runners.model;version="4.5.0"
+ org.junit;version="4.12.0",
+ org.junit.runner;version="4.12.0",
+ org.junit.runner.manipulation;version="4.12.0",
+ org.junit.runner.notification;version="4.12.0",
+ org.junit.runners;version="4.12.0",
+ org.junit.runners.model;version="4.12.0"
 Automatic-Module-Name: org.eclipse.xtext.example.fowlerdsl.ui.tests

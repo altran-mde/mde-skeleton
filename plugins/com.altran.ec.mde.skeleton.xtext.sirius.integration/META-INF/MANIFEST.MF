@@ -13,6 +13,6 @@ Require-Bundle: org.eclipse.ui,
  com.altran.general.integration.xtextsirius.runtime,
  com.google.inject
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Vendor: %providerName
 Automatic-Module-Name: com.altran.ec.mde.skeleton.xtext.sirius.integration

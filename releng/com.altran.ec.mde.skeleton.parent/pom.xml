@@ -21,8 +21,9 @@
   </parent>
   
   <properties>
-    <java.version>1.8</java.version>
-    <xtext.version>2.22.0</xtext.version> <!-- Eclipse 2020-06 -->
+    <java.version>17</java.version>
+    <xtext.version>2.29.0</xtext.version> <!-- Eclipse 2022-12 -->
+    <tycho.version>2.6.0</tycho.version>
     <tycho.p2-repository.name>MDE Skeleton - Repository</tycho.p2-repository.name>
   </properties>
   
@@ -42,15 +43,9 @@
             </artifact>
           </target>
 <!-- tag::doc-eclipse-justj[] -->
-          <!-- Eclipse JustJ configuration for Maven Tycho 1.7 -->
+          <!-- Eclipse JustJ configuration for Maven Tycho 2.6 -->
           <!-- See https://www.eclipse.org/justj/?page=documentation -->
-          <resolveWithExecutionEnvironmentConstraints>false</resolveWithExecutionEnvironmentConstraints>
-          <dependency-resolution>
-            <profileProperties>
-              <org.eclipse.justj.buildtime>true</org.eclipse.justj.buildtime>
-            </profileProperties>
-          </dependency-resolution>
-          <!-- End: Eclipse JustJ configuration -->
+          <executionEnvironmentDefault>org.eclipse.justj.openjdk.hotspot.jre.full-17</executionEnvironmentDefault>
         </configuration>
       </plugin>
     </plugins>

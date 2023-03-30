@@ -145,7 +145,7 @@
           </execution>
 
           <execution>
-            <id>generate-pdf-user-guide</id>
+            <id>generate-pdf</id>
             <phase>generate-resources</phase>
             <goals>
               <goal>process-asciidoc</goal>

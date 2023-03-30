@@ -39,43 +39,12 @@
         name="org.eclipse.xsd.sdk.feature.group"/>
     <requirement
         name="org.eclipse.oomph.setup.workingsets.feature.group"/>
-    <requirement
-        name="org.eclipse.nebula.widgets.tablecombo"
-        versionRange="[1.0.0,1.2.0.202208171809]"
-        description="Binds transitive Oomph dependeny to latest Java8 supported version"/>
     <repository
-        url="https://nexus.acidspace.nl/repository/eclipse.org-releases-2020-06-202006171000"/>
+        url="https://nexus.acidspace.nl/repository/eclipse.org-releases-2022-12-202212071000"/>
   </setupTask>
   <setupTask
       xsi:type="setup.p2:P2Task"
-      label="Project Specific Development">
-    <requirement
-        name="org.eclipse.xtext.sdk.feature.group"/>
-    <requirement
-        name="org.espilce.periksa.sdk.feature.group"/>
-    <requirement
-        name="org.eclipse.sirius.specifier.feature.group"/>
-    <requirement
-        name="com.altran.general.integration.xtextsirius.design.feature.feature.group"/>
-    <requirement
-        name="com.altran.general.emf.ecoredoc.ui.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.rcptt.platform.feature.group"/>
-    <requirement
-        name="com.altran.general.emf.ecoredoc.plantuml.ecore"/>
-    <repository
-        url="https://nexus.acidspace.nl/repository/espilce-commons/develop/repository"/>
-    <repository
-        url="https://nexus.acidspace.nl/repository/espilce-periksa/develop/repository"/>
-    <repository
-        url="https://nexus.acidspace.nl/repository/xtext-sirius-integration/develop/repository"/>
-    <repository
-        url="https://nexus.acidspace.nl/repository/yakindu.com-statecharts-releases-3.5.13/"/>
-    <repository
-        url="https://nexus.acidspace.nl/repository/mde_assets-ecore_doc-raw/develop/repository"/>
-    <repository
-        url="https://nexus.acidspace.nl/repository/github.io_plantuml/"/>
-  </setupTask>
+      label="Project Specific Development"/>
   <setupTask
       xsi:type="setup.workingsets:WorkingSetTask">
     <workingSet
@@ -154,7 +123,6 @@
           optional="true"/>
       <requirement
           name="de.jcup.asciidoctoreditor.feature.group"
-          versionRange="[0.0.0,3.0.0)"
           optional="true"/>
       <repository
           url="https://nexus.acidspace.nl/repository/github.io-update-site-eclipse-bash-editor-update-site/"/>
@@ -483,7 +451,8 @@
         <description>Set the heap space needed to work with the projects of ${scope.project.label}</description>
       </setupTask>
       <setupTask
-          xsi:type="setup.p2:P2Task">
+          xsi:type="setup.p2:P2Task"
+          disabled="true">
         <requirement
             name="org.eclipse.m2e.feature.feature.group"/>
         <requirement

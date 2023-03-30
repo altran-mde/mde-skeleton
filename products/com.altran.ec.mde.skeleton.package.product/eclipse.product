@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="EMF Reference Project" uid="com.altran.ec.mde.skeleton.package.product" id="com.altran.ec.mde.skeleton.package.branding.product" application="org.eclipse.ui.ide.workbench" version="0.0.1.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="MDE Assets - MDE Skeleton" uid="com.altran.ec.mde.skeleton.package.product" id="com.altran.ec.mde.skeleton.package.branding.product" application="org.eclipse.ui.ide.workbench" version="0.0.1.qualifier" useFeatures="true" includeLaunchers="true" autoIncludeRequirements="false">
 
    <aboutInfo>
       <image path="/com.altran.ec.mde.skeleton.package.branding/eclipse_lg.png"/>
@@ -16,7 +16,7 @@
    <launcherArgs>
       <programArgs>--launcher.defaultAction openFile --launcher.appendVmargs
       </programArgs>
-      <vmArgs>-Dosgi.requiredJavaVersion=1.8
+      <vmArgs>-Dosgi.requiredJavaVersion=11
 -Dosgi.dataAreaRequiresExplicitInit=true
 -Dosgi.instance.area.default=workspace
 -Xms256m
@@ -42,8 +42,10 @@
       </win>
    </launcher>
 
+
    <vm>
    </vm>
+
 
    <plugins>
    </plugins>

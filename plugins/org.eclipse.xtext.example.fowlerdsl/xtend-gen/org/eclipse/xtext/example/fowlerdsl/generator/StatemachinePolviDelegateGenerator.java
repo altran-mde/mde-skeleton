@@ -3,7 +3,6 @@
  */
 package org.eclipse.xtext.example.fowlerdsl.generator;
 
-import org.eclipse.xtext.example.fowlerdsl.generator.StatemachinePolviGenerator;
 import org.espilce.polvi.emf.generator.xtext.PolviDelegateGenerator;
 
 @SuppressWarnings("all")
