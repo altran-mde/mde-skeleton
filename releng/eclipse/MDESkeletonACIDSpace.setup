@@ -482,7 +482,9 @@
         <description>Set the heap space needed to work with the projects of ${scope.project.label}</description>
       </setupTask>
       <setupTask
-          xsi:type="setup.p2:P2Task">
+          xsi:type="setup.p2:P2Task"
+          disabled="true"
+          label="Maven and Tycho">
         <requirement
             name="org.eclipse.m2e.feature.feature.group"/>
         <requirement
@@ -690,6 +692,22 @@
       <repository
           url="https://nexus.acidspace.nl/repository/eclipse.org-releases-2020-06-202006171000"/>
     </setupTask>
+    <setupTask
+        xsi:type="setup.p2:P2Task"
+        label="Maven and Tycho">
+      <requirement
+          name="org.eclipse.m2e.feature.feature.group"/>
+      <requirement
+          name="org.sonatype.tycho.m2e.feature.feature.group"/>
+      <requirement
+          name="org.sonatype.m2e.buildhelper.feature.feature.group"/>
+      <repository
+          url="https://nexus.acidspace.nl/repository/eclipse.org-technology-m2e-releases-1.19.0/"/>
+      <repository
+          url="https://nexus.acidspace.nl/repository/maven.org-maven2-.m2e-connectors-m2eclipse-tycho-0.9.0-N-LATEST/"/>
+      <repository
+          url="https://nexus.acidspace.nl/repository/maven.org-maven2-.m2e-connectors-m2eclipse-buildhelper-0.15.0-N-0.15.0.201405280027/"/>
+    </setupTask>
   </stream>
   <stream name="master"
       label="Master">
@@ -698,6 +716,22 @@
         label="EMF Development">
       <repository
           url="https://nexus.acidspace.nl/repository/eclipse.org-releases-2020-06-202006171000"/>
+    </setupTask>
+    <setupTask
+        xsi:type="setup.p2:P2Task"
+        label="Maven and Tycho">
+      <requirement
+          name="org.eclipse.m2e.feature.feature.group"/>
+      <requirement
+          name="org.sonatype.tycho.m2e.feature.feature.group"/>
+      <requirement
+          name="org.sonatype.m2e.buildhelper.feature.feature.group"/>
+      <repository
+          url="https://nexus.acidspace.nl/repository/eclipse.org-technology-m2e-releases-1.19.0/"/>
+      <repository
+          url="https://nexus.acidspace.nl/repository/maven.org-maven2-.m2e-connectors-m2eclipse-tycho-0.9.0-N-LATEST/"/>
+      <repository
+          url="https://nexus.acidspace.nl/repository/maven.org-maven2-.m2e-connectors-m2eclipse-buildhelper-0.15.0-N-0.15.0.201405280027/"/>
     </setupTask>
   </stream>
   <stream name="release/2022-12"
