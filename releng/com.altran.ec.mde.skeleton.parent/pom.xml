@@ -35,6 +35,7 @@
         <artifactId>target-platform-configuration</artifactId>
         <configuration>
 <!-- end::doc-eclipse-justj[] -->
+          <pomDependencies>consider</pomDependencies>
           <target>
             <artifact>
               <groupId>com.altran.ec.mde.skeleton</groupId>

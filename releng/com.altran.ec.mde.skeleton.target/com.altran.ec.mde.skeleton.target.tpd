@@ -16,6 +16,10 @@ location "https://download.eclipse.org/releases/2022-12/202212071000" {
     org.eclipse.egit.feature.group lazy
     // Xtext/Xtend
     org.eclipse.xtext.sdk.feature.group lazy
+    // LSP language support (TextMate)
+    org.eclipse.tm4e.feature.feature.group lazy
+    org.eclipse.lsp4e lazy
+    org.eclipse.lsp4j lazy
     // Sirius
     org.eclipse.sirius.runtime.feature.group lazy
     org.eclipse.sirius.runtime.aql.feature.group lazy

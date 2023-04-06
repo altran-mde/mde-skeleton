@@ -1,0 +1,50 @@
+{
+"name": "Statemachine",
+"scopeName": "text.statemachine",
+"fileTypes": [
+    "statemachinelsp"
+],
+  "repository": {
+    "general": {
+      "patterns": [
+        {
+          "include": "#linecomment"
+        },
+        {
+          "include": "#blockcomment"
+        },
+        {
+          "include": "#keyword"
+        },
+        {
+          "include": "#strings"
+        }
+      ]
+    },
+    "linecomment": {
+      "name": "comment.line.double-dash.Statemachine",
+      "begin": "(^[ \\t]+)?(?=//)",
+      "end": "(?=$)"
+    },
+    "blockcomment": {
+      "name": "comment.block.Statemachine",
+      "begin": "/\\*(\\*)?(?!/)",
+      "end": "\\*/"
+    },
+    "keyword": {
+      "name": "keyword.control.Statemachine",
+      "match": "\\b(statemachine|actions|commands|end|events|resetEvents|state)\\b"
+    },
+    "strings": {
+      "name": "string.quoted.double.Statemachine",
+      "begin": "\"",
+      "end": "\""
+    }
+  },
+  "patterns": [
+    {
+      "include": "#general"
+    }
+  ],
+  "uuid": "c68d2dbd-310e-4958-a4d6-b5baa80dfd0d"
+}
