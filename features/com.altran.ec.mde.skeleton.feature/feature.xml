@@ -28,6 +28,7 @@
       <import feature="com.altran.general.emf.ecoredoc.ui.feature" version="0.10.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.runtime" version="6.3.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.tm4e.feature" version="0.5.2" match="greaterOrEqual"/>
+      <import feature="org.eclipse.glsp.feature" version="1.0.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
@@ -87,6 +88,13 @@
 
    <plugin
          id="org.eclipse.xtext.example.fowlerdsl.lsp4e"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.altran.ec.mde.skeleton.glsp"
          download-size="0"
          install-size="0"
          version="0.0.0"
