@@ -5,7 +5,8 @@
     updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="8.0" copyrightFields="false" runtimeVersion="2.20">
   <genPackages prefix="Statemachine" basePackage="org.eclipse.xtext.example.fowlerdsl"
-      disposableProviderFactory="true" fileExtensions="statemachine" ecorePackage="Statemachine.ecore#/">
+      disposableProviderFactory="true" fileExtensions="statemachine,statemachinelsp"
+      ecorePackage="Statemachine.ecore#/">
     <genClasses ecoreClass="Statemachine.ecore#//Statemachine">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Statemachine.ecore#//Statemachine/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Statemachine.ecore#//Statemachine/events"/>

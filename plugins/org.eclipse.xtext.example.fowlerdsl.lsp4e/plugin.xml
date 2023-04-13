@@ -49,5 +49,13 @@
             id="org.eclipse.xtext.example.fowlerdsl.lsp4e.server">
       </contentTypeMapping>
    </extension>
+   <extension
+         point="org.eclipse.tm4e.ui.snippets">
+      <snippet
+            name="Statemachine Example"
+            path="language/snippets/MrsGrantsSecretCompartments.statemachinelsp"
+            scopeName="text.statemachine">
+      </snippet>
+   </extension>
 
 </plugin>

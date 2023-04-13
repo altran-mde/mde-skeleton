@@ -80,7 +80,6 @@ public class StatemachinePackageImpl extends EPackageImpl implements Statemachin
   {
     super(eNS_URI, StatemachineFactory.eINSTANCE);
   }
-
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
