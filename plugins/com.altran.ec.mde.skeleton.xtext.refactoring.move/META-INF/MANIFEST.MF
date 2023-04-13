@@ -15,6 +15,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.xtext.example.fowlerdsl.ui,
  org.eclipse.emf.ecore,
  org.eclipse.ui.ide
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: com.altran.ec.mde.skeleton.xtext.refactoring.move
 Bundle-ActivationPolicy: lazy

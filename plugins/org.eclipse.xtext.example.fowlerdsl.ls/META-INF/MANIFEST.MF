@@ -12,4 +12,4 @@ Require-Bundle: org.aopalliance,
  org.eclipse.xtext.example.fowlerdsl.ide,
  com.altran.ec.mde.skeleton.espilce.periksa
 Automatic-Module-Name: org.eclipse.xtext.example.fowlerdsl.ls
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17

@@ -6,7 +6,7 @@ Bundle-Version: 0.0.1.qualifier
 Export-Package: com.altran.ec.mde.skeleton.espilce.periksa;x-internal:=true
 Bundle-Vendor: Capgemini Engineering
 Automatic-Module-Name: com.altran.ec.mde.skeleton.espilce.periksa
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Require-Bundle: org.eclipse.emf.ecore,
  org.espilce.periksa.validation;visibility:=reexport,
  org.espilce.periksa.validation.registry,
