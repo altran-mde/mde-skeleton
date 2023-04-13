@@ -25,8 +25,9 @@
       <import feature="com.altran.general.xtext.refactoring.move.feature" version="0.2.0" match="greaterOrEqual"/>
       <import feature="com.altran.general.integration.xtextsirius.runtime.feature" version="1.1.0" match="greaterOrEqual"/>
       <import feature="org.espilce.periksa.sdk" version="2.0.0" match="greaterOrEqual"/>
-      <import feature="com.altran.general.emf.ecoredoc.ui.feature" version="0.10.0.20211111-1204"/>
-      <import feature="org.eclipse.sirius.runtime" version="7.0.6.202211251449"/>
+      <import feature="com.altran.general.emf.ecoredoc.ui.feature" version="0.10.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.runtime" version="6.3.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.tm4e.feature" version="0.5.2" match="greaterOrEqual"/>
    </requires>
 
    <plugin
@@ -79,6 +80,13 @@
 
    <plugin
          id="com.altran.ec.mde.skeleton.espilce.polvi"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.xtext.example.fowlerdsl.lsp4e"
          download-size="0"
          install-size="0"
          version="0.0.0"

@@ -93,7 +93,7 @@
                     <transformers>
                         <transformer
                             implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                            <mainClass>org.eclipse.xtext.ide.server.ServerLauncher</mainClass>
+                            <mainClass>org.eclipse.xtext.example.fowlerdsl.ls.StatemachineServerLauncher</mainClass>
                         </transformer>
                         <transformer
                             implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
@@ -105,15 +105,15 @@
                     </transformers>
                     <artifactSet>
                         <excludes><!-- avoid duplicate inclusion due to addjars plugin -->
-                            <exclude>*:org.xtext.example.mydsl.ide-org.eclipse.lsp4j*</exclude>
-                            <exclude>*:org.xtext.example.mydsl.ide-org.eclipse.xtext.xbase.lib*</exclude>
-                            <exclude>*:org.xtext.example.mydsl.ide-org.eclipse.xtend.lib*</exclude>
-                            <exclude>*:org.xtext.example.mydsl.ide-com.google.guava*</exclude>
-                            <exclude>*:org.xtext.example.mydsl.ide-asm*</exclude>
-                            <exclude>*:org.xtext.example.mydsl.ide-log4j*</exclude>
-                            <exclude>*:org.xtext.example.mydsl.ide-reload4j*</exclude>
-                            <exclude>*:org.xtext.example.mydsl.ide-org.objectweb.asm*</exclude>
-                            <exclude>*:org.xtext.example.mydsl.ide-org.apache.log4j*</exclude>
+                            <exclude>*:${project.artifactId}-org.eclipse.lsp4j*</exclude>
+                            <exclude>*:${project.artifactId}-org.eclipse.xtext.xbase.lib*</exclude>
+                            <exclude>*:${project.artifactId}-org.eclipse.xtend.lib*</exclude>
+                            <exclude>*:${project.artifactId}-com.google.guava*</exclude>
+                            <exclude>*:${project.artifactId}-asm*</exclude>
+                            <exclude>*:${project.artifactId}-log4j*</exclude>
+                            <exclude>*:${project.artifactId}-reload4j*</exclude>
+                            <exclude>*:${project.artifactId}-org.objectweb.asm*</exclude>
+                            <exclude>*:${project.artifactId}-org.apache.log4j*</exclude>
                         </excludes>
                     </artifactSet>
                     <filters>

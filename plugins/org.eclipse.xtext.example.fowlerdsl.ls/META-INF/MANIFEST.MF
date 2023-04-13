@@ -9,6 +9,7 @@ Require-Bundle: org.aopalliance,
  org.eclipse.lsp4j,
  org.eclipse.lsp4j.jsonrpc,
  org.eclipse.xtext.ide,
- org.eclipse.xtext.example.fowlerdsl.ide
+ org.eclipse.xtext.example.fowlerdsl.ide,
+ com.altran.ec.mde.skeleton.espilce.periksa
 Automatic-Module-Name: org.eclipse.xtext.example.fowlerdsl.ls
 Bundle-RequiredExecutionEnvironment: JavaSE-11
