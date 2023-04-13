@@ -21,8 +21,6 @@ import org.eclipse.xtext.formatting2.IFormattableDocument
 
 import static org.eclipse.xtext.example.fowlerdsl.statemachine.StatemachinePackage.Literals.*
 
-import static extension com.google.common.base.Strings.repeat
-
 class StatemachineFormatter extends AbstractFormatter2 {
 
 	@Inject extension StatemachineGrammarAccess
