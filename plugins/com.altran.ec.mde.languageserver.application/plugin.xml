@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="xtext" name="Xtext Language Setup" schema="schema/xtext.exsd"/>
+   <extension-point id="glsp" name="GLSP Diagram Module" schema="schema/glsp.exsd"/>
+   <extension
+         id="headless"
+         name="Language Server"
+         point="org.eclipse.core.runtime.applications">
+      <application
+            cardinality="singleton-global"
+            thread="main"
+            visible="true">
+         <run
+               class="com.altran.ec.mde.languageserver.application.LanguageServerApplication">
+         </run>
+      </application>
+   </extension>
+
+</plugin>

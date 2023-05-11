@@ -14,3 +14,4 @@ Require-Bundle: org.eclipse.lsp4e,
  org.eclipse.tm4e.ui
 Automatic-Module-Name: org.eclipse.xtext.example.fowlerdsl.lsp4e
 Bundle-RequiredExecutionEnvironment: JavaSE-17
+Export-Package: org.eclipse.xtext.example.fowlerdsl.lsp4e;x-internal:=true

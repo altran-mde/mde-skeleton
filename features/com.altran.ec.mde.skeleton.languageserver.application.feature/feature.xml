@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.altran.ec.mde.skeleton.languageserver.application.feature"
+      label="EMF Reference Project - Language Server Application Feature"
+      version="0.0.1.qualifier"
+      provider-name="Capgemini Engineering">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <requires>
+      <import feature="org.espilce.periksa.feature" version="2.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.glsp.feature" version="1.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.xtext.runtime" version="2.11.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="com.altran.ec.mde.skeleton.espilce.periksa"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.xtext.example.fowlerdsl"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.xtext.example.fowlerdsl.ide"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.altran.ec.mde.languageserver.application"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.altran.ec.mde.skeleton.glsp"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.altran.ec.mde.skeleton.logging"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
+
+</feature>

@@ -16,3 +16,4 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Vendor: %providerName
 Automatic-Module-Name: com.altran.ec.mde.skeleton.xtext.sirius.integration
+Export-Package: com.altran.ec.mde.skeleton.xtext.sirius.integration;x-internal:=true

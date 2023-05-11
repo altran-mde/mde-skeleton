@@ -12,3 +12,8 @@ Require-Bundle: org.eclipse.emf.edit,
 Bundle-Vendor: Capgemini Engineering
 Automatic-Module-Name: com.altran.ec.mde.skeleton.glsp
 Bundle-RequiredExecutionEnvironment: JavaSE-17
+Export-Package: com.altran.ec.mde.skeleton.glsp;x-internal:=true,
+ com.altran.ec.mde.skeleton.glsp.handler;x-internal:=true,
+ com.altran.ec.mde.skeleton.glsp.idgen;x-internal:=true,
+ com.altran.ec.mde.skeleton.glsp.model;x-internal:=true,
+ com.altran.ec.mde.skeleton.glsp.palette;x-internal:=true

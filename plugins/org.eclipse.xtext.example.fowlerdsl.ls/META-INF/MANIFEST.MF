@@ -13,3 +13,4 @@ Require-Bundle: org.aopalliance,
  com.altran.ec.mde.skeleton.espilce.periksa
 Automatic-Module-Name: org.eclipse.xtext.example.fowlerdsl.ls
 Bundle-RequiredExecutionEnvironment: JavaSE-17
+Export-Package: org.eclipse.xtext.example.fowlerdsl.ls;x-internal:=true
