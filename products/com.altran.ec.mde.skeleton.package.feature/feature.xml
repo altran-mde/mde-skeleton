@@ -21,6 +21,7 @@
    <requires>
       <import feature="org.eclipse.platform" version="4.26" match="greaterOrEqual"/>
       <import feature="org.eclipse.justj.openjdk.hotspot.jre.full" version="11" match="greaterOrEqual"/>
+      <import feature="org.eclipse.jdt" version="3.18" match="greaterOrEqual"/>
    </requires>
 
    <plugin

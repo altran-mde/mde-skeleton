@@ -44,7 +44,7 @@ Workflow {
 //tag::doc-espilce-polvi[]
 		language = StandardLanguage {
 			name = "org.eclipse.xtext.example.fowlerdsl.Statemachine"
-			fileExtensions = "statemachine,statemachinelsp"
+			fileExtensions = "statemachine"
 
 			generator = org.espilce.polvi.xtext.generator.PolviGeneratorFragment {
 				generateXtendStub = true

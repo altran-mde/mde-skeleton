@@ -2,7 +2,7 @@
 "name": "Statemachine",
 "scopeName": "text.statemachine",
 "fileTypes": [
-    "statemachinelsp"
+    "statemachine"
 ],
   "repository": {
     "general": {

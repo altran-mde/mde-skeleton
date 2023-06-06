@@ -3,18 +3,18 @@
 <plugin>
    <extension
          point="org.eclipse.core.contenttype.contentTypes">
-      <content-type
+        <content-type
             base-type="org.eclipse.core.runtime.text"
-            file-extensions="statemachinelsp"
-            id="org.eclipse.xtext.example.fowlerdsl.Statemachine.contenttype.lsp"
-            name="Statemachine File (LSP)"
+            file-extensions="statemachine"
+            id="org.eclipse.xtext.example.fowlerdsl.Statemachine.contenttype"
+            name="Statemachine File"
             priority="normal">
-      </content-type>
+        </content-type>
    </extension>
    <extension
          point="org.eclipse.ui.editors">
       <editorContentTypeBinding
-            contentTypeId="org.eclipse.xtext.example.fowlerdsl.Statemachine.contenttype.lsp"
+            contentTypeId="org.eclipse.xtext.example.fowlerdsl.Statemachine.contenttype"
             editorId="org.eclipse.ui.genericeditor.GenericEditor">
       </editorContentTypeBinding>
    </extension>
@@ -25,35 +25,35 @@
             scopeName="text.statemachine">
       </grammar>
       <scopeNameContentTypeBinding
-            contentTypeId="org.eclipse.xtext.example.fowlerdsl.Statemachine.contenttype.lsp"
+            contentTypeId="org.eclipse.xtext.example.fowlerdsl.Statemachine.contenttype"
             scopeName="text.statemachine">
       </scopeNameContentTypeBinding>
    </extension>
    <extension
          point="org.eclipse.tm4e.languageconfiguration.languageConfigurations">
       <languageConfiguration
-            contentTypeId="org.eclipse.xtext.example.fowlerdsl.Statemachine.contenttype.lsp"
+            contentTypeId="org.eclipse.xtext.example.fowlerdsl.Statemachine.contenttype"
             path="language/configurations/statemachine.language-configuration.json">
       </languageConfiguration>
    </extension>
    <extension
          point="org.eclipse.lsp4e.languageServer">
       <server
-            class="org.eclipse.xtext.example.fowlerdsl.lsp.editor.StatemachineLanguageServer"
-            id="org.eclipse.xtext.example.fowlerdsl.lsp4e.server"
+            class="org.eclipse.xtext.example.fowlerdsl.lsp.editor.StreamConnectionProviderSwitch"
+            id="org.eclipse.xtext.example.fowlerdsl.lsp.server"
             label="Statemachine LSP Server"
             singleton="true">
       </server>
       <contentTypeMapping
-            contentType="org.eclipse.xtext.example.fowlerdsl.Statemachine.contenttype.lsp"
-            id="org.eclipse.xtext.example.fowlerdsl.lsp4e.server">
+            contentType="org.eclipse.xtext.example.fowlerdsl.Statemachine.contenttype"
+            id="org.eclipse.xtext.example.fowlerdsl.lsp.server">
       </contentTypeMapping>
    </extension>
    <extension
          point="org.eclipse.tm4e.ui.snippets">
       <snippet
             name="Statemachine Example"
-            path="language/snippets/MrsGrantsSecretCompartments.statemachinelsp"
+            path="language/snippets/MrsGrantsSecretCompartments.statemachine"
             scopeName="text.statemachine">
       </snippet>
    </extension>

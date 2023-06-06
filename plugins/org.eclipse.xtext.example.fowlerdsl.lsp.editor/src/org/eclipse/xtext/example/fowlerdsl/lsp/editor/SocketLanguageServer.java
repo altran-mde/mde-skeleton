@@ -13,7 +13,7 @@ import java.util.concurrent.TimeoutException;
 
 import org.eclipse.lsp4e.server.StreamConnectionProvider;
 
-public class LanguageSocketServer implements StreamConnectionProvider {
+public class SocketLanguageServer implements StreamConnectionProvider {
 	AsynchronousSocketChannel socketChannel;
 	InputStream inputStream;
 	OutputStream outputStream;
