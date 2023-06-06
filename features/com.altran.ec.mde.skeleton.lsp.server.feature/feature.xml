@@ -52,17 +52,17 @@
          unpack="false"/>
 
    <plugin
-         id="com.altran.ec.mde.skeleton.glsp"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="com.altran.ec.mde.skeleton.logging"
          download-size="0"
          install-size="0"
          version="0.0.0"
          fragment="true"/>
+
+   <plugin
+         id="org.eclipse.xtext.example.fowlerdsl.glsp.server"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>

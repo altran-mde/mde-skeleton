@@ -18,10 +18,6 @@
       [Enter License Description here.]
    </license>
 
-   <includes
-         id="com.altran.ec.mde.skeleton.feature"
-         version="0.0.0"/>
-
    <requires>
       <import feature="org.eclipse.platform" version="4.26" match="greaterOrEqual"/>
       <import feature="org.eclipse.justj.openjdk.hotspot.jre.full" version="11" match="greaterOrEqual"/>
@@ -40,5 +36,12 @@
          version="0.0.0"
          fragment="true"
          unpack="false"/>
+
+   <plugin
+         id="com.altran.ec.mde.skeleton.logging"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
 
 </feature>

@@ -42,16 +42,15 @@
       </win>
    </launcher>
 
-
    <vm>
    </vm>
-
 
    <plugins>
    </plugins>
 
    <features>
       <feature id="com.altran.ec.mde.skeleton.package.feature"/>
+      <feature id="com.altran.ec.mde.skeleton.feature" installMode="root"/>
    </features>
 
    <configurations>
