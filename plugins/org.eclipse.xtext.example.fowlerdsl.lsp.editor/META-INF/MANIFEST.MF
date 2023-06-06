@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Xtext Fowler DSL Example - LSP Editor
+Bundle-SymbolicName: org.eclipse.xtext.example.fowlerdsl.lsp.editor;singleton:=true
+Bundle-Vendor: Capgemini Engineering
+Bundle-Version: 2.29.0.qualifier
+Require-Bundle: org.eclipse.lsp4e,
+ org.eclipse.tm4e.registry,
+ org.eclipse.tm4e.languageconfiguration,
+ org.eclipse.ui,
+ org.eclipse.core.contenttype,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.genericeditor,
+ org.eclipse.tm4e.ui
+Automatic-Module-Name: org.eclipse.xtext.example.fowlerdsl.lsp.editor
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Export-Package: org.eclipse.xtext.example.fowlerdsl.lsp.editor;x-internal:=true

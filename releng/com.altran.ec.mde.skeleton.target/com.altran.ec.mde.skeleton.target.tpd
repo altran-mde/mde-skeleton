@@ -35,8 +35,32 @@ location "https://download.eclipse.org/tools/orbit/downloads/drops/R202211230215
 location "https://download.eclipse.org/glsp/server/p2/releases/1.0.0" {
     org.eclipse.glsp.feature.feature.group lazy
     org.eclipse.glsp.server.emf lazy
+
+// tag::doc-eclipse-glsp-ide[]
+    org.eclipse.glsp.server.websocket lazy
+    org.eclipse.glsp.layout lazy
 }
 // end::doc-eclipse-glsp[]
+
+location "https://download.eclipse.org/glsp/ide/p2/releases/1.0.0/"{
+    org.eclipse.glsp.ide.feature.feature.group lazy
+}
+
+location "https://download.eclipse.org/elk/updates/releases/0.7.1/" {
+    org.eclipse.elk.core
+    org.eclipse.elk.graph
+    org.eclipse.elk.graph.text
+    org.eclipse.elk.alg.layered
+}
+
+location "https://download.eclipse.org/jetty/updates/jetty-bundles-9.x/9.4.44.v20210927/" {
+    org.eclipse.jetty.bundles.f.feature.group
+}
+
+location "https://download.eclipse.org/gemini/updates/web/3.0.4" {
+    org.apache.jasper
+}
+// end::doc-eclipse-glsp-ide[]
 
 // tag::doc-eclipse-justj[]
 location "https://download.eclipse.org/justj/jres/17/updates/release" {

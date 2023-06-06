@@ -12,7 +12,7 @@
     <booleanAttribute key="clearws" value="false"/>
     <booleanAttribute key="clearwslog" value="false"/>
     <stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/Eclipse Runtime Instance"/>
-    <booleanAttribute key="default" value="true"/>
+    <booleanAttribute key="default" value="false"/>
     <stringAttribute key="featureDefaultLocation" value="workspace"/>
     <stringAttribute key="featurePluginResolution" value="workspace"/>
     <booleanAttribute key="includeOptional" value="true"/>
@@ -27,9 +27,12 @@
     <booleanAttribute key="pde.generated.config" value="false"/>
     <stringAttribute key="pde.version" value="3.3"/>
     <stringAttribute key="product" value="com.altran.ec.mde.skeleton.package.branding.product"/>
+    <setAttribute key="selected_features">
+        <setEntry value="com.altran.ec.mde.skeleton.package.feature:default"/>
+    </setAttribute>
     <booleanAttribute key="show_selected_only" value="false"/>
     <booleanAttribute key="tracing" value="false"/>
-    <booleanAttribute key="useCustomFeatures" value="false"/>
+    <booleanAttribute key="useCustomFeatures" value="true"/>
     <booleanAttribute key="useDefaultConfig" value="true"/>
     <booleanAttribute key="useDefaultConfigArea" value="true"/>
     <booleanAttribute key="useProduct" value="true"/>
