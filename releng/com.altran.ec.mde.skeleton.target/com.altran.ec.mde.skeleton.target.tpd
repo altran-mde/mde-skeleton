@@ -30,9 +30,17 @@ location "https://download.eclipse.org/releases/2022-12/202212071000" {
 location "https://download.eclipse.org/tools/orbit/downloads/drops/R20221123021534/repository" {
     org.junit.jupiter.api lazy
     org.slf4j.binding.log4j12 lazy
+    com.google.gson lazy
+    com.google.guava lazy
+    com.google.inject lazy
+    org.apache.commons.cli lazy
 }
 
-location "https://download.eclipse.org/glsp/server/p2/releases/1.0.0" {
+location "https://download.eclipse.org/tools/orbit/downloads/drops/R20210825222808/repository/" {
+    javax.xml.stream lazy
+}
+
+location "https://download.eclipse.org/glsp/server/p2/nightly/1.1/1.1.0.202207061503/" {
     org.eclipse.glsp.feature.feature.group lazy
     org.eclipse.glsp.server.emf lazy
 
@@ -46,19 +54,19 @@ location "https://download.eclipse.org/glsp/ide/p2/releases/1.0.0/"{
     org.eclipse.glsp.ide.feature.feature.group lazy
 }
 
-location "https://download.eclipse.org/elk/updates/releases/0.7.1/" {
-    org.eclipse.elk.core
-    org.eclipse.elk.graph
-    org.eclipse.elk.graph.text
-    org.eclipse.elk.alg.layered
+location "https://download.eclipse.org/jetty/updates/jetty-bundles-9.x/9.4.44.v20210927/" {
+    org.eclipse.jetty.bundles.f.feature.group lazy
 }
 
-location "https://download.eclipse.org/jetty/updates/jetty-bundles-9.x/9.4.44.v20210927/" {
-    org.eclipse.jetty.bundles.f.feature.group
+location "https://download.eclipse.org/elk/updates/releases/0.7.1/" {
+    org.eclipse.elk.core lazy
+    org.eclipse.elk.graph lazy
+    org.eclipse.elk.graph.text lazy
+    org.eclipse.elk.alg.layered lazy
 }
 
 location "https://download.eclipse.org/gemini/updates/web/3.0.4" {
-    org.apache.jasper
+    org.apache.jasper lazy
 }
 // end::doc-eclipse-glsp-ide[]
 

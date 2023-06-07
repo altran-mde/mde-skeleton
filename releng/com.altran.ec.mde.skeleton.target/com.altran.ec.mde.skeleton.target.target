@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="CBI Target Platform" sequenceNumber="1685956751">
+<target name="CBI Target Platform" sequenceNumber="1686061331">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="org.eclipse.sdk.feature.group" version="0.0.0"/>
@@ -20,32 +20,40 @@
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="org.junit.jupiter.api" version="0.0.0"/>
       <unit id="org.slf4j.binding.log4j12" version="0.0.0"/>
+      <unit id="com.google.gson" version="0.0.0"/>
+      <unit id="com.google.guava" version="0.0.0"/>
+      <unit id="com.google.inject" version="0.0.0"/>
+      <unit id="org.apache.commons.cli" version="0.0.0"/>
       <repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20221123021534/repository"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="javax.xml.stream" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20210825222808/repository/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="org.eclipse.glsp.feature.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.glsp.server.emf" version="0.0.0"/>
       <unit id="org.eclipse.glsp.server.websocket" version="0.0.0"/>
       <unit id="org.eclipse.glsp.layout" version="0.0.0"/>
-      <repository location="https://download.eclipse.org/glsp/server/p2/releases/1.0.0"/>
+      <repository location="https://download.eclipse.org/glsp/server/p2/nightly/1.1/1.1.0.202207061503/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="org.eclipse.glsp.ide.feature.feature.group" version="0.0.0"/>
       <repository location="https://download.eclipse.org/glsp/ide/p2/releases/1.0.0/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
-      <unit id="org.eclipse.elk.core" version="0.7.1"/>
-      <unit id="org.eclipse.elk.graph" version="0.7.1"/>
-      <unit id="org.eclipse.elk.graph.text" version="0.7.1"/>
-      <unit id="org.eclipse.elk.alg.layered" version="0.7.1"/>
-      <repository location="https://download.eclipse.org/elk/updates/releases/0.7.1/"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
-      <unit id="org.eclipse.jetty.bundles.f.feature.group" version="9.4.44.v20210927"/>
+      <unit id="org.eclipse.jetty.bundles.f.feature.group" version="0.0.0"/>
       <repository location="https://download.eclipse.org/jetty/updates/jetty-bundles-9.x/9.4.44.v20210927/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
-      <unit id="org.apache.jasper" version="8.5.35"/>
+      <unit id="org.eclipse.elk.core" version="0.0.0"/>
+      <unit id="org.eclipse.elk.graph" version="0.0.0"/>
+      <unit id="org.eclipse.elk.graph.text" version="0.0.0"/>
+      <unit id="org.eclipse.elk.alg.layered" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/elk/updates/releases/0.7.1/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="org.apache.jasper" version="0.0.0"/>
       <repository location="https://download.eclipse.org/gemini/updates/web/3.0.4"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">

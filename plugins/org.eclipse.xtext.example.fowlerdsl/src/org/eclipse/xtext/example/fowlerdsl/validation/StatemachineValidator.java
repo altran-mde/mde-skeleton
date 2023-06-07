@@ -8,7 +8,13 @@
  *******************************************************************************/
 package org.eclipse.xtext.example.fowlerdsl.validation;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import org.eclipse.xtext.example.fowlerdsl.statemachine.Event;
+import org.eclipse.xtext.example.fowlerdsl.statemachine.Statemachine;
 import org.eclipse.xtext.example.fowlerdsl.statemachine.StatemachinePackage;
+import org.eclipse.xtext.example.fowlerdsl.statemachine.Transition;
 import org.eclipse.xtext.validation.Check;
 
 /**
@@ -20,6 +26,7 @@ import org.eclipse.xtext.validation.Check;
 public class StatemachineValidator extends AbstractStatemachineValidator {
 
 	public static final String INVALID_NAME = "invalidName";
+	public static final String EVENT_NOT_USED = "eventNotUsed";
 
 	@Check
 	public void checkStateNameStartsWithLowerCase(org.eclipse.xtext.example.fowlerdsl.statemachine.State state) {
@@ -29,4 +36,19 @@ public class StatemachineValidator extends AbstractStatemachineValidator {
 		}
 	}
 
+	// FIXME: This validation doesn't work in Espilce Periksa: it reports the warning on the wrong elements in the UI
+	@Check
+	public void checkEventNotUsed(Statemachine statemachine) {
+		Set<Event> usedEvents = statemachine.getStates().stream()
+				.flatMap(s -> s.getTransitions().stream())
+				.map(Transition::getEvent)
+				.collect(Collectors.toSet());
+		for (int i = 0; i < statemachine.getEvents().size(); i++) {
+			Event event = statemachine.getEvents().get(i);
+			if (!usedEvents.contains(event)) {
+				warning("Event '" + event.getName() + "' is not used",
+						StatemachinePackage.Literals.STATEMACHINE__EVENTS, i, StatemachineValidator.EVENT_NOT_USED);
+			}
+		}
+	}
 }
