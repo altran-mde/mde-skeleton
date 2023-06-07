@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Xtext Fowler DSL Example - LSP Server Standalone
+Bundle-SymbolicName: org.eclipse.xtext.example.fowlerdsl.lsp.server.standalone
+Bundle-Version: 2.29.0.qualifier
+Export-Package: org.eclipse.xtext.example.fowlerdsl.lsp.server.standalone;x-internal:=true
+Require-Bundle: org.aopalliance,
+ com.google.gson,
+ org.eclipse.lsp4j,
+ org.eclipse.lsp4j.jsonrpc,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.example.fowlerdsl.ide,
+ com.altran.ec.mde.skeleton.espilce.periksa
+Bundle-Vendor: Capgemini Engineering
+Automatic-Module-Name: org.eclipse.xtext.example.fowlerdsl.lsp.server.standalone
+Bundle-RequiredExecutionEnvironment: JavaSE-17

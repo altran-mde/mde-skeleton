@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="com.altran.ec.mde.skeleton.languageserver.application.feature"
+      id="com.altran.ec.mde.skeleton.lsp.server.feature"
       label="EMF Reference Project - Language Server Application Feature"
       version="0.0.1.qualifier"
       provider-name="Capgemini Engineering">
@@ -64,5 +64,11 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+
+   <plugin
+         id="org.eclipse.xtext.example.fowlerdsl.lsp.server"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
 
 </feature>

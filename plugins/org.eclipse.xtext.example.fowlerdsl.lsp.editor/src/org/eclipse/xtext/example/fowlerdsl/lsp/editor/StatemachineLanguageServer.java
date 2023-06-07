@@ -18,7 +18,7 @@ public class StatemachineLanguageServer extends ProcessStreamConnectionProvider 
 			commands.add(computeJavaPath());
 			commands.add("-jar");
 			URL url = FileLocator.toFileURL(
-					getClass().getResource("/language/servers/org.eclipse.xtext.example.fowlerdsl.lsp.server-uber.jar"));
+					getClass().getResource("/language/servers/org.eclipse.xtext.example.fowlerdsl.lsp.server.standalone-uber.jar"));
 			String uberJarPath = new java.io.File(url.getPath()).getAbsolutePath();
 			commands.add(uberJarPath);
 			setCommands(commands);

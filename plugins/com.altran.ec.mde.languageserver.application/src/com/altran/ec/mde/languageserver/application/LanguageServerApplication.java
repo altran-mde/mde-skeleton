@@ -39,9 +39,11 @@ public class LanguageServerApplication implements IApplication {
 			return IApplication.EXIT_OK;
 		}
 		
-		SocketServerLauncher<Injector> xtextServerLauncher = new SocketServerLauncher<>("Xtext",
-				this::acceptXtextConnection, createXtextInjector());
-		xtextServerHandle = xtextServerLauncher.start("0.0.0.0", cliParser.parseLspPort());
+		if (!IResourceServiceProvider.Registry.INSTANCE.getExtensionToFactoryMap().isEmpty()) {
+			SocketServerLauncher<Injector> xtextServerLauncher = new SocketServerLauncher<>("Xtext",
+					this::acceptXtextConnection, createXtextInjector());
+			xtextServerHandle = xtextServerLauncher.start("0.0.0.0", cliParser.parseLspPort());
+		}
 
 		if (!LanguageServerPlugin.DIAGRAM_MODULES.isEmpty()) {
 			SocketServerLauncher<Injector> glspServerLauncher = new SocketServerLauncher<>("GLSP",

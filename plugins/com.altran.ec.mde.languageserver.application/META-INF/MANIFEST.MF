@@ -13,7 +13,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.equinox.app,
  org.eclipse.xtext.ide,
  org.eclipse.glsp.server,
- org.eclipse.xtext.example.fowlerdsl.glsp.server,
  org.eclipse.glsp.server.emf
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: com.altran.ec.mde.languageserver.application

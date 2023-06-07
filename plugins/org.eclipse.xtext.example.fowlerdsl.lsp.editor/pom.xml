@@ -15,7 +15,7 @@
     <dependencies>
         <dependency>
             <groupId>com.altran.ec.mde.skeleton</groupId>
-            <artifactId>org.eclipse.xtext.example.fowlerdsl.lsp.server</artifactId>
+            <artifactId>org.eclipse.xtext.example.fowlerdsl.lsp.server.standalone</artifactId>
             <version>2.29.0-SNAPSHOT</version>
             <!-- classifier:uber includes all dependencies -->
             <classifier>uber</classifier>
@@ -50,7 +50,7 @@
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>com.altran.ec.mde.skeleton</groupId>
-                                    <artifactId>org.eclipse.xtext.example.fowlerdsl.lsp.server</artifactId>
+                                    <artifactId>org.eclipse.xtext.example.fowlerdsl.lsp.server.standalone</artifactId>
                                     <version>2.29.0-SNAPSHOT</version>
                                     <!-- classifier:uber includes all dependencies -->
                                     <classifier>uber</classifier>

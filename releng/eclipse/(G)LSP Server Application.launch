@@ -29,7 +29,7 @@
     <stringAttribute key="pde.version" value="3.3"/>
     <stringAttribute key="product" value="com.altran.ec.mde.skeleton.package.branding.product"/>
     <setAttribute key="selected_features">
-        <setEntry value="com.altran.ec.mde.skeleton.languageserver.application.feature:default"/>
+        <setEntry value="com.altran.ec.mde.skeleton.lsp.server.feature:default"/>
     </setAttribute>
     <booleanAttribute key="show_selected_only" value="false"/>
     <booleanAttribute key="tracing" value="false"/>

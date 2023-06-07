@@ -1,4 +1,4 @@
-package org.eclipse.xtext.example.fowlerdsl.lsp.server;
+package org.eclipse.xtext.example.fowlerdsl.lsp.server.standalone;
 
 import org.eclipse.xtext.example.fowlerdsl.statemachine.StatemachinePackage;
 import org.eclipse.xtext.ide.server.ServerLauncher;
