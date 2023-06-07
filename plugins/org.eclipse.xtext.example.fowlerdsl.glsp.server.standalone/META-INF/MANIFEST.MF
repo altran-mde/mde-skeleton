@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Xtext Fowler DSL Example - GLSP Server Standalone
+Bundle-SymbolicName: org.eclipse.xtext.example.fowlerdsl.glsp.server.standalone
+Bundle-Version: 2.29.0.qualifier
+Export-Package: org.eclipse.xtext.example.fowlerdsl.glsp.server.standalone;x-internal:=true
+Require-Bundle: org.eclipse.glsp.server,
+ org.eclipse.glsp.server.emf,
+ org.eclipse.xtext.example.fowlerdsl.glsp.server
+Automatic-Module-Name: org.eclipse.xtext.example.fowlerdsl.glsp.server.standalone
+Bundle-RequiredExecutionEnvironment: JavaSE-17
