@@ -1,18 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>com.altran.ec.mde.skeleton</groupId>
         <artifactId>com.altran.ec.mde.skeleton.root</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../</relativePath>
     </parent>
-
     <artifactId>org.eclipse.xtext.example.fowlerdsl.lsp.server.standalone</artifactId>
     <packaging>eclipse-plugin</packaging>
     <version>2.29.0-SNAPSHOT</version>
-
     <build>
         <plugins>
             <plugin>
@@ -100,40 +97,61 @@
                             <resource>plugin.properties</resource>
                         </transformer>
                         <transformer
-                            implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer">
-                        </transformer>
+                            implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"></transformer>
                     </transformers>
                     <artifactSet>
                         <excludes>
                             <!-- avoid duplicate inclusion due to addjars plugin -->
-                            <exclude>*:${project.artifactId}-org.eclipse.lsp4j*</exclude>
-                            <exclude>*:${project.artifactId}-org.eclipse.xtext.xbase.lib*</exclude>
-                            <exclude>*:${project.artifactId}-org.eclipse.xtend.lib*</exclude>
+                            <exclude>org.eclipse.jdt:*</exclude>
+                            <!-- HINT: use the next grep command on de maven-shade-plugin warnings to produce the list below -->
+                            <!-- grep -o -e 'org.eclipse.xtext.example.fowlerdsl.lsp.server.standalone-[^-]*' lsp-warn.txt | sort -u | sed 's#\(.*\)-\(.*\)#<exclude>*:${project.artifactId}-\2*</exclude>#g' -->
+                            <exclude>*:${project.artifactId}-com.altran.ec.mde.skeleton.espilce.periksa*</exclude>
+                            <exclude>*:${project.artifactId}-com.google.gson*</exclude>
                             <exclude>*:${project.artifactId}-com.google.guava*</exclude>
-                            <exclude>*:${project.artifactId}-asm*</exclude>
-                            <exclude>*:${project.artifactId}-log4j*</exclude>
-                            <exclude>*:${project.artifactId}-reload4j*</exclude>
-                            <exclude>*:${project.artifactId}-org.objectweb.asm*</exclude>
+                            <exclude>*:${project.artifactId}-com.google.inject*</exclude>
+                            <exclude>*:${project.artifactId}-io.github.classgraph*</exclude>
+                            <exclude>*:${project.artifactId}-javax.inject*</exclude>
+                            <exclude>*:${project.artifactId}-org.antlr.runtime*</exclude>
+                            <exclude>*:${project.artifactId}-org.aopalliance*</exclude>
                             <exclude>*:${project.artifactId}-org.apache.log4j*</exclude>
+                            <exclude>*:${project.artifactId}-org.eclipse.emf.common*</exclude>
+                            <exclude>*:${project.artifactId}-org.eclipse.emf.ecore*</exclude>
+                            <exclude>*:${project.artifactId}-org.eclipse.emf.ecore.change*</exclude>
+                            <exclude>*:${project.artifactId}-org.eclipse.emf.ecore.xmi*</exclude>
+                            <exclude>*:${project.artifactId}-org.eclipse.equinox.common*</exclude>
+                            <exclude>*:${project.artifactId}-org.eclipse.lsp4j*</exclude>
+                            <exclude>*:${project.artifactId}-org.eclipse.lsp4j.jsonrpc*</exclude>
+                            <exclude>*:${project.artifactId}-org.eclipse.osgi*</exclude>
+                            <exclude>*:${project.artifactId}-org.eclipse.xtend.lib*</exclude>
+                            <exclude>*:${project.artifactId}-org.eclipse.xtend.lib.macro*</exclude>
+                            <exclude>*:${project.artifactId}-org.eclipse.xtext*</exclude>
+                            <exclude>*:${project.artifactId}-org.eclipse.xtext.common.types*</exclude>
+                            <exclude>*:${project.artifactId}-org.eclipse.xtext.example.fowlerdsl*</exclude>
+                            <exclude>*:${project.artifactId}-org.eclipse.xtext.example.fowlerdsl.ide*</exclude>
+                            <exclude>*:${project.artifactId}-org.eclipse.xtext.ide*</exclude>
+                            <exclude>*:${project.artifactId}-org.eclipse.xtext.util*</exclude>
+                            <exclude>*:${project.artifactId}-org.eclipse.xtext.xbase*</exclude>
+                            <exclude>*:${project.artifactId}-org.eclipse.xtext.xbase.lib*</exclude>
+                            <exclude>*:${project.artifactId}-org.objectweb.asm*</exclude>
+                            <exclude>*:${project.artifactId}-org.osgi.service.prefs*</exclude>
                         </excludes>
                     </artifactSet>
                     <filters>
                         <filter>
                             <artifact>*:*</artifact>
                             <excludes>
-                                <exclude>META-INF/INDEX.LIST</exclude>
-                                <exclude>META-INF/*.SF</exclude>
-                                <exclude>META-INF/*.DSA</exclude>
-                                <exclude>META-INF/*.RSA</exclude>
                                 <exclude>.options</exclude>
                                 <exclude>.api_description</exclude>
+                                <exclude>about.*</exclude>
+                                <exclude>modeling32.png</exclude>
+                                <exclude>plugin.xml</exclude>
+                                <exclude>profile.list</exclude>
+                                <exclude>systembundle.properties</exclude>
                                 <exclude>*.profile</exclude>
                                 <exclude>*.html</exclude>
-                                <exclude>about.*</exclude>
                                 <exclude>about_files/*</exclude>
-                                <exclude>plugin.xml</exclude>
-                                <exclude>systembundle.properties</exclude>
-                                <exclude>profile.list</exclude>
+                                <exclude>META-INF/*</exclude>
+                                <exclude>OSGI-INF/l10n/bundle.properties</exclude>
                                 <exclude>**/*._trace</exclude>
                                 <exclude>**/*.g</exclude>
                                 <exclude>**/*.mwe2</exclude>

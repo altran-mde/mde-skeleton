@@ -23,26 +23,43 @@ import org.eclipse.glsp.server.launch.DefaultCLIParser;
 import org.eclipse.glsp.server.launch.GLSPServerLauncher;
 import org.eclipse.glsp.server.launch.SocketGLSPServerLauncher;
 import org.eclipse.glsp.server.utils.LaunchUtil;
+import org.eclipse.xtext.example.fowlerdsl.StatemachineStandaloneSetup;
 import org.eclipse.xtext.example.fowlerdsl.glsp.server.StatemachineDiagramModule;
+import org.eclipse.xtext.example.fowlerdsl.statemachine.StatemachinePackage;
+import org.espilce.periksa.validation.DeclarativeValidator;
+import org.espilce.periksa.validation.EValidatorRegistrar;
 
+import com.altran.ec.mde.skeleton.espilce.periksa.StatemachineValidations;
+
+@SuppressWarnings("restriction")
 public final class StatemachineServerLauncher {
-   private StatemachineServerLauncher() {}
+	static {
+		// As the language server is executed as an executable jar instead of an Eclipse
+		// instance, all registrations by means of extension points are ignored.
+		// When using other Eclipse based frameworks like Espilce Periksa for
+		// validation, these registrations should be done manually before launching the
+		// server, e.g.:
+		new EValidatorRegistrar().register(StatemachinePackage.eINSTANCE,
+				DeclarativeValidator.of(StatemachineValidations.class));
+		// For Xtext, its languages must also be registered, e.g.:
+		StatemachineStandaloneSetup.doSetup();
+	}
 
-   public static void main(final String[] args) {
-      String processName = "StatemachineExampleGlspServer";
-      try {
-         DefaultCLIParser parser = new DefaultCLIParser(args, processName);
-         LaunchUtil.configure(parser);
+	public static void main(final String[] args) {
+		String processName = "StatemachineExampleGlspServer";
+		try {
+			DefaultCLIParser parser = new DefaultCLIParser(args, processName);
+			LaunchUtil.configure(parser);
 
-         int port = parser.parsePort();
-         ServerModule statemachineServerModule = new ServerModule()
-            .configureDiagramModule(new StatemachineDiagramModule());
+			int port = parser.parsePort();
+			ServerModule statemachineServerModule = new ServerModule()
+					.configureDiagramModule(new StatemachineDiagramModule());
 
-         GLSPServerLauncher launcher = new SocketGLSPServerLauncher(statemachineServerModule);
-         launcher.start("localhost", port);
-      } catch (ParseException | IOException ex) {
-         ex.printStackTrace();
-         LaunchUtil.printHelp(processName, DefaultCLIParser.getDefaultOptions());
-      }
-   }
+			GLSPServerLauncher launcher = new SocketGLSPServerLauncher(statemachineServerModule);
+			launcher.start("localhost", port);
+		} catch (ParseException | IOException ex) {
+			ex.printStackTrace();
+			LaunchUtil.printHelp(processName, DefaultCLIParser.getDefaultOptions());
+		}
+	}
 }

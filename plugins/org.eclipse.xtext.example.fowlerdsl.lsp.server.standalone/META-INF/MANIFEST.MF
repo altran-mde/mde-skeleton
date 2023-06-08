@@ -8,9 +8,9 @@ Require-Bundle: org.aopalliance,
  com.google.gson,
  org.eclipse.lsp4j,
  org.eclipse.lsp4j.jsonrpc,
+ com.altran.ec.mde.skeleton.espilce.periksa,
  org.eclipse.xtext.ide,
- org.eclipse.xtext.example.fowlerdsl.ide,
- com.altran.ec.mde.skeleton.espilce.periksa
+ org.eclipse.xtext.example.fowlerdsl.ide
 Bundle-Vendor: Capgemini Engineering
 Automatic-Module-Name: org.eclipse.xtext.example.fowlerdsl.lsp.server.standalone
 Bundle-RequiredExecutionEnvironment: JavaSE-17

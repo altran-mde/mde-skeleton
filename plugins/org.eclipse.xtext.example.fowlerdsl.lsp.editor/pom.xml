@@ -41,7 +41,7 @@
                 <version>3.5.0</version>
                 <executions>
                     <execution>
-                        <id>fetch-lemminx</id>
+                        <id>fetch-lsp-server</id>
                         <phase>generate-resources</phase>
                         <goals>
                             <goal>copy</goal>
