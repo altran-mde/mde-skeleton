@@ -15,6 +15,7 @@ public class LanguageServerCLIParser extends CLIParser {
 	public static final String OPTION_LSP_PORT = "lspPort";
 	public static final String OPTION_GLSP_PORT = "glspPort";
 	public static final String OPTION_TRACE = "trace";
+	public static final String OPTION_WEBSOCKET = "web";
 
 	public LanguageServerCLIParser(final String[] args, final String processName) throws ParseException {
 		this(args, getDefaultOptions(), processName);
@@ -39,6 +40,10 @@ public class LanguageServerCLIParser extends CLIParser {
 		return hasOption(OPTION_TRACE);
 	}
 
+	public boolean isWebSocket() {
+		return hasOption(OPTION_WEBSOCKET);
+	}
+
 	public boolean isHelp() {
 		return hasOption(OPTION_HELP);
 	}
@@ -51,6 +56,7 @@ public class LanguageServerCLIParser extends CLIParser {
 		options.addOption(OPTION_GLSP_PORT, true,
 				String.format("Set GLSP server port. [default='%s']", DefaultOptions.SERVER_PORT));
 		options.addOption(OPTION_TRACE, false, String.format("Enable console message tracing."));
+		options.addOption(OPTION_WEBSOCKET, false, String.format("Use websockets instead of plain sockets."));
 		return options;
 	}
 }

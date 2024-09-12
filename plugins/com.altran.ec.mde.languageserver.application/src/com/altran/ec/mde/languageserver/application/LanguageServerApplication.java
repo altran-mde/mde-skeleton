@@ -1,8 +1,6 @@
 package com.altran.ec.mde.languageserver.application;
 
 import java.io.PrintWriter;
-import java.nio.channels.AsynchronousSocketChannel;
-import java.nio.channels.Channels;
 import java.util.Map;
 import java.util.concurrent.Future;
 
@@ -38,21 +36,25 @@ public class LanguageServerApplication implements IApplication {
 			cliParser.printHelp();
 			return IApplication.EXIT_OK;
 		}
-		
+
 		if (!IResourceServiceProvider.Registry.INSTANCE.getExtensionToFactoryMap().isEmpty()) {
-			SocketServerLauncher<Injector> xtextServerLauncher = new SocketServerLauncher<>("Xtext",
-					this::acceptXtextConnection, createXtextInjector());
+			LanguageServerLauncher<Injector> xtextServerLauncher = cliParser.isWebSocket()
+					? new WebSocketServerLauncher<>("Xtext Web", this::acceptXtextConnection, createXtextInjector())
+					: new SocketServerLauncher<>("Xtext", this::acceptXtextConnection, createXtextInjector());
 			xtextServerHandle = xtextServerLauncher.start("0.0.0.0", cliParser.parseLspPort());
 		}
 
 		if (!LanguageServerPlugin.DIAGRAM_MODULES.isEmpty()) {
-			SocketServerLauncher<Injector> glspServerLauncher = new SocketServerLauncher<>("GLSP",
-					this::acceptGlspConnection, createGlspInjector());
+			LanguageServerLauncher<Injector> glspServerLauncher = cliParser.isWebSocket()
+					? new WebSocketServerLauncher<>("GLSP Web", this::acceptGlspConnection, createGlspInjector())
+					: new SocketServerLauncher<>("GLSP", this::acceptGlspConnection, createGlspInjector());
 			glspServerHandle = glspServerLauncher.start("0.0.0.0", cliParser.parseGlspPort());
 			glspServerHandle.get();
 		}
 
-		xtextServerHandle.get();
+		if (xtextServerHandle != null) {
+			xtextServerHandle.get();
+		}
 
 		return IApplication.EXIT_OK;
 	}
@@ -63,13 +65,11 @@ public class LanguageServerApplication implements IApplication {
 		return Guice.createInjector(serverModule);
 	}
 
-	private Future<?> acceptXtextConnection(AsynchronousSocketChannel socketChannel, Injector injector) {
+	private Future<?> acceptXtextConnection(LanguageServerConnection connection, Injector injector) {
 		LanguageServerImpl languageServer = injector.getInstance(LanguageServerImpl.class);
-		Builder<LanguageClient> builder = new Launcher.Builder<LanguageClient>()
-				.setLocalService(languageServer)
-				.setRemoteInterface(LanguageClient.class)
-				.setInput(Channels.newInputStream(socketChannel))
-				.setOutput(Channels.newOutputStream(socketChannel));
+		Builder<LanguageClient> builder = new Launcher.Builder<LanguageClient>().setLocalService(languageServer)
+				.setRemoteInterface(LanguageClient.class).setInput(connection.getInputStream())
+				.setOutput(connection.getOutputStream());
 		if (cliParser.isTrace()) {
 			builder = builder.traceMessages(new PrintWriter(System.out));
 		}
@@ -84,13 +84,11 @@ public class LanguageServerApplication implements IApplication {
 		return Guice.createInjector(serverModule);
 	}
 
-	private Future<?> acceptGlspConnection(AsynchronousSocketChannel socketChannel, Injector injector) {
+	private Future<?> acceptGlspConnection(LanguageServerConnection connection, Injector injector) {
 		GLSPServer glspServer = injector.getInstance(GLSPServer.class);
-		Builder<GLSPClient> builder = new Launcher.Builder<GLSPClient>()
-				.setLocalService(glspServer)
-				.setRemoteInterface(GLSPClient.class)
-				.setInput(Channels.newInputStream(socketChannel))
-				.setOutput(Channels.newOutputStream(socketChannel))
+		Builder<GLSPClient> builder = new Launcher.Builder<GLSPClient>().setLocalService(glspServer)
+				.setRemoteInterface(GLSPClient.class).setInput(connection.getInputStream())
+				.setOutput(connection.getOutputStream())
 				.configureGson(injector.getInstance(ServerGsonConfigurator.class)::configureGsonBuilder);
 		if (cliParser.isTrace()) {
 			builder = builder.traceMessages(new PrintWriter(System.out));
@@ -99,7 +97,7 @@ public class LanguageServerApplication implements IApplication {
 		glspServer.connect(launcher.getRemoteProxy());
 		return launcher.startListening();
 	}
-	
+
 	@Override
 	public void stop() {
 		if (xtextServerHandle != null) {
@@ -120,9 +118,9 @@ public class LanguageServerApplication implements IApplication {
 	public static class GlspServerModuleOverride extends AbstractModule {
 		@Override
 		protected void configure() {
-			bind(new TypeLiteral<Map<String, Module>>() {})
-				.annotatedWith(Names.named(org.eclipse.glsp.server.di.ServerModule.DIAGRAM_MODULES))
-				.toInstance(LanguageServerPlugin.DIAGRAM_MODULES);
+			bind(new TypeLiteral<Map<String, Module>>() {
+			}).annotatedWith(Names.named(org.eclipse.glsp.server.di.ServerModule.DIAGRAM_MODULES))
+					.toInstance(LanguageServerPlugin.DIAGRAM_MODULES);
 		}
 	}
 }

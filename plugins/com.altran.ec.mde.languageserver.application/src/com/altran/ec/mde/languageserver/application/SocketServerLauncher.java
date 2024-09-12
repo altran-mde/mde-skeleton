@@ -5,23 +5,26 @@ import static org.eclipse.core.runtime.IStatus.ERROR;
 import static org.eclipse.core.runtime.IStatus.INFO;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.nio.channels.AsynchronousServerSocketChannel;
 import java.nio.channels.AsynchronousSocketChannel;
+import java.nio.channels.Channels;
 import java.nio.channels.CompletionHandler;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 import java.util.function.BiFunction;
 
-public class SocketServerLauncher<M> {
+public class SocketServerLauncher<M> implements LanguageServerLauncher<M> {
 	private final String name;
-	private final BiFunction<AsynchronousSocketChannel, M, Future<?>> consumer;
+	private final BiFunction<LanguageServerConnection, M, Future<?>> consumer;
 	private final M metaData;
 
 	private CompletableFuture<M> onShutdown;
 	private AsynchronousServerSocketChannel serverSocket;
 
-	public SocketServerLauncher(String name, BiFunction<AsynchronousSocketChannel, M, Future<?>> consumer, M metaData) {
+	public SocketServerLauncher(String name, BiFunction<LanguageServerConnection, M, Future<?>> consumer, M metaData) {
 		this.name = name;
 		this.consumer = consumer;
 		this.metaData = metaData;
@@ -47,7 +50,7 @@ public class SocketServerLauncher<M> {
 				serverSocket.accept(metaData, this); // Prepare for the next connection
 				try {
 					log(INFO, "Starting %s language server for client %s.", name, socketChannel.getRemoteAddress());
-					Future<?> future = consumer.apply(socketChannel, metaData);
+					Future<?> future = consumer.apply(new AsynchronousSocketConnection(socketChannel), metaData);
 					log(INFO, "%s language server has been started for client %s.", name, socketChannel.getRemoteAddress());
 					future.get();
 					log(INFO, "Stopping %s language server for client %s.", name, socketChannel.getRemoteAddress());
@@ -90,5 +93,28 @@ public class SocketServerLauncher<M> {
 		onShutdown.complete(metaData);
 		onShutdown = null;
 		log(INFO, "Shutdown %s language server", name);
+	}
+	
+	private static class AsynchronousSocketConnection implements LanguageServerConnection {
+		private final AsynchronousSocketChannel channel;
+		
+		AsynchronousSocketConnection(AsynchronousSocketChannel channel) {
+			this.channel = channel;
+		}
+		
+		@Override
+		public InputStream getInputStream() {
+			return Channels.newInputStream(this.channel);
+		}
+		
+		@Override
+		public OutputStream getOutputStream() {
+			return Channels.newOutputStream(this.channel);
+		}
+		
+		@Override
+		public void close() throws IOException {
+			this.channel.close();
+		}
 	}
 }

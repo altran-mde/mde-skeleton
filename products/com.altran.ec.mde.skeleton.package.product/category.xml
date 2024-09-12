@@ -6,5 +6,14 @@
    <feature id="com.altran.ec.mde.skeleton.feature.source">
       <category name="com.altran.ec.mde"/>
    </feature>
+   <feature id="com.altran.ec.mde.skeleton.lsp.server.feature">
+      <category name="com.altran.ec.mde"/>
+   </feature>
+   <bundle id="com.altran.ec.mde.languageserver.application">
+      <category name="com.altran.ec.mde"/>
+   </bundle>
+   <bundle id="com.altran.ec.mde.languageserver.application.source">
+      <category name="com.altran.ec.mde"/>
+   </bundle>
    <category-def name="com.altran.ec.mde" label="EC MDE"/>
 </site>
