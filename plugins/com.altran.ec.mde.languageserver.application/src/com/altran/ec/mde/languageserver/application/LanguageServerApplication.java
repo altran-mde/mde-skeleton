@@ -39,14 +39,14 @@ public class LanguageServerApplication implements IApplication {
 
 		if (!IResourceServiceProvider.Registry.INSTANCE.getExtensionToFactoryMap().isEmpty()) {
 			LanguageServerLauncher<Injector> xtextServerLauncher = cliParser.isWebSocket()
-					? new WebSocketServerLauncher<>("Xtext Web", this::acceptXtextConnection, createXtextInjector())
+					? new WebSocketServerLauncher<>("Xtext WebSocket", this::acceptXtextConnection, createXtextInjector())
 					: new SocketServerLauncher<>("Xtext", this::acceptXtextConnection, createXtextInjector());
 			xtextServerHandle = xtextServerLauncher.start("0.0.0.0", cliParser.parseLspPort());
 		}
 
 		if (!LanguageServerPlugin.DIAGRAM_MODULES.isEmpty()) {
 			LanguageServerLauncher<Injector> glspServerLauncher = cliParser.isWebSocket()
-					? new WebSocketServerLauncher<>("GLSP Web", this::acceptGlspConnection, createGlspInjector())
+					? new WebSocketServerLauncher<>("GLSP WebSocket", this::acceptGlspConnection, createGlspInjector())
 					: new SocketServerLauncher<>("GLSP", this::acceptGlspConnection, createGlspInjector());
 			glspServerHandle = glspServerLauncher.start("0.0.0.0", cliParser.parseGlspPort());
 			glspServerHandle.get();

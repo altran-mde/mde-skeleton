@@ -12,7 +12,9 @@ public class StreamConnectionProviderSwitch implements StreamConnectionProvider 
 	private final StreamConnectionProvider delegate;
 
 	public StreamConnectionProviderSwitch() {
-		if (System.getProperties().containsKey("socketLanguageServer")) {
+		if (System.getProperties().containsKey("webSocketLanguageServer")) {
+			delegate = new WebSocketLanguageServer();
+		} else if (System.getProperties().containsKey("socketLanguageServer")) {
 			delegate = new SocketLanguageServer();
 		} else {
 			delegate = new StatemachineLanguageServer();

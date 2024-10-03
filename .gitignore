@@ -15,7 +15,7 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
+.antlr-generator-3.2.0-patch.jar
 *.war
 *.ear
 *.zip

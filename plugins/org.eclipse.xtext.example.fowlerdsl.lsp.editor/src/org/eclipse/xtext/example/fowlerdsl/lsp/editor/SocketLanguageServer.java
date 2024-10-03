@@ -14,9 +14,9 @@ import java.util.concurrent.TimeoutException;
 import org.eclipse.lsp4e.server.StreamConnectionProvider;
 
 public class SocketLanguageServer implements StreamConnectionProvider {
-	AsynchronousSocketChannel socketChannel;
-	InputStream inputStream;
-	OutputStream outputStream;
+	private AsynchronousSocketChannel socketChannel;
+	private InputStream inputStream;
+	private OutputStream outputStream;
 	
 	@Override
 	public void start() throws IOException {
