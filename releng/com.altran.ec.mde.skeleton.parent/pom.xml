@@ -4,26 +4,19 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.altran.ec.mde.skeleton</groupId>
   <artifactId>com.altran.ec.mde.skeleton.parent</artifactId>
-  <name>EMF Reference Project - Tycho Configuration</name>
+  <name>EMF Reference Project - Tycho Parent</name>
 <!-- end::doc-eclipse-justj[] -->
-  <!-- Ignore warning about duplicate version -->
-  <!-- Coincidentally this is the same version as the ACIDSpace Tycho configuration  -->
-  <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <parent>
-    <groupId>com.altran.ec.mde</groupId>
-    <artifactId>com.altran.ec.mde.tycho.configuration</artifactId>
+    <groupId>com.altran.ec.mde.skeleton</groupId>
+    <artifactId>com.altran.ec.mde.skeleton.configuration</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <relativePath/>
+    <relativePath>../com.altran.ec.mde.skeleton.configuration/</relativePath>
   </parent>
   
   <properties>
-    <java.version>17</java.version>
-    <xtext.version>2.29.0</xtext.version> <!-- Eclipse 2022-12 -->
-    <tycho.version>2.7.5</tycho.version>
     <tycho.p2-repository.name>MDE Skeleton - Repository</tycho.p2-repository.name>
   </properties>
   
