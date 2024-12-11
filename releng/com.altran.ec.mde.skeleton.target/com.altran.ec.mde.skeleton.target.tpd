@@ -89,13 +89,13 @@ location "https://altran-mde.github.io/espilce-commons-staging/" { //<2>
 // end::doc-target-platform[]
 
 // tag::doc-espilce-periksa[]
-location "https://altran-mde.github.io/espilce-periksa/" {
+location "https://altran-mde.github.io/espilce-periksa/2.1/repository/" {
     org.espilce.periksa.sdk.feature.group lazy
 }
 // end::doc-espilce-periksa[]
 
 // tag::doc-espilce-polvi[]
-location "https://altran-mde.github.io/espilce-polvi/" {
+location "https://altran-mde.github.io/espilce-polvi/1.1/repository/" {
     // Runtime EMF integration
     org.espilce.polvi.emf.generator.feature.feature.group lazy
     // Runtime Xtext integration
@@ -106,7 +106,7 @@ location "https://altran-mde.github.io/espilce-polvi/" {
 // end::doc-espilce-polvi[]
 
 // tag::doc-xtext-sirius-integration[]
-location "https://altran-mde.github.io/xtext-sirius-integration.io/p2/" {
+location "https://altran-mde.github.io/xtext-sirius-integration.io/p2/1.1/" {
     com.altran.general.integration.xtextsirius.runtime.feature.feature.group lazy
 }
 // end::doc-xtext-sirius-integration[]

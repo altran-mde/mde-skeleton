@@ -23,8 +23,22 @@
     <site-dir>target/site</site-dir>
   </properties>
 
+  <!-- tag::doc-ecoredoc[] -->
+  <pluginRepositories>
+    <!-- com.altran.general.emf.ecoredoc:ecoredoc-maven-plugin -->
+    <pluginRepository>
+      <id>ecoredoc-snapshots</id>
+      <url>https://altran-mde.github.io/ecore_doc/maven-repo</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
+
   <build>
-    <!-- tag::doc-ecoredoc[] -->
     <plugins>
       <plugin>
         <groupId>com.altran.general.emf.ecoredoc</groupId>

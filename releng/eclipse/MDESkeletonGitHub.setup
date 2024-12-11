@@ -13,17 +13,17 @@
     xmlns:setup.targlets="http://www.eclipse.org/oomph/setup/targlets/1.0"
     xmlns:setup.workingsets="http://www.eclipse.org/oomph/setup/workingsets/1.0"
     xmlns:workingsets="http://www.eclipse.org/oomph/workingsets/1.0"
-    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/maven/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Maven.ecore http://www.eclipse.org/oomph/setup/pde/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/PDE.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/projects/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Projects.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupWorkingSets.ecore http://www.eclipse.org/oomph/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/WorkingSets.ecore"
-    name="acidspace.mde.assets.mde-skeleton"
-    label="MDE Assets - MDE Skeleton">
+    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/maven/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/Maven.ecore http://www.eclipse.org/oomph/setup/pde/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/PDE.ecore http://www.eclipse.org/oomph/predicates/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/projects/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/Projects.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/SetupWorkingSets.ecore http://www.eclipse.org/oomph/workingsets/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/WorkingSets.ecore"
+    name="altran-mde.mde-skeleton"
+    label="MDE Skeleton">
   <setupTask
       xsi:type="setup:VariableTask"
-      name="gitlab.acidspace.nl.project"
-      value="cge-coe-mde/mde-skeleton"/>
+      name="oomph.setup.branch"
+      value="main"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="oomph.setup.file.path"
-      value="releng/eclipse/MDESkeletonACIDSpace.setup"/>
+      value="releng/eclipse/MDESkeletonGitHub.setup"/>
   <setupTask
       xsi:type="setup.p2:P2Task"
       label="EMF Development">
@@ -56,13 +56,13 @@
     <requirement
         name="com.altran.general.emf.ecoredoc.plantuml.ecore"/>
     <repository
-        url="https://nexus.acidspace.nl/repository/xtext-sirius-integration/develop/repository"/>
+        url="https://altran-mde.github.io/xtext-sirius-integration.io/p2/1.1/"/>
     <repository
-        url="https://nexus.acidspace.nl/repository/yakindu.com-statecharts-releases-3.5.13/"/>
+        url="https://updates.yakindu.com/statecharts/releases/3.5.13/"/>
     <repository
-        url="https://nexus.acidspace.nl/repository/mde_assets-ecore_doc-raw/develop/repository"/>
+        url="https://altran-mde.github.io/ecore_doc/update-site/"/>
     <repository
-        url="https://nexus.acidspace.nl/repository/github.io_plantuml/"/>
+        url="http://hallvard.github.io/plantuml/"/>
   </setupTask>
   <setupTask
       xsi:type="setup.workingsets:WorkingSetTask">
@@ -120,18 +120,7 @@
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
-      name="ACIDSpace">
-    <annotation
-        source="http://www.eclipse.org/oomph/setup/BrandingInfo">
-      <detail
-          key="imageURI">
-        <value>https://www.altran.com/as-content/themes/altran/images/favicon/favicon-32x32.png</value>
-      </detail>
-      <detail
-          key="siteURI">
-        <value>https://gitlab.acidspace.nl/</value>
-      </detail>
-    </annotation>
+      name="Common">
     <setupTask
         xsi:type="setup.p2:P2Task">
       <requirement
@@ -144,115 +133,11 @@
           name="de.jcup.asciidoctoreditor.feature.group"
           optional="true"/>
       <repository
-          url="https://nexus.acidspace.nl/repository/github.io-update-site-eclipse-bash-editor-update-site/"/>
+          url="https://de-jcup.github.io/update-site-eclipse-bash-editor/update-site/"/>
       <repository
-          url="https://nexus.acidspace.nl/repository/github.io-update-site-eclipse-yaml-editor-update-site/"/>
+          url="https://de-jcup.github.io/update-site-eclipse-yaml-editor/update-site/"/>
       <repository
-          url="https://nexus.acidspace.nl/repository/github.io-update-site-eclipse-asciidoctor-editor-update-site/"/>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:CompoundTask"
-        name="Global Variables">
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="gitlab.acidspace.nl.user.name"
-          defaultValue="${scope.user.name}"
-          label="User name for ACIDSpace Gitlab">
-        <annotation
-            source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="gitlab.acidspace.nl.user.email"
-          label="Email address for ACIDSpace Gitlab">
-        <annotation
-            source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="gitlab.acidspace.nl.authentication.style"
-          defaultValue="ssh"
-          label="ACIDSpace GitLab Authentication Style">
-        <annotation
-            source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
-        <choice
-            value="ssh"
-            label="SSH Authentication"/>
-        <choice
-            value="credentials"
-            label="Credentials Authentication"/>
-        <description>Choose the style of authentication used to access Eclipse Git clones</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:CompoundTask"
-          filter="(gitlab.acidspace.nl.authentication.style=ssh)"
-          name="SSH Authentication">
-        <setupTask
-            xsi:type="setup:VariableTask"
-            name="gitlab.acidspace.nl.remoteURIs"
-            label="ACIDSpace GitLab Repository">
-          <choice
-              value="git@gitlab.acidspace.nl:@{remoteURI}.git"
-              label="Clone with SSH">
-            <annotation
-                source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
-          </choice>
-          <choice
-              value="https://${gitlab.acidspace.nl.user.name|username}@gitlab.acidspace.nl/@{remoteURI}.git"
-              label="Clone with HTTPS"/>
-          <description>Choose from the available Git URIs</description>
-        </setupTask>
-        <setupTask
-            xsi:type="setup:VariableTask"
-            name="gitlab.acidspace.nl.wiki.remoteURIs"
-            label="ACIDSpace GitLab Repository Wiki">
-          <choice
-              value="git@gitlab.acidspace.nl:@{remoteURI}.wiki.git"
-              label="Clone with SSH">
-            <annotation
-                source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
-          </choice>
-          <choice
-              value="https://${gitlab.acidspace.nl.user.name|username}@gitlab.acidspace.nl/@{remoteURI}.wiki.git"
-              label="Clone with HTTPS"/>
-          <description>Choose from the available Git URIs</description>
-        </setupTask>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:CompoundTask"
-          filter="(gitlab.acidspace.nl.authentication.style=credentials)"
-          name="Credentials Authentication">
-        <setupTask
-            xsi:type="setup:VariableTask"
-            name="gitlab.acidspace.nl.remoteURIs"
-            label="ACIDSpace GitLab Repository">
-          <choice
-              value="https://${gitlab.acidspace.nl.user.name|username}@gitlab.acidspace.nl/@{remoteURI}.git"
-              label="Clone with HTTPS"/>
-          <choice
-              value="git@gitlab.acidspace.nl:@{remoteURI}.git"
-              label="Clone with SSH">
-            <annotation
-                source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
-          </choice>
-          <description>Choose from the available Git URIs</description>
-        </setupTask>
-        <setupTask
-            xsi:type="setup:VariableTask"
-            name="gitlab.acidspace.nl.wiki.remoteURIs"
-            label="ACIDSpace GitLab Repository Wiki">
-          <choice
-              value="https://${gitlab.acidspace.nl.user.name|username}@gitlab.acidspace.nl/@{remoteURI}.wiki.git"
-              label="Clone with HTTPS"/>
-          <choice
-              value="git@gitlab.acidspace.nl:@{remoteURI}.wiki.git"
-              label="Clone with SSH">
-            <annotation
-                source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
-          </choice>
-          <description>Choose from the available Git URIs</description>
-        </setupTask>
-      </setupTask>
+          url="https://de-jcup.github.io/update-site-eclipse-asciidoctor-editor/update-site/"/>
     </setupTask>
     <setupTask
         xsi:type="setup:CompoundTask"
@@ -384,55 +269,31 @@
             value="${scope.project.label} - ${scope.project.stream.name}"/>
       </setupTask>
     </setupTask>
-    <description>Common configuration for ACIDSpace projects (to be moved to project catalog)</description>
+    <description>Common configuration for projects</description>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
       name="Source Code">
     <setupTask
-        xsi:type="setup:VariableTask"
-        type="FILE"
-        name="oomph.setup.file.local"
-        value=""
-        defaultValue="I used the GitLab url"
-        label="Downloaded Oomph setup file">
-      <description></description>
-    </setupTask>
-    <setupTask
         xsi:type="setup:EclipseIniTask"
-        option="-Doomph.redirection.gitlab.acidspace.nl.branch.master"
-        value="=https://gitlab.acidspace.nl/${gitlab.acidspace.nl.project}/-/raw/master/${oomph.setup.file.path}->${git.clone.location|uri}/${oomph.setup.file.path}"
-        vm="true">
-      <description>Set an Oomph redirection system property to redirect the logical location of this setup to its physical location in the Git clone.</description>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:EclipseIniTask"
-        option="-Doomph.redirection.gitlab.acidspace.nl.branch.develop"
-        value="=https://gitlab.acidspace.nl/${gitlab.acidspace.nl.project}/-/raw/develop/${oomph.setup.file.path}->${git.clone.location|uri}/${oomph.setup.file.path}"
-        vm="true">
-      <description>Set an Oomph redirection system property to redirect the logical location of this setup to its physical location in the Git clone.</description>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:EclipseIniTask"
-        filter="(!(oomph.setup.file.local=I used the GitLab url))"
-        option="-Doomph.redirection.setup.file.local"
-        value="=${oomph.setup.file.local|uri}->${git.clone.location|uri}/${oomph.setup.file.path}"
+        option="-Doomph.redirection.branch.${oomph.setup.branch}"
+        value="=https://raw.githubusercontent.com/altran-mde/mde-skeleton/${oomph.setup.branch}/${oomph.setup.file.path}->${git.clone.location|uri}/${oomph.setup.file.path}"
         vm="true">
       <description>Set an Oomph redirection system property to redirect the logical location of this setup to its physical location in the Git clone.</description>
     </setupTask>
     <setupTask
         xsi:type="git:GitCloneTask"
         id="git.clone"
-        remoteURI="${gitlab.acidspace.nl.project}">
+        remoteURI="altran-mde/mde-skeleton">
       <annotation
           source="http://www.eclipse.org/oomph/setup/InducedChoices">
         <detail
             key="inherit">
-          <value>gitlab.acidspace.nl.remoteURIs</value>
+          <value>github.remoteURIs</value>
         </detail>
         <detail
             key="label">
-          <value>${scope.project.label} Git repository</value>
+          <value>${scope.project.label} Github repository</value>
         </detail>
         <detail
             key="target">
@@ -443,10 +304,10 @@
           name="user">
         <properties
             key="name"
-            value="${gitlab.acidspace.nl.user.name}"/>
+            value="${github.author.name}"/>
         <properties
             key="email"
-            value="${gitlab.acidspace.nl.user.email}"/>
+            value="${github.author.email}"/>
       </configSections>
       <description>${scope.project.label}</description>
     </setupTask>
@@ -470,23 +331,6 @@
         <description>Set the heap space needed to work with the projects of ${scope.project.label}</description>
       </setupTask>
       <setupTask
-          xsi:type="setup.p2:P2Task"
-          disabled="true"
-          label="Maven and Tycho">
-        <requirement
-            name="org.eclipse.m2e.feature.feature.group"/>
-        <requirement
-            name="org.sonatype.tycho.m2e.feature.feature.group"/>
-        <requirement
-            name="org.sonatype.m2e.buildhelper.feature.feature.group"/>
-        <repository
-            url="https://nexus.acidspace.nl/repository/eclipse.org-technology-m2e-releases-1.19.0/"/>
-        <repository
-            url="https://nexus.acidspace.nl/repository/maven.org-maven2-.m2e-connectors-m2eclipse-tycho-0.9.0-N-LATEST/"/>
-        <repository
-            url="https://nexus.acidspace.nl/repository/maven.org-maven2-.m2e-connectors-m2eclipse-buildhelper-0.15.0-N-0.15.0.201405280027/"/>
-      </setupTask>
-      <setupTask
           xsi:type="setup:CompoundTask"
           name="User Preferences">
         <annotation
@@ -506,14 +350,6 @@
               xsi:type="setup:PreferenceTask"
               key="/instance/org.eclipse.wst.xml.core/lineWidth"
               value="120"/>
-        </setupTask>
-        <setupTask
-            xsi:type="setup:CompoundTask"
-            name="org.eclipse.m2e.core">
-          <setupTask
-              xsi:type="setup:PreferenceTask"
-              key="/instance/org.eclipse.m2e.core/eclipse.m2.userSettingsFile"
-              value="${git.clone.location}/settings.xml"/>
         </setupTask>
       </setupTask>
       <setupTask
@@ -538,10 +374,10 @@
       <setupTask
           xsi:type="setup.p2:P2Task">
         <requirement
-            name="org.eclipse.cbi.targetplatform-feature.feature.group"
+            name="org.eclipse.cbi.targetplatform.feature.feature.group"
             optional="true"/>
         <repository
-            url="https://nexus.acidspace.nl/repository/eclipse.org-cbi-tpd-3.0.0-SNAPSHOT/"/>
+            url="https://download.eclipse.org/cbi/updates/tpd/release/3.0.0"/>
       </setupTask>
       <setupTask
           xsi:type="pde:TargetPlatformTask"
@@ -631,133 +467,12 @@
       <description>If you enable the modular target platform, don't forget to update the location in the TargetDefinitionGenerator treenode</description>
     </setupTask>
   </setupTask>
-  <setupTask
-      xsi:type="setup:CompoundTask"
-      disabled="true"
-      name="Wiki">
-    <setupTask
-        xsi:type="git:GitCloneTask"
-        id="wiki.git.clone"
-        remoteURI="${gitlab.acidspace.nl.project}"
-        checkoutBranch="master">
-      <annotation
-          source="http://www.eclipse.org/oomph/setup/InducedChoices">
-        <detail
-            key="inherit">
-          <value>gitlab.acidspace.nl.wiki.remoteURIs</value>
-        </detail>
-        <detail
-            key="label">
-          <value>${scope.project.label} Wiki Git repository</value>
-        </detail>
-        <detail
-            key="target">
-          <value>remoteURI</value>
-        </detail>
-      </annotation>
-      <configSections
-          name="user">
-        <properties
-            key="name"
-            value="${gitlab.acidspace.nl.user.name}"/>
-        <properties
-            key="email"
-            value="${gitlab.acidspace.nl.user.email}"/>
-      </configSections>
-      <description>${scope.project.label}</description>
-    </setupTask>
-    <setupTask
-        xsi:type="projects:ProjectsImportTask">
-      <sourceLocator
-          rootFolder="${wiki.git.clone.location}"/>
-    </setupTask>
-  </setupTask>
-  <stream name="develop"
-      label="Develop">
-    <setupTask
-        xsi:type="setup.p2:P2Task"
-        label="EMF Development">
-      <requirement
-          name="org.eclipse.nebula.widgets.tablecombo"
-          versionRange="[1.0.0,1.2.0.202208171809]"
-          description="Binds transitive Oomph dependeny to latest Java8 supported version"/>
-      <repository
-          url="https://nexus.acidspace.nl/repository/eclipse.org-releases-2020-06-202006171000"/>
-    </setupTask>
-    <setupTask
-        xsi:type="setup.p2:P2Task"
-        label="Project Specific Development">
-      <requirement
-          name="org.espilce.periksa.sdk.feature.group"/>
-      <repository
-          url="https://nexus.acidspace.nl/repository/espilce-commons/develop/repository"/>
-      <repository
-          url="https://nexus.acidspace.nl/repository/espilce-periksa/develop/repository"/>
-    </setupTask>
-    <setupTask
-        xsi:type="setup.p2:P2Task"
-        label="Maven and Tycho">
-      <requirement
-          name="org.eclipse.m2e.feature.feature.group"/>
-      <requirement
-          name="org.sonatype.tycho.m2e.feature.feature.group"/>
-      <requirement
-          name="org.sonatype.m2e.buildhelper.feature.feature.group"/>
-      <repository
-          url="https://nexus.acidspace.nl/repository/eclipse.org-technology-m2e-releases-1.19.0/"/>
-      <repository
-          url="https://nexus.acidspace.nl/repository/maven.org-maven2-.m2e-connectors-m2eclipse-tycho-0.9.0-N-LATEST/"/>
-      <repository
-          url="https://nexus.acidspace.nl/repository/maven.org-maven2-.m2e-connectors-m2eclipse-buildhelper-0.15.0-N-0.15.0.201405280027/"/>
-    </setupTask>
-  </stream>
-  <stream name="master"
-      label="Master">
-    <setupTask
-        xsi:type="setup.p2:P2Task"
-        label="EMF Development">
-      <requirement
-          name="org.eclipse.nebula.widgets.tablecombo"
-          versionRange="[1.0.0,1.2.0.202208171809]"
-          description="Binds transitive Oomph dependeny to latest Java8 supported version"/>
-      <repository
-          url="https://nexus.acidspace.nl/repository/eclipse.org-releases-2020-06-202006171000"/>
-    </setupTask>
-    <setupTask
-        xsi:type="setup.p2:P2Task"
-        label="Project Specific Development">
-      <requirement
-          name="org.espilce.periksa.sdk.feature.group"/>
-      <repository
-          url="https://nexus.acidspace.nl/repository/espilce-commons/develop/repository"/>
-      <repository
-          url="https://nexus.acidspace.nl/repository/espilce-periksa/develop/repository"/>
-    </setupTask>
-    <setupTask
-        xsi:type="setup.p2:P2Task"
-        label="Maven and Tycho">
-      <requirement
-          name="org.eclipse.m2e.feature.feature.group"/>
-      <requirement
-          name="org.sonatype.tycho.m2e.feature.feature.group"/>
-      <requirement
-          name="org.sonatype.m2e.buildhelper.feature.feature.group"/>
-      <repository
-          url="https://nexus.acidspace.nl/repository/eclipse.org-technology-m2e-releases-1.19.0/"/>
-      <repository
-          url="https://nexus.acidspace.nl/repository/maven.org-maven2-.m2e-connectors-m2eclipse-tycho-0.9.0-N-LATEST/"/>
-      <repository
-          url="https://nexus.acidspace.nl/repository/maven.org-maven2-.m2e-connectors-m2eclipse-buildhelper-0.15.0-N-0.15.0.201405280027/"/>
-    </setupTask>
-  </stream>
-  <stream name="release/2022-12"
-      label="Release 2022-12">
-    <setupTask
-        xsi:type="setup.p2:P2Task"
-        label="EMF Development">
-      <repository
-          url="https://nexus.acidspace.nl/repository/eclipse.org-releases-2022-12-202212071000"/>
-    </setupTask>
-  </stream>
+  <stream name="main"
+      label="Main"/>
+  <stream name="develop_github"
+      label="Prepare GitHub"/>
+  <logicalProjectContainer
+      xsi:type="setup:ProjectCatalog"
+      href="index:/org.eclipse.setup#//@projectCatalogs[name='com.github']"/>
   <description>MDE Skeleton provides a baseline for EMF based projects.</description>
 </setup:Project>

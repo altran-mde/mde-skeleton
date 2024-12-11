@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="CBI Target Platform" sequenceNumber="1686061331">
+<target name="CBI Target Platform" sequenceNumber="1733921659">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="org.eclipse.sdk.feature.group" version="0.0.0"/>
@@ -67,21 +67,21 @@
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="org.espilce.commons.emf.registry.feature.feature.group" version="0.0.0"/>
       <unit id="org.espilce.commons.resource.feature.feature.group" version="0.0.0"/>
-      <repository id="espilce-commons-p2" location="https://nexus.acidspace.nl/repository/espilce-commons/develop/repository"/>
+      <repository location="https://altran-mde.github.io/espilce-commons-staging/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="org.espilce.periksa.sdk.feature.group" version="0.0.0"/>
-      <repository id="espilce-periksa-p2" location="https://nexus.acidspace.nl/repository/espilce-periksa/develop/repository"/>
+      <repository location="https://altran-mde.github.io/espilce-periksa/2.1/repository/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="org.espilce.polvi.emf.generator.feature.feature.group" version="0.0.0"/>
       <unit id="org.espilce.polvi.emf.generator.xtext.feature.feature.group" version="0.0.0"/>
       <unit id="org.espilce.polvi.xtext.generator" version="0.0.0"/>
-      <repository id="espilce-polvi-p2" location="https://nexus.acidspace.nl/repository/espilce-polvi/develop/repository"/>
+      <repository location="https://altran-mde.github.io/espilce-polvi/1.1/repository/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="com.altran.general.integration.xtextsirius.runtime.feature.feature.group" version="0.0.0"/>
-      <repository id="xtext-sirius-integration-p2" location="https://nexus.acidspace.nl/repository/xtext-sirius-integration/develop/repository"/>
+      <repository location="https://altran-mde.github.io/xtext-sirius-integration.io/p2/1.1/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="org.yakindu.base.xtext.utils.jface.feature.group" version="0.0.0"/>
@@ -89,11 +89,11 @@
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="com.altran.general.emf.ecoredoc.ui.feature.feature.group" version="0.0.0"/>
-      <repository id="ecoredoc-p2" location="https://nexus.acidspace.nl/repository/mde_assets-ecore_doc-raw/develop/repository"/>
+      <repository location="https://altran-mde.github.io/ecore_doc/update-site/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="com.altran.general.xtext.refactoring.move.feature.feature.group" version="0.0.0"/>
-      <repository id="xtext-move-refactoring-p2" location="https://nexus.acidspace.nl/repository/mde_assets-xtext_move_refactoring-raw/develop/repository"/>
+      <repository location="https://altran-mde.github.io/xtext-move-refactoring/update-site/"/>
     </location>
   </locations>
 </target>
