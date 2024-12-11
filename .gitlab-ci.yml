@@ -12,7 +12,7 @@ stages:
 
 variables:
   REGISTRY_URL: registry.acidspace.nl
-  MAVEN_CONTAINER: acid/containers/ubuntu-java-maven:4.7.0
+  MAVEN_CONTAINER: cge-coe-mde/maven-container:1.0.0
   
   # Cache downloaded dependencies and plugins between builds
   MAVEN_REPO: '.m2/repo275'
