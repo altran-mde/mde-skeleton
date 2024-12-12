@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EMF Reference Project - Espilce Polvi Example
+Bundle-SymbolicName: com.altran.ec.mde.skeleton.espilce.polvi;singleton:=true
+Bundle-Version: 0.0.1.qualifier
+Bundle-Vendor: Capgemini Engineering
+Require-Bundle: javax.inject,
+ org.eclipse.osgi,
+ org.eclipse.jface,
+ org.eclipse.e4.ui.services,
+ org.eclipse.e4.core.di.annotations,
+ org.eclipse.e4.core.di,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.ui.workbench,
+ org.eclipse.xtext.example.fowlerdsl,
+ org.espilce.polvi.emf.generator
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Import-Package: javax.annotation;version="1.2.0",
+ javax.inject;version="1.0.0"
+Automatic-Module-Name: com.altran.ec.mde.skeleton.espilce.polvi
+Export-Package: com.altran.ec.mde.skeleton.espilce.polvi.handlers;x-internal:=true

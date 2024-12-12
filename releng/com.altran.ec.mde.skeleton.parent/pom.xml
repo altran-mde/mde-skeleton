@@ -1,0 +1,47 @@
+<!-- tag::doc-eclipse-justj[] -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>com.altran.ec.mde.skeleton.parent</artifactId>
+  <name>EMF Reference Project - Tycho Parent</name>
+<!-- end::doc-eclipse-justj[] -->
+  <packaging>pom</packaging>
+
+  <parent>
+    <groupId>com.altran.ec.mde.skeleton</groupId>
+    <artifactId>com.altran.ec.mde.skeleton.configuration</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../com.altran.ec.mde.skeleton.configuration/</relativePath>
+  </parent>
+  
+  <properties>
+    <tycho.p2-repository.name>MDE Skeleton - Repository</tycho.p2-repository.name>
+  </properties>
+  
+<!-- tag::doc-eclipse-justj[] -->
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>target-platform-configuration</artifactId>
+        <configuration>
+<!-- end::doc-eclipse-justj[] -->
+          <target>
+            <artifact>
+              <groupId>com.altran.ec.mde.skeleton</groupId>
+              <artifactId>com.altran.ec.mde.skeleton.target</artifactId>
+              <version>0.0.1-SNAPSHOT</version>
+            </artifact>
+          </target>
+<!-- tag::doc-eclipse-justj[] -->
+          <!-- Eclipse JustJ configuration for Maven Tycho 2.6 -->
+          <!-- See https://www.eclipse.org/justj/?page=documentation -->
+          <executionEnvironment>org.eclipse.justj.openjdk.hotspot.jre.full-17</executionEnvironment>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+<!-- end::doc-eclipse-justj[] -->

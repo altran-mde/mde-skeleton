@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Language Server Application
+Bundle-SymbolicName: com.altran.ec.mde.languageserver.application;singleton:=true
+Bundle-Version: 0.0.1.qualifier
+Bundle-Activator: com.altran.ec.mde.languageserver.application.LanguageServerPlugin
+Bundle-ClassPath: .,
+ lib/Java-WebSocket-1.5.7.jar
+Bundle-Vendor: Capgemini Engineering
+Require-Bundle: org.eclipse.core.runtime,
+ org.aopalliance,
+ com.google.gson,
+ org.eclipse.lsp4j,
+ org.eclipse.lsp4j.jsonrpc,
+ org.eclipse.equinox.app,
+ org.eclipse.xtext.ide,
+ org.eclipse.glsp.server,
+ org.eclipse.glsp.server.emf
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Automatic-Module-Name: com.altran.ec.mde.languageserver.application
+Bundle-ActivationPolicy: lazy
+Export-Package: com.altran.ec.mde.languageserver.application;x-internal:=true
+Import-Package: org.slf4j;version="1.7.30"

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This pom is required by the Eclipse M2E integration -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>com.altran.ec.mde.skeleton.guide.developer</artifactId>
+  <name>EMF Reference Project - Developer Guide</name>
+  <packaging>eclipse-plugin</packaging>
+
+  <parent>
+    <groupId>com.altran.ec.mde.skeleton</groupId>
+    <artifactId>com.altran.ec.mde.skeleton.root</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../../</relativePath>
+  </parent>
+
+  <properties>
+    <maven.build.timestamp.format>yyyy-MM-dd HH:mm z</maven.build.timestamp.format>
+    <source-document-name>mde-skeleton-developer-guide</source-document-name>
+    <!-- Use paths that are relative to the project.basedir -->
+    <help-dir>target/help</help-dir>
+    <site-dir>target/site</site-dir>
+  </properties>
+
+  <!-- tag::doc-ecoredoc[] -->
+  <pluginRepositories>
+    <!-- com.altran.general.emf.ecoredoc:ecoredoc-maven-plugin -->
+    <pluginRepository> <!--1-->
+      <id>ecoredoc-snapshots</id>
+      <url>https://altran-mde.github.io/ecore_doc/maven-repo</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.altran.general.emf.ecoredoc</groupId>
+        <artifactId>ecoredoc-maven-plugin</artifactId>
+        <version>0.10.0-SNAPSHOT</version>
+        <executions>
+          <execution>
+            <phase>generate-sources</phase> <!--2-->
+            <goals>
+              <goal>ecoredoc</goal>
+            </goals>
+            <configuration>
+              <resolve>true</resolve>
+              <config> <!--3-->
+                <renderDefaults>false</renderDefaults>
+                <renderDiagrams>true</renderDiagrams>
+                <diagramsOutputPath>images</diagramsOutputPath>
+                <diagramsOutputFormat>png</diagramsOutputFormat>
+              </config>
+              <inputFiles>
+                <inputFile>../../plugins/org.eclipse.xtext.example.fowlerdsl/model/generated/Statemachine.ecore</inputFile>
+              </inputFiles>
+              <outputFile>${project.build.directory}/adoc-gen/Statemachine.adoc</outputFile>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- end::doc-ecoredoc[] -->
+      
+      <plugin>
+        <groupId>org.asciidoctor</groupId>
+        <artifactId>asciidoctor-maven-plugin</artifactId>
+        <configuration>
+          <sourceDirectory>${project.basedir}/src/main/asciidoc</sourceDirectory>
+          <sourceDocumentName>${source-document-name}.adoc</sourceDocumentName>
+          <attributes>
+            <!-- Typical attributes for all output types -->
+            <last-update-label>false</last-update-label>
+            <revnumber>${maven.build.timestamp}</revnumber>
+            <source-highlighter>rouge</source-highlighter>
+            <idseparator>-</idseparator>
+            <idprefix />
+            <icons>font</icons>
+            <!-- Attributes for all documents in this project -->
+            <imagesdir />
+          </attributes>
+        </configuration>
+
+        <executions>
+          <execution>
+            <id>generate-eclipse-help</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>process-asciidoc</goal>
+            </goals>
+            <configuration>
+              <backend>html5</backend>
+              <outputDirectory>${help-dir}</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${project.basedir}/src/main/resources</directory>
+                </resource>
+              </resources>
+              <attributes>
+                <!-- Typical attributes for HTML -->
+                <sectanchors>true</sectanchors>
+                <!-- Attributes for HTML in this project -->
+                <resdir>.</resdir>
+                <imgdir-gen>./images</imgdir-gen>
+                <eclipse-help-location>/help/topic</eclipse-help-location>
+                <!-- Using a cleaner skin, see https://github.com/darshandsoni/asciidoctor-skins#usage -->
+                <!-- TODO1: Create/find a nice style-sheet that matches the default Eclipse help style -->
+                <!-- TODO2: Prevent that the style-sheet needs to be copied into every documentation project -->
+                <stylesdir>${project.basedir}/src/main/stylesheet</stylesdir>
+                <stylesheet>adoc-foundation.css</stylesheet>
+                <!-- These output properties may help you to make parts of the documentation conditional -->
+                <output-html/>
+                <output-help/>
+              </attributes>
+            </configuration>
+          </execution>
+          
+          <execution>
+            <id>generate-gitlab-pages</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>process-asciidoc</goal>
+            </goals>
+            <configuration>
+              <backend>html5</backend>
+              <outputDirectory>${site-dir}</outputDirectory>
+              <!-- As we only build one document in this project, we rename it to index.html -->
+              <!-- such that it will become the index page of the site -->
+              <outputFile>index.html</outputFile>
+              <resources>
+                <resource>
+                  <directory>${project.basedir}/src/main/resources</directory>
+                </resource>
+              </resources>
+              <attributes>
+                <!-- Typical attributes for HTML -->
+                <sectanchors>true</sectanchors>
+                <!-- Attributes for HTML in this project -->
+                <resdir>.</resdir>
+                <imgdir-gen>./images</imgdir-gen>
+                <!-- Using a cleaner skin, see https://github.com/darshandsoni/asciidoctor-skins#usage -->
+                <!-- TODO1: Do we want to create a nice Capgemini Engineering style-sheet here? -->
+                <!-- TODO2: Prevent that the style-sheet needs to be copied into every documentation project -->
+                <stylesdir>${project.basedir}/src/main/stylesheet</stylesdir>
+                <stylesheet>adoc-foundation.css</stylesheet>
+                <!-- Execution specific attributes -->
+                <toc>left</toc>
+                <!-- These output properties may help you to make parts of the documentation conditional -->
+                <output-html/>
+                <output-site/>
+              </attributes>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>generate-pdf</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>process-asciidoc</goal>
+            </goals>
+            <configuration>
+              <backend>pdf</backend>
+              <outputDirectory>${site-dir}</outputDirectory>
+              <attributes>
+                <!-- Typical attributes for PDFs -->
+                <doctype>book</doctype>
+                <pagenums />
+                <sectnums />
+                <toc />
+                <!-- Attributes for all PDFs in this project -->
+                <resdir>${project.basedir}/src/main/resources</resdir>
+                <imgdir-gen>${project.build.directory}/generated-images</imgdir-gen>
+                <!-- These output properties may help you to make parts of the documentation conditional -->
+                <output-pdf/>
+                <output-site/>
+              </attributes>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>com.bsiag.geneclipsetoc</groupId>
+        <artifactId>geneclipsetoc-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>geneclipsetoc</goal>
+            </goals>
+            <configuration>
+              <sourceFolder>${help-dir}</sourceFolder>
+              <!-- Putting it in the same dir within the jar ensures us that doc will work in runtime instance and RCP -->
+              <helpPrefix>${help-dir}</helpPrefix>
+              <outputTocFile>${help-dir}/toc.xml</outputTocFile>
+              <pages>
+                <page>${source-document-name}.html</page>
+              </pages>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-packaging-plugin</artifactId>
+        <configuration>
+          <additionalFileSets>
+            <fileSet>
+              <directory>${help-dir}</directory>
+              <!-- Putting it in the same dir within the jar ensures us that doc will work in runtime instance and RCP -->
+              <prefix>${help-dir}/</prefix>
+            </fileSet>
+          </additionalFileSets>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

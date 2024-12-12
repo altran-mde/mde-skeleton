@@ -1,0 +1,71 @@
+// Enable Science, Technology, Engineering and Math (STEM) expressions in the browser
+:stem:
+
+// Enable experimental features, for 'kbd' macro.
+:experimental:
+
+// Cross-references
+:idprefix:
+:idseparator: -
+:xrefstyle: basic
+
+:miscellaneous.tabsize: 2
+:tabsize: 2
+
+:listing-caption: Listing
+
+// Special characters
+
+// opening guillement
+:lguil: &#171;
+// closing guillement
+:rguil: &#187;
+// rightwards arrow to bar
+:ratb: &#8677;
+// middle dot
+:middot: &#183;
+// printed tab
+:prtab: &#10230;
+// printed space
+:prsp: {middot}
+// shift key
+// :shift: &#8679; // doesn't look good
+:shift: Shift
+// command key
+:commandkey: &#8984;
+:m1keys: Ctrl]/kbd:[{commandkey}
+// check
+:x: icon:check-square[set=far]
+
+// Attributes as copied from EcoreDoc
+// White Up-Pointing Triangle
+:wupt: &#9651;
+:inherited: {wupt}{nbsp}
+// Black Up-Pointing Triangle
+:bupt: &#9650;
+:override: {bupt}{nbsp}
+// White Down-Pointing Triangle
+:wdpt: &#9661;
+:inheritedBy: {wdpt}{nbsp}
+// Black Down-Pointing Triangle
+:bdpt: &#9660;
+:overriddenBy: {bdpt}{nbsp}
+:prewrap!:
+:table-caption!:
+
+// Default resource locations
+ifndef::basedir[:basedir: ../../..]
+ifndef::gitdir[:gitdir: {basedir}/../..]
+ifndef::resdir[:resdir: ../resources]
+ifndef::imgdir[:imgdir: {resdir}/images]
+ifndef::imgdir-gen[:imgdir-gen: ./]
+ifndef::gendocdir[:gendocdir: {basedir}/target/adoc-gen]
+
+ifndef::gitproject[:gitproject: altran-mde/mde-skeleton]
+ifndef::gitbranch[:gitbranch: develop]
+ifndef::giturl[:giturl: https://raw.githubusercontent.com/{gitproject}/refs/heads/{gitbranch}]
+
+// Default properties
+ifndef::project-name[:project-name: MDE Skeleton]
+ifndef::eclipse-version[:eclipse-version: 2022-12]
+ifndef::eclipse-help-location[:eclipse-help-location: https://help.eclipse.org/{eclipse-version}/topic]

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="com.altran.ec.mde.languageserver.application.glsp">
+      <diagram_module
+            class="org.eclipse.xtext.example.fowlerdsl.glsp.server.StatemachineDiagramModule">
+      </diagram_module>
+   </extension>
+
+</plugin>

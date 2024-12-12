@@ -1,0 +1,47 @@
+= EMF Reference Project: Developer Guide 
+EC Modeling & Simulation
+:description: This page contains information about Altran's EMF Reference Project (a.k.a. MDE Skeleton) MDE Asset.
+:keywords: EMF, Documentation, MDE, Asset, Altran, EC, Modeling, Simulation
+:classification: Company Internal.
+:docinfo2:
+
+include::_attributes.adoc[]
+
+This document contains information about Altran's EMF Reference Project (a.k.a. MDE Skeleton) MDE Asset.
+The purpose of this project is to represent a typical MDE Eclipse IDE solution and to act as a showcase on how to use MDE Assets.
+
+ifdef::output-html[]
+ifdef::output-site[]
+TIP: This developer guide can be downloaded as link:{source-document-name}.pdf[PDF]
+endif::output-site[]
+endif::output-html[]
+
+== Overview
+
+This document is under construction.
+
+image::{imgdir}/under_construction.png[]
+
+<<<
+
+include::section-development-environment.adoc[]
+
+<<<
+
+include::section-using-3pp.adoc[]
+
+<<<
+
+include::section-mde-assets.adoc[]
+
+<<<
+
+include::section-testing-rcp.adoc[]
+
+<<<
+
+[[fowlerdsl-ecoredoc]]
+[appendix]
+== Fowler Statemachine EcoreDoc
+
+include::{gendocdir}/Statemachine.adoc[lines=36..]

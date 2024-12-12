@@ -1,0 +1,2 @@
+# Test modules that require to run their tests WITHOUT an Eclipse UI can
+# create a file called '.tycho-surefire-headless-test' in their basedir.

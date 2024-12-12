@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Xtext Fowler DSL Example - GLSP Server
+Bundle-SymbolicName: org.eclipse.xtext.example.fowlerdsl.glsp.server;singleton:=true
+Bundle-Version: 2.29.0.qualifier
+Import-Package: org.apache.logging.log4j;version="1.2.0"
+Require-Bundle: org.eclipse.glsp.server,
+ org.eclipse.glsp.server.emf,
+ org.eclipse.emf.edit,
+ org.eclipse.emf.ecore.edit,
+ org.eclipse.emf.ecore.xmi,
+ org.eclipse.xtext.example.fowlerdsl
+Bundle-Vendor: Capgemini Engineering
+Automatic-Module-Name: org.eclipse.xtext.example.fowlerdsl.glsp.server
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Export-Package: org.eclipse.xtext.example.fowlerdsl.glsp.server,
+ org.eclipse.xtext.example.fowlerdsl.glsp.server.handler;x-internal:=true,
+ org.eclipse.xtext.example.fowlerdsl.glsp.server.idgen;x-internal:=true,
+ org.eclipse.xtext.example.fowlerdsl.glsp.server.model;x-internal:=true,
+ org.eclipse.xtext.example.fowlerdsl.glsp.server.palette;x-internal:=true

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.eclipse.xtext.example.fowlerdsl.glsp.editor.StatemachineGLSPEditor"
+            contributorClass="org.eclipse.glsp.ide.editor.ui.GLSPDiagramEditorActionContributor"
+            default="false"
+            extensions="statemachine"
+            id="org.eclipse.xtext.example.fowlerdsl.glsp.editor"
+            name="Statemachine GLSP Editor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.glsp.ide.editor">
+      <configuration
+            editorId="org.eclipse.xtext.example.fowlerdsl.glsp.editor"
+            glspId="statemachine"
+            serverManagerClass="org.eclipse.xtext.example.fowlerdsl.glsp.editor.StatemachineGLSPServerManager">
+      </configuration>
+   </extension>
+
+</plugin>

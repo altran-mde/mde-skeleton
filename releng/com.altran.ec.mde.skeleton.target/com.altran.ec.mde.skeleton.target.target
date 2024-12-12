@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde?>
+<!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
+<target name="CBI Target Platform" sequenceNumber="1733992340">
+  <locations>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="org.eclipse.sdk.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.sdk.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.egit.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.tm4e.feature.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.lsp4e" version="0.0.0"/>
+      <unit id="org.eclipse.lsp4j" version="0.0.0"/>
+      <unit id="org.eclipse.sirius.runtime.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.sirius.runtime.aql.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.sirius.runtime.ide.ui.feature.group" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/releases/2022-12/202212071000"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="org.junit.jupiter.api" version="0.0.0"/>
+      <unit id="org.slf4j.binding.log4j12" version="0.0.0"/>
+      <unit id="com.google.gson" version="0.0.0"/>
+      <unit id="com.google.guava" version="0.0.0"/>
+      <unit id="com.google.inject" version="0.0.0"/>
+      <unit id="org.apache.commons.cli" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20221123021534/repository"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="javax.xml.stream" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20210825222808/repository/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="org.eclipse.glsp.feature.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.glsp.server.emf" version="0.0.0"/>
+      <unit id="org.eclipse.glsp.server.websocket" version="0.0.0"/>
+      <unit id="org.eclipse.glsp.layout" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/glsp/server/p2/nightly/1.1/1.1.0.202207061503/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="org.eclipse.glsp.ide.feature.feature.group" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/glsp/ide/p2/releases/1.0.0/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="org.eclipse.jetty.bundles.f.feature.group" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/jetty/updates/jetty-bundles-9.x/9.4.44.v20210927/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="org.eclipse.elk.core" version="0.0.0"/>
+      <unit id="org.eclipse.elk.graph" version="0.0.0"/>
+      <unit id="org.eclipse.elk.graph.text" version="0.0.0"/>
+      <unit id="org.eclipse.elk.alg.layered" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/elk/updates/releases/0.7.1/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="org.apache.jasper" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/gemini/updates/web/3.0.4"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="org.eclipse.justj.openjdk.hotspot.jre.full.feature.group" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/justj/jres/17/updates/release"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="org.eclipse.e4.tools.spies.feature.feature.group" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/e4/snapshots/org.eclipse.e4.tools/latest"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="org.espilce.commons.emf.registry.feature.feature.group" version="0.0.0"/>
+      <unit id="org.espilce.commons.resource.feature.feature.group" version="0.0.0"/>
+      <repository id="espilce-commons-p2" location="https://altran-mde.github.io/espilce-commons-staging/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="org.espilce.periksa.sdk.feature.group" version="0.0.0"/>
+      <repository location="https://altran-mde.github.io/espilce-periksa/2.1/repository/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="org.espilce.polvi.emf.generator.feature.feature.group" version="0.0.0"/>
+      <unit id="org.espilce.polvi.emf.generator.xtext.feature.feature.group" version="0.0.0"/>
+      <unit id="org.espilce.polvi.xtext.generator" version="0.0.0"/>
+      <repository location="https://altran-mde.github.io/espilce-polvi/1.1/repository/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="com.altran.general.integration.xtextsirius.runtime.feature.feature.group" version="0.0.0"/>
+      <repository location="https://altran-mde.github.io/xtext-sirius-integration.io/p2/1.1/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="org.yakindu.base.xtext.utils.jface.feature.group" version="0.0.0"/>
+      <repository location="https://updates.yakindu.org/statecharts/releases/3.5.13"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="com.altran.general.emf.ecoredoc.ui.feature.feature.group" version="0.0.0"/>
+      <repository location="https://altran-mde.github.io/ecore_doc/update-site/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="com.altran.general.xtext.refactoring.move.feature.feature.group" version="0.0.0"/>
+      <repository location="https://altran-mde.github.io/xtext-move-refactoring/update-site/"/>
+    </location>
+  </locations>
+</target>

@@ -1,0 +1,66 @@
+{
+    "name": "Statemachine",
+    "scopeName": "text.statemachine",
+    "fileTypes": [
+        "statemachine"
+    ],
+    "patterns": [
+        {
+            "include": "#comments"
+        },
+        {
+            "name": "keyword.control.statemachine",
+            "match": "\\b(statemachine|actions|commands|end|events|resetEvents|state|=>)\\b"
+        },
+        {
+            "name": "keyword.operator.statemachine",
+            "match": "\\=\\>"
+        },
+        {
+            "name": "constant.numeric.statemachine",
+            "match": "\\b[1-9][0-9]*\\b"
+        },
+        {
+            "name": "string.quoted.double.statemachine",
+            "begin": "\"",
+            "end": "\""
+        },
+        {
+            "name": "string.quoted.single.statemachine",
+            "begin": "'",
+            "end": "'"
+        }
+    ],
+    "repository": 
+        {
+            "comments": {
+                "patterns": [
+                    {
+                        "name": "comment.block.statemachine",
+                        "begin": "/\\*",
+                        "beginCaptures": {
+                            "0": {
+                                "name": "punctuation.definition.comment.statemachine"
+                            }
+                        },
+                        "end": "\\*/",
+                        "endCaptures": {
+                            "0": {
+                                "name": "punctuation.definition.comment.statemachine"
+                            }
+                        }
+                    }, {
+                        "begin": "(^\\s+)?(?=//)",
+                        "beginCaptures": {
+                            "1": {
+                                "name": "punctuation.whitespace.comment.leading.cs"
+                            }
+                        },
+                        "end": "(?=$)",
+                        "name":"comment.line.statemachine"
+                    }
+                ]
+            }
+        }
+    
+}

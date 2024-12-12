@@ -1,0 +1,50 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>com.altran.ec.mde.skeleton.xtext.refactoring.move.tests</artifactId>
+  <name>EMF Reference Project - Xtext refactoring move tests</name>
+  <packaging>rcpttTest</packaging>
+
+  <parent>
+    <groupId>com.altran.ec.mde.skeleton</groupId>
+    <artifactId>com.altran.ec.mde.skeleton.root</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../../</relativePath>
+  </parent>
+
+  <properties>
+    <!-- RCPTT version for Eclipse 2020-06 -->
+    <rcptt.version>2.5.1</rcptt.version>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.rcptt</groupId>
+        <artifactId>rcptt-maven-plugin</artifactId>
+        <version>${rcptt.version}</version>
+        <extensions>true</extensions>
+        <configuration>
+          <aut>
+            <!-- Specify the GAV parameters for the Application Under Test -->
+            <groupId>${project.groupId}</groupId>
+            <artifactId>com.altran.ec.mde.skeleton.package.product</artifactId>
+            <version>${project.version}</version>
+          </aut>
+          <runner>
+            <version>${rcptt.version}</version>
+          </runner>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>rcptt-releases</id>
+      <name>RCPTT Maven Repository</name>
+      <url>https://repo.eclipse.org/content/repositories/rcptt-releases/</url>
+    </pluginRepository>
+  </pluginRepositories>
+</project>

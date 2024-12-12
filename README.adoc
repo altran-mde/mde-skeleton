@@ -1,0 +1,9 @@
+include::documentation/com.altran.ec.mde.skeleton.guide.developer/src/main/asciidoc/_attributes.adoc[]
+
+= pass:normal[{project-name}]
+
+WARNING: Work in progress
+
+<<<
+
+include::documentation/com.altran.ec.mde.skeleton.guide.developer/src/main/asciidoc/section-development-environment.adoc[tags=setup-development-environment, leveloffset=-1]

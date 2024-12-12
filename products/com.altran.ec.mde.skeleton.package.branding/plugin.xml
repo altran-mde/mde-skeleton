@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ui.ide.workbench"
+            name="MDE Assets - MDE Skeleton">
+         <property
+               name="appName"
+               value="MDE Assets - MDE Skeleton">
+         </property>
+         <property
+               name="introTitle"
+               value="Welcome to MDE Assets - MDE Skeleton">
+         </property>
+         <property
+              name="introBrandingImage"
+              value="product:intro-eclipse.png">
+         </property>
+         <property
+               name="introBrandingImageText"
+               value="MDE Assets - MDE Skeleton">
+         </property>
+         <property
+               name="introDescription-root"
+               value="Get Started...">
+         </property>
+         <property 
+               name="cssTheme"
+               value="org.eclipse.e4.ui.css.theme.e4_default">
+         </property>
+         <property
+               name="applicationCSSResources" 
+               value="platform:/plugin/org.eclipse.ui.themes/images/"> 
+         </property>
+         <property
+               name="buildIdLocation"
+               value="0,220">
+         </property>
+         <property
+               name="buildIdSize"
+               value="293,40">
+         </property>
+         <property
+               name="aboutImage"
+               value="eclipse_lg.png">
+         </property>
+         <property
+               name="aboutText"
+               value="Specified in the plugin.xml of the branding plugin.">
+         </property>
+         <property
+               name="windowImages"
+               value="eclipse16.png,eclipse32.png,eclipse48.png,eclipse256.png">
+         </property>
+         <property
+               name="startupForegroundColor"
+               value="FFFFFF">
+         </property>
+         <property
+               name="startupMessageRect"
+               value="7,265,320,20">
+         </property>
+         <property
+               name="startupProgressRect"
+               value="2,290,447,10">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.intro">
+      <introProductBinding
+            introId="org.eclipse.ui.intro.universal"
+            productId="com.altran.ec.mde.skeleton.package.branding.product">
+      </introProductBinding>
+   </extension>
+
+</plugin>

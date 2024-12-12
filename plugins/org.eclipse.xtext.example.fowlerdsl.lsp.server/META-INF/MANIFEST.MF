@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Xtext Fowler DSL Example - LSP Server
+Bundle-SymbolicName: org.eclipse.xtext.example.fowlerdsl.lsp.server;singleton:=true
+Bundle-Vendor: Capgemini Engineering
+Bundle-Version: 2.29.0.qualifier
+Require-Bundle: org.eclipse.xtext.example.fowlerdsl.ide
+Automatic-Module-Name: org.eclipse.xtext.example.fowlerdsl.lsp.server

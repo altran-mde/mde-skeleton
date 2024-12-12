@@ -1,0 +1,126 @@
+// This file is also used in the developer guide
+// Do not remove the tag::, end:: and <[0..9]> comments as they are required by asciidoc
+// tag::doc-target-platform[]
+target "CBI Target Platform"
+
+with configurePhase source requirements
+
+location "https://download.eclipse.org/releases/2022-12/202212071000" { //<1>
+    // Eclipse - EMF
+    org.eclipse.sdk.feature.group lazy
+    org.eclipse.emf.sdk.feature.group lazy
+// end::doc-target-platform[]
+    // Eclipse - Product
+    org.eclipse.equinox.executable.feature.group lazy
+    // Eclipse EGit
+    org.eclipse.egit.feature.group lazy
+    // Xtext/Xtend
+    org.eclipse.xtext.sdk.feature.group lazy
+    // LSP language support (TextMate)
+    org.eclipse.tm4e.feature.feature.group lazy
+    org.eclipse.lsp4e lazy
+    org.eclipse.lsp4j lazy
+    // Sirius
+    org.eclipse.sirius.runtime.feature.group lazy
+    org.eclipse.sirius.runtime.aql.feature.group lazy
+    org.eclipse.sirius.runtime.ide.ui.feature.group lazy
+}
+
+// tag::doc-eclipse-glsp[]
+location "https://download.eclipse.org/tools/orbit/downloads/drops/R20221123021534/repository" {
+    org.junit.jupiter.api lazy
+    org.slf4j.binding.log4j12 lazy
+    com.google.gson lazy
+    com.google.guava lazy
+    com.google.inject lazy
+    org.apache.commons.cli lazy
+}
+
+location "https://download.eclipse.org/tools/orbit/downloads/drops/R20210825222808/repository/" {
+    javax.xml.stream lazy
+}
+
+location "https://download.eclipse.org/glsp/server/p2/nightly/1.1/1.1.0.202207061503/" {
+    org.eclipse.glsp.feature.feature.group lazy
+    org.eclipse.glsp.server.emf lazy
+
+// tag::doc-eclipse-glsp-ide[]
+    org.eclipse.glsp.server.websocket lazy
+    org.eclipse.glsp.layout lazy
+}
+// end::doc-eclipse-glsp[]
+
+location "https://download.eclipse.org/glsp/ide/p2/releases/1.0.0/"{
+    org.eclipse.glsp.ide.feature.feature.group lazy
+}
+
+location "https://download.eclipse.org/jetty/updates/jetty-bundles-9.x/9.4.44.v20210927/" {
+    org.eclipse.jetty.bundles.f.feature.group lazy
+}
+
+location "https://download.eclipse.org/elk/updates/releases/0.7.1/" {
+    org.eclipse.elk.core lazy
+    org.eclipse.elk.graph lazy
+    org.eclipse.elk.graph.text lazy
+    org.eclipse.elk.alg.layered lazy
+}
+
+location "https://download.eclipse.org/gemini/updates/web/3.0.4" {
+    org.apache.jasper lazy
+}
+// end::doc-eclipse-glsp-ide[]
+
+// tag::doc-eclipse-justj[]
+location "https://download.eclipse.org/justj/jres/17/updates/release" {
+    org.eclipse.justj.openjdk.hotspot.jre.full.feature.group lazy
+}
+// end::doc-eclipse-justj[]
+
+location "https://download.eclipse.org/e4/snapshots/org.eclipse.e4.tools/latest" {
+    // Preferred for debugging the developer runtime instance 
+    org.eclipse.e4.tools.spies.feature.feature.group lazy
+// tag::doc-target-platform[]
+}
+
+location "https://altran-mde.github.io/espilce-commons-staging/" espilce-commons-p2 { //<2>
+    org.espilce.commons.emf.registry.feature.feature.group lazy
+    org.espilce.commons.resource.feature.feature.group lazy
+}
+// end::doc-target-platform[]
+
+// tag::doc-espilce-periksa[]
+location "https://altran-mde.github.io/espilce-periksa/2.1/repository/" {
+    org.espilce.periksa.sdk.feature.group lazy
+}
+// end::doc-espilce-periksa[]
+
+// tag::doc-espilce-polvi[]
+location "https://altran-mde.github.io/espilce-polvi/1.1/repository/" {
+    // Runtime EMF integration
+    org.espilce.polvi.emf.generator.feature.feature.group lazy
+    // Runtime Xtext integration
+    org.espilce.polvi.emf.generator.xtext.feature.feature.group lazy
+    // MWE2 workflow generator fragment
+    org.espilce.polvi.xtext.generator lazy
+}
+// end::doc-espilce-polvi[]
+
+// tag::doc-xtext-sirius-integration[]
+location "https://altran-mde.github.io/xtext-sirius-integration.io/p2/1.1/" {
+    com.altran.general.integration.xtextsirius.runtime.feature.feature.group lazy
+}
+// end::doc-xtext-sirius-integration[]
+// tag::doc-xtext-sirius-integration-dependencies[]
+location "https://updates.yakindu.org/statecharts/releases/3.5.13" {
+    org.yakindu.base.xtext.utils.jface.feature.group lazy
+}
+// end::doc-xtext-sirius-integration-dependencies[]
+
+location "https://altran-mde.github.io/ecore_doc/update-site/" {
+    com.altran.general.emf.ecoredoc.ui.feature.feature.group lazy
+}
+// tag::doc-xtext-move-refactoring[]
+location "https://altran-mde.github.io/xtext-move-refactoring/update-site/" {
+    com.altran.general.xtext.refactoring.move.feature.feature.group lazy
+}
+// end::doc-xtext-move-refactoring[]

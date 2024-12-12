@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- tag::doc-eclipse-justj[] -->
+<feature
+      id="com.altran.ec.mde.skeleton.package.feature"
+      label="EMF Reference Project - Packaging Feature"
+      version="0.0.1.qualifier"
+      provider-name="Capgemini Engineering"
+      plugin="com.altran.ec.mde.skeleton.package.branding">
+
+<!-- end::doc-eclipse-justj[] -->
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+<!-- tag::doc-eclipse-justj[] -->
+   <includes
+         id="com.altran.ec.mde.skeleton.feature"
+         version="0.0.0"/>
+
+   <requires>
+      <import feature="org.eclipse.platform" version="4.26" match="greaterOrEqual"/>
+      <import feature="org.eclipse.justj.openjdk.hotspot.jre.full" version="11" match="greaterOrEqual"/> <!--1-->
+      <import feature="org.eclipse.jdt" version="3.18" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="com.altran.ec.mde.skeleton.package.branding"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.slf4j.binding.log4j12"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="com.altran.ec.mde.skeleton.logging"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
+
+</feature>
+<!-- end::doc-eclipse-justj[] -->

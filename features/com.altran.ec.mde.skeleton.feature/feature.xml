@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.altran.ec.mde.skeleton.feature"
+      label="EMF Reference Project - Feature"
+      version="0.0.1.qualifier"
+      provider-name="Capgemini Engineering">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <requires>
+      <import feature="org.eclipse.jdt" version="3.18.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.xtext.runtime" version="2.10.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.runtime.aql" version="6.3.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.runtime.ide.ui" version="6.3.0" match="greaterOrEqual"/>
+      <import feature="com.altran.general.xtext.refactoring.move.feature" version="0.2.0" match="greaterOrEqual"/>
+      <import feature="com.altran.general.integration.xtextsirius.runtime.feature" version="1.1.0" match="greaterOrEqual"/>
+      <import feature="org.espilce.periksa.sdk" version="2.0.0" match="greaterOrEqual"/>
+      <import feature="com.altran.general.emf.ecoredoc.ui.feature" version="0.10.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.runtime" version="6.3.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.tm4e.feature" version="0.5.2" match="greaterOrEqual"/>
+      <import feature="org.eclipse.glsp.feature" version="1.0.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.xtext.example.fowlerdsl"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.xtext.example.fowlerdsl.ide"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.xtext.example.fowlerdsl.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.altran.ec.mde.skeleton.guide.developer"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="com.altran.ec.mde.skeleton.xtext.refactoring.move"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.altran.ec.mde.skeleton.xtext.sirius.integration"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.altran.ec.mde.skeleton.espilce.periksa"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.altran.ec.mde.skeleton.espilce.polvi"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
