@@ -1,0 +1,3022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.18">
+<meta name="description" content="This page contains information about Altran's EMF Reference Project (a.k.a. MDE Skeleton) MDE Asset.">
+<meta name="keywords" content="EMF, Documentation, MDE, Asset, Altran, EC, Modeling, Simulation">
+<meta name="author" content="EC Modeling &amp; Simulation">
+<title>EMF Reference Project: Developer Guide</title>
+<style>
+@import url(//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.0/css/font-awesome.css);
+/* normalize.css v2.1.1 | MIT License | git.io/normalize */
+/* ========================================================================== HTML5 display definitions ========================================================================== */
+/** Correct `block` display not defined in IE 8/9. */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary { display: block; }
+
+/** Correct `inline-block` display not defined in IE 8/9. */
+audio, canvas, video { display: inline-block; }
+
+/** Prevent modern browsers from displaying `audio` without controls. Remove excess height in iOS 5 devices. */
+audio:not([controls]) { display: none; height: 0; }
+
+/** Address styling not present in IE 8/9. */
+[hidden] { display: none; }
+
+/* ========================================================================== Base ========================================================================== */
+/** 1. Prevent system color scheme's background color being used in Firefox, IE, and Opera. 2. Prevent system color scheme's text color being used in Firefox, IE, and Opera. 3. Set default font family to sans-serif. 4. Prevent iOS text size adjust after orientation change, without disabling user zoom. */
+html { background: #fff; /* 1 */ color: #000; /* 2 */ font-family: sans-serif; /* 3 */ -ms-text-size-adjust: 100%; /* 4 */ -webkit-text-size-adjust: 100%; /* 4 */ }
+
+/** Remove default margin. */
+body { margin: 0; }
+
+/* ========================================================================== Links ========================================================================== */
+/** Address `outline` inconsistency between Chrome and other browsers. */
+a:focus { outline: thin dotted; }
+
+/** Improve readability when focused and also mouse hovered in all browsers. */
+a:active, a:hover { outline: 0; }
+
+/* ========================================================================== Typography ========================================================================== */
+/** Address variable `h1` font-size and margin within `section` and `article` contexts in Firefox 4+, Safari 5, and Chrome. */
+h1 { font-size: 2em; margin: 0.67em 0; }
+
+/** Address styling not present in IE 8/9, Safari 5, and Chrome. */
+abbr[title] { border-bottom: 1px dotted; }
+
+/** Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome. */
+b, strong { font-weight: bold; }
+
+/** Address styling not present in Safari 5 and Chrome. */
+dfn { font-style: italic; }
+
+/** Address differences between Firefox and other browsers. */
+hr { -moz-box-sizing: content-box; box-sizing: content-box; height: 0; }
+
+/** Address styling not present in IE 8/9. */
+mark { background: #ff0; color: #000; }
+
+/** Correct font family set oddly in Safari 5 and Chrome. */
+code, kbd, pre, samp { font-family: monospace, serif; font-size: 1em; }
+
+/** Improve readability of pre-formatted text in all browsers. */
+pre { white-space: pre-wrap; }
+
+/** Set consistent quote types. */
+q { quotes: "\201C" "\201D" "\2018" "\2019"; }
+
+/** Address inconsistent and variable font size in all browsers. */
+small { font-size: 80%; }
+
+/** Prevent `sub` and `sup` affecting `line-height` in all browsers. */
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+
+sup { top: -0.5em; }
+
+sub { bottom: -0.25em; }
+
+/* ========================================================================== Embedded content ========================================================================== */
+/** Remove border when inside `a` element in IE 8/9. */
+img { border: 0; }
+
+/** Correct overflow displayed oddly in IE 9. */
+svg:not(:root) { overflow: hidden; }
+
+/* ========================================================================== Figures ========================================================================== */
+/** Address margin not present in IE 8/9 and Safari 5. */
+figure { margin: 0; }
+
+/* ========================================================================== Forms ========================================================================== */
+/** Define consistent border, margin, and padding. */
+fieldset { border: 1px solid #c0c0c0; margin: 0 2px; padding: 0.35em 0.625em 0.75em; }
+
+/** 1. Correct `color` not being inherited in IE 8/9. 2. Remove padding so people aren't caught out if they zero out fieldsets. */
+legend { border: 0; /* 1 */ padding: 0; /* 2 */ }
+
+/** 1. Correct font family not being inherited in all browsers. 2. Correct font size not being inherited in all browsers. 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome. */
+button, input, select, textarea { font-family: inherit; /* 1 */ font-size: 100%; /* 2 */ margin: 0; /* 3 */ }
+
+/** Address Firefox 4+ setting `line-height` on `input` using `!important` in the UA stylesheet. */
+button, input { line-height: normal; }
+
+/** Address inconsistent `text-transform` inheritance for `button` and `select`. All other form control elements do not inherit `text-transform` values. Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+. Correct `select` style inheritance in Firefox 4+ and Opera. */
+button, select { text-transform: none; }
+
+/** 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio` and `video` controls. 2. Correct inability to style clickable `input` types in iOS. 3. Improve usability and consistency of cursor style between image-type `input` and others. */
+button, html input[type="button"], input[type="reset"], input[type="submit"] { -webkit-appearance: button; /* 2 */ cursor: pointer; /* 3 */ }
+
+/** Re-set default cursor for disabled elements. */
+button[disabled], html input[disabled] { cursor: default; }
+
+/** 1. Address box sizing set to `content-box` in IE 8/9. 2. Remove excess padding in IE 8/9. */
+input[type="checkbox"], input[type="radio"] { box-sizing: border-box; /* 1 */ padding: 0; /* 2 */ }
+
+/** 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome. 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome (include `-moz` to future-proof). */
+input[type="search"] { -webkit-appearance: textfield; /* 1 */ -moz-box-sizing: content-box; -webkit-box-sizing: content-box; /* 2 */ box-sizing: content-box; }
+
+/** Remove inner padding and search cancel button in Safari 5 and Chrome on OS X. */
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
+
+/** Remove inner padding and border in Firefox 4+. */
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+
+/** 1. Remove default vertical scrollbar in IE 8/9. 2. Improve readability and alignment in all browsers. */
+textarea { overflow: auto; /* 1 */ vertical-align: top; /* 2 */ }
+
+/* ========================================================================== Tables ========================================================================== */
+/** Remove most spacing between table cells. */
+table { border-collapse: collapse; border-spacing: 0; }
+
+*, *:before, *:after { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+html, body { font-size: 100%; }
+
+body { background: white; color: #222222; padding: 0; margin: 0; font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; font-weight: normal; font-style: normal; line-height: 1; position: relative; cursor: auto; }
+
+a:hover { cursor: pointer; }
+
+a:focus { outline: none; }
+
+img, object, embed { max-width: 100%; height: auto; }
+
+object, embed { height: 100%; }
+
+img { -ms-interpolation-mode: bicubic; }
+
+#map_canvas img, #map_canvas embed, #map_canvas object, .map_canvas img, .map_canvas embed, .map_canvas object { max-width: none !important; }
+
+.left { float: left !important; }
+
+.right { float: right !important; }
+
+.text-left { text-align: left !important; }
+
+.text-right { text-align: right !important; }
+
+.text-center { text-align: center !important; }
+
+.text-justify { text-align: justify !important; }
+
+.hide { display: none; }
+
+.antialiased, body { -webkit-font-smoothing: antialiased; }
+
+img { display: inline-block; vertical-align: middle; }
+
+textarea { height: auto; min-height: 50px; }
+
+select { width: 100%; }
+
+p.lead, .paragraph.lead > p, #preamble > .sectionbody > .paragraph:first-of-type p { font-size: 1.21875em; line-height: 1.6; }
+
+.subheader, #content #toctitle, .admonitionblock td.content > .title, .exampleblock > .title, .imageblock > .title, .videoblock > .title, .listingblock > .title, .literalblock > .title, .openblock > .title, .paragraph > .title, .quoteblock > .title, .sidebarblock > .title, .tableblock > .title, .verseblock > .title, .dlist > .title, .olist > .title, .ulist > .title, .qlist > .title, .hdlist > .title, .tableblock > caption { line-height: 1.4; color: #6f6f6f; font-weight: 300; margin-top: 0.2em; margin-bottom: 0.5em; }
+
+/* Typography resets */
+div, dl, dt, dd, ul, ol, li, h1, h2, h3, #toctitle, .sidebarblock > .content > .title, h4, h5, h6, pre, form, p, blockquote, th, td { margin: 0; padding: 0; direction: ltr; }
+
+/* Default Link Styles */
+a { color: #2ba6cb; text-decoration: none; line-height: inherit; }
+a:hover, a:focus { color: #2795b6; }
+a img { border: none; }
+
+/* Default paragraph styles */
+p { font-family: inherit; font-weight: normal; font-size: 1em; line-height: 1.6; margin-bottom: 1.25em; text-rendering: optimizeLegibility; }
+p aside { font-size: 0.875em; line-height: 1.35; font-style: italic; }
+
+/* Default header styles */
+h1, h2, h3, #toctitle, .sidebarblock > .content > .title, h4, h5, h6 { font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; font-weight: bold; font-style: normal; color: #222222; text-rendering: optimizeLegibility; margin-top: 1em; margin-bottom: 0.5em; line-height: 1.2125em; }
+h1 small, h2 small, h3 small, #toctitle small, .sidebarblock > .content > .title small, h4 small, h5 small, h6 small { font-size: 60%; color: #6f6f6f; line-height: 0; }
+
+h1 { font-size: 2.125em; }
+
+h2 { font-size: 1.6875em; }
+
+h3, #toctitle, .sidebarblock > .content > .title { font-size: 1.375em; }
+
+h4 { font-size: 1.125em; }
+
+h5 { font-size: 1.125em; }
+
+h6 { font-size: 1em; }
+
+hr { border: solid #dddddd; border-width: 1px 0 0; clear: both; margin: 1.25em 0 1.1875em; height: 0; }
+
+/* Helpful Typography Defaults */
+em, i { font-style: italic; line-height: inherit; }
+
+strong, b { font-weight: bold; line-height: inherit; }
+
+small { font-size: 60%; line-height: inherit; }
+
+code { font-family: Consolas, "Liberation Mono", Courier, monospace; font-weight: bold; color: #7f0a0c; }
+
+/* Lists */
+ul, ol, dl { font-size: 1em; line-height: 1.6; margin-bottom: 1.25em; list-style-position: outside; font-family: inherit; }
+
+ul, ol { margin-left: 1.5em; }
+
+/* Unordered Lists */
+ul li ul, ul li ol { margin-left: 1.25em; margin-bottom: 0; font-size: 1em; /* Override nested font-size change */ }
+ul.square li ul, ul.circle li ul, ul.disc li ul { list-style: inherit; }
+ul.square { list-style-type: square; }
+ul.circle { list-style-type: circle; }
+ul.disc { list-style-type: disc; }
+ul.no-bullet { list-style: none; }
+
+/* Ordered Lists */
+ol li ul, ol li ol { margin-left: 1.25em; margin-bottom: 0; }
+
+/* Definition Lists */
+dl dt { margin-bottom: 0.3125em; font-weight: bold; }
+dl dd { margin-bottom: 1.25em; }
+
+/* Abbreviations */
+abbr, acronym { text-transform: uppercase; font-size: 90%; color: #222222; border-bottom: 1px dotted #dddddd; cursor: help; }
+
+abbr { text-transform: none; }
+
+/* Blockquotes */
+blockquote { margin: 0 0 1.25em; padding: 0.5625em 1.25em 0 1.1875em; border-left: 1px solid #dddddd; }
+blockquote cite { display: block; font-size: 0.8125em; color: #555555; }
+blockquote cite:before { content: "\2014 \0020"; }
+blockquote cite a, blockquote cite a:visited { color: #555555; }
+
+blockquote, blockquote p { line-height: 1.6; color: #6f6f6f; }
+
+/* Microformats */
+.vcard { display: inline-block; margin: 0 0 1.25em 0; border: 1px solid #dddddd; padding: 0.625em 0.75em; }
+.vcard li { margin: 0; display: block; }
+.vcard .fn { font-weight: bold; font-size: 0.9375em; }
+
+.vevent .summary { font-weight: bold; }
+.vevent abbr { cursor: auto; text-decoration: none; font-weight: bold; border: none; padding: 0 0.0625em; }
+
+@media only screen and (min-width: 768px) { h1, h2, h3, #toctitle, .sidebarblock > .content > .title, h4, h5, h6 { line-height: 1.4; }
+  h1 { font-size: 2.75em; }
+  h2 { font-size: 2.3125em; }
+  h3, #toctitle, .sidebarblock > .content > .title { font-size: 1.6875em; }
+  h4 { font-size: 1.4375em; } }
+/* Print styles.  Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/ Credit to Paul Irish and HTML5 Boilerplate (html5boilerplate.com)
+*/
+.print-only { display: none !important; }
+
+@media print { * { background: transparent !important; color: #000 !important; /* Black prints faster: h5bp.com/s */ box-shadow: none !important; text-shadow: none !important; }
+  a, a:visited { text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; /* h5bp.com/t */ }
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3, #toctitle, .sidebarblock > .content > .title { orphans: 3; widows: 3; }
+  h2, h3, #toctitle, .sidebarblock > .content > .title { page-break-after: avoid; }
+  .hide-on-print { display: none !important; }
+  .print-only { display: block !important; }
+  .hide-for-print { display: none !important; }
+  .show-for-print { display: inherit !important; } }
+/* Tables */
+table { background: white; margin-bottom: 1.25em; border: solid 1px #dddddd; }
+table thead, table tfoot { background: whitesmoke; font-weight: bold; }
+table thead tr th, table thead tr td, table tfoot tr th, table tfoot tr td { padding: 0.5em 0.625em 0.625em; font-size: inherit; color: #222222; text-align: left; }
+table tr th, table tr td { padding: 0.5625em 0.625em; font-size: inherit; color: #222222; }
+table tr.even, table tr.alt, table tr:nth-of-type(even) { background: #f9f9f9; }
+table thead tr th, table tfoot tr th, table tbody tr td, table tr td, table tfoot tr td { display: table-cell; line-height: 1.4; }
+
+.clearfix:before, .clearfix:after, .float-group:before, .float-group:after { content: " "; display: table; }
+.clearfix:after, .float-group:after { clear: both; }
+
+*:not(pre) > code { font-size: inherit; padding: 0; white-space: nowrap; background-color: inherit; border: 0 solid #dddddd; -webkit-border-radius: 0; border-radius: 0; text-shadow: none; }
+
+pre, pre > code { line-height: 1.4; color: black; font-family: monospace, serif; font-weight: normal; }
+
+kbd.keyseq { color: #555555; }
+
+kbd:not(.keyseq) { display: inline-block; color: #222222; font-size: 0.75em; line-height: 1.4; background-color: #F7F7F7; border: 1px solid #ccc; -webkit-border-radius: 3px; border-radius: 3px; -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px white inset; box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px white inset; margin: -0.15em 0.15em 0 0.15em; padding: 0.2em 0.6em 0.2em 0.5em; vertical-align: middle; white-space: nowrap; }
+
+kbd kbd:first-child { margin-left: 0; }
+
+kbd kbd:last-child { margin-right: 0; }
+
+.menuseq, .menu { color: #090909; }
+
+#header, #content, #footnotes, #footer { width: 100%; margin-left: auto; margin-right: auto; margin-top: 0; margin-bottom: 0; max-width: 62.5em; *zoom: 1; position: relative; padding-left: 0.9375em; padding-right: 0.9375em; }
+#header:before, #header:after, #content:before, #content:after, #footnotes:before, #footnotes:after, #footer:before, #footer:after { content: " "; display: table; }
+#header:after, #content:after, #footnotes:after, #footer:after { clear: both; }
+
+#header { margin-bottom: 2.5em; }
+#header > h1 { color: black; font-weight: bold; border-bottom: 1px solid #dddddd; margin-bottom: -28px; padding-bottom: 32px; }
+#header span { color: #6f6f6f; }
+#header #revnumber { text-transform: capitalize; }
+#header br { display: none; }
+#header br + span { padding-left: 3px; }
+#header br + span:before { content: "\2013 \0020"; }
+#header br + span.author { padding-left: 0; }
+#header br + span.author:before { content: ", "; }
+
+#toc { border-bottom: 1px solid #dddddd; padding-bottom: 1.25em; }
+#toc > ul { margin-left: 0.25em; }
+#toc ul.sectlevel0 > li > a { font-style: italic; }
+#toc ul.sectlevel0 ul.sectlevel1 { margin-left: 0; margin-top: 0.5em; margin-bottom: 0.5em; }
+#toc ul { list-style-type: none; }
+
+#toctitle { color: #6f6f6f; }
+
+@media only screen and (min-width: 1280px) { body.toc2 { padding-left: 20em; }
+  #toc.toc2 { position: fixed; width: 20em; left: 0; top: 0; border-right: 1px solid #dddddd; border-bottom: 0; z-index: 1000; padding: 1em; height: 100%; overflow: auto; }
+  #toc.toc2 #toctitle { margin-top: 0; }
+  #toc.toc2 > ul { font-size: .95em; }
+  #toc.toc2 ul ul { margin-left: 0; padding-left: 1.25em; }
+  #toc.toc2 ul.sectlevel0 ul.sectlevel1 { padding-left: 0; margin-top: 0.5em; margin-bottom: 0.5em; }
+  body.toc2.toc-right { padding-left: 0; padding-right: 20em; }
+  body.toc2.toc-right #toc.toc2 { border-right: 0; border-left: 1px solid #dddddd; left: auto; right: 0; } }
+#content #toc { border-style: solid; border-width: 1px; border-color: #d9d9d9; margin-bottom: 1.25em; padding: 1.25em; background: #f2f2f2; border-width: 0; -webkit-border-radius: 0; border-radius: 0; }
+#content #toc > :first-child { margin-top: 0; }
+#content #toc > :last-child { margin-bottom: 0; }
+#content #toc a { text-decoration: none; }
+
+#content #toctitle { font-weight: bold; font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; font-size: 1em; padding-left: 0.125em; }
+
+#footer { max-width: 100%; background-color: #222222; padding: 1.25em; }
+
+#footer-text { color: #dddddd; line-height: 1.44; }
+
+.sect1 { padding-bottom: 1.25em; }
+
+.sect1 + .sect1 { border-top: 1px solid #dddddd; }
+
+#content h1 > a.anchor, h2 > a.anchor, h3 > a.anchor, #toctitle > a.anchor, .sidebarblock > .content > .title > a.anchor, h4 > a.anchor, h5 > a.anchor, h6 > a.anchor { position: absolute; width: 1em; margin-left: -1em; display: block; text-decoration: none; visibility: hidden; text-align: center; font-weight: normal; }
+#content h1 > a.anchor:before, h2 > a.anchor:before, h3 > a.anchor:before, #toctitle > a.anchor:before, .sidebarblock > .content > .title > a.anchor:before, h4 > a.anchor:before, h5 > a.anchor:before, h6 > a.anchor:before { content: '\00A7'; font-size: .85em; vertical-align: text-top; display: block; margin-top: 0.05em; }
+#content h1:hover > a.anchor, #content h1 > a.anchor:hover, h2:hover > a.anchor, h2 > a.anchor:hover, h3:hover > a.anchor, #toctitle:hover > a.anchor, .sidebarblock > .content > .title:hover > a.anchor, h3 > a.anchor:hover, #toctitle > a.anchor:hover, .sidebarblock > .content > .title > a.anchor:hover, h4:hover > a.anchor, h4 > a.anchor:hover, h5:hover > a.anchor, h5 > a.anchor:hover, h6:hover > a.anchor, h6 > a.anchor:hover { visibility: visible; }
+#content h1 > a.link, h2 > a.link, h3 > a.link, #toctitle > a.link, .sidebarblock > .content > .title > a.link, h4 > a.link, h5 > a.link, h6 > a.link { color: #222222; text-decoration: none; }
+#content h1 > a.link:hover, h2 > a.link:hover, h3 > a.link:hover, #toctitle > a.link:hover, .sidebarblock > .content > .title > a.link:hover, h4 > a.link:hover, h5 > a.link:hover, h6 > a.link:hover { color: #151515; }
+
+.imageblock, .literalblock, .listingblock, .verseblock, .videoblock { margin-bottom: 1.25em; }
+
+.admonitionblock td.content > .title, .exampleblock > .title, .imageblock > .title, .videoblock > .title, .listingblock > .title, .literalblock > .title, .openblock > .title, .paragraph > .title, .quoteblock > .title, .sidebarblock > .title, .tableblock > .title, .verseblock > .title, .dlist > .title, .olist > .title, .ulist > .title, .qlist > .title, .hdlist > .title { text-align: left; font-weight: bold; }
+
+.tableblock > caption { text-align: left; font-weight: bold; white-space: nowrap; overflow: visible; max-width: 0; }
+
+table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p { font-size: inherit; }
+
+.admonitionblock > table { border: 0; background: none; width: 100%; }
+.admonitionblock > table td.icon { text-align: center; width: 80px; }
+.admonitionblock > table td.icon img { max-width: none; }
+.admonitionblock > table td.icon .title { font-weight: bold; text-transform: uppercase; }
+.admonitionblock > table td.content { padding-left: 1.125em; padding-right: 1.25em; border-left: 1px solid #dddddd; color: #6f6f6f; }
+.admonitionblock > table td.content > :last-child > :last-child { margin-bottom: 0; }
+
+.exampleblock > .content { border-style: solid; border-width: 1px; border-color: #e6e6e6; margin-bottom: 1.25em; padding: 1.25em; background: white; -webkit-border-radius: 0; border-radius: 0; }
+.exampleblock > .content > :first-child { margin-top: 0; }
+.exampleblock > .content > :last-child { margin-bottom: 0; }
+.exampleblock > .content h1, .exampleblock > .content h2, .exampleblock > .content h3, .exampleblock > .content #toctitle, .sidebarblock.exampleblock > .content > .title, .exampleblock > .content h4, .exampleblock > .content h5, .exampleblock > .content h6, .exampleblock > .content p { color: #333333; }
+.exampleblock > .content h1, .exampleblock > .content h2, .exampleblock > .content h3, .exampleblock > .content #toctitle, .sidebarblock.exampleblock > .content > .title, .exampleblock > .content h4, .exampleblock > .content h5, .exampleblock > .content h6 { line-height: 1; margin-bottom: 0.625em; }
+.exampleblock > .content h1.subheader, .exampleblock > .content h2.subheader, .exampleblock > .content h3.subheader, .exampleblock > .content .subheader#toctitle, .sidebarblock.exampleblock > .content > .subheader.title, .exampleblock > .content h4.subheader, .exampleblock > .content h5.subheader, .exampleblock > .content h6.subheader { line-height: 1.4; }
+
+.exampleblock.result > .content { -webkit-box-shadow: 0 1px 8px #d9d9d9; box-shadow: 0 1px 8px #d9d9d9; }
+
+.sidebarblock { border-style: solid; border-width: 1px; border-color: #d9d9d9; margin-bottom: 1.25em; padding: 1.25em; background: #f2f2f2; -webkit-border-radius: 0; border-radius: 0; }
+.sidebarblock > :first-child { margin-top: 0; }
+.sidebarblock > :last-child { margin-bottom: 0; }
+.sidebarblock h1, .sidebarblock h2, .sidebarblock h3, .sidebarblock #toctitle, .sidebarblock > .content > .title, .sidebarblock h4, .sidebarblock h5, .sidebarblock h6, .sidebarblock p { color: #333333; }
+.sidebarblock h1, .sidebarblock h2, .sidebarblock h3, .sidebarblock #toctitle, .sidebarblock > .content > .title, .sidebarblock h4, .sidebarblock h5, .sidebarblock h6 { line-height: 1; margin-bottom: 0.625em; }
+.sidebarblock h1.subheader, .sidebarblock h2.subheader, .sidebarblock h3.subheader, .sidebarblock .subheader#toctitle, .sidebarblock > .content > .subheader.title, .sidebarblock h4.subheader, .sidebarblock h5.subheader, .sidebarblock h6.subheader { line-height: 1.4; }
+.sidebarblock > .content > .title { color: #6f6f6f; margin-top: 0; line-height: 1.6; }
+
+.exampleblock > .content > :last-child > :last-child, .exampleblock > .content .olist > ol > li:last-child > :last-child, .exampleblock > .content .ulist > ul > li:last-child > :last-child, .exampleblock > .content .qlist > ol > li:last-child > :last-child, .sidebarblock > .content > :last-child > :last-child, .sidebarblock > .content .olist > ol > li:last-child > :last-child, .sidebarblock > .content .ulist > ul > li:last-child > :last-child, .sidebarblock > .content .qlist > ol > li:last-child > :last-child { margin-bottom: 0; }
+
+.literalblock > .content pre, .listingblock > .content pre { background: #eeeeee; border-width: 1px; border-style: solid; border-color: #cccccc; -webkit-border-radius: 0; border-radius: 0; padding: 0.8em 0.8em 0.65em 0.8em; word-wrap: break-word; }
+.literalblock > .content pre.nowrap, .listingblock > .content pre.nowrap { overflow-x: auto; white-space: pre; word-wrap: normal; }
+.literalblock > .content pre > code, .listingblock > .content pre > code { display: block; }
+@media only screen { .literalblock > .content pre, .listingblock > .content pre { font-size: 0.72em; } }
+@media only screen and (min-width: 768px) { .literalblock > .content pre, .listingblock > .content pre { font-size: 0.81em; } }
+@media only screen and (min-width: 1280px) { .literalblock > .content pre, .listingblock > .content pre { font-size: 0.9em; } }
+
+.listingblock > .content { position: relative; }
+
+.listingblock:hover code[class*=" language-"]:before { text-transform: uppercase; font-size: 0.9em; color: #999; position: absolute; top: 0.375em; right: 0.375em; }
+
+.listingblock:hover code.asciidoc:before { content: "asciidoc"; }
+.listingblock:hover code.clojure:before { content: "clojure"; }
+.listingblock:hover code.css:before { content: "css"; }
+.listingblock:hover code.groovy:before { content: "groovy"; }
+.listingblock:hover code.html:before { content: "html"; }
+.listingblock:hover code.java:before { content: "java"; }
+.listingblock:hover code.javascript:before { content: "javascript"; }
+.listingblock:hover code.python:before { content: "python"; }
+.listingblock:hover code.ruby:before { content: "ruby"; }
+.listingblock:hover code.scss:before { content: "scss"; }
+.listingblock:hover code.xml:before { content: "xml"; }
+.listingblock:hover code.yaml:before { content: "yaml"; }
+
+.listingblock.terminal pre .command:before { content: attr(data-prompt); padding-right: 0.5em; color: #999; }
+
+.listingblock.terminal pre .command:not([data-prompt]):before { content: '$'; }
+
+table.pyhltable { border: 0; margin-bottom: 0; }
+
+table.pyhltable td { vertical-align: top; padding-top: 0; padding-bottom: 0; }
+
+table.pyhltable td.code { padding-left: .75em; padding-right: 0; }
+
+.highlight.pygments .lineno, table.pyhltable td:not(.code) { color: #999; padding-left: 0; padding-right: .5em; border-right: 1px solid #dddddd; }
+
+.highlight.pygments .lineno { display: inline-block; margin-right: .25em; }
+
+table.pyhltable .linenodiv { background-color: transparent !important; padding-right: 0 !important; }
+
+.quoteblock { margin: 0 0 1.25em; padding: 0.5625em 1.25em 0 1.1875em; border-left: 1px solid #dddddd; }
+.quoteblock blockquote { margin: 0 0 1.25em 0; padding: 0 0 0.5625em 0; border: 0; }
+.quoteblock blockquote > .paragraph:last-child p { margin-bottom: 0; }
+.quoteblock .attribution { margin-top: -.25em; padding-bottom: 0.5625em; font-size: 0.8125em; color: #555555; }
+.quoteblock .attribution br { display: none; }
+.quoteblock .attribution cite { display: block; margin-bottom: 0.625em; }
+
+table thead th, table tfoot th { font-weight: bold; }
+
+table.tableblock.grid-all { border-collapse: separate; border-spacing: 1px; -webkit-border-radius: 0; border-radius: 0; border-top: 1px solid #dddddd; border-bottom: 1px solid #dddddd; }
+
+table.tableblock.frame-topbot, table.tableblock.frame-none { border-left: 0; border-right: 0; }
+
+table.tableblock.frame-sides, table.tableblock.frame-none { border-top: 0; border-bottom: 0; }
+
+table.tableblock td .paragraph:last-child p, table.tableblock td > p:last-child { margin-bottom: 0; }
+
+th.tableblock.halign-left, td.tableblock.halign-left { text-align: left; }
+
+th.tableblock.halign-right, td.tableblock.halign-right { text-align: right; }
+
+th.tableblock.halign-center, td.tableblock.halign-center { text-align: center; }
+
+th.tableblock.valign-top, td.tableblock.valign-top { vertical-align: top; }
+
+th.tableblock.valign-bottom, td.tableblock.valign-bottom { vertical-align: bottom; }
+
+th.tableblock.valign-middle, td.tableblock.valign-middle { vertical-align: middle; }
+
+p.tableblock.header { color: #222222; font-weight: bold; }
+
+td > div.verse { white-space: pre; }
+
+ol { margin-left: 1.75em; }
+
+ul li ol { margin-left: 1.5em; }
+
+dl dd { margin-left: 1.125em; }
+
+dl dd:last-child, dl dd:last-child > :last-child { margin-bottom: 0; }
+
+ol > li p, ul > li p, ul dd, ol dd, .olist .olist, .ulist .ulist, .ulist .olist, .olist .ulist { margin-bottom: 0.625em; }
+
+ul.unstyled, ol.unnumbered, ul.checklist, ul.none { list-style-type: none; }
+
+ul.unstyled, ol.unnumbered, ul.checklist { margin-left: 0.625em; }
+
+ul.checklist li > p:first-child > i[class^="icon-check"]:first-child, ul.checklist li > p:first-child > input[type="checkbox"]:first-child { margin-right: 0.25em; }
+
+ul.checklist li > p:first-child > input[type="checkbox"]:first-child { position: relative; top: 1px; }
+
+ul.inline { margin: 0 auto 0.625em auto; margin-left: -1.375em; margin-right: 0; padding: 0; list-style: none; overflow: hidden; }
+ul.inline > li { list-style: none; float: left; margin-left: 1.375em; display: block; }
+ul.inline > li > * { display: block; }
+
+.unstyled dl dt { font-weight: normal; font-style: normal; }
+
+ol.arabic { list-style-type: decimal; }
+
+ol.decimal { list-style-type: decimal-leading-zero; }
+
+ol.loweralpha { list-style-type: lower-alpha; }
+
+ol.upperalpha { list-style-type: upper-alpha; }
+
+ol.lowerroman { list-style-type: lower-roman; }
+
+ol.upperroman { list-style-type: upper-roman; }
+
+ol.lowergreek { list-style-type: lower-greek; }
+
+.hdlist > table, .colist > table { border: 0; background: none; }
+.hdlist > table > tbody > tr, .colist > table > tbody > tr { background: none; }
+
+td.hdlist1 { padding-right: .8em; font-weight: bold; }
+
+td.hdlist1, td.hdlist2 { vertical-align: top; }
+
+.literalblock + .colist, .listingblock + .colist { margin-top: -0.5em; }
+
+.colist > table tr > td:first-of-type { padding: 0 .8em; line-height: 1; }
+.colist > table tr > td:last-of-type { padding: 0.25em 0; }
+
+.qanda > ol > li > p > em:only-child { color: #2795b6; }
+
+.thumb, .th { line-height: 0; display: inline-block; border: solid 4px white; -webkit-box-shadow: 0 0 0 1px #dddddd; box-shadow: 0 0 0 1px #dddddd; }
+
+.imageblock.left, .imageblock[style*="float: left"] { margin: 0.25em 0.625em 1.25em 0; }
+.imageblock.right, .imageblock[style*="float: right"] { margin: 0.25em 0 1.25em 0.625em; }
+.imageblock > .title { margin-bottom: 0; }
+.imageblock.thumb, .imageblock.th { border-width: 6px; }
+.imageblock.thumb > .title, .imageblock.th > .title { padding: 0 0.125em; }
+
+.image.left, .image.right { margin-top: 0.25em; margin-bottom: 0.25em; display: inline-block; line-height: 0; }
+.image.left { margin-right: 0.625em; }
+.image.right { margin-left: 0.625em; }
+
+a.image { text-decoration: none; }
+
+span.footnote, span.footnoteref { vertical-align: super; font-size: 0.875em; }
+span.footnote a, span.footnoteref a { text-decoration: none; }
+
+#footnotes { padding-top: 0.75em; padding-bottom: 0.75em; margin-bottom: 0.625em; }
+#footnotes hr { width: 20%; min-width: 6.25em; margin: -.25em 0 .75em 0; border-width: 1px 0 0 0; }
+#footnotes .footnote { padding: 0 0.375em; line-height: 1.3; font-size: 0.875em; margin-left: 1.2em; text-indent: -1.2em; margin-bottom: .2em; }
+#footnotes .footnote a:first-of-type { font-weight: bold; text-decoration: none; }
+#footnotes .footnote:last-of-type { margin-bottom: 0; }
+
+#content #footnotes { margin-top: -0.625em; margin-bottom: 0; padding: 0.75em 0; }
+
+.gist .file-data > table { border: none; background: #fff; width: 100%; margin-bottom: 0; }
+.gist .file-data > table td.line-data { width: 99%; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+.big { font-size: larger; }
+
+.small { font-size: smaller; }
+
+.underline { text-decoration: underline; }
+
+.overline { text-decoration: overline; }
+
+.line-through { text-decoration: line-through; }
+
+.aqua { color: #00bfbf; }
+
+.aqua-background { background-color: #00fafa; }
+
+.black { color: black; }
+
+.black-background { background-color: black; }
+
+.blue { color: #0000bf; }
+
+.blue-background { background-color: #0000fa; }
+
+.fuchsia { color: #bf00bf; }
+
+.fuchsia-background { background-color: #fa00fa; }
+
+.gray { color: #606060; }
+
+.gray-background { background-color: #7d7d7d; }
+
+.green { color: #006000; }
+
+.green-background { background-color: #007d00; }
+
+.lime { color: #00bf00; }
+
+.lime-background { background-color: #00fa00; }
+
+.maroon { color: #600000; }
+
+.maroon-background { background-color: #7d0000; }
+
+.navy { color: #000060; }
+
+.navy-background { background-color: #00007d; }
+
+.olive { color: #606000; }
+
+.olive-background { background-color: #7d7d00; }
+
+.purple { color: #600060; }
+
+.purple-background { background-color: #7d007d; }
+
+.red { color: #bf0000; }
+
+.red-background { background-color: #fa0000; }
+
+.silver { color: #909090; }
+
+.silver-background { background-color: #bcbcbc; }
+
+.teal { color: #006060; }
+
+.teal-background { background-color: #007d7d; }
+
+.white { color: #bfbfbf; }
+
+.white-background { background-color: #fafafa; }
+
+.yellow { color: #bfbf00; }
+
+.yellow-background { background-color: #fafa00; }
+
+span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
+
+.admonitionblock td.icon [class^="icon-"]:before { font-size: 2.5em; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); cursor: default; }
+.admonitionblock td.icon .icon-note:before { content: "\f05a"; color: #2ba6cb; color: #207c98; }
+.admonitionblock td.icon .icon-tip:before { content: "\f0eb"; text-shadow: 1px 1px 2px rgba(155, 155, 0, 0.8); color: #111; }
+.admonitionblock td.icon .icon-warning:before { content: "\f071"; color: #bf6900; }
+.admonitionblock td.icon .icon-caution:before { content: "\f06d"; color: #bf3400; }
+.admonitionblock td.icon .icon-important:before { content: "\f06a"; color: #bf0000; }
+
+.conum { display: inline-block; color: white !important; background-color: #222222; -webkit-border-radius: 100px; border-radius: 100px; text-align: center; width: 20px; height: 20px; font-size: 12px; font-weight: bold; line-height: 20px; font-family: Arial, sans-serif; font-style: normal; position: relative; top: -2px; letter-spacing: -1px; }
+.conum * { color: white !important; }
+.conum + b { display: none; }
+.conum:after { content: attr(data-value); }
+.conum:not([data-value]):empty { display: none; }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+pre.rouge table td { padding: 5px; }
+pre.rouge table pre { margin: 0; }
+pre.rouge .cm {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .cp {
+  color: #999999;
+  font-weight: bold;
+}
+pre.rouge .c1 {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+pre.rouge .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+pre.rouge .ge {
+  color: #000000;
+  font-style: italic;
+}
+pre.rouge .gr {
+  color: #aa0000;
+}
+pre.rouge .gh {
+  color: #999999;
+}
+pre.rouge .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+pre.rouge .go {
+  color: #888888;
+}
+pre.rouge .gp {
+  color: #555555;
+}
+pre.rouge .gs {
+  font-weight: bold;
+}
+pre.rouge .gu {
+  color: #aaaaaa;
+}
+pre.rouge .gt {
+  color: #aa0000;
+}
+pre.rouge .kc {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kd {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kn {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kp {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kr {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kt {
+  color: #445588;
+  font-weight: bold;
+}
+pre.rouge .k, pre.rouge .kv {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .mf {
+  color: #009999;
+}
+pre.rouge .mh {
+  color: #009999;
+}
+pre.rouge .il {
+  color: #009999;
+}
+pre.rouge .mi {
+  color: #009999;
+}
+pre.rouge .mo {
+  color: #009999;
+}
+pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #009999;
+}
+pre.rouge .sa {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .sb {
+  color: #d14;
+}
+pre.rouge .sc {
+  color: #d14;
+}
+pre.rouge .sd {
+  color: #d14;
+}
+pre.rouge .s2 {
+  color: #d14;
+}
+pre.rouge .se {
+  color: #d14;
+}
+pre.rouge .sh {
+  color: #d14;
+}
+pre.rouge .si {
+  color: #d14;
+}
+pre.rouge .sx {
+  color: #d14;
+}
+pre.rouge .sr {
+  color: #009926;
+}
+pre.rouge .s1 {
+  color: #d14;
+}
+pre.rouge .ss {
+  color: #990073;
+}
+pre.rouge .s, pre.rouge .dl {
+  color: #d14;
+}
+pre.rouge .na {
+  color: #008080;
+}
+pre.rouge .bp {
+  color: #999999;
+}
+pre.rouge .nb {
+  color: #0086B3;
+}
+pre.rouge .nc {
+  color: #445588;
+  font-weight: bold;
+}
+pre.rouge .no {
+  color: #008080;
+}
+pre.rouge .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+pre.rouge .ni {
+  color: #800080;
+}
+pre.rouge .ne {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nf, pre.rouge .fm {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nl {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nn {
+  color: #555555;
+}
+pre.rouge .nt {
+  color: #000080;
+}
+pre.rouge .vc {
+  color: #008080;
+}
+pre.rouge .vg {
+  color: #008080;
+}
+pre.rouge .vi {
+  color: #008080;
+}
+pre.rouge .nv, pre.rouge .vm {
+  color: #008080;
+}
+pre.rouge .ow {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .o {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .w {
+  color: #bbbbbb;
+}
+pre.rouge {
+  background-color: #f8f8f8;
+}
+</style>
+
+<style>
+	.tok-err {
+		border: none !important;
+	}
+
+	dl.compact {
+		display: grid;
+		grid-column-gap: 1ex;
+		grid-template-columns: min-content min-content;
+	}
+	dl.compact dt{
+		grid-column: 1 / 2;
+		margin-bottom: 0;
+		font-size: inherit;
+	}
+	dl.compact dd {
+		grid-column: 2 / 2;
+		margin-left: 0;
+		margin-bottom: 0;
+	}
+</style>
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<h1>EMF Reference Project: Developer Guide</h1>
+<div class="details">
+<span id="author" class="author">EC Modeling &amp; Simulation</span><br>
+<span id="revnumber">version 2024-12-12 11:20 UTC</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#development-environment">Development Environment</a>
+<ul class="sectlevel2">
+<li><a href="#git-workflow">Git workflow</a></li>
+<li><a href="#git-directory-structure">Initial Git directory structure</a></li>
+<li><a href="#create-oomph-setup-file">How to create an Oomph setup file</a></li>
+<li><a href="#setup-development-environment">How to setup a development environment</a></li>
+</ul>
+</li>
+<li><a href="#using-3pp">Using third-party products (3PP)</a>
+<ul class="sectlevel2">
+<li><a href="#eclipse-target-platform">Specifying an Eclipse target platform</a></li>
+<li><a href="#maven-repository-mirrors">Using repository mirrors in Maven</a></li>
+<li><a href="#bundling-eclipse-justj">Bundling a JRE with your RCP</a></li>
+</ul>
+</li>
+<li><a href="#using-mde-assets">Using MDE Assets</a>
+<ul class="sectlevel2">
+<li><a href="#ecoredoc">EcoreDoc</a></li>
+<li><a href="#espilce-commons">Espilce Commons</a></li>
+<li><a href="#espilce-periksa">Espilce Periksa</a></li>
+<li><a href="#espilce-polvi">Espilce Polvi</a></li>
+<li><a href="#xtextsirius-integration">Xtext/Sirius Integration</a></li>
+<li><a href="#xtext-move-refactoring">Xtext Move Refactoring</a></li>
+</ul>
+</li>
+<li><a href="#testing-rcp">Testing RCP</a></li>
+<li><a href="#fowlerdsl-ecoredoc">Appendix A: Fowler Statemachine EcoreDoc</a>
+<ul class="sectlevel2">
+<li><a href="#types">Types</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document contains information about Altran&#8217;s EMF Reference Project (a.k.a. MDE Skeleton) MDE Asset.
+The purpose of this project is to represent a typical MDE Eclipse IDE solution and to act as a showcase on how to use MDE Assets.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+This developer guide can be downloaded as <a href="mde-skeleton-developer-guide.pdf">PDF</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document is under construction.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/under_construction.png" alt="under construction">
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="development-environment"><a class="anchor" href="#development-environment"></a>Development Environment</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="git-workflow"><a class="anchor" href="#git-workflow"></a>Git workflow</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+TODO explain <a href="https://nvie.com/posts/a-successful-git-branching-model/">Gitflow Workflow</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="git-directory-structure"><a class="anchor" href="#git-directory-structure"></a>Initial Git directory structure</h3>
+<div class="sect3">
+<h4 id="git-prerequisites"><a class="anchor" href="#git-prerequisites"></a>Prerequisites</h4>
+<div class="paragraph">
+<p>As described in the previous section we tend to use the <a href="#git-workflow">Git workflow</a> branching model.
+In this model the central repo holds <a href="https://nvie.com/posts/a-successful-git-branching-model/#the-main-branches">two main branches</a> with an infinite lifetime:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>master</code></p>
+</li>
+<li>
+<p><code>develop</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Before creating an initial directory structure, please make sure that these branches are available in the remote repository and configured correctly, i.e., both protected and <code>develop</code> marked as the default branch.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="git-bootstrap"><a class="anchor" href="#git-bootstrap"></a>Bootstrapping a git repository</h4>
+<div class="paragraph">
+<p>When the <a href="#git-prerequisites">prerequisites</a> are met, you can start with bootstrapping the repository with its initial content.
+The EMF Reference Project provides a script that provisions the repository with the correct directory structure and content to build an empty Eclipse RCP application that can be used for further development.
+The bootstrapped application will contain a developer documentation plugin that provides the instructions on <a href="#setup-development-environment">setting up a development environment</a>.</p>
+</div>
+<div class="paragraph">
+<p>The listing below shows how to use the EMF Reference Project bootstrap script.
+In this example, the <code>LArch</code> repository is used as an example and the callouts below the listing explain the steps in more detail.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 1. Bootstrapping a git repository to build an Eclipse RCP</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="shell">user@machine MINGW64 ~/git
+<span class="nv">$ </span>git clone git@gitlab.acidspace.nl:cge-coe-mde/larch.git <i class="conum" data-value="1"></i><b>(1)</b>
+Cloning into <span class="s1">'larch'</span>...
+remote: Enumerating objects: 3, <span class="k">done</span><span class="nb">.</span>
+remote: Counting objects: 100% <span class="o">(</span>3/3<span class="o">)</span>, <span class="k">done</span><span class="nb">.</span>
+remote: Compressing objects: 100% <span class="o">(</span>2/2<span class="o">)</span>, <span class="k">done</span><span class="nb">.</span>
+remote: Total 3 <span class="o">(</span>delta 0<span class="o">)</span>, reused 0 <span class="o">(</span>delta 0<span class="o">)</span>, pack-reused 0
+Receiving objects: 100% <span class="o">(</span>3/3<span class="o">)</span>, <span class="k">done</span><span class="nb">.</span>
+
+user@machine MINGW64 ~/git
+<span class="nv">$ </span>git clone git@gitlab.acidspace.nl:cge-coe-mde/mde-skeleton.git <span class="nt">-b</span> BOOTSTRAP-2020-06 <i class="conum" data-value="2"></i><b>(2)</b>
+Cloning into <span class="s1">'mde-skeleton'</span>...
+remote: Enumerating objects: 1407, <span class="k">done</span><span class="nb">.</span>
+remote: Counting objects: 100% <span class="o">(</span>50/50<span class="o">)</span>, <span class="k">done</span><span class="nb">.</span>
+remote: Compressing objects: 100% <span class="o">(</span>37/37<span class="o">)</span>, <span class="k">done</span><span class="nb">.</span>
+remote: Total 1407 <span class="o">(</span>delta 16<span class="o">)</span>, reused 33 <span class="o">(</span>delta 9<span class="o">)</span>, pack-reused 1357
+Receiving objects: 100% <span class="o">(</span>1407/1407<span class="o">)</span>, 902.82 KiB | 1.45 MiB/s, <span class="k">done</span><span class="nb">.</span>
+Resolving deltas: 100% <span class="o">(</span>631/631<span class="o">)</span>, <span class="k">done</span><span class="nb">.</span>
+Note: switching to <span class="s1">'5c0c33b3e79fb107b4f582ebaf2d28d5fbf980a1'</span><span class="nb">.</span>
+
+You are <span class="k">in</span> <span class="s1">'detached HEAD'</span> state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make <span class="k">in </span>this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+<span class="k">do </span>so <span class="o">(</span>now or later<span class="o">)</span> by using <span class="nt">-c</span> with the switch command. Example:
+
+  git switch <span class="nt">-c</span> &lt;new-branch-name&gt;
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to <span class="nb">false
+
+
+</span>user@machine MINGW64 ~/git
+<span class="nv">$ </span>./mde-skeleton/bootstrap.sh LArch nl.cge.mde.larch larch/ <i class="conum" data-value="3"></i><b>(3)</b>
+Bootstrapping the LArch project with prefix nl.cge.mde.larch <span class="k">in</span>: /c/Users/user/git/larch
+
+Processing file /c/Users/user/git/larch/.acidcli.yml
+...
+
+Committing changes
+warning: LF will be replaced by CRLF <span class="k">in </span>README.adoc.
+The file will have its original line endings <span class="k">in </span>your working directory
+...
+<span class="o">[</span>develop eeff333] Bootstrapped the LArch project, using the skeleton as provided by Capgemini Engineering.
+ 61 files changed, 2717 insertions<span class="o">(</span>+<span class="o">)</span>, 92 deletions<span class="o">(</span>-<span class="o">)</span>
+ create mode 100644 .acidcli.yml
+...
+
+Done, please review the last commit and push it to ACIDSpace using the following commands: <i class="conum" data-value="4"></i><b>(4)</b>
+<span class="o">&gt;</span> <span class="nb">cd</span> /c/Users/user/git/larch
+<span class="o">&gt;</span> git status
+<span class="o">&gt;</span> git push
+
+Then <span class="nb">read </span>the README.adoc to learn how to setup a development environment or how to build the code locally, see
+https://gitlab.acidspace.nl/cge-coe-mde/larch/-/blob/develop/README.adoc
+After a successful <span class="nb">local </span>build, the built products can be found at:
+/c/Users/user/git/larch/products/nl.cge.mde.larch.package.product/target/products</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Clone the empty git repository that will be bootstrapped.
+It is assumed that the <code>develop</code> branch is set as default branch of the repository.
+In this example, the repository is cloned into a sub-directory called <code>larch</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Clone the MDE skeleton repository to download the bootstrap script.
+The tag, i.e., <code>-b BOOTSTRAP-2020-06</code>, specifies the version of Eclipse that is used for the RCP.
+For a list of available versions, please see the <a href="https://github.com/altran-mde/mde-skeleton/tags">available tags</a>.
+The repository is cloned into a sub-directory called <code>mde-skeleton</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Running the <code>bootstrap.sh</code> copies all required data to the target repository and adapts it for your project.
+The script takes 3 parameters:<br>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The name of the product</p>
+</li>
+<li>
+<p>The prefix that will be used.
+This should be unique for your product.</p>
+</li>
+<li>
+<p>The directory where the target repository is cloned, see step 1.</p>
+</li>
+</ol>
+</div></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>When the script is done, a commit has been created such that it can be pushed.
+When the commit is pushed, the product is built automatically in ACIDSpace and both the README of the repository and its Gitlab pages will contain information on how to setup an Eclipse development environment.
+The output of the script provides pointers on how to manually build your product on your local system from the command line, please read section <a href="#setup-maven">Build code with Maven</a> before running a command line build.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The directory structure of the target repository will look like:</p>
+</div>
+<table id="git-directories" class="tableblock frame-all grid-all stretch">
+<caption class="title">Initial Git directory structure</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Directory</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">.mvn</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contains Maven configuration</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">.settings</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contains Eclipse configuration</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">documentation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This directory contains all bundles with documentation about the product and/or project.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">documentation/<em>&lt;prefix&gt;</em>.guide.developer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The generated developer guide is available as PDF, Eclipse Help and via the GitLab pages of your project.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">features</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This directory contains all features that are provided by the project.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">plugins</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This directory contains all plugins that are provided by the project, initially empty.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">products</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This directory contains the configuration of the built Eclipse RCP.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">products/<em>&lt;prefix&gt;</em>.package.branding</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the look-and-feel of the product, like splash screen and about content.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">products/<em>&lt;prefix&gt;</em>.package.feature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the content of the RCP, typically all features in the <code>features</code> directory.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">products/<em>&lt;prefix&gt;</em>.package.product</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the product and the layour of the P2 repository.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">releng</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This directory contains artifacts that are related to release-engineering.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">releng/eclipse</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contains pre-configured Eclipse launch targets and <a href="#create-oomph-setup-file">Oomph setup file</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">releng/<em>&lt;prefix&gt;</em>.parent</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Maven parent pom defines the configuration for this project.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">releng/<em>&lt;prefix&gt;</em>.target</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The target platform manages the used 3<sup>rd</sup> party dependecies of the project.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tests</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This directory contains all tests that are provided by the project, initially empty.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="create-oomph-setup-file"><a class="anchor" href="#create-oomph-setup-file"></a>How to create an Oomph setup file</h3>
+<div class="paragraph">
+<p>This section describes the typical steps to take for creating an Oomph setup file for a project.
+An Oomph setup file enables the <a href="https://wiki.eclipse.org/Eclipse_Installer">Eclipse Installer</a> to automate the installation of Eclipse development environments.
+For more generic information on (authoring) Oomph, please read the <a href="https://wiki.eclipse.org/Eclipse_Oomph_Authoring">Eclipse Oomph Authoring Wiki</a></p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+If you have used the <a href="#git-bootstrap">bootstrap.sh</a> script when creating your repository, the <code>releng/eclipse</code> directory will already contain a setup file and a lot of the steps below will already have been performed.
+It is still wise to review the generated setup file using the steps below.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The easiest way to create an Oomph setup file is to either use the <a href="#git-bootstrap">bootstrap.sh</a> script (for a new git repository) or download the <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/releng/eclipse/MDESkeletonGitHub.setup" target="_blank" rel="noopener">setup file of this MDE Skeleton</a> and use it as a base.
+The downloaded setup file should be renamed to <code><em>&lt;project_name&gt;</em>ACIDSpace.setup</code> and it is recommended to save it in the <code>releng/eclipse</code> directory in your git repository, also see the <a href="#git-directories">Initial Git directory structure</a>.
+After opening the setup file in Eclipse, the model tree looks like:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/oomph-setup-tree-overview.png" alt="oomph setup tree overview">
+</div>
+</div>
+<div class="paragraph">
+<p>Please perform the following steps to tailor the setup file for your project:</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If the Properties view is not yet visible, open it using the context menu on one of the tree nodes <b class="menuref">Show Properties View</b>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Select the <code>MDE Assets - MDE Skeleton</code> node and modify its properties in the Properties View</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>Name</code>: <code>acidspace.<em>&lt;gitlab_project_name&gt;</em></code></p>
+</li>
+<li>
+<p><code>Label</code>: <code><em>&lt;project_name&gt;</em></code></p>
+</li>
+<li>
+<p><code>Description</code>: <code><em>&lt;project_description&gt;</em></code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Modify the <code>Value</code> property of <code>gitlab.acidspace.nl.project</code> to the relative path of your project in ACIDSpace GitLab.</p>
+</li>
+<li>
+<p>Modify the <code>Value</code> property of <code>oomph.setup.file.path</code> to <code>releng/eclipse/<em>&lt;project_name&gt;</em>ACIDSpace.setup</code>.</p>
+</li>
+<li>
+<p>The last two tree nodes specify the streams (i.e. branches) for which a development environment can be set up.
+All nodes in the tree can also be moved within a stream node allowing different configurations per stream.
+Typically the <code>master</code> and <code>develop</code> streams are defined, allowing customizations in the development environment on the develop branch without impacting the master release branch.<br>
+Please note that developing on another branch (e.g. a feature branch) is supported, just <a href="#setup-checkout-branch">Checkout another branch</a>.</p>
+</li>
+<li>
+<p>Expand the <code>P2 Director (EMF Development)</code> node<br></p>
+<div class="imageblock">
+<div class="content">
+<img src="./images/oomph-setup-tree-p2-general.png" alt="oomph setup tree p2 general">
+</div>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>The common requirements for EMF development are contained in this subtree.
+The last node specifies the ACIDSpace proxy location for the required Eclipse version.
+Please review the Eclipse version and adapt the url if applicable.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Expand the <code>P2 Director (Project Specific Development)</code> node<br></p>
+<div class="imageblock">
+<div class="content">
+<img src="./images/oomph-setup-tree-p2-project.png" alt="oomph setup tree p2 project">
+</div>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>The MDE Skeleton adds e.g. Xtext and Sirius as additional requirements.
+Please add all requirements for the development environment for your project to this section.
+Optionally you can also add additional repositories that provide your required artifacts.<br></p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Opening the <code>Repository Explorer</code> view by means of the context menu <b class="menuref">Explore</b> on a repository node, allows you to easily drag and drop your requirements in the tree.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Expand the <code>Source Code</code> node<br></p>
+<div class="imageblock">
+<div class="content">
+<img src="./images/oomph-setup-tree-source-code.png" alt="oomph setup tree source code">
+</div>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Most items are preconfigured and do not need attention bu if your project does not support Maven and Tycho, please disable the <code>Maven and Tycho</code> node by means of its context menu <b class="menuref">Disabled</b></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Expand the <code>Target Platform</code> node<br></p>
+<div class="imageblock">
+<div class="content">
+<img src="./images/oomph-setup-tree-target-platform.png" alt="oomph setup tree target platform">
+</div>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>We support two ways for <a href="#eclipse-target-platform">Specifying an Eclipse target platform</a>.
+Please read the section and enable the node for the chosen solution.</p>
+</li>
+<li>
+<p>If you choose to use a <code>Modular Target Platform</code>, please update the <code>location</code> of the <code>TargetDefinitionGenerator</code> to the correct location in your git repository.
+The content of the target platform can be authored within the sub tree of the <code>Modular Target Platform</code> node.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Whenever the Oomph setup file is modified, an Eclipse Oomph refresh is required to apply the changes to the current workspace, use the menu <span class="menuseq"><b class="menu">Help</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Perform Setup Tasks&#8230;&#8203;</b></span> <span class="image"><img src="./images/update_gear.png" alt="update gear"></span>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="setup-development-environment"><a class="anchor" href="#setup-development-environment"></a>How to setup a development environment</h3>
+<div class="paragraph">
+<p>To start developing for MDE Skeleton, please perform the following steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Start with downloading the <code>Eclipse Installer</code> from:<br>
+<a href="https://www.eclipse.org/downloads/packages/installer" class="bare">https://www.eclipse.org/downloads/packages/installer</a></p>
+</li>
+<li>
+<p>Start the <code>Eclipse Installer</code></p>
+</li>
+<li>
+<p>Select the <code>advanced mode</code><br></p>
+<div class="imageblock">
+<div class="content">
+<img src="http://help.eclipse.org/2022-12/topic/org.eclipse.egit.doc/help/EGit/Contributor_Guide/images/Oomph-01-advanced-mode.png" alt="Oomph 01 advanced mode">
+</div>
+</div>
+</li>
+<li>
+<p>On the <a href="https://help.eclipse.org/2022-12/topic/org.eclipse.oomph.setup.doc/html/user/wizard/DocProductPage.html">Product Page</a></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Select <code>Eclipse Platform</code></p>
+</li>
+<li>
+<p>Product Version: <code>2022-12</code></p>
+</li>
+<li>
+<p>Click <b class="button">Next &gt;</b></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>On the <a href="https://help.eclipse.org/2022-12/topic/org.eclipse.oomph.setup.doc/html/user/wizard/DocProjectPage.html">Projects Page</a></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>(<em>One time only</em>) Click the <span class="image"><img src="http://help.eclipse.org/2022-12/topic/org.eclipse.oomph.setup.doc/images/trees/DULKrP4IGs7HGSVqoXcwRFgPxZQ=.png" alt="DULKrP4IGs7HGSVqoXcwRFgPxZQ="></span> icon to add the MDE Skeleton project.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Catalog: <code>Eclipse Projects</code></p>
+</li>
+<li>
+<p>Resource URIs: <code><a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/releng/eclipse/MDESkeletonGitHub.setup" class="bare">https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/releng/eclipse/MDESkeletonGitHub.setup</a></code></p>
+</li>
+<li>
+<p>Click <b class="button">OK</b><br></p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Though using the Resource URI above is preferred, it is known that for some users the URI didn&#8217;t work and they got an error: <em>The URI &#8230;&#8203; does not contain a valid product</em>.
+In this case the setup file can also be <a href="https://gitlab.acidspace.nl/altran-mde/mde-skeleton/-/raw/develop/releng/eclipse/MDESkeletonGitHub.setup?inline=false">downloaded</a> and added by clicking <b class="button">Browse File System&#8230;&#8203;</b>.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Enter your GitLab credentials when asked for</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Select <code>MDE Skeleton</code> in the tree</p>
+</li>
+<li>
+<p>Select stream <code>develop</code> in the table</p>
+</li>
+<li>
+<p>Click <b class="button">Next &gt;</b></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>On the <a href="https://help.eclipse.org/2022-12/topic/org.eclipse.oomph.setup.doc/html/user/wizard/DocVariablePage.html">Variables Page</a></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Review all variables values, especially the <code>Installation folder name</code> and <code>Root install folder</code></p>
+</li>
+<li>
+<p>Click <b class="button">Next &gt;</b></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>On the <a href="https://help.eclipse.org/2022-12/topic/org.eclipse.oomph.setup.doc/html/user/wizard/DocConfirmationPage.html">Confirmation Page</a></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Click <b class="button">Finish</b></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Your development environment will now be prepared.
+Please accept all licenses and certificates and provide your GitLab credentials when asked for.</p>
+</div>
+<div class="sect3">
+<h4 id="setup-maven"><a class="anchor" href="#setup-maven"></a>Build code with Maven</h4>
+<div class="paragraph">
+<p>Please perform the steps in this section if you want to build your code using Maven on your local system.
+The code can built using Maven from either the command line or from within Eclipse, please read the "<strong>Use</strong>" items of <a href="https://maven.apache.org/index.html" target="_blank" rel="noopener">the Maven documentation</a> before running Maven the first time.</p>
+</div>
+<div class="paragraph">
+<p>In our CI/CD the credentials of a project are stored in the <code>TECHNICAL_USER</code> and <code>TECHNICAL_PASSWORD</code> environment variables.
+In order to be able to use the Maven <code>settings.xml</code> both in CI/CD and on your local system, you should also set these environment variables on your local system.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+It is strongly advised to store an encrypted password in the <code>TECHNICAL_PASSWORD</code> environment variable for security reasons.
+Maven supports server password encryption, see <a href="https://maven.apache.org/guides/mini/guide-encryption.html" class="bare">https://maven.apache.org/guides/mini/guide-encryption.html</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <code>releng/eclipse</code> directory contains pre-configured Eclipse launch targets to build your code using Maven from within Eclipse.</p>
+</div>
+<div class="paragraph">
+<p>The root Maven <code>pom.xml</code> for the MDE Skeleton project is located in the root of the local git repository.
+Just open a command line at that location and type the following command to build the code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="shell"><span class="nv">$ </span>mvn clean verify <span class="nt">-s</span> settings.xml</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="setup-checkout-branch"><a class="anchor" href="#setup-checkout-branch"></a>Checkout another branch</h4>
+<div class="paragraph">
+<p>Typically you will develop your feature in a feature branch.
+To start working on a feature, start by creating an issue in GitLab.
+From the issue, a feature branch can be created using the GitLab web UI.
+Make sure to prefix you branch name with <code>feature/</code>.</p>
+</div>
+<div class="paragraph">
+<p>When the feature branch is created, you can continue with fetching the new branch in your Eclipse development environment, see <a href="https://help.eclipse.org/2022-12/topic/org.eclipse.egit.doc/help/EGit/User_Guide/Tasks.html#Fetching_from_upstream">Fetching from upstream</a>.
+Then continue by switching to the new branch, see <a href="https://help.eclipse.org/2022-12/topic/org.eclipse.egit.doc/help/EGit/User_Guide/Tasks.html#Checking_out_an_existing_Branch">Checking out an existing Branch</a></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Whenever you switch to an existing branch, it is strongly advised to  perform an Eclipse Oomph refresh by using the menu <span class="menuseq"><b class="menu">Help</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Perform Setup Tasks&#8230;&#8203;</b></span> <span class="image"><img src="./images/update_gear.png" alt="update gear"></span>.
+This ensures that your development environment is reconfigured to match the requirements for that branch.
+</td>
+</tr>
+</table>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-3pp"><a class="anchor" href="#using-3pp"></a>Using third-party products (3PP)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Developing an Eclipse (e.g. EMF) based solution typically requires third-party products (3PP) that need to be downloaded from remote repositories.
+The stability and availability of these remote repositories is often not guaranteed.
+For this reason it is <a href="https://maven.apache.org/repository-management.html">recommended to use a proxy server</a>, e.g. a Nexus or Artifactory.</p>
+</div>
+<div class="paragraph">
+<p>Please note that these proxies might not be accessible by our clients nor by the users of our clients' solutions.
+Therefore we should be aware that though these proxies should be configured in our development environments (i.e. Eclipse and CI/CD), our built solutions should depend on publicly available repositories.
+The sources of some of our solutions (i.e. MDE Assets) are hosted both in our intranet as in a public GitHub.
+For these solutions, it is important that they can benefit from the proxy within the intranet without modifying the sources, meaning that the proxies should be an additional configuration.</p>
+</div>
+<div class="paragraph">
+<p>This section describes the best practices on how to configure the usage of proxy servers in the development environment our Eclipse solutions.
+The following assumptions are considered when using proxies:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The built Eclipse solution should be configured to use the publicly available repositories, and should have no dependencies on ACIDSpace (unless decided differently).<br>
+The Target Platform defines what your project will be built and launched against.
+See the best practices for <a href="#eclipse-target-platform">Specifying an Eclipse target platform</a>.</p>
+</li>
+<li>
+<p>Eclipse Oomph is used for <a href="#setup-development-environment">setting up a development environment</a>.<br>
+As development is typically done in the intranet, it is recommended that the Oomph setup files refer to the proxies.</p>
+</li>
+<li>
+<p>When building the solution in CI/CD it is recommended to use the proxies.<br>
+Our solutions are typically build using Maven, which can be configured with mirrors that reroute the public repository urls to their proxy equivalents.
+Section <a href="#maven-repository-mirrors">Using repository mirrors in Maven</a> explains how to configure Maven.</p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="eclipse-target-platform"><a class="anchor" href="#eclipse-target-platform"></a>Specifying an Eclipse target platform</h3>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+For more detailed information on Eclipse target platforms, see <a href="https://wiki.eclipse.org/PDE/Target_Definitions" class="bare">https://wiki.eclipse.org/PDE/Target_Definitions</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The Target Platform defines what your project will be built and launched against.
+We typically <a href="#create-oomph-setup-file">use Eclipse Oomph</a> to setup an development environment.
+Within our Oomph setup file, two ways of specifying a target platform are supported, either by use of <a href="https://wiki.eclipse.org/Oomph_Targlets">Oomph Targlets</a> or by using the <a href="https://www.eclipse.org/cbi/index.html">Eclipse CBI</a> target platform definition DSL.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+If your target platform contains repositories that require authentication, the Eclipse CBI target platform definition DSL should be used.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Using the Eclipse CBI target platform definition DSL is preferred.
+The DSL comes with an integrated Eclipse editor to author target platform files with a <code>tpd</code> file extension.
+<a href="#source-target-platform-tpd">Specifying the Eclipse CBI target-platform.tpd</a> shows how configure the target platform for both an public repository and a proxy repository that is hosted on the intranet.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+For more information on authoring Eclipse CBI <code>tpd</code> files, see <a href="https://github.com/eclipse-cbi/targetplatform-dsl#readme" class="bare">https://github.com/eclipse-cbi/targetplatform-dsl#readme</a>
+</td>
+</tr>
+</table>
+</div>
+<div id="source-target-platform-tpd" class="listingblock">
+<div class="title">Listing 2. Specifying the Eclipse CBI <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd" target="_blank" rel="noopener">target-platform.tpd</a></div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="tpd">target "CBI Target Platform"
+
+with configurePhase source requirements
+
+location "https://download.eclipse.org/releases/2022-12/202212071000" { <i class="conum" data-value="1"></i><b>(1)</b>
+    // Eclipse - EMF
+    org.eclipse.sdk.feature.group lazy
+    org.eclipse.emf.sdk.feature.group lazy
+}
+
+location "https://altran-mde.github.io/espilce-commons-staging/" espilce-commons-p2 { <i class="conum" data-value="2"></i><b>(2)</b>
+    org.espilce.commons.emf.registry.feature.feature.group lazy
+    org.espilce.commons.resource.feature.feature.group lazy
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><strong>Public repository</strong> - Preferably, the built Eclipse solution should be configured to use publicly available repositories.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><strong>ACIDSpace repository</strong> - If and only if an artifact is available within ACIDSpace only, we need to specify the ACIDSpace repository url.
+Repositories that are hosted by ACIDSpace typically require authentication.
+Specifying a repository id (i.e. <code>espilce-commons-p2</code>) allows you to configure the credentials in the Maven settings file as described in <a href="#maven-repository-mirrors">Using repository mirrors in Maven</a>.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Whenever an Eclipse CBI <code>tpd</code> file is updated, its target platform should be regenerated by means of the context menu <b class="menuref">Create TargetDefinition File</b> on the <code>tpd</code> file.
+When that is done, the generated target file should be activated by means of an Eclipse Oomph refresh, using the menu <span class="menuseq"><b class="menu">Help</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Perform Setup Tasks&#8230;&#8203;</b></span> <span class="image"><img src="./images/update_gear.png" alt="update gear"></span>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="maven-repository-mirrors"><a class="anchor" href="#maven-repository-mirrors"></a>Using repository mirrors in Maven</h3>
+<div class="paragraph">
+<p>You may want to use an alternative mirror for a particular repository without changing the project files.
+Some reasons to use a mirror are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>There is a synchronized mirror on the internet that is geographically closer and faster</p>
+</li>
+<li>
+<p>You want to replace a particular repository with your own internal repository which you have greater control over</p>
+</li>
+<li>
+<p><strong>You want to run a repository manager to provide a local cache to a mirror and need to use its URL instead</strong></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+For more detailed information on using mirrors for repositories in Maven, see <a href="https://maven.apache.org/guides/mini/guide-mirror-settings.html" class="bare">https://maven.apache.org/guides/mini/guide-mirror-settings.html</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><a href="#source-settings-xml-mirrors">Defining mirrors in settings.xml</a> shows how to configure Maven to use repository proxies instead of the public repositories.
+In this example both the <a href="https://repo1.maven.org/maven2/">Maven central</a> as the <a href="https://download.eclipse.org/releases/2022-12/202212071000">Eclipse 2022-12 P2</a> repositories are rerouted to repository proxies.</p>
+</div>
+<div id="source-settings-xml-mirrors" class="listingblock">
+<div class="title">Listing 3. Defining mirrors in settings.xml</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml"><span class="nt">&lt;settings</span> <span class="na">xmlns=</span><span class="s">"http://maven.apache.org/SETTINGS/1.1.0"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+  <span class="na">xsi:schemaLocation=</span><span class="s">"http://maven.apache.org/SETTINGS/1.1.0
+                      http://maven.apache.org/xsd/settings-1.1.0.xsd"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;mirrors&gt;</span>
+    <span class="c">&lt;!-- Maven mirrors --&gt;</span>
+    <span class="nt">&lt;mirror&gt;</span>
+      <span class="nt">&lt;id&gt;</span>mde-assets-maven-central<span class="nt">&lt;/id&gt;</span>
+      <span class="nt">&lt;name&gt;</span>Maven Central Proxy<span class="nt">&lt;/name&gt;</span>
+      <span class="nt">&lt;url&gt;</span>https://nexus.acidspace.nl/repository/mde-assets/<span class="nt">&lt;/url&gt;</span>
+      <span class="nt">&lt;mirrorOf&gt;</span>central<span class="nt">&lt;/mirrorOf&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="nt">&lt;/mirror&gt;</span>
+    <span class="c">&lt;!-- P2 target platform mirrors --&gt;</span>
+    <span class="nt">&lt;mirror&gt;</span>
+      <span class="nt">&lt;url&gt;</span>https://nexus.intranet.company/repository/eclipse.org-releases-2022-12-202212071000<span class="nt">&lt;/url&gt;</span>
+      <span class="nt">&lt;mirrorOf&gt;</span>https://download.eclipse.org/releases/2022-12/202212071000<span class="nt">&lt;/mirrorOf&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
+      <span class="nt">&lt;mirrorOfLayouts&gt;</span>p2<span class="nt">&lt;/mirrorOfLayouts&gt;</span>
+      <span class="nt">&lt;layout&gt;</span>p2<span class="nt">&lt;/layout&gt;</span>
+    <span class="nt">&lt;/mirror&gt;</span>
+  <span class="nt">&lt;/mirrors&gt;</span>
+  <span class="nt">&lt;servers&gt;</span>
+    <span class="c">&lt;!-- Maven mirrors --&gt;</span>
+    <span class="nt">&lt;server&gt;</span>
+      <span class="nt">&lt;id&gt;</span>mde-assets-maven-central<span class="nt">&lt;/id&gt;</span> <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="nt">&lt;configuration&gt;</span>
+        <span class="nt">&lt;timeout&gt;</span>10000<span class="nt">&lt;/timeout&gt;</span>
+      <span class="nt">&lt;/configuration&gt;</span>
+      <span class="nt">&lt;username&gt;</span>${env.TECHNICAL_USER}<span class="nt">&lt;/username&gt;</span> <i class="conum" data-value="4"></i><b>(4)</b>
+      <span class="nt">&lt;password&gt;</span>${env.TECHNICAL_PASSWORD}<span class="nt">&lt;/password&gt;</span>
+    <span class="nt">&lt;/server&gt;</span>
+    <span class="c">&lt;!-- Intranet servers in target platform --&gt;</span>
+    <span class="nt">&lt;server&gt;</span>
+      <span class="nt">&lt;id&gt;</span>espilce-commons-p2<span class="nt">&lt;/id&gt;</span> <i class="conum" data-value="5"></i><b>(5)</b>
+      <span class="nt">&lt;configuration&gt;</span>
+        <span class="nt">&lt;timeout&gt;</span>10000<span class="nt">&lt;/timeout&gt;</span>
+      <span class="nt">&lt;/configuration&gt;</span>
+      <span class="nt">&lt;username&gt;</span>${env.TECHNICAL_USER}<span class="nt">&lt;/username&gt;</span>
+      <span class="nt">&lt;password&gt;</span>${env.TECHNICAL_PASSWORD}<span class="nt">&lt;/password&gt;</span>
+    <span class="nt">&lt;/server&gt;</span>
+  <span class="nt">&lt;/servers&gt;</span>
+<span class="nt">&lt;/settings&gt;</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><strong>Maven repository mirror</strong> - For Maven repository mirrors, the <code>&lt;mirrorOf&gt;</code> specifies the ID of the repository you are using a mirror of and the <code>&lt;url&gt;</code> specifies the location of the mirror, i.e. the proxy.<br>
+If a mirror requires authentication, a <code>&lt;server&gt;</code> section also needs to be configured.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><strong>Eclipse P2 repository mirror</strong> - The <code>&lt;layout&gt;</code> specifies a mirror of an Eclipse P2 repository.
+In this layout, the <code>&lt;mirrorOf&gt;</code> specifies the url prefix of the repository to mirror.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><strong>Additional configuration for mirrors</strong> <em>(Optional)</em> - If a mirror requires authentication, a <code>&lt;server&gt;</code> section also needs to be configured.
+The <code>&lt;id&gt;</code> specifies the id of the server (i.e. mirror) for which these settings are applicable.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td><strong>Credentials</strong> - In CI/CD the credentials of a project can be stored in environment variables like <code>TECHNICAL_USER</code> and <code>TECHNICAL_PASSWORD</code>.
+If a server requires authentication, the credentials can be specified using these environment variables.
+Please read section <a href="#setup-maven">Build code with Maven</a> on how to setup a local machine for using Maven.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td><strong>Intranet repositories</strong> - When using proprietary artifacts that are developed and published in intranet only, authentication is required to download the artifacts.
+The <code>&lt;id&gt;</code> of the server should match the id as specified in the target platform, for more information see <a href="#eclipse-target-platform">Specifying an Eclipse target platform</a>.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="bundling-eclipse-justj"><a class="anchor" href="#bundling-eclipse-justj"></a>Bundling a JRE with your RCP</h3>
+<div class="paragraph">
+<p>If your solution builds an Eclipse <a href="https://wiki.eclipse.org/Rich_Client_Platform">(RCP)</a> application, you can make this application even more portable by including a Java&#8482; JRE that is used to run the Eclipse application.
+This technique saves the user the troubles of installing a JRE themselves or having a JRE installed that is not compatible with your Eclipse application.
+<a href="https://www.eclipse.org/justj/">Eclipse JustJ</a> provides fully-functional Java&#8482; runtimes that can be redistributed by Eclipse Projects.
+This section describes how such an Eclipse JustJ JRE is bundled with the MDE Skeleton.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you have used the <a href="#git-bootstrap">bootstrap.sh</a> script with a <code>BOOTSTRAP-nnnn-nn-JREnn</code> tag to bootstrap your repository, the steps in this section already have been performed.
+As such, you can also learn how to e.g. configure an Eclipse JustJ JRE17 in combination with Tycho 2.6.0 at tag <a href="{gitblob}/BOOTSTRAP-2022-12-JRE17/releng/com.altran.ec.mde.skeleton.parent/pom.xml" target="_blank" rel="noopener">BOOTSTRAP-2022-12-JRE17</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Start with <a href="#eclipse-target-platform">Specifying an Eclipse target platform</a> for Eclipse JustJ, see the code snippet below.
+Please note that Eclipse JustJ provides different download locations for different JRE versions, see <a href="https://download.eclipse.org/justj/jres/" class="bare">https://download.eclipse.org/justj/jres/</a> for more information.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+When using Maven, don&#8217;t forget to configure an Eclipse P2 repository mirror for this repository as described in <a href="#maven-repository-mirrors">Using repository mirrors in Maven</a>, also see <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/settings.xml" target="_blank" rel="noopener">settings.xml</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Listing 4. Adding Eclipse JustJ to the <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd" target="_blank" rel="noopener">target-platform.tpd</a></div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="tpd">location "https://download.eclipse.org/justj/jres/17/updates/release" {
+    org.eclipse.justj.openjdk.hotspot.jre.full.feature.group lazy
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now you can simply bundle the Eclipse JustJ JRE by adding it as a dependency in the packaging feature of your Eclipse (RCP) application, see the code snippet below.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 5. Adding Eclipse JustJ to the pacaging <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/products/com.altran.ec.mde.skeleton.package.feature/feature.xml" target="_blank" rel="noopener">feature.xml</a></div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml"><span class="nt">&lt;feature</span>
+      <span class="na">id=</span><span class="s">"com.altran.ec.mde.skeleton.package.feature"</span>
+      <span class="na">label=</span><span class="s">"EMF Reference Project - Packaging Feature"</span>
+      <span class="na">version=</span><span class="s">"0.0.1.qualifier"</span>
+      <span class="na">provider-name=</span><span class="s">"Capgemini Engineering"</span>
+      <span class="na">plugin=</span><span class="s">"com.altran.ec.mde.skeleton.package.branding"</span><span class="nt">&gt;</span>
+
+   <span class="nt">&lt;includes</span>
+         <span class="na">id=</span><span class="s">"com.altran.ec.mde.skeleton.feature"</span>
+         <span class="na">version=</span><span class="s">"0.0.0"</span><span class="nt">/&gt;</span>
+
+   <span class="nt">&lt;requires&gt;</span>
+      <span class="nt">&lt;import</span> <span class="na">feature=</span><span class="s">"org.eclipse.platform"</span> <span class="na">version=</span><span class="s">"4.26"</span> <span class="na">match=</span><span class="s">"greaterOrEqual"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;import</span> <span class="na">feature=</span><span class="s">"org.eclipse.justj.openjdk.hotspot.jre.full"</span> <span class="na">version=</span><span class="s">"11"</span> <span class="na">match=</span><span class="s">"greaterOrEqual"</span><span class="nt">/&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+      <span class="nt">&lt;import</span> <span class="na">feature=</span><span class="s">"org.eclipse.jdt"</span> <span class="na">version=</span><span class="s">"3.18"</span> <span class="na">match=</span><span class="s">"greaterOrEqual"</span><span class="nt">/&gt;</span>
+   <span class="nt">&lt;/requires&gt;</span>
+
+   <span class="nt">&lt;plugin</span>
+         <span class="na">id=</span><span class="s">"com.altran.ec.mde.skeleton.package.branding"</span>
+         <span class="na">download-size=</span><span class="s">"0"</span>
+         <span class="na">install-size=</span><span class="s">"0"</span>
+         <span class="na">version=</span><span class="s">"0.0.0"</span><span class="nt">/&gt;</span>
+
+   <span class="nt">&lt;plugin</span>
+         <span class="na">id=</span><span class="s">"org.slf4j.binding.log4j12"</span>
+         <span class="na">download-size=</span><span class="s">"0"</span>
+         <span class="na">install-size=</span><span class="s">"0"</span>
+         <span class="na">version=</span><span class="s">"0.0.0"</span>
+         <span class="na">fragment=</span><span class="s">"true"</span>
+         <span class="na">unpack=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+
+   <span class="nt">&lt;plugin</span>
+         <span class="na">id=</span><span class="s">"com.altran.ec.mde.skeleton.logging"</span>
+         <span class="na">download-size=</span><span class="s">"0"</span>
+         <span class="na">install-size=</span><span class="s">"0"</span>
+         <span class="na">version=</span><span class="s">"0.0.0"</span>
+         <span class="na">fragment=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/feature&gt;</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This line adds the Eclipse JustJ JRE as a dependency to your Eclipse application.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>When using Maven, its target platform configuration must be updated in the parent pom, see the code snippet below.
+The configuration in the example is specifically for use with Tycho 1.7.0.
+For newer versions of Tycho this configuration is even easier, please read the <a href="https://www.eclipse.org/justj/?page=documentation">Eclipse JustJ documentation</a>.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+For Maven it is very important that the Eclipse product file of your application (i.e. <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/products/com.altran.ec.mde.skeleton.package.product/eclipse.product" target="_blank" rel="noopener">eclipse.product</a>) does not specify an execution environment.
+Otherwise the Eclipse JustJ JRE jars will be published to your update site, which is undesirable.
+Please ensure that the <code>&lt;vm&gt;&lt;/vm&gt;</code> section is empty in your eclipse.product file.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Listing 6. Configuring Eclipse JustJ in the Maven parent <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/releng/com.altran.ec.mde.skeleton.parent/pom.xml" target="_blank" rel="noopener">pom.xml</a></div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml"><span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span>
+  <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+  <span class="na">xsi:schemaLocation=</span><span class="s">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+
+  <span class="nt">&lt;artifactId&gt;</span>com.altran.ec.mde.skeleton.parent<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;name&gt;</span>EMF Reference Project - Tycho Parent<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;build&gt;</span>
+    <span class="nt">&lt;plugins&gt;</span>
+      <span class="nt">&lt;plugin&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.eclipse.tycho<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>target-platform-configuration<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;configuration&gt;</span>
+          <span class="c">&lt;!-- Eclipse JustJ configuration for Maven Tycho 2.6 --&gt;</span>
+          <span class="c">&lt;!-- See https://www.eclipse.org/justj/?page=documentation --&gt;</span>
+          <span class="nt">&lt;executionEnvironment&gt;</span>org.eclipse.justj.openjdk.hotspot.jre.full-17<span class="nt">&lt;/executionEnvironment&gt;</span>
+        <span class="nt">&lt;/configuration&gt;</span>
+      <span class="nt">&lt;/plugin&gt;</span>
+    <span class="nt">&lt;/plugins&gt;</span>
+  <span class="nt">&lt;/build&gt;</span>
+<span class="nt">&lt;/project&gt;</span></code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-mde-assets"><a class="anchor" href="#using-mde-assets"></a>Using MDE Assets</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section acts as a quick reference guide on using MDE Assets in an MDE solution.
+The focus is mainly on the integration part and for more information on the usage of an particular MDE Asset, please read its user, developer or programmer guide.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For an MDE solution, an MDE Asset is a third-party-product and as such the general guidelines as documented in <a href="#using-3pp">Using third-party products (3PP)</a> should be followed when using an MDE Asset.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="ecoredoc"><a class="anchor" href="#ecoredoc"></a>EcoreDoc</h3>
+<div class="paragraph">
+<p>EcoreDoc generates <a href="https://asciidoctor.org/">AsciiDoctor</a> files to document Ecore metamodels, similar to <a href="https://docs.oracle.com/javase/9/javadoc/javadoc.htm">JavaDoc</a>.
+AsciiDoctor can be rendered as HTML, PDF, or Eclipse Help.
+EcoreDoc can be used as <a href="https://maven.apache.org/">Maven</a> Plugin, standalone command-line tool, Java API, or Eclipse Plug-in.</p>
+</div>
+<div class="paragraph">
+<p>In this quick reference guide EcoreDoc is used by means of its Maven plugin to generate <a href="#fowlerdsl-ecoredoc"><em>Fowler Statemachine EcoreDoc</em></a> from the <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/plugins/org.eclipse.xtext.example.fowlerdsl/model/generated/Statemachine.ecore" target="_blank" rel="noopener">Statemachine.ecore</a> file.</p>
+</div>
+<div class="paragraph">
+<p>The EcoreDoc Maven plugin can be used by adding the code snippet below to your Maven pom file.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 7. Configuring EcoreDoc in <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/documentation/com.altran.ec.mde.skeleton.guide.developer/pom.xml" target="_blank" rel="noopener">pom.xml</a></div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml">  <span class="nt">&lt;pluginRepositories&gt;</span>
+    <span class="c">&lt;!-- com.altran.general.emf.ecoredoc:ecoredoc-maven-plugin --&gt;</span>
+    <span class="nt">&lt;pluginRepository&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+      <span class="nt">&lt;id&gt;</span>ecoredoc-snapshots<span class="nt">&lt;/id&gt;</span>
+      <span class="nt">&lt;url&gt;</span>https://altran-mde.github.io/ecore_doc/maven-repo<span class="nt">&lt;/url&gt;</span>
+      <span class="nt">&lt;releases&gt;</span>
+        <span class="nt">&lt;enabled&gt;</span>false<span class="nt">&lt;/enabled&gt;</span>
+      <span class="nt">&lt;/releases&gt;</span>
+      <span class="nt">&lt;snapshots&gt;</span>
+        <span class="nt">&lt;enabled&gt;</span>true<span class="nt">&lt;/enabled&gt;</span>
+      <span class="nt">&lt;/snapshots&gt;</span>
+    <span class="nt">&lt;/pluginRepository&gt;</span>
+  <span class="nt">&lt;/pluginRepositories&gt;</span>
+
+  <span class="nt">&lt;build&gt;</span>
+    <span class="nt">&lt;plugins&gt;</span>
+      <span class="nt">&lt;plugin&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>com.altran.general.emf.ecoredoc<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>ecoredoc-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>0.10.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;executions&gt;</span>
+          <span class="nt">&lt;execution&gt;</span>
+            <span class="nt">&lt;phase&gt;</span>generate-sources<span class="nt">&lt;/phase&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
+            <span class="nt">&lt;goals&gt;</span>
+              <span class="nt">&lt;goal&gt;</span>ecoredoc<span class="nt">&lt;/goal&gt;</span>
+            <span class="nt">&lt;/goals&gt;</span>
+            <span class="nt">&lt;configuration&gt;</span>
+              <span class="nt">&lt;resolve&gt;</span>true<span class="nt">&lt;/resolve&gt;</span>
+              <span class="nt">&lt;config&gt;</span> <i class="conum" data-value="3"></i><b>(3)</b>
+                <span class="nt">&lt;renderDefaults&gt;</span>false<span class="nt">&lt;/renderDefaults&gt;</span>
+                <span class="nt">&lt;renderDiagrams&gt;</span>true<span class="nt">&lt;/renderDiagrams&gt;</span>
+                <span class="nt">&lt;diagramsOutputPath&gt;</span>images<span class="nt">&lt;/diagramsOutputPath&gt;</span>
+                <span class="nt">&lt;diagramsOutputFormat&gt;</span>png<span class="nt">&lt;/diagramsOutputFormat&gt;</span>
+              <span class="nt">&lt;/config&gt;</span>
+              <span class="nt">&lt;inputFiles&gt;</span>
+                <span class="nt">&lt;inputFile&gt;</span>../../plugins/org.eclipse.xtext.example.fowlerdsl/model/generated/Statemachine.ecore<span class="nt">&lt;/inputFile&gt;</span>
+              <span class="nt">&lt;/inputFiles&gt;</span>
+              <span class="nt">&lt;outputFile&gt;</span>${project.build.directory}/adoc-gen/Statemachine.adoc<span class="nt">&lt;/outputFile&gt;</span>
+            <span class="nt">&lt;/configuration&gt;</span>
+          <span class="nt">&lt;/execution&gt;</span>
+        <span class="nt">&lt;/executions&gt;</span>
+      <span class="nt">&lt;/plugin&gt;</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The EcoreDoc maven plugin is deployed in its Maven repository in GitHub.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Binds the <code>ecoredoc</code> goal to the <code>generate-sources</code> <a href="https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html" target="_blank" rel="noopener">Maven build lifecycle phase</a>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The EcoreDoc Maven plugin can be configured by means of annotations in the ecore model or, as illustrated here,directly in the Maven pom file.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The example below adds the generated EcoreDoc to this developer guide as an appendix.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 8. Include the generated EcoreDoc in <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/documentation//com.altran.ec.mde.skeleton.guide.developer/src/main/asciidoc/mde-skeleton-developer-guide.adoc" target="_blank" rel="noopener">mde-skeleton-developer-guide.adoc</a></div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="asciidoc">ifndef::gendocdir[:gendocdir: {basedir}/target/adoc-gen]
+
+[appendix]
+== Fowler Statemachine EcoreDoc
+
+include::{gendocdir}/Statemachine.adoc[lines=36..]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For more information on using EcoreDoc, please read the
+<a href="https://cge-coe-mde.pages.acidspace.nl/ecore-doc/">EcoreDoc user guide</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="espilce-commons"><a class="anchor" href="#espilce-commons"></a>Espilce Commons</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+TODO
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="espilce-periksa"><a class="anchor" href="#espilce-periksa"></a>Espilce Periksa</h3>
+<div class="paragraph">
+<p>Espilce Periksa is an EMF Validator framework.
+To start using Espilce Periksa, first it should be added to the the target platform, see the code snippet below.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 9. Adding Espilce Periksa to the <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd" target="_blank" rel="noopener">target-platform.tpd</a></div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="tpd">location "https://altran-mde.github.io/espilce-periksa/2.1/repository/" {
+    org.espilce.periksa.sdk.feature.group lazy
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then you can start writing the required validations.
+The quickest way to create validations using Espilce Periksa is to create a class containing static methods that are annotated with the <code>@Check</code> annotation.
+The first argument of the method is the model element to validate and the second argument injects the validation context as provided by Espilce Periksa.
+The example below adds a duplicate value error-validation for command names to the Fowler state-machine DSL Xtext example, and an info-validation for state names to start with a capital.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Using the <code>@Check</code> annotation requires a bundle dependency of <code>org.espilce.periksa.validation</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Listing 10. Writing validations in <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/plugins/com.altran.ec.mde.skeleton.espilce.periksa/src/com/altran/ec/mde/skeleton/espilce/periksa/StatemachineValidations.java" target="_blank" rel="noopener">StatemachineValidations.java</a> using Espilce Periksa</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StatemachineValidations</span> <span class="o">{</span>
+  <span class="cm">/**
+   * The {@link Check @Check} annotation registers this method to validate all
+   * instances of {@link Statemachine}. For each &lt;code&gt;statemachine&lt;/code&gt; this
+   * method is invoked.
+   * 
+   * @param statemachine the state machine instance to validate
+   * @param ctx          the check context used to report validation results
+   */</span>
+  <span class="nd">@Check</span> <i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">checkDuplicates</span><span class="o">(</span><span class="nc">Statemachine</span> <span class="n">statemachine</span><span class="o">,</span> <span class="nc">CheckContext</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">ValidationLibrary</span><span class="o">.</span><span class="na">checkDuplicateValue</span><span class="o">(</span><span class="n">statemachine</span><span class="o">.</span><span class="na">getCommands</span><span class="o">(),</span> <span class="nc">StatemachinePackage</span><span class="o">.</span><span class="na">Literals</span><span class="o">.</span><span class="na">COMMAND__NAME</span><span class="o">,</span> <span class="n">context</span><span class="o">);</span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="c1">// See java source for more validations...</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Check</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">checkNameStartsWithCapital</span><span class="o">(</span><span class="nc">State</span> <span class="n">state</span><span class="o">,</span> <span class="nc">CheckContext</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(!</span><span class="n">state</span><span class="o">.</span><span class="na">getName</span><span class="o">().</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="o">.</span><span class="na">getName</span><span class="o">().</span><span class="na">charAt</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="o">!=</span> <span class="nc">Character</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">(</span><span class="n">state</span><span class="o">.</span><span class="na">getName</span><span class="o">().</span><span class="na">charAt</span><span class="o">(</span><span class="mi">0</span><span class="o">)))</span> <span class="o">{</span>
+      <span class="n">context</span><span class="o">.</span><span class="na">getReport</span><span class="o">().</span><span class="na">info</span><span class="o">(</span><span class="s">"Name should start with upper case"</span><span class="o">,</span> <span class="nc">StatemachinePackage</span><span class="o">.</span><span class="na">Literals</span><span class="o">.</span><span class="na">STATE__NAME</span><span class="o">);</span> <i class="conum" data-value="3"></i><b>(3)</b>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code>@Check</code> annotation registers the method to validate all instances of <code>Statemachine</code> as per the first argument of the method. The method is invoked for each <code>statemachine</code> instance in the model.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Espilce Periksa provides a <code>ValidationLibrary</code> containing reusable validations, e.g. validating duplicates in feature values.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The API of Espilce Periksa allows to easily report an <code>info</code>, <code>warning</code> or <code>error</code>.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Finally you need to register your model validations, such that they will be automatically invoked as part of validating each applicable model instance.
+The easiest way to do this is by means of an extension point that is provided by Espilce Periksa, as per the example below.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 11. Registering validations in <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/plugins/com.altran.ec.mde.skeleton.espilce.periksa/plugin.xml" target="_blank" rel="noopener">plugin.xml</a></div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="cp">&lt;?eclipse version="3.4"?&gt;</span>
+<span class="nt">&lt;plugin&gt;</span>
+   <span class="nt">&lt;extension</span>
+         <span class="na">point=</span><span class="s">"org.espilce.periksa.validation.registry.registrar"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;ReflectiveValidator</span>
+            <span class="na">class=</span><span class="s">"com.altran.ec.mde.skeleton.espilce.periksa.StatemachineValidations"</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;EPackage</span>
+               <span class="na">uri=</span><span class="s">"http://www.eclipse.org/xtext/example/fowlerdsl/Statemachine"</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;/EPackage&gt;</span>
+      <span class="nt">&lt;/ReflectiveValidator&gt;</span>
+   <span class="nt">&lt;/extension&gt;</span>
+<span class="nt">&lt;/plugin&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For more information on using Espilce Periksa, please read the
+<a href="https://cge-coe-mde.pages.acidspace.nl/espilce-periksa/#programmers-guide">Espilce Periksa programmer guide</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="espilce-polvi"><a class="anchor" href="#espilce-polvi"></a>Espilce Polvi</h3>
+<div class="paragraph">
+<p>Espilce Polvi provides a framework and utilities to implement model-to-text generators.
+To start using Espilce Polvi, first it should be added to the the target platform, see the code snippet below.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 12. Adding Espilce Polvi to the <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd" target="_blank" rel="noopener">target-platform.tpd</a></div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="tpd">location "https://altran-mde.github.io/espilce-polvi/1.1/repository/" {
+    // Runtime EMF integration
+    org.espilce.polvi.emf.generator.feature.feature.group lazy
+    // Runtime Xtext integration
+    org.espilce.polvi.emf.generator.xtext.feature.feature.group lazy
+    // MWE2 workflow generator fragment
+    org.espilce.polvi.xtext.generator lazy
+}</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="creating-an-espilce-polvi-based-model-to-text-generator"><a class="anchor" href="#creating-an-espilce-polvi-based-model-to-text-generator"></a>Creating an Espilce Polvi based model-to-text generator</h4>
+<div class="paragraph">
+<p>In our MDE skeleton, the Xtext state-machine example already includes a Java code generator that is implemented using the API of Xtext.
+We want to use Espilce Polvi though, as it will support integrations with other frameworks and include additional features in the future.
+The API of Espilce Polvi is based on the Xtext API and as such migrating an Xtext based generator to a Polvi based generator is trivial:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Espilce Polvi comes with an Xtext generator fragment that eases the integration.
+To use this generator fragment, first a dependency on <code>org.espilce.polvi.xtext.generator</code> needs to be added to the <code>additional.bundles</code> in <code>build.properties</code><br></p>
+<div class="listingblock">
+<div class="title">Listing 13. Adding an Xtext generator fragment dependency in <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/plugins/org.eclipse.xtext.example.fowlerdsl/build.properties" target="_blank" rel="noopener">build.properties</a></div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="properties"><span class="py">additional.bundles</span> <span class="p">=</span> <span class="s">org.eclipse.xtext.xbase,</span><span class="se">\
+</span>                     <span class="s">org.eclipse.xtext.common.types,</span><span class="se">\
+</span>                     <span class="s">org.eclipse.xtext.xtext.generator,</span><span class="se">\
+</span>                     <span class="s">org.eclipse.emf.codegen.ecore,</span><span class="se">\
+</span>                     <span class="s">org.eclipse.emf.mwe.utils,</span><span class="se">\
+</span>                     <span class="s">org.eclipse.emf.mwe2.launch,</span><span class="se">\
+</span>                     <span class="s">org.eclipse.emf.mwe2.lib,</span><span class="se">\
+</span>                     <span class="s">org.objectweb.asm,</span><span class="se">\
+</span>                     <span class="s">org.apache.commons.logging,</span><span class="se">\
+</span>                     <span class="s">org.apache.log4j,</span><span class="se">\
+</span>                     <span class="s">org.espilce.polvi.xtext.generator</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now the mwe2 workflow can be modified to generate a Polvi based generator skeleton, just change the type of the <code>generator</code> to <code>org.espilce.polvi.xtext.generator.PolviGeneratorFragment</code><br></p>
+<div class="listingblock">
+<div class="title">Listing 14. Generating an Espilce Polvi generator skeleton in <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/plugins/org.eclipse.xtext.example.fowlerdsl/src/org/eclipse/xtext/example/fowlerdsl/GenerateStatemachine.mwe2" target="_blank" rel="noopener">GenerateStatemachine.mwe2</a></div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="mwe2">    language = StandardLanguage {
+      name = "org.eclipse.xtext.example.fowlerdsl.Statemachine"
+      fileExtensions = "statemachine"
+
+      generator = org.espilce.polvi.xtext.generator.PolviGeneratorFragment {
+        generateXtendStub = true
+      }</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>After running the mwe2 workflow a new code generator skeleton is generated, see <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/plugins/org.eclipse.xtext.example.fowlerdsl/src/org/eclipse/xtext/example/fowlerdsl/generator/StatemachinePolviGenerator.xtend" target="_blank" rel="noopener">StatemachinePolviGenerator.xtend</a>.
+By default some commented code is generated, but in our class we only needed to copy the contents of the original Xtext example based code generator and added some imports to the meta-model classes.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="invoking-an-espilce-polvi-based-model-to-text-generator"><a class="anchor" href="#invoking-an-espilce-polvi-based-model-to-text-generator"></a>Invoking an Espilce Polvi based model-to-text generator</h4>
+<div class="paragraph">
+<p>The example below shows how to use Espilce Polvi to invoke a Java code generator.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 15. Invoking an Espilce Polvi based code generator in <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/plugins/com.altran.ec.mde.skeleton.espilce.polvi/src/com/altran/ec/mde/skeleton/espilce/polvi/handlers/GenerateCodeHandler.java" target="_blank" rel="noopener">GenerateCodeHandler.java</a></div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="java">  <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">generateCode</span><span class="o">(</span><span class="nc">IFile</span> <span class="n">inputIFile</span><span class="o">,</span> <span class="nc">IProgressMonitor</span> <span class="n">monitor</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">CoreException</span> <span class="o">{</span>
+    <span class="nc">SubMonitor</span> <span class="n">subMonitor</span> <span class="o">=</span> <span class="nc">SubMonitor</span><span class="o">.</span><span class="na">convert</span><span class="o">(</span><span class="n">monitor</span><span class="o">,</span> <span class="s">"Starting code generation..."</span><span class="o">,</span> <span class="mi">101</span><span class="o">);</span>
+    
+    <span class="c1">// Load input</span>
+    <span class="nc">ResourceSet</span> <span class="n">resourceSet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ResourceSetImpl</span><span class="o">();</span>
+    <span class="no">URI</span> <span class="n">inputlURI</span> <span class="o">=</span> <span class="no">URI</span><span class="o">.</span><span class="na">createPlatformResourceURI</span><span class="o">(</span><span class="n">inputIFile</span><span class="o">.</span><span class="na">getFullPath</span><span class="o">().</span><span class="na">toString</span><span class="o">(),</span> <span class="kc">true</span><span class="o">);</span>
+    <span class="nc">Resource</span> <span class="n">inputResource</span> <span class="o">=</span> <span class="n">resourceSet</span><span class="o">.</span><span class="na">getResource</span><span class="o">(</span><span class="n">inputlURI</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+
+    <span class="c1">// Configure Polvi</span>
+    <span class="nc">URIBasedFileSystemAccess</span> <span class="n">fsa</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">URIBasedFileSystemAccess</span><span class="o">();</span> <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="nc">IFolder</span> <span class="n">outputFolder</span> <span class="o">=</span> <span class="n">inputIFile</span><span class="o">.</span><span class="na">getProject</span><span class="o">().</span><span class="na">getFolder</span><span class="o">(</span><span class="s">"src-gen"</span><span class="o">);</span>
+    <span class="n">fsa</span><span class="o">.</span><span class="na">setOutputPath</span><span class="o">(</span><span class="n">outputFolder</span><span class="o">.</span><span class="na">getFullPath</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="nc">GeneratorContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GeneratorContext</span><span class="o">(</span><span class="k">new</span> <span class="nc">ProgressMonitorAdapter</span><span class="o">(</span><span class="n">subMonitor</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="mi">100</span><span class="o">)));</span>
+        
+    <span class="c1">// Generate output</span>
+    <span class="nc">StatemachinePolviGenerator</span> <span class="n">generator</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StatemachinePolviGenerator</span><span class="o">();</span> <i class="conum" data-value="3"></i><b>(3)</b>
+    <span class="n">generator</span><span class="o">.</span><span class="na">doGenerate</span><span class="o">(</span><span class="n">inputResource</span><span class="o">,</span> <span class="n">fsa</span><span class="o">,</span> <span class="n">ctx</span><span class="o">);</span> <i class="conum" data-value="4"></i><b>(4)</b>
+    
+    <span class="c1">// Refresh the output folder to detect the generated files</span>
+    <span class="n">outputFolder</span><span class="o">.</span><span class="na">refreshLocal</span><span class="o">(</span><span class="nc">IResource</span><span class="o">.</span><span class="na">DEPTH_INFINITE</span><span class="o">,</span> <span class="n">subMonitor</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
+  <span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>URIBasedFileSystemAccess</code> is used because an EMF URI is used as input in this case.
+Esplice Polvi also provides <code>JavaIoFileSystemAccess</code> for <code>java.io.File</code> input and <code>InMemoryFileSystemAccess</code> for in-memory output.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Specifies the output location were generated files are saved.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The contents of the file are generated in the <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/plugins//org.eclipse.xtext.example.fowlerdsl/src/org/eclipse/xtext/example/fowlerdsl/generator/StatemachinePolviGenerator.xtend#L30">StatemachinePolviGenerator#toJavaCode(Statemachine)</a> method.<br>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+For more information on how to implement model-to-text generators with Xtend, please read the <a href="https://gitlab.acidspace.nl/cge-coe-mde/xtend-based-generators/-/blob/master/xtend-based-generators/doc/xtend-based-generators.adoc">Xtend-based Model-to-Text Generators Guide</a>.
+</td>
+</tr>
+</table>
+</div></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The file is generated using the <code>URIBasedFileSystemAccess</code> instance that is created in step 1.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="xtextsirius-integration"><a class="anchor" href="#xtextsirius-integration"></a>Xtext/Sirius Integration</h3>
+<div class="paragraph">
+<p>This asset enables Xtext editors to be used as direct editor for Sirius diagram elements or Sirius property widgets.</p>
+</div>
+<div class="paragraph">
+<p>To start using Xtext/Sirius Integration, first it should be added to the the target platform, see the code snippet below.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 16. Adding Xtext/Sirius Integration to the <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd" target="_blank" rel="noopener">target-platform.tpd</a></div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="tpd">location "https://altran-mde.github.io/xtext-sirius-integration.io/p2/1.1/" {
+    com.altran.general.integration.xtextsirius.runtime.feature.feature.group lazy
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Xtext/Sirius Integration also needs a feature from Yakindu Statecharts to be added to the target platform, see the code snippet below.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 17. Adding Xtext/Sirius Integration dependencies to the <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd" target="_blank" rel="noopener">target-platform.tpd</a></div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="tpd">location "https://updates.yakindu.org/statecharts/releases/3.5.13" {
+    org.yakindu.base.xtext.utils.jface.feature.group lazy
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Because Xtext/Sirius Integration also provides development tools that need to be installed in Eclipse, the Oomph setup file needs to be updated.
+Open the setup file in Eclipse and perform the following steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Expand the <code>P2 Director (Project Specific Development)</code> node<br></p>
+<div class="imageblock">
+<div class="content">
+<img src="./images/oomph-setup-tree-p2-project.png" alt="oomph setup tree p2 project">
+</div>
+</div>
+</li>
+<li>
+<p>Add a new <code>Requirement</code> for the Xtext/Sirius Integration design feature. Also add a <code>Repository</code> that contains the feature.<br>
+Because the feature depends on a feature from Yakindu Statecharts, the <code>Repository</code> that contains it must be added too:</p>
+<div class="imageblock">
+<div class="content">
+<img src="./images/oomph-setup-tree-p2-project-xtext-sirius-integration.png" alt="oomph setup tree p2 project xtext sirius integration">
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Now you can start using Xtext/Sirius Integration.
+The MDE skeleton already provides an example Xtext/Sirius direct edit descriptor in <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/plugins/com.altran.ec.mde.skeleton.xtext.sirius.integration/description/statemachine.odesign" target="_blank" rel="noopener">statemachine.odesign</a>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/xtext-sirius-widget.png" alt="xtext sirius widget">
+</div>
+<div class="title">Figure 1. Authoring Sirius specification in <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/plugins/com.altran.ec.mde.skeleton.xtext.sirius.integration/description/statemachine.odesign" target="_blank" rel="noopener">statemachine.odesign</a></div>
+</div>
+<div class="paragraph">
+<p>This descriptor makes it possible to use Xtext editing of <code>Transition</code> labels.
+In the properties of the descriptor the <code>Mapping</code> must to be set to the feature that the editor will be applied to.
+The <code>Injector Id</code> refers to the Xtext language injector that is specified in <code>plugin.xml</code> to access the Xtext language, see the code snippet below.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 18. Specifying Xtext language injector in <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/plugins/com.altran.ec.mde.skeleton.xtext.sirius.integration/plugin.xml" target="_blank" rel="noopener">plugin.xml</a></div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml">  <span class="nt">&lt;extension</span> <span class="na">point=</span><span class="s">"com.altran.general.integration.xtextsirius.runtime.xtextLanguageInjector"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;injector</span> 
+        <span class="na">id=</span><span class="s">"com.altran.ec.mde.skeleton.xtext.sirius.integration.FowlerdslLanguageInjector"</span>
+        <span class="na">class=</span> <span class="s">"com.altran.ec.mde.skeleton.xtext.sirius.integration.FowlerdslLanguageInjector"</span><span class="nt">/&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="nt">&lt;/extension&gt;</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code>class</code> attribute of the <code>injector</code> refers to the implementation of the <code>IXtextLanguageInjector</code> interface that must
+be added to access the Xtext language, see the code snippet below.</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Listing 19. Implementing IXtextLanguageInjector in <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/plugins/com.altran.ec.mde.skeleton.xtext.sirius.integration/src/com/altran/ec/mde/skeleton/xtext/sirius/integration/FowlerdslLanguageInjector.java" target="_blank" rel="noopener">FowlerdslLanguageInjector.java</a></div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="java"><span class="kn">package</span> <span class="nn">com.altran.ec.mde.skeleton.xtext.sirius.integration</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.eclipse.xtext.example.fowlerdsl.ui.internal.FowlerdslActivator</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.altran.general.integration.xtextsirius.runtime.IXtextLanguageInjector</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.google.inject.Injector</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FowlerdslLanguageInjector</span> <span class="kd">implements</span> <span class="nc">IXtextLanguageInjector</span> <span class="o">{</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="nc">Injector</span> <span class="nf">getInjector</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="nc">FowlerdslActivator</span><span class="o">.</span><span class="na">getInstance</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">getInjector</span><span class="o">(</span><span class="nc">FowlerdslActivator</span><span class="o">.</span><span class="na">ORG_ECLIPSE_XTEXT_EXAMPLE_FOWLERDSL_STATEMACHINE</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For more information on using Xtext/Sirius Integration, please read the <a href="https://gitlab.acidspace.nl/cge-coe-mde/xtext-sirius-integration/-/blob/develop/doc/userguide/xtext-sirius-userguide.adoc">Xtext/Sirius Integration User Guide</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="xtext-move-refactoring"><a class="anchor" href="#xtext-move-refactoring"></a>Xtext Move Refactoring</h3>
+<div class="paragraph">
+<p>This asset enables generic move refactoring for Xtext, updating all references in the workspace.</p>
+</div>
+<div class="paragraph">
+<p>To start using Xtext Move Refactoring, first it should be added to the the target platform, see the code snippet below.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 20. Adding Xtext Move Refactoring to the <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd" target="_blank" rel="noopener">target-platform.tpd</a></div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="tpd">location "https://altran-mde.github.io/xtext-move-refactoring/update-site/" {
+    com.altran.general.xtext.refactoring.move.feature.feature.group lazy
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To implement a move operation the <code>XtextMoveProcessor</code> class from the Xtext Move Refactoring asset must be used.
+This class is responsible for actually moving the elements. Additionally it may update other resources of the same domain which are affected by the move operation.
+For example, it also updates all references in the workspace to the element to be moved.</p>
+</div>
+<div class="paragraph">
+<p>See the following example that implements move operations for the Fowler Statemachine.
+This example is implemented as a <code>dropAssistant</code> extension to the Model Explorer. States can be moved from one Statemachine to another using drag-and-drop.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 21. Implementing move operations for States from the Fowler Statemachine in <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/plugins/com.altran.ec.mde.skeleton.xtext.refactoring.move/src/com/altran/ec/mde/skeleton/xtext/refactoring/move/MoveDropAdapterAssistant.java" target="_blank" rel="noopener">MoveDropAdapterAssistant.java</a> using Xtext Move Refactoring</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MoveDropAdapterAssistant</span> <span class="kd">extends</span> <span class="nc">CommonDropAdapterAssistant</span> <span class="o">{</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="nc">IStatus</span> <span class="nf">validateDrop</span><span class="o">(</span><span class="kd">final</span> <span class="nc">Object</span> <span class="n">target</span><span class="o">,</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">operation</span><span class="o">,</span> <span class="kd">final</span> <span class="nc">TransferData</span> <span class="n">transferType</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="nc">Status</span><span class="o">.</span><span class="na">OK_STATUS</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="nc">IStatus</span> <span class="nf">handleDrop</span><span class="o">(</span><span class="kd">final</span> <span class="nc">CommonDropAdapter</span> <span class="n">aDropAdapter</span><span class="o">,</span> <span class="kd">final</span> <span class="nc">DropTargetEvent</span> <span class="n">aDropTargetEvent</span><span class="o">,</span>
+      <span class="kd">final</span> <span class="nc">Object</span> <span class="n">aTarget</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">aDropTargetEvent</span><span class="o">.</span><span class="na">data</span> <span class="k">instanceof</span> <span class="nc">TreeSelection</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">TreeSelection</span> <span class="n">treeSelection</span> <span class="o">=</span> <span class="o">(</span><span class="nc">TreeSelection</span><span class="o">)</span><span class="n">aDropTargetEvent</span><span class="o">.</span><span class="na">data</span><span class="o">;</span>
+      <span class="nc">Object</span> <span class="n">aSource</span> <span class="o">=</span> <span class="n">treeSelection</span><span class="o">.</span><span class="na">getFirstElement</span><span class="o">();</span>     
+      <span class="k">if</span> <span class="o">(</span><span class="n">aSource</span> <span class="k">instanceof</span> <span class="nc">State</span> <span class="o">&amp;&amp;</span> <span class="n">aTarget</span> <span class="k">instanceof</span> <span class="nc">Statemachine</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nf">moveElement</span><span class="o">((</span><span class="nc">State</span><span class="o">)</span> <span class="n">aSource</span><span class="o">,</span> <span class="o">(</span><span class="nc">Statemachine</span><span class="o">)</span> <span class="n">aTarget</span><span class="o">);</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="nc">Status</span><span class="o">.</span><span class="na">CANCEL_STATUS</span><span class="o">;</span>
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="nc">IStatus</span> <span class="nf">moveElement</span><span class="o">(</span><span class="nc">State</span> <span class="n">source</span><span class="o">,</span> <span class="nc">Statemachine</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">final</span> <span class="no">URI</span> <span class="n">sourceUri</span> <span class="o">=</span> <span class="n">org</span><span class="o">.</span><span class="na">eclipse</span><span class="o">.</span><span class="na">emf</span><span class="o">.</span><span class="na">ecore</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">EcoreUtil</span><span class="o">.</span><span class="na">getURI</span><span class="o">(</span><span class="n">source</span><span class="o">);</span>
+    <span class="kd">final</span> <span class="no">URI</span> <span class="n">targetUri</span> <span class="o">=</span> <span class="n">org</span><span class="o">.</span><span class="na">eclipse</span><span class="o">.</span><span class="na">emf</span><span class="o">.</span><span class="na">ecore</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">EcoreUtil</span><span class="o">.</span><span class="na">getURI</span><span class="o">(</span><span class="n">target</span><span class="o">);</span>
+    <span class="kd">final</span> <span class="nc">String</span> <span class="n">targetFeature</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="na">eContainingFeature</span><span class="o">().</span><span class="na">getName</span><span class="o">();</span>
+    
+    <span class="k">return</span> <span class="nf">moveElement</span><span class="o">(</span><span class="n">sourceUri</span><span class="o">,</span> <span class="n">targetUri</span><span class="o">,</span> <span class="n">targetFeature</span><span class="o">);</span>
+    
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="nc">IStatus</span> <span class="nf">moveElement</span><span class="o">(</span><span class="no">URI</span> <span class="n">source</span><span class="o">,</span> <span class="no">URI</span> <span class="n">target</span><span class="o">,</span> <span class="nc">String</span> <span class="n">targetFeature</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">final</span> <span class="nc">Injector</span> <span class="n">injector</span> <span class="o">=</span> <span class="nc">FowlerdslActivator</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">getInjector</span><span class="o">(</span><span class="nc">FowlerdslActivator</span><span class="o">.</span><span class="na">ORG_ECLIPSE_XTEXT_EXAMPLE_FOWLERDSL_STATEMACHINE</span><span class="o">);</span>
+
+    <span class="kd">final</span> <span class="nc">XtextMoveProcessor</span> <span class="n">processor</span> <span class="o">=</span> <span class="n">injector</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="nc">XtextMoveProcessor</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="kd">final</span> <span class="nc">XtextMoveProcessorConfig</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">XtextMoveProcessorConfig</span><span class="o">(</span><span class="n">source</span><span class="o">,</span> <span class="n">target</span><span class="o">,</span> <span class="n">targetFeature</span><span class="o">);</span>
+    <span class="k">try</span> <span class="o">{</span>
+      <span class="n">processor</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">config</span><span class="o">);</span>
+
+      <span class="nc">RefactoringStatus</span> <span class="n">status</span> <span class="o">=</span> <span class="n">processor</span><span class="o">.</span><span class="na">checkInitialConditions</span><span class="o">(</span><span class="k">new</span> <span class="nc">NullProgressMonitor</span><span class="o">());</span> <i class="conum" data-value="1"></i><b>(1)</b>
+      <span class="k">if</span> <span class="o">(!</span><span class="n">status</span><span class="o">.</span><span class="na">isOK</span><span class="o">())</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">Status</span><span class="o">.</span><span class="na">CANCEL_STATUS</span><span class="o">;</span>
+      <span class="o">}</span>
+
+      <span class="n">status</span> <span class="o">=</span> <span class="n">processor</span><span class="o">.</span><span class="na">checkFinalConditions</span><span class="o">(</span><span class="k">new</span> <span class="nc">NullProgressMonitor</span><span class="o">(),</span> <span class="k">new</span> <span class="nc">CheckConditionsContext</span><span class="o">());</span> <i class="conum" data-value="2"></i><b>(2)</b>
+      <span class="k">if</span> <span class="o">(!</span><span class="n">status</span><span class="o">.</span><span class="na">isOK</span><span class="o">())</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">Status</span><span class="o">.</span><span class="na">CANCEL_STATUS</span><span class="o">;</span>
+      <span class="o">}</span>
+
+      <span class="kd">final</span> <span class="nc">Change</span> <span class="n">change</span> <span class="o">=</span> <span class="n">processor</span><span class="o">.</span><span class="na">createChange</span><span class="o">(</span><span class="k">new</span> <span class="nc">NullProgressMonitor</span><span class="o">());</span> <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="n">change</span><span class="o">.</span><span class="na">perform</span><span class="o">(</span><span class="k">new</span> <span class="nc">NullProgressMonitor</span><span class="o">());</span> <i class="conum" data-value="4"></i><b>(4)</b>
+
+      <span class="k">return</span> <span class="nc">Status</span><span class="o">.</span><span class="na">OK_STATUS</span><span class="o">;</span>
+      
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">OperationCanceledException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="nc">Status</span><span class="o">.</span><span class="na">CANCEL_STATUS</span><span class="o">;</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">CoreException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">StatusManager</span><span class="o">.</span><span class="na">getManager</span><span class="o">().</span><span class="na">handle</span><span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="nc">Activator</span><span class="o">.</span><span class="na">PLUGIN_ID</span><span class="o">);</span>
+      <span class="k">return</span> <span class="nc">Status</span><span class="o">.</span><span class="na">CANCEL_STATUS</span><span class="o">;</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>checkInitialConditions</code> checks some initial conditions based on the element to be moved. For example, it is checked if all involved <code>EObjects</code> and their containers can be resolved.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>checkFinalConditions</code> checks the final conditions based on the element to be moved. This is implemented by actually performing the move refactoring and reverting it afterwards.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><code>createChange</code> creates a <code>Change</code> object describing the workspace modifications the processor contributes to the overall move refactoring.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td><code>change.perform</code> performs the change created in the previous step.</td>
+</tr>
+</table>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="testing-rcp"><a class="anchor" href="#testing-rcp"></a>Testing RCP</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>RCP Testing Tool (RCPTT) is a project for GUI testing automation of Eclipse-based applications.
+RCPTT is fully aware about Eclipse Platform&#8217;s internals, hiding this complexity from end users and allowing QA engineers to create highly reliable UI tests at great pace.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+For detailed information on using RCPTT, see <a href="https://www.eclipse.org/rcptt/" class="bare">https://www.eclipse.org/rcptt/</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Because RCPTT provides development tools that need to be installed in Eclipse, the Oomph setup file needs to be updated.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This step can be skipped when the MDE skeleton Oomph setup file is used as a base, as described in section <a href="#create-oomph-setup-file">How to create an Oomph setup file</a>, because RCPTT is already included.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To add the RCPTT development tools, open the Oomph setup file in Eclipse and perform the following steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Expand the <code>P2 Director (Project Specific Development)</code> node<br></p>
+<div class="imageblock">
+<div class="content">
+<img src="./images/oomph-setup-tree-p2-project.png" alt="oomph setup tree p2 project">
+</div>
+</div>
+</li>
+<li>
+<p>Add a new <code>Requirement</code> for the RCPTT platform feature.</p>
+<div class="imageblock">
+<div class="content">
+<img src="./images/oomph-setup-tree-p2-project-rcptt.png" alt="oomph setup tree p2 project rcptt">
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Now RCPTT can be used.
+First create a new test project using the <code>RCP Testing Tool Project</code> wizard.
+After that the <code>Test Case</code> wizard can be used to add test cases.
+Now the test case can be recorded using the <code>Record</code> button.
+A popup will be shown to select the Application Under Test (AUT).
+Here your Eclipse product must be selected.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Create a <a href="https://help.eclipse.org/2022-12/topic/org.eclipse.platform.doc.user/tasks/tasks-97.htm">resource filter</a> for the <code>target</code> folder on your test project to avoid duplication errors when building with Maven.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The MDE skeleton already provides a RCPTT project that can be used for reference: <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/tests/com.altran.ec.mde.skeleton.xtext.refactoring.move.tests" target="_blank" rel="noopener">com.altran.ec.mde.skeleton.xtext.refactoring.move.tests</a>.
+Simply run its test cases by right-clicking the project and select <span class="menuseq"><b class="menu">Run As</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Test Cases</b></span> from the context menu.
+Then select <code>Eclipse RCPTT AUT</code> as Application Under Test and click <b class="button">OK</b>.
+The <a href="https://raw.githubusercontent.com/altran-mde/mde-skeleton/refs/heads/develop/tests/com.altran.ec.mde.skeleton.xtext.refactoring.move.tests/pom.xml" target="_blank" rel="noopener">Maven pom </a> in the project shows how to configure RCPTT in Maven, for more information please read the <a href="https://www.eclipse.org/rcptt/documentation/userguide/maven/" target="_blank" rel="noopener">RCPTT user guide</a>.</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="fowlerdsl-ecoredoc"><a class="anchor" href="#fowlerdsl-ecoredoc"></a>Appendix A: Fowler Statemachine EcoreDoc</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Ns Prefix</dt>
+<dd>
+<p>statemachine</p>
+</dd>
+<dt class="hdlist1">Ns URI</dt>
+<dd>
+<p><a href="http://www.eclipse.org/xtext/example/fowlerdsl/Statemachine" class="bare">http://www.eclipse.org/xtext/example/fowlerdsl/Statemachine</a></p>
+</dd>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/statemachine.png" alt="statemachine" width="302" height="205">
+</div>
+<div class="title">Figure 2. Class diagram of statemachine</div>
+</div>
+<div class="sect2">
+<h3 id="types"><a class="anchor" href="#types"></a>Types</h3>
+<div class="sect3">
+<h4 id="statemachine-Command"><a class="anchor" href="#statemachine-Command"></a>Class Command</h4>
+<div class="imageblock">
+<div class="content">
+<img src="images/statemachine_Command.png" alt="statemachine Command" width="185" height="100">
+</div>
+<div class="title">Figure 3. Class diagram of Command</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Attributes</caption>
+<colgroup>
+<col style="width: 27.2727%;">
+<col style="width: 18.1818%;">
+<col style="width: 18.1818%;">
+<col style="width: 36.3637%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>code</code><a id="statemachine-Command-code"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EString</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code><a id="statemachine-Command-name"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EString</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<div class="title">Used at</div>
+<ul>
+<li>
+<p><code><a href="#statemachine-State-actions">statemachine.&#8203;State.&#8203;actions</a></code></p>
+</li>
+<li>
+<p><code><a href="#statemachine-Statemachine-commands">statemachine.&#8203;Statemachine.&#8203;commands</a></code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="statemachine-Event"><a class="anchor" href="#statemachine-Event"></a>Class Event</h4>
+<div class="imageblock">
+<div class="content">
+<img src="images/statemachine_Event.png" alt="statemachine Event" width="185" height="100">
+</div>
+<div class="title">Figure 4. Class diagram of Event</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Attributes</caption>
+<colgroup>
+<col style="width: 27.2727%;">
+<col style="width: 18.1818%;">
+<col style="width: 18.1818%;">
+<col style="width: 36.3637%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>code</code><a id="statemachine-Event-code"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EString</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code><a id="statemachine-Event-name"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EString</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<div class="title">Used at</div>
+<ul>
+<li>
+<p><code><a href="#statemachine-Statemachine-events">statemachine.&#8203;Statemachine.&#8203;events</a></code></p>
+</li>
+<li>
+<p><code><a href="#statemachine-Statemachine-resetEvents">statemachine.&#8203;Statemachine.&#8203;resetEvents</a></code></p>
+</li>
+<li>
+<p><code><a href="#statemachine-Transition-event">statemachine.&#8203;Transition.&#8203;event</a></code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="statemachine-State"><a class="anchor" href="#statemachine-State"></a>Class State</h4>
+<div class="imageblock">
+<div class="content">
+<img src="images/statemachine_State.png" alt="statemachine State" width="302" height="205">
+</div>
+<div class="title">Figure 5. Class diagram of State</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Attributes</caption>
+<colgroup>
+<col style="width: 27.2727%;">
+<col style="width: 18.1818%;">
+<col style="width: 18.1818%;">
+<col style="width: 36.3637%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code><a id="statemachine-State-name"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EString</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Containments</caption>
+<colgroup>
+<col style="width: 27.2727%;">
+<col style="width: 18.1818%;">
+<col style="width: 18.1818%;">
+<col style="width: 36.3637%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>transitions</code><a id="statemachine-State-transitions"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#statemachine-Transition">statemachine.&#8203;Transition</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">resolveProxies</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">References</caption>
+<colgroup>
+<col style="width: 27.2727%;">
+<col style="width: 18.1818%;">
+<col style="width: 18.1818%;">
+<col style="width: 36.3637%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>actions</code><a id="statemachine-State-actions"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#statemachine-Command">statemachine.&#8203;Command</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">non-unique</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<div class="title">Used at</div>
+<ul>
+<li>
+<p><code><a href="#statemachine-Statemachine-states">statemachine.&#8203;Statemachine.&#8203;states</a></code></p>
+</li>
+<li>
+<p><code><a href="#statemachine-Transition-state">statemachine.&#8203;Transition.&#8203;state</a></code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="statemachine-Statemachine"><a class="anchor" href="#statemachine-Statemachine"></a>Class Statemachine</h4>
+<div class="imageblock">
+<div class="content">
+<img src="images/statemachine_Statemachine.png" alt="statemachine Statemachine" width="302" height="205">
+</div>
+<div class="title">Figure 6. Class diagram of Statemachine</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Attributes</caption>
+<colgroup>
+<col style="width: 27.2727%;">
+<col style="width: 18.1818%;">
+<col style="width: 18.1818%;">
+<col style="width: 36.3637%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code><a id="statemachine-Statemachine-name"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EString</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Containments</caption>
+<colgroup>
+<col style="width: 27.2727%;">
+<col style="width: 18.1818%;">
+<col style="width: 18.1818%;">
+<col style="width: 36.3637%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>commands</code><a id="statemachine-Statemachine-commands"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#statemachine-Command">statemachine.&#8203;Command</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">resolveProxies</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>events</code><a id="statemachine-Statemachine-events"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#statemachine-Event">statemachine.&#8203;Event</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">resolveProxies</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>states</code><a id="statemachine-Statemachine-states"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#statemachine-State">statemachine.&#8203;State</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">resolveProxies</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">References</caption>
+<colgroup>
+<col style="width: 27.2727%;">
+<col style="width: 18.1818%;">
+<col style="width: 18.1818%;">
+<col style="width: 36.3637%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>resetEvents</code><a id="statemachine-Statemachine-resetEvents"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#statemachine-Event">statemachine.&#8203;Event</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">non-unique</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="statemachine-Transition"><a class="anchor" href="#statemachine-Transition"></a>Class Transition</h4>
+<div class="imageblock">
+<div class="content">
+<img src="images/statemachine_Transition.png" alt="statemachine Transition" width="302" height="205">
+</div>
+<div class="title">Figure 7. Class diagram of Transition</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">References</caption>
+<colgroup>
+<col style="width: 27.2727%;">
+<col style="width: 18.1818%;">
+<col style="width: 18.1818%;">
+<col style="width: 36.3637%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>event</code><a id="statemachine-Transition-event"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#statemachine-Event">statemachine.&#8203;Event</a></code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>state</code><a id="statemachine-Transition-state"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#statemachine-State">statemachine.&#8203;State</a></code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<div class="title">Used at</div>
+<ul>
+<li>
+<p><code><a href="#statemachine-State-transitions">statemachine.&#8203;State.&#8203;transitions</a></code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 2024-12-12 11:20 UTC<br>
+</div>
+</div>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains("stemblock")) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
+</body>
+</html>
