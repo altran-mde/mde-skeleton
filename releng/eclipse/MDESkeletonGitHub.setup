@@ -18,6 +18,10 @@
     label="MDE Skeleton">
   <setupTask
       xsi:type="setup:VariableTask"
+      name="gitproject"
+      value="altran-mde/mde-skeleton"/>
+  <setupTask
+      xsi:type="setup:VariableTask"
       name="oomph.setup.branch"
       value="main"/>
   <setupTask
@@ -78,7 +82,7 @@
             nature="org.eclipse.pde.PluginNature"/>
         <operand
             xsi:type="workingsets:ExclusionPredicate"
-            excludedWorkingSet="//@setupTasks.4/@workingSets[name='${scope.project.label}%20-%20Tests']"/>
+            excludedWorkingSet="//@setupTasks.5/@workingSets[name='${scope.project.label}%20-%20Tests']"/>
       </predicate>
     </workingSet>
     <workingSet
@@ -114,7 +118,7 @@
             project="com.altran.ec.mde.skeleton.root"/>
         <operand
             xsi:type="workingsets:ExclusionPredicate"
-            excludedWorkingSet="//@setupTasks.4/@workingSets[name='${scope.project.label}%20-%20Features'] //@setupTasks.4/@workingSets[name='${scope.project.label}%20-%20Plug-ins'] //@setupTasks.4/@workingSets[name='${scope.project.label}%20-%20Tests']"/>
+            excludedWorkingSet="//@setupTasks.5/@workingSets[name='${scope.project.label}%20-%20Features'] //@setupTasks.5/@workingSets[name='${scope.project.label}%20-%20Plug-ins'] //@setupTasks.5/@workingSets[name='${scope.project.label}%20-%20Tests']"/>
       </predicate>
     </workingSet>
   </setupTask>
@@ -277,7 +281,7 @@
     <setupTask
         xsi:type="setup:EclipseIniTask"
         option="-Doomph.redirection.branch.${oomph.setup.branch}"
-        value="=https://raw.githubusercontent.com/altran-mde/mde-skeleton/${oomph.setup.branch}/${oomph.setup.file.path}->${git.clone.location|uri}/${oomph.setup.file.path}"
+        value="=https://raw.githubusercontent.com/${gitproject}/${oomph.setup.branch}/${oomph.setup.file.path}->${git.clone.location|uri}/${oomph.setup.file.path}"
         vm="true">
       <description>Set an Oomph redirection system property to redirect the logical location of this setup to its physical location in the Git clone.</description>
     </setupTask>

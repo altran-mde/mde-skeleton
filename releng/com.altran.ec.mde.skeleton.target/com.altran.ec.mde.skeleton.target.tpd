@@ -5,7 +5,7 @@ target "CBI Target Platform"
 
 with configurePhase source requirements
 
-location "https://download.eclipse.org/releases/2022-12/202212071000" {
+location "https://download.eclipse.org/releases/2022-12/202212071000" { //<1>
     // Eclipse - EMF
     org.eclipse.sdk.feature.group lazy
     org.eclipse.emf.sdk.feature.group lazy
@@ -82,7 +82,7 @@ location "https://download.eclipse.org/e4/snapshots/org.eclipse.e4.tools/latest"
 // tag::doc-target-platform[]
 }
 
-location "https://altran-mde.github.io/espilce-commons-staging/" { //<2>
+location "https://altran-mde.github.io/espilce-commons-staging/" espilce-commons-p2 { //<2>
     org.espilce.commons.emf.registry.feature.feature.group lazy
     org.espilce.commons.resource.feature.feature.group lazy
 }

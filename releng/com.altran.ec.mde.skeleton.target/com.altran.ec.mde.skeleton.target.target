@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="CBI Target Platform" sequenceNumber="1733921659">
+<target name="CBI Target Platform" sequenceNumber="1733992340">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="org.eclipse.sdk.feature.group" version="0.0.0"/>
@@ -67,7 +67,7 @@
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="org.espilce.commons.emf.registry.feature.feature.group" version="0.0.0"/>
       <unit id="org.espilce.commons.resource.feature.feature.group" version="0.0.0"/>
-      <repository location="https://altran-mde.github.io/espilce-commons-staging/"/>
+      <repository id="espilce-commons-p2" location="https://altran-mde.github.io/espilce-commons-staging/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="org.espilce.periksa.sdk.feature.group" version="0.0.0"/>

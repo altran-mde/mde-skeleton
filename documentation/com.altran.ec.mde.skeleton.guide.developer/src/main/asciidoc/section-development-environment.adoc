@@ -1,7 +1,7 @@
 //tag::setup-development-environment[]
 include::_attributes.adoc[]
 
-ifndef::oomph-setup-file-path[:oomph-setup-file-path: releng/eclipse/MDESkeletonACIDSpace.setup]
+ifndef::oomph-setup-file-path[:oomph-setup-file-path: releng/eclipse/MDESkeletonGitHub.setup]
 //end::setup-development-environment[]
 
 == Development Environment
@@ -33,9 +33,9 @@ The EMF Reference Project provides a script that provisions the repository with 
 The bootstrapped application will contain a developer documentation plugin that provides the instructions on <<setup-development-environment, setting up a development environment>>.
 
 The listing below shows how to use the EMF Reference Project bootstrap script.
-In this example, the https://gitlab.acidspace.nl/cge-coe-mde/larch[LArch] repository is used as an example and the callouts below the listing explain the steps in more detail.
+In this example, the `LArch` repository is used as an example and the callouts below the listing explain the steps in more detail.
 
-.Bootstrapping an ACIDSpace git repository to build an Eclipse RCP
+.Bootstrapping a git repository to build an Eclipse RCP
 [source,shell]
 ----
 user@machine MINGW64 ~/git
@@ -100,12 +100,12 @@ https://gitlab.acidspace.nl/cge-coe-mde/larch/-/blob/develop/README.adoc
 After a successful local build, the built products can be found at:
 /c/Users/user/git/larch/products/nl.cge.mde.larch.package.product/target/products
 ----
-<1> Clone the empty ACIDSpace git repository that will be bootstrapped.
+<1> Clone the empty git repository that will be bootstrapped.
     It is assumed that the `develop` branch is set as default branch of the repository.
     In this example, the repository is cloned into a sub-directory called `larch`.
 <2> Clone the MDE skeleton repository to download the bootstrap script.
     The tag, i.e., `-b BOOTSTRAP-2020-06`, specifies the version of Eclipse that is used for the RCP.
-    For a list of available versions, please see the https://gitlab.acidspace.nl/cge-coe-mde/mde-skeleton/-/tags?sort=updated_desc&search=BOOTSTRAP[available tags].
+    For a list of available versions, please see the https://github.com/altran-mde/mde-skeleton/tags[available tags].
     The repository is cloned into a sub-directory called `mde-skeleton`.
 <3> Running the `bootstrap.sh` copies all required data to the target repository and adapts it for your project.
     The script takes 3 parameters: +
@@ -160,7 +160,7 @@ The directory structure of the target repository will look like:
 [[create-oomph-setup-file]]
 === How to create an Oomph setup file
 
-This section describes the typical steps to take for creating an Oomph setup file for a project in the ACIDSpace environment.
+This section describes the typical steps to take for creating an Oomph setup file for a project.
 An Oomph setup file enables the https://wiki.eclipse.org/Eclipse_Installer[Eclipse Installer] to automate the installation of Eclipse development environments.
 For more generic information on (authoring) Oomph, please read the https://wiki.eclipse.org/Eclipse_Oomph_Authoring[Eclipse Oomph Authoring Wiki]
 
@@ -241,7 +241,7 @@ image::http://help.eclipse.org/{eclipse-version}/topic/org.eclipse.egit.doc/help
 . On the https://help.eclipse.org/{eclipse-version}/topic/org.eclipse.oomph.setup.doc/html/user/wizard/DocProjectPage.html[Projects Page]
 .. (_One time only_) Click the image:http://help.eclipse.org/{eclipse-version}/topic/org.eclipse.oomph.setup.doc/images/trees/DULKrP4IGs7HGSVqoXcwRFgPxZQ=.png[] icon to add the {project-name} project.
 ... Catalog: `Eclipse Projects`
-... Resource URIs: `link:https://gitlab.acidspace.nl/{gitproject}/-/raw/{gitbranch}/{oomph-setup-file-path}?oomph_form=b%27users/sign_in%27#/[]`
+... Resource URIs: `https://raw.githubusercontent.com/{gitproject}/refs/heads/{gitbranch}/{oomph-setup-file-path}[]`
 ... Click btn:[OK] +
 +
 NOTE: Though using the Resource URI above is preferred, it is known that for some users the URI didn't work and they got an error: _The URI ... does not contain a valid product_.
@@ -265,7 +265,7 @@ Please accept all licenses and certificates and provide your GitLab credentials 
 Please perform the steps in this section if you want to build your code using Maven on your local system.
 The code can built using Maven from either the command line or from within Eclipse, please read the "**Use**" items of https://maven.apache.org/index.html[the Maven documentation^] before running Maven the first time.
 
-In ACIDSpace's CI/CD the credentials of a project are stored in the `TECHNICAL_USER` and `TECHNICAL_PASSWORD` environment variables.
+In our CI/CD the credentials of a project are stored in the `TECHNICAL_USER` and `TECHNICAL_PASSWORD` environment variables.
 In order to be able to use the Maven `settings.xml` both in CI/CD and on your local system, you should also set these environment variables on your local system.
 
 CAUTION: It is strongly advised to store an encrypted password in the `TECHNICAL_PASSWORD` environment variable for security reasons.

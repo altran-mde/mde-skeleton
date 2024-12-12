@@ -26,7 +26,7 @@
   <!-- tag::doc-ecoredoc[] -->
   <pluginRepositories>
     <!-- com.altran.general.emf.ecoredoc:ecoredoc-maven-plugin -->
-    <pluginRepository>
+    <pluginRepository> <!--1-->
       <id>ecoredoc-snapshots</id>
       <url>https://altran-mde.github.io/ecore_doc/maven-repo</url>
       <releases>
@@ -46,13 +46,13 @@
         <version>0.10.0-SNAPSHOT</version>
         <executions>
           <execution>
-            <phase>generate-sources</phase> <!--1-->
+            <phase>generate-sources</phase> <!--2-->
             <goals>
               <goal>ecoredoc</goal>
             </goals>
             <configuration>
               <resolve>true</resolve>
-              <config> <!--2-->
+              <config> <!--3-->
                 <renderDefaults>false</renderDefaults>
                 <renderDiagrams>true</renderDiagrams>
                 <diagramsOutputPath>images</diagramsOutputPath>

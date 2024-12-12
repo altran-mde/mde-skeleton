@@ -18,9 +18,6 @@ EcoreDoc can be used as https://maven.apache.org/[Maven] Plugin, standalone comm
 
 In this quick reference guide EcoreDoc is used by means of its Maven plugin to generate <<fowlerdsl-ecoredoc>> from the link:{giturl}/plugins/org.eclipse.xtext.example.fowlerdsl/model/generated/Statemachine.ecore[Statemachine.ecore^] file.
 
-The EcoreDoc maven plugin is deployed on the `mde-assets` Maven repository in ACIDSpace.
-Please read section <<maven-repository-mirrors>> to learn how to configure this repository in your Maven build.
-
 The EcoreDoc Maven plugin can be used by adding the code snippet below to your Maven pom file.
 
 .Configuring EcoreDoc in link:{giturl}/documentation/com.altran.ec.mde.skeleton.guide.developer/pom.xml[pom.xml^]
@@ -29,8 +26,9 @@ The EcoreDoc Maven plugin can be used by adding the code snippet below to your M
 include::{gitdir}/documentation/com.altran.ec.mde.skeleton.guide.developer/pom.xml[tags=doc-ecoredoc]
 ----
 
-<1> Binds the `ecoredoc` goal to the `generate-sources` https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html[Maven build lifecycle phase^].
-<2> The EcoreDoc Maven plugin can be configured by means of annotations in the ecore model or, as illustrated here,directly in the Maven pom file.
+<1> The EcoreDoc maven plugin is deployed in its Maven repository in GitHub.
+<2> Binds the `ecoredoc` goal to the `generate-sources` https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html[Maven build lifecycle phase^].
+<3> The EcoreDoc Maven plugin can be configured by means of annotations in the ecore model or, as illustrated here,directly in the Maven pom file.
  
 The example below adds the generated EcoreDoc to this developer guide as an appendix.
 
@@ -57,8 +55,6 @@ WARNING: TODO
 
 Espilce Periksa is an EMF Validator framework.
 To start using Espilce Periksa, first it should be added to the the target platform, see the code snippet below.
-
-NOTE: When using Maven, don't forget to configure credentials for this repository as described in <<maven-repository-mirrors>>, also see link:{giturl}/settings.xml[settings.xml^]
 
 .Adding Espilce Periksa to the link:{giturl}/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd[target-platform.tpd^]
 [source,tpd]
@@ -101,8 +97,6 @@ ifndef::output-help[link:{gitpages}/espilce-periksa/#programmers-guide[Espilce P
 
 Espilce Polvi provides a framework and utilities to implement model-to-text generators.
 To start using Espilce Polvi, first it should be added to the the target platform, see the code snippet below.
-
-NOTE: When using Maven, don't forget to configure credentials for this repository as described in <<maven-repository-mirrors>>, also see link:{giturl}/settings.xml[settings.xml^]
 
 .Adding Espilce Polvi to the link:{giturl}/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd[target-platform.tpd^]
 [source,tpd]
@@ -157,8 +151,6 @@ TIP: For more information on how to implement model-to-text generators with Xten
 This asset enables Xtext editors to be used as direct editor for Sirius diagram elements or Sirius property widgets.
 
 To start using Xtext/Sirius Integration, first it should be added to the the target platform, see the code snippet below.
-
-NOTE: When using Maven, don't forget to configure credentials and mirrors for these repositories as described in <<maven-repository-mirrors>>, also see link:{giturl}/settings.xml[settings.xml^]
 
 .Adding Xtext/Sirius Integration to the link:{giturl}/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd[target-platform.tpd^]
 [source,tpd]
@@ -217,8 +209,6 @@ For more information on using Xtext/Sirius Integration, please read the https://
 This asset enables generic move refactoring for Xtext, updating all references in the workspace.
 
 To start using Xtext Move Refactoring, first it should be added to the the target platform, see the code snippet below.
-
-NOTE: When using Maven, don't forget to configure credentials and mirrors for these repositories as described in <<maven-repository-mirrors>>, also see link:{giturl}/settings.xml[settings.xml^]
 
 .Adding Xtext Move Refactoring to the link:{giturl}/releng/com.altran.ec.mde.skeleton.target/com.altran.ec.mde.skeleton.target.tpd[target-platform.tpd^]
 [source,tpd]
